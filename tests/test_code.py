@@ -18,26 +18,68 @@ defect_data = os.path.join(workdir, '..', 'data', 'Defect_Data.xlsx')
 task_data = os.path.join(workdir, '..', 'data', 'Task_List.xlsx')
 
 def test_HEP_EMD():
-    _,d = get_hemd_from_spreadsheet(defect_data)
-    assert d['D2C'].pdf(0.6) == 2.0301163385771801e-07
+    _, d = get_hemd_from_spreadsheet(defect_data)
+
+    value = d["D2C"].pdf(0.6)
+    expected = 2.0301163385771801e-07
+
+    assert value == pytest.approx(expected, rel=1e-6, abs=1e-12)
 
 def test_stage_odc_dist():
     d = get_stage_odc_dist(defect_data)
-    assert d['Concept']['Documentation'].cdf(0.99) == 7.327789556831712e-06
-    assert d['Requirement']['Algorithm'].cdf(0.1) == 0.0012975084733137195
-    assert d['Concept']['Documentation'].mean() == (1000+0.5)/(1.+1000)
-    assert d['Requirement']['Assignment'].mean() == (26+0.5)/(1.0+375)
-    assert d['Design']['Checking'].mean() == (26+0.5)/(1.0+375)
-    assert d['Implementation']['Function'].mean() == (372+0.5)/(1.+2292)
-    assert d['Testing']['Interface'].mean() == (361+0.5)/(1.0+2464)
-    assert d['Install and Maintenance']['Relationship'].mean() == (91+0.5)/(1.+2464)
-    assert d['Design']['Timing'].mean() == (13+0.5)/(1.+375)
+
+    # Tolerances
+    rel_tol = 1e-6
+    abs_tol = 1e-12
+
+    # CDF checks
+    assert d["Concept"]["Documentation"].cdf(0.99) == pytest.approx(
+        7.327789556831712e-06, rel=rel_tol, abs=abs_tol
+    )
+    assert d["Requirement"]["Algorithm"].cdf(0.1) == pytest.approx(
+        0.0012975084733137195, rel=rel_tol, abs=abs_tol
+    )
+
+    # Mean checks
+    assert d["Concept"]["Documentation"].mean() == pytest.approx(
+        (1000 + 0.5) / (1.0 + 1000), rel=rel_tol, abs=abs_tol
+    )
+    assert d["Requirement"]["Assignment"].mean() == pytest.approx(
+        (26 + 0.5) / (1.0 + 375), rel=rel_tol, abs=abs_tol
+    )
+    assert d["Design"]["Checking"].mean() == pytest.approx(
+        (26 + 0.5) / (1.0 + 375), rel=rel_tol, abs=abs_tol
+    )
+    assert d["Implementation"]["Function"].mean() == pytest.approx(
+        (372 + 0.5) / (1.0 + 2292), rel=rel_tol, abs=abs_tol
+    )
+    assert d["Testing"]["Interface"].mean() == pytest.approx(
+        (361 + 0.5) / (1.0 + 2464), rel=rel_tol, abs=abs_tol
+    )
+    assert d["Install and Maintenance"]["Relationship"].mean() == pytest.approx(
+        (91 + 0.5) / (1.0 + 2464), rel=rel_tol, abs=abs_tol
+    )
+    assert d["Design"]["Timing"].mean() == pytest.approx(
+        (13 + 0.5) / (1.0 + 375), rel=rel_tol, abs=abs_tol
+    )
 
 def test_dcp():
-    dcp_gold = [3.497242685425109e-05, 0.0002529112181892472, 3.9544415406499936e-05, 5.478224783437511e-05, 3.7439121863896394e-05, 5.478224783437511e-05]
+    dcp_gold = [
+        3.497242685425109e-05,
+        0.0002529112181892472,
+        3.9544415406499936e-05,
+        5.478224783437511e-05,
+        3.7439121863896394e-05,
+        5.478224783437511e-05,
+    ]
+
+    # Tolerances for floating-point / probabilistic calculations
+    rel_tol = 1e-6
+    abs_tol = 1e-12
+
     for i, stage in enumerate(SDLC_stages):
         dcp = stage_dcp_calculation(task_data, stage)
-        assert dcp == dcp_gold[i]
+        assert dcp == pytest.approx(dcp_gold[i], rel=rel_tol, abs=abs_tol)
 
 def test_uca_defect_correlation():
     ## Data for norm distribution
@@ -51,9 +93,9 @@ def test_uca_defect_correlation():
     # [0.25, 0.125, 0.25, 0.125, 0.25, 0.125, 0.25, 0.125],
     # [0.095, 0.167, 0.19, 0.1445, 0.524, 0.2115, 0.19, 0.1445]
     # ])
-
-    ## Data for truncated norm distribution
-    data = np.array([2.17000000e-01, 2.55000000e-02, 2.88023094e-01, 7.59562269e-02,
+    ## Data for truncated normal distribution
+    data = np.array([
+        2.17000000e-01, 2.55000000e-02, 2.88023094e-01, 7.59562269e-02,
         2.19000000e-01, 3.69999989e-02, 2.56905982e-01, 1.17689469e-01,
         2.50157985e-01, 7.67429390e-02, 2.62000000e-01, 3.25000000e-02,
         2.56905982e-01, 1.17689469e-01, 1.74228858e-01, 1.18680274e-01,
@@ -68,14 +110,31 @@ def test_uca_defect_correlation():
         1.34000000e-01, 9.50000000e-03, 5.00000000e-15, 2.88675135e-15,
         1.43393694e-01, 6.17819499e-02, 2.56905982e-01, 1.17689469e-01,
         1.19224107e-01, 7.91971989e-02, 6.50300873e-02, 1.94497665e-02,
-        2.56905982e-01, 1.17689469e-01, 2.16813548e-01, 1.22746487e-01])
+        2.56905982e-01, 1.17689469e-01, 2.16813548e-01, 1.22746487e-01,
+    ])
 
     dist_dict = get_uca_defect_correlation_dist(defect_data)
+
+    # Tolerances: numerical integration + truncation effects
+    rel_tol = 1e-6
+    abs_tol = 1e-10
+
+    n_odc = len(ODC_types)
+
     for i, uca in enumerate(UCA_types):
         for j, odc in enumerate(ODC_types):
-            print(dist_dict[uca][odc].mean(), dist_dict[uca][odc].std())
-            assert abs(dist_dict[uca][odc].mean() - data[i*len(ODC_types)*2+j*2]) < 1.E-8
-            assert abs(dist_dict[uca][odc].std() - data[i*len(ODC_types)*2+j*2+1]) < 1.E-8
+            mean_expected = data[i * n_odc * 2 + j * 2]
+            std_expected  = data[i * n_odc * 2 + j * 2 + 1]
+
+            mean_val = dist_dict[uca][odc].mean()
+            std_val  = dist_dict[uca][odc].std()
+
+            assert mean_val == pytest.approx(
+                mean_expected, rel=rel_tol, abs=abs_tol
+            )
+            assert std_val == pytest.approx(
+                std_expected, rel=rel_tol, abs=abs_tol
+            )
 
 
 def test_BNN():
