@@ -1,0 +1,122 @@
+name: GitHub BAHAMAS test
+run-name: ${{ github.actor }} is testing out BAHAMAS
+on: [push, pull_request]
+
+concurrency:
+  # Here the group is defined by the head_ref of the PR
+  group: ${{ github.head_ref }}
+  # Here we specify that we'll cancel any "in progress" workflow of the same group. Thus if we push, ammend a commit and push
+  # again the previous workflow will be cancelled, thus saving us github action build minutes and avoid any conflicts
+  cancel-in-progress: true
+
+jobs:
+  Test-BAHAMAS-Linux:
+    # runs-on: [self-hosted, ubuntu-latest]
+    # runs-on: ${{ fromJSON('["ubuntu-latest", "self-hosted"]')[github.repository == 'github/docs-internal'] }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Conda
+        uses: conda-incubator/setup-miniconda@v3
+        with:
+          miniconda-version: "latest"
+          channels: conda-forge, defaults
+          use-only-tar-bz2: true  # IMPORTANT: This needs to be set for caching to work properly!
+          auto-update-conda: true
+          auto-activate-base: true
+
+      - name: Job Information
+        run: |
+          echo " The job was automatically triggered by a ${{ github.event_name }} event."
+          echo " This job is now running on a ${{ runner.os }} server"
+          echo " The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+
+      - name: Fetch and Branch
+        uses: actions/checkout@v3
+
+      - name: Install BAHAMAS Required Libraries
+        run: |
+          pwd
+          conda create -n BAHAMAS_libs python=3.13
+          conda init bash && source ~/.bashrc && conda activate BAHAMAS_libs
+          pip install toml streamlit==1.35 streamlit-aggrid==1.1.5 numpy>=1.24 pandas==2.3 scipy openpyxl pytest plotly kaleido matplotlib streamlit-option-menu jsonpointer streamlit_extras
+          pip install pytest
+
+      - name: Test
+        run: |
+          cd tests
+          conda init bash && source ~/.bashrc && conda activate BAHAMAS_libs
+          pytest
+
+
+  Test-BAHAMAS-Macos:
+    runs-on: macos-latest
+    steps:
+      - name: Setup Conda
+        uses: conda-incubator/setup-miniconda@v3
+        with:
+          miniconda-version: "latest"
+          channels: conda-forge, defaults
+          use-only-tar-bz2: true  # IMPORTANT: This needs to be set for caching to work properly!
+          auto-update-conda: true
+          auto-activate-base: true
+
+      - name: Job Information
+        run: |
+          echo " The job was automatically triggered by a ${{ github.event_name }} event."
+          echo " This job is now running on a ${{ runner.os }} server"
+          echo " The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+
+      - name: Fetch and Branch
+        uses: actions/checkout@v3
+
+      - name: Install BAHAMAS Required Libraries
+        run: |
+          pwd
+          conda create -n BAHAMAS_libs python=3.13
+          conda init zsh && source ~/.zshrc && conda activate BAHAMAS_libs
+          pip install toml streamlit==1.35 streamlit-aggrid==1.1.5 numpy>=1.24 pandas==2.3 scipy openpyxl pytest plotly kaleido matplotlib streamlit-option-menu jsonpointer streamlit_extras
+          pip install pytest
+
+      - name: Test
+        run: |
+          cd tests
+          conda init zsh && source ~/.zshrc && conda activate BAHAMAS_libs
+          pytest
+
+
+  Test-BAHAMAS-Windows:
+    runs-on: windows-2025
+    steps:
+      - name: Setup Conda
+        uses: conda-incubator/setup-miniconda@v3
+        with:
+          miniconda-version: "latest"
+          channels: conda-forge, defaults
+          use-only-tar-bz2: true  # IMPORTANT: This needs to be set for caching to work properly!
+          activate-environment: BAHAMAS_libs
+          auto-update-conda: true
+          auto-activate-base: false
+      - name: Job Information
+        run: |
+          echo " The job was automatically triggered by a ${{ github.event_name }} event."
+          echo " This job is now running on a ${{ runner.os }} server"
+          echo " The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
+
+      - name: Fetch and Branch
+        uses: actions/checkout@v3
+
+      - name: Install BAHAMAS Required Libraries
+        run: |
+          echo " Create BAHAMAS_libs"
+          conda install python=3.13
+          echo " Conda information"
+          conda info
+          echo " Activate BAHAMAS conda environment"
+          pip install toml streamlit==1.35 streamlit-aggrid==1.1.5 numpy>=1.24 pandas==2.3 scipy openpyxl pytest plotly kaleido matplotlib streamlit-option-menu jsonpointer streamlit_extras
+          pip install pytest
+
+      - name: Test
+        run: |
+          cd tests
+          pytest
+
