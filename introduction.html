@@ -1,0 +1,195 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction &mdash; BAHAMAS 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d563738"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="BAHAMAS Calculation" href="bbn.html" />
+    <link rel="prev" title="BAHAMAS documentation" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            BAHAMAS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-bahamas">What Is BAHAMAS?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#identify-the-software-development-tasks">Identify the Software Development Tasks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#determine-human-error-probabilities-for-identified-tasks">Determine Human Error Probabilities for Identified Tasks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="bbn.html">BAHAMAS Calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input.html">BAHAMAS Input Configuration (TOML Syntax)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example.html">Example</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">More documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="hep.html">Defect Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="removal.html">Defect Removal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="odc.html">Defect Types (ODC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uca.html">Software Failure Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ccf.html">Consideration for CCF Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autoapi/index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BAHAMAS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Introduction</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/introduction.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading"></a></h1>
+<section id="what-is-bahamas">
+<h2>What Is BAHAMAS?<a class="headerlink" href="#what-is-bahamas" title="Link to this heading"></a></h2>
+<p>BAHAMAS is a risk assessment tool developed under the Light Water Reactor Sustainability (LWRS) program.
+It was developed for cases in which limited testing or operational data are available, such as for reliability
+estimations of software in early development stages  <span id="id1">[<a class="reference internal" href="index.html#id2" title="H. Bao, T. Shorthill, E. Chen, J. Park, J. Kim, G. S. Turkmen, H. Ban, N. Dinh, T. Aldemir, S. Zhang, and S. Lawrence. An integrated framework for risk assessment of safety-related digital instrumentation and control systems in nuclear power plants: methodology refinement and exploration. Technical Report INL/RPT-23-74412, Idaho National Laboratory, Idaho Falls, ID, September 2023.">1</a>]</span>. BAHAMAS was created based on the notion that software failure
+occurs when a latent defect is activated via use or operation of the software. Defects (e.g., coding errors,
+installation errors, maintenance errors, setpoint changes, and requirements errors) may be introduced into the software
+code via human error at any stage of the software development life cycle (SDLC), and are activated by
+certain operational conditions <span id="id2">[<a class="reference internal" href="index.html#id3" title="M. Muhlheim and R. Wood. Technical basis for evaluating software-related common-cause failures. Technical Report, Oak Ridge National Laboratory, Oak Ridge, TN, 2016.">2</a>]</span>. BAHAMAS combines these factors into a network that traces software failures to
+their root human causes. Instead of relying on testing data, BAHAMAS employs a Bayesian belief network (BBN) to map the
+causes of software failures to specific defect types. <a class="reference internal" href="#bahamas-structure"><span class="std std-numref">Figure 1</span></a> shows the general concepts employed within BAHAMAS,
+as well as the general structure of the BBN.</p>
+<figure class="align-center" id="id3">
+<span id="bahamas-structure"></span><a class="reference internal image-reference" href="_images/bahamas_structure.png"><img alt="General Structure of BAHAMAS" src="_images/bahamas_structure.png" style="width: 800px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figure 1 </span><span class="caption-text">General Structure of BAHAMAS</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>BAHAMAS evaluates software failures by tracking defect introduction and defect removal activities, their impact on the
+types of defects that may remain within software, and ultimately the probability of software failure.
+The BAHAMAS BBN consists of the following nodes:</p>
+<ul class="simple">
+<li><p>Red nodes: Account for the introduction of defects by considering human errors at each stage of the SDLC.</p></li>
+<li><p>Blue nodes: Account for the defect removal activities employed during the SDLC.</p></li>
+<li><p>Purple nodes: Account for the types of defects that remain in the software at any given stage of the SDLC.</p></li>
+<li><p>Yellow node: Accounts for the types of defects that remain in the software after all stages of the SDLC.</p></li>
+<li><p>Green node: Accounts for the software failure probability, based on the defects that remain in the software after the SDLC.</p></li>
+</ul>
+<p>In total, BAHAMAS employs the following concepts. When accounting for defect introduction and removal, specific types
+of defects will remain in the software. Depending on the types of defects that remain, the software will exhibit
+certain failure modes. The following sections detail each of these concepts and how they are accounted for by BAHAMAS.</p>
+</section>
+<section id="identify-the-software-development-tasks">
+<h2>Identify the Software Development Tasks<a class="headerlink" href="#identify-the-software-development-tasks" title="Link to this heading"></a></h2>
+<p>SDLC activities and their tasks are clarified by the standards, manuals, programs, plans, and policies followed by
+developers. The SDLC tasks should be identified and then mapped to the stages to which they most directly correspond within
+the BAHAMAS network. The stages selected for BAHAMAS are the concept, design, requirement, implementation, testing, and installation
+&amp; maintenance stages. Even though standards and guidelines may show consistency regarding when a given task is performed, the
+specifics can vary. <a class="reference internal" href="#task-identification"><span class="std std-numref">Figure 2</span></a> shows a flowchart that assists in SDLC task identification.</p>
+<figure class="align-center" id="id4">
+<span id="task-identification"></span><a class="reference internal image-reference" href="_images/SDLC_task_identification.png"><img alt="Flowchart for assisting in SDLC task identification" src="_images/SDLC_task_identification.png" style="width: 800px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figure 2 </span><span class="caption-text">Flowchart for Assisting in SDLC Task Identification</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="determine-human-error-probabilities-for-identified-tasks">
+<h2>Determine Human Error Probabilities for Identified Tasks<a class="headerlink" href="#determine-human-error-probabilities-for-identified-tasks" title="Link to this heading"></a></h2>
+<p>The SDLC tasks identified in the previous step are to be evaluated for human errors. <a class="reference internal" href="#task-hep"><span class="std std-numref">Figure 3</span></a> provides general
+guidance for assigning a mode to each SDLC task. For each given task, the flowchart provides some combination of
+diagnosis error (D1), simple diagnosis error (D2), commission error (C), omission error (O) and
+omission and commission error (OC).</p>
+<figure class="align-center" id="id5">
+<span id="task-hep"></span><a class="reference internal image-reference" href="_images/task_hep.png"><img alt="Process for Human Error Probability Determination" src="_images/task_hep.png" style="width: 800px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figure 3 </span><span class="caption-text">Process for Human Error Probability Determination</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="BAHAMAS documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="bbn.html" class="btn btn-neutral float-right" title="BAHAMAS Calculation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Congjian Wang, Tate H. Shorthill, Edward Chen, Jisuk Kim.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

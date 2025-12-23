@@ -1,0 +1,40 @@
+bahamas.defect_conditional_probability
+======================================
+
+.. py:module:: bahamas.defect_conditional_probability
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   bahamas.defect_conditional_probability.logger
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   bahamas.defect_conditional_probability.stage_dcp_calculation
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:function:: stage_dcp_calculation(excel_file, sheet_name)
+
+   Defect conditional probability calculation for each SDLC stage
+
+   :param excel_file: The filename of the spreadsheet with the review number and trigger coverage
+   :type excel_file: str
+   :param sheet_name: The sheet name in the spreadsheet with the data (i.e., the SDLC stage name)
+   :type sheet_name: str
+
+   :returns: defect conditional probability
+   :rtype: dcp (float)
+
+

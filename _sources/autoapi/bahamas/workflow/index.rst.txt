@@ -1,0 +1,143 @@
+bahamas.workflow
+================
+
+.. py:module:: bahamas.workflow
+
+.. autoapi-nested-parse::
+
+   Created on September 8, 2025
+   @author: wangc
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   bahamas.workflow.logger
+   bahamas.workflow.file_dir
+   bahamas.workflow.bbn_config_default
+   bahamas.workflow.ccf_config_default
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   bahamas.workflow.Workflow
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:data:: file_dir
+
+.. py:data:: bbn_config_default
+
+.. py:data:: ccf_config_default
+
+.. py:class:: Workflow(config)
+
+   Workflow manager for BAHAMAS calculation
+
+
+
+   .. py:attribute:: _config
+
+
+   .. py:attribute:: _bbn_config
+      :value: None
+
+
+
+   .. py:attribute:: _ccf_config
+      :value: None
+
+
+
+   .. py:method:: update_config(config, name)
+
+      update default config with user provided data
+
+      :param config: User-provided config file
+      :type config: dict
+      :param name: Name for the config file (i.e., BBN or CCF)
+      :type name: str
+
+      :raises IOError: If name is valid, raise the error
+
+      :returns: updated config file
+      :rtype: dict
+
+
+
+   .. py:method:: initialize_bbn()
+
+      Initialize BBN calculation
+
+
+
+
+   .. py:method:: initialize_ccf()
+
+      Initialize CCF calculation
+
+
+
+
+   .. py:method:: run_bbn()
+
+      Run BBN Calculation
+
+      :raises IOError: Error out if invalid input for analysis type is provided
+
+
+
+   .. py:method:: run_ccf()
+
+      Run CCF calculation
+
+
+
+
+   .. py:method:: run()
+
+      Execute the workflow
+
+
+
+
+   .. py:method:: write(data, fname, style='csv')
+
+      Dump data
+
+      :param data: Output data to dump
+      :type data: pandas.DataFrame
+      :param fname: File name for saving the data
+      :type fname: str
+      :param style: Type of file (defaults to "csv")
+      :type style: str, optional
+
+
+
+   .. py:method:: visualize()
+
+
+   .. py:method:: reset()
+
+
+   .. py:method:: _validate(config)
+
+      Validate input file using JSON schema
+
+      :param config: Dictionary for input
+      :type config: dict
+
+      :raises IOError: Error out if  invalid
+
+
+

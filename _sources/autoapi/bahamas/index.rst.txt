@@ -1,0 +1,28 @@
+bahamas
+=======
+
+.. py:module:: bahamas
+
+
+Submodules
+----------
+
+.. toctree::
+   :maxdepth: 1
+
+   /autoapi/bahamas/cccg/index
+   /autoapi/bahamas/defect_conditional_probability/index
+   /autoapi/bahamas/human_error_mode_distribution/index
+   /autoapi/bahamas/main/index
+   /autoapi/bahamas/plot_utils/index
+   /autoapi/bahamas/sdlc_stage_hep_calculation/index
+   /autoapi/bahamas/sdlc_stage_hep_calculation_approx/index
+   /autoapi/bahamas/software_total_failure_probability_bbn/index
+   /autoapi/bahamas/stage_odc_distribution/index
+   /autoapi/bahamas/subfactor/index
+   /autoapi/bahamas/uca_defect_correlation/index
+   /autoapi/bahamas/utils/index
+   /autoapi/bahamas/validate/index
+   /autoapi/bahamas/workflow/index
+
+

@@ -1,0 +1,225 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Software Failure Modes &mdash; BAHAMAS 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d563738"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Consideration for CCF Modeling" href="ccf.html" />
+    <link rel="prev" title="Defect Types (ODC)" href="odc.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            BAHAMAS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bbn.html">BAHAMAS Calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input.html">BAHAMAS Input Configuration (TOML Syntax)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example.html">Example</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">More documentation:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="hep.html">Defect Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="removal.html">Defect Removal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="odc.html">Defect Types (ODC)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Software Failure Modes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#unsafe-control-action">Unsafe Control Action</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ccf.html">Consideration for CCF Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autoapi/index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BAHAMAS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Software Failure Modes</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/uca.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="software-failure-modes">
+<h1>Software Failure Modes<a class="headerlink" href="#software-failure-modes" title="Link to this heading"></a></h1>
+<section id="unsafe-control-action">
+<h2>Unsafe Control Action<a class="headerlink" href="#unsafe-control-action" title="Link to this heading"></a></h2>
+<p>Software has different modes of failure. The conditional probability of
+software failure given the existence of certain defect types, has been
+discussed and developed in previous work by Idaho National Laboratory (see <span id="id1">[<a class="reference internal" href="index.html#id2" title="H. Bao, T. Shorthill, E. Chen, J. Park, J. Kim, G. S. Turkmen, H. Ban, N. Dinh, T. Aldemir, S. Zhang, and S. Lawrence. An integrated framework for risk assessment of safety-related digital instrumentation and control systems in nuclear power plants: methodology refinement and exploration. Technical Report INL/RPT-23-74412, Idaho National Laboratory, Idaho Falls, ID, September 2023.">1</a>]</span>). Data from
+<span id="id2">[<a class="reference internal" href="index.html#id6" title="J. Agnelo, N. Naranjeiro, and J. Bernardino. Nosql odc dataset, results, and support code. https://eden.dei.uc.pt/ cnl/papers/2019-jss.zip, March 2019. Accessed: August 2022.">5</a>]</span> and <span id="id3">[<a class="reference internal" href="index.html#id7" title="J. Agnelo, N. Laranjeiro, and J. Bernardino. Using orthogonal defect classification to characterize nosql database defects. The Journal of Systems and Software, 2020.">6</a>]</span> were assessed in terms of their impact on the usability,
+functionality, and performance from an end-user perspective, and were
+assigned a unsafe control action (UCA) or unsafe information flow (UIF) category (equivalently, a mode of failure). The
+assessment result provided conditional relationships, shown in
+<a class="reference internal" href="#table-u-1"><span class="std std-numref">Table 4</span></a>. More specifically, <a class="reference internal" href="#table-u-1"><span class="std std-numref">Table 4</span></a>,
+which provides a global perspective on the relationship between defect
+types and UCA/UIF failure modes <span id="id4">[<a class="reference internal" href="index.html#id2" title="H. Bao, T. Shorthill, E. Chen, J. Park, J. Kim, G. S. Turkmen, H. Ban, N. Dinh, T. Aldemir, S. Zhang, and S. Lawrence. An integrated framework for risk assessment of safety-related digital instrumentation and control systems in nuclear power plants: methodology refinement and exploration. Technical Report INL/RPT-23-74412, Idaho National Laboratory, Idaho Falls, ID, September 2023.">1</a>]</span>. As further classifications are
+performed, these distributions can be continually improved. These
+correlations are used by <a class="reference internal" href="#equation-uca1">Eq. 13</a>, where is the
+total number of defect types considered by BAHAMAS, and is the UCA/UIF
+failure mode being evaluated. <a class="reference internal" href="#table-u-1"><span class="std std-numref">Table 4</span></a> provides the conditional probabilities used for:</p>
+<div class="math" id="equation-uca1">
+<span id="eq-uca1"></span><p><span class="eqno">(13)<a class="headerlink" href="#equation-uca1" title="Link to this equation"></a></span><span class="math">P(software\ failure\ of\ mode\ x) = \sum_{i=1}^{I} P(UC_x|Type_i)P(Type_i)</span></p>
+</div><p>An inherent assumption in this work is that software failure results from active
+defects. An implication of <a class="reference internal" href="#equation-uca1">Eq. 13</a> is that the defect activation probability
+equals one, and that the activation of defects is mutually exclusive (i.e.,
+multiple defects are not activated simultaneously). In other words,
+the probability of software failure is a summation of the contribution
+of each defect type. Future work may investigate refinements to this activation probability.</p>
+<span id="table-u-1"></span><table class="docutils align-center" id="id6">
+<caption><span class="caption-number">Table 4 </span><span class="caption-text">UCA/UIF Defect Type Correlation Table</span><a class="headerlink" href="#id6" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Defect Class</p></th>
+<th class="head"><p>UCA/UIF</p></th>
+<th class="head"><p>UCA/UIF</p></th>
+<th class="head"><p>UCA/UIF</p></th>
+<th class="head"><p>UCA/UIF</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td></td>
+<td><p>A</p></td>
+<td><p>B</p></td>
+<td><p>C</p></td>
+<td><p>D</p></td>
+</tr>
+<tr class="row-odd"><td><p>Algorithm</p></td>
+<td><p>0.217±0.051</p></td>
+<td><p>0.525±0.068</p></td>
+<td><p>0.124±0.044</p></td>
+<td><p>0.134±0.019</p></td>
+</tr>
+<tr class="row-even"><td><p>Assignment</p></td>
+<td><p>0.288±0.152</p></td>
+<td><p>0.667±0.130</p></td>
+<td><p>0.045±0.072</p></td>
+<td><p>N/A</p></td>
+</tr>
+<tr class="row-odd"><td><p>Checking</p></td>
+<td><p>0.219±0.074</p></td>
+<td><p>0.539±0.115</p></td>
+<td><p>0.102±0.072</p></td>
+<td><p>0.141±0.129</p></td>
+</tr>
+<tr class="row-even"><td><p>Documentation</p></td>
+<td><p>0.250±0.250</p></td>
+<td><p>0.250±0.250</p></td>
+<td><p>0.250±0.250</p></td>
+<td><p>0.250±0.250</p></td>
+</tr>
+<tr class="row-odd"><td><p>Function</p></td>
+<td><p>0.250±0.154</p></td>
+<td><p>0.518±0.064</p></td>
+<td><p>0.157±0.092</p></td>
+<td><p>0.074±0.216</p></td>
+</tr>
+<tr class="row-even"><td><p>Interface</p></td>
+<td><p>0.262±0.065</p></td>
+<td><p>0.579±0.086</p></td>
+<td><p>0.093±0.095</p></td>
+<td><p>0.065±0.039</p></td>
+</tr>
+<tr class="row-odd"><td><p>Relationship</p></td>
+<td><p>0.250±0.250</p></td>
+<td><p>0.250±0.250</p></td>
+<td><p>0.250±0.250</p></td>
+<td><p>0.250±0.250</p></td>
+</tr>
+<tr class="row-even"><td><p>Timing</p></td>
+<td><p>0.095±0.334</p></td>
+<td><p>0.190±0.289</p></td>
+<td><p>0.524±0.423</p></td>
+<td><p>0.190±0.289</p></td>
+</tr>
+</tbody>
+</table>
+<p>Note: This table was based on <span id="id5">[<a class="reference internal" href="index.html#id2" title="H. Bao, T. Shorthill, E. Chen, J. Park, J. Kim, G. S. Turkmen, H. Ban, N. Dinh, T. Aldemir, S. Zhang, and S. Lawrence. An integrated framework for risk assessment of safety-related digital instrumentation and control systems in nuclear power plants: methodology refinement and exploration. Technical Report INL/RPT-23-74412, Idaho National Laboratory, Idaho Falls, ID, September 2023.">1</a>]</span>. These distributions may change as more
+data are collected and data collection methods improve.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="odc.html" class="btn btn-neutral float-left" title="Defect Types (ODC)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ccf.html" class="btn btn-neutral float-right" title="Consideration for CCF Modeling" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Congjian Wang, Tate H. Shorthill, Edward Chen, Jisuk Kim.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

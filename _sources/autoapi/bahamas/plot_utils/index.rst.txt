@@ -1,0 +1,32 @@
+bahamas.plot_utils
+==================
+
+.. py:module:: bahamas.plot_utils
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   bahamas.plot_utils.plot_histogram
+
+
+Module Contents
+---------------
+
+.. py:function:: plot_histogram(data_dict, title, save=False, show=True)
+
+   Plot histogram for sampled data
+
+   :param data_dict: dictionary of sampled data
+   :type data_dict: dict
+   :param title: title for the plot
+   :type title: str
+   :param save: Save plot into .png file if True (defaults to False)
+   :type save: bool, optional
+
+   :returns: plotly figure object
+   :rtype: figure object
+
+

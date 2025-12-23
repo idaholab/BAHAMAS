@@ -1,0 +1,40 @@
+bahamas.stage_odc_distribution
+==============================
+
+.. py:module:: bahamas.stage_odc_distribution
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   bahamas.stage_odc_distribution.logger
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   bahamas.stage_odc_distribution.get_stage_odc_dist
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:function:: get_stage_odc_dist(excel_file, distribution='beta', sheet_name='ODC')
+
+   Get the distribution of each ODC defect at the given SDLC stage
+   P(Defect type|SDLC Stage) = dist_dict['SDLC Stage']['Defect type']
+
+   :param excel_file: Filename of the excel file to read in
+   :type excel_file: str
+   :param distribution: Type of distribution to use (defaults to "beta")
+   :type distribution: str, optional
+   :param sheet_name: Name of the sheet with the ODC data (defaults to "ODC")
+   :type sheet_name: str, optional
+
+

@@ -1,0 +1,257 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BAHAMAS Calculation &mdash; BAHAMAS 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d563738"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation" href="install.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            BAHAMAS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">BAHAMAS Calculation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#bayesian-belief-network-bbn">Bayesian Belief Network (BBN)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bayesian-belief-network-for-bahamas">Bayesian Belief Network for BAHAMAS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input.html">BAHAMAS Input Configuration (TOML Syntax)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example.html">Example</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">More documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="hep.html">Defect Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="removal.html">Defect Removal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="odc.html">Defect Types (ODC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uca.html">Software Failure Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ccf.html">Consideration for CCF Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autoapi/index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BAHAMAS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">BAHAMAS Calculation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/bbn.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="bahamas-calculation">
+<h1>BAHAMAS Calculation<a class="headerlink" href="#bahamas-calculation" title="Link to this heading"></a></h1>
+<section id="bayesian-belief-network-bbn">
+<h2>Bayesian Belief Network (BBN)<a class="headerlink" href="#bayesian-belief-network-bbn" title="Link to this heading"></a></h2>
+<p>Bayesian networks consist of variables, also called nodes, that
+represent events of interest for a given domain and are classified as
+problem variables, information variables, and mediating variables <span id="id1">[<a class="reference internal" href="index.html#id4" title="U. B. Kjaerulff and A. L. Madsen. Bayesian Networks and Influence Diagrams: A Guide to Construction and Analysis. Springer, New York, 2nd edition, 2013.">3</a>]</span>.
+<a class="reference internal" href="#bbn-general"><span class="std std-numref">Figure 4</span></a> provides a generalized structure of a
+Bayesian network, with the variable types clearly labeled. The details on
+these variables are as follows:</p>
+<ul class="simple">
+<li><p><strong>Problem variables</strong> (sometimes called hypothesis variables) are
+variables that typically cannot be measured or observed directly.</p></li>
+<li><p><strong>Information variables</strong> are variables that can be observed, measured, etc.
+Information variables include:</p>
+<ul>
+<li><p><strong>Background variables</strong>, which provide information or prior knowledge
+pertaining to the problem.</p></li>
+<li><p><strong>Symptom variables</strong>, which provide information that serves as a type of
+evidence of the problem variable.</p></li>
+</ul>
+</li>
+<li><p><strong>Mediating variables</strong> are variables that, though not directly observed,
+are useful for building the BBN. They are often used through a
+process called “divorcing,” a modeling technique that reduces
+the burden of assessing the conditional probability between parent and
+child nodes <span id="id2">[<a class="reference internal" href="index.html#id4" title="U. B. Kjaerulff and A. L. Madsen. Bayesian Networks and Influence Diagrams: A Guide to Construction and Analysis. Springer, New York, 2nd edition, 2013.">3</a>]</span>.</p></li>
+</ul>
+<figure class="align-center" id="id3">
+<span id="bbn-general"></span><a class="reference internal image-reference" href="_images/bbn_general.jpeg"><img alt="Generalized Bayesian network with labeled node types, based on [63]" src="_images/bbn_general.jpeg" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figure 4 </span><span class="caption-text">Generalized Bayesian Network with Labeled Node Types</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="bayesian-belief-network-for-bahamas">
+<h2>Bayesian Belief Network for BAHAMAS<a class="headerlink" href="#bayesian-belief-network-for-bahamas" title="Link to this heading"></a></h2>
+<p>For BAHAMAS, software failure is a “problem
+variable”. A primary motivation of
+the present work is to estimate software failure from limited data. Data
+observed through testing fulfill the role of a symptom variable; without
+data, estimating or predicting software failure becomes a task for a
+reduced network. For BAHAMAS, the network is reduced to only the
+background and problem nodes. Intermediate or mediating nodes are
+employed to help evaluate software failure probabilities. Reducing the
+network for limited data also alters the type of calculations needed. If
+there are no symptoms, no observations will be made, and the network
+will remain at a level reliant on prediction-type calculations to
+estimate software failure probabilities.</p>
+<p>Software failure probabilities are determined by evaluating the BBN, which involves
+calculating the marginal probability of a child node given the state of
+its parents. The marginal probability represents the probability of a
+specific state within the joint probability of all other states.
+This calculation proceeds in the direction of the arrows shown in
+<a class="reference internal" href="introduction.html#bahamas-structure"><span class="std std-numref">Figure 1</span></a> and is repeated until the final node’s
+marginal probability is determined.</p>
+<p><a class="reference internal" href="#equation-bbn-1">Eq. 4</a> shows the marginal probability of a specific state <cite>i</cite> of a child node
+(i.e., <cite>c</cite>) with two parents (i.e., <cite>a</cite>, <cite>b</cite>), within a BBN. The parents have
+<cite>n</cite> and <cite>m</cite> total states.</p>
+<div class="math" id="equation-bbn-1">
+<span id="eq-bbn1"></span><p><span class="eqno">(4)<a class="headerlink" href="#equation-bbn-1" title="Link to this equation"></a></span><span class="math">P(c_i) = \sum_{j=1}^{n} \sum_{k=1}^{m} P(c_i|a_j, b_k) P(a_j) P(b_k)</span></p>
+</div><p>The conditional probability of a child state, given the state of its
+parents, changes depending on which of the nodes shown in <a class="reference internal" href="introduction.html#bahamas-structure"><span class="std std-numref">Figure 1</span></a> are
+being assessed.</p>
+<p>The main calculation proceeds by applying <a class="reference internal" href="#equation-bbn-1">Eq. 4</a> to determine
+the specific software defect types for each stage (i.e., the purple nodes
+shown in <a class="reference internal" href="introduction.html#bahamas-structure"><span class="std std-numref">Figure 1</span></a>). <span class="math">Type_{ij}</span> is defect type (i) remaining
+from stage (j). The probability of a specific defect type remaining for
+a particular stage is given by the following equation, where <cite>a</cite> represents
+human errors, <cite>b</cite> represents review, and <cite>c</cite> represents a specific defect
+type for a given stage. Each has two states (i.e., <cite>1 = yes</cite>; <cite>2 = no</cite>). The
+expansion of the equation is as follows:</p>
+<div class="math" id="equation-bbn-2">
+<span id="eq-bbn2"></span><p><span class="eqno">(5)<a class="headerlink" href="#equation-bbn-2" title="Link to this equation"></a></span><span class="math">P(c_i) = P(c_i|a_1,b_1)P(a_1)P(b_1) + P(c_i|a_2,b_1)P(a_2)P(b_1) + P(c_i|a_1,b_2)P(a_1)P(b_2) + P(c_i|a_2,b_2)P(a_2)P(b_2)</span></p>
+</div><p>This expansion can be reduced. The conditional probability of a specific
+defect remaining is zero when there are no human errors for a given
+stage. Thus, <span class="math">P(c_i|a_2,b_k)=0</span> when <span class="math">P(a_2)\geq 0</span> .</p>
+<div class="math" id="equation-bbn-0">
+<span id="eq-bbn3"></span><p><span class="eqno">(3)<a class="headerlink" href="#equation-bbn-0" title="Link to this equation"></a></span><span class="math">P(c_i) = P(c_i|a_1,b_1)P(a_1)P(b_1) + P(c_i|a_1,b_2)P(a_1)P(b_2)</span></p>
+</div><p>Further reduction is achieved by recognizing that review either occurs
+or does not occur, with a probability of zero or one (i.e., if
+<span class="math">P(b_1) = 1</span> , then <span class="math">P(b_1) = 0</span> ). If review is performed,
+then <span class="math">P(b_1) = 1</span> and <span class="math">P(b_2) = 0</span>, and the equation reduces
+to:</p>
+<div class="math" id="equation-bbn-1">
+<span id="eq-bbn4"></span><p><span class="eqno">(4)<a class="headerlink" href="#equation-bbn-1" title="Link to this equation"></a></span><span class="math">P(c_i) = P(c_i|a_1, b_1)P(a_1)</span></p>
+</div><p>If no review is performed, then <span class="math">P(b_1) = 0</span> and
+<span class="math">P(b_2) = 1</span>, and the equation reduces to:</p>
+<div class="math" id="equation-bbn-2">
+<span id="eq-bbn5"></span><p><span class="eqno">(5)<a class="headerlink" href="#equation-bbn-2" title="Link to this equation"></a></span><span class="math">P(c_i) = P(c_i|a_1, b_2)P(a_1)</span></p>
+</div><p>Thus, the probability of a specific defect type remaining for a
+particular stage of the SDLC is given by <a class="reference internal" href="#equation-bbn-2">Eq. 5</a>, which is a
+reduced form of the marginal probability, where <span class="math">P(D_j)</span> is the
+probability of defects introduced (i.e., human error, as given by Equation
+(1)).</p>
+<div class="math" id="equation-bbn-3">
+<span id="eq-bbn6"></span><p><span class="eqno">(6)<a class="headerlink" href="#equation-bbn-3" title="Link to this equation"></a></span><span class="math">P(Type_{ij} = True) = P(Type_{ij}|D_j, R_j)P(D_j)</span></p>
+</div><p>where <span class="math">P(Type_{ij}|D_j,R_j)</span> is the conditional probability of a
+specific defect type, given the human errors and review activities. It
+is determined via the defect conditional probability equation, as follows:</p>
+<div class="math" id="equation-bbn-4">
+<span id="eq-bbn7"></span><p><span class="eqno">(7)<a class="headerlink" href="#equation-bbn-4" title="Link to this equation"></a></span><span class="math">DCP = \begin{cases} StageReview(all\ states)\ and\ StageDefect\ (yes), &amp; DCP = Ge^{-4TCR} \\ StageReview(all\ states)\ and\ StageDefect(no), &amp; DCP = 0 \end{cases}</span></p>
+</div><p>where <cite>G</cite> is the general expected probability of a defect type for a given SDLC
+stage, <cite>TC</cite> is the stage-level trigger coverage, and <cite>R</cite> is the
+average number of reviews performed for each task of the SDLC stage.</p>
+<p>Next, the marginal probability equation is likewise employed for the
+yellow-colored node in <a class="reference internal" href="introduction.html#bahamas-structure"><span class="std std-numref">Figure 1</span></a>. This determines each defect
+<span class="math">Type_i</span> remaining after all six SDLC stages (i.e., a, b, c, d, e, f).
+The conditional probability
+<span class="math">P(Type_i|a_k,b_l,c_m,d_n,e_p,f_q)=1</span> when the probability that the
+stage’s defect types existing exceeds zero, <span class="math">P(Type_{ij})&gt;0</span> ,
+otherwise, <span class="math">P(Type_i|a_k,b_l,c_m,d_n,e_p,f_q)=0</span>.</p>
+<div class="math" id="equation-bbn-5">
+<span id="eq-bbn8"></span><p><span class="eqno">(8)<a class="headerlink" href="#equation-bbn-5" title="Link to this equation"></a></span><span class="math">P(Type_{j} = True)
+= \sum_{k=1}^{2} \sum_{l=1}^{2} \sum_{m=1}^{2} \sum_{n=1}^{2} \sum_{p=1}^{2} \sum_{q=1}^{2} P(G_{j} | a_{k}, b_{l}, c_{m}, d_{n}, e_{p}, f_{q}) P(a_{k}) P(b_{l}) P(c_{m}) P(d_{n}) P(e_{p}) P(f_{q})</span></p>
+</div><p>Finally, the software failure probability is given by the following equation, where
+<cite>I</cite> is the total number of defect types considered
+by BAHAMAS, and <span class="math">UCA_x</span> represents the failure modes evaluated:</p>
+<div class="math" id="equation-bbn-6">
+<span id="eq-bbn9"></span><p><span class="eqno">(9)<a class="headerlink" href="#equation-bbn-6" title="Link to this equation"></a></span><span class="math">P(UCA_x) = \sum_{i=1}^{I} P(UCA_x | Type_i) P(Type_i)</span></p>
+</div><p>An inherent assumption in this work is that software failure results from active defects.
+An implication of above equation is that defect activation probability equals one and that the
+activation of defects is mutually exclusive (i.e., multiple defects are not activated simultaneously).
+In other words, the probability of software failure is a summation of the contribution of each defect type.
+Future work may investigate refinements to this activation probability.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="introduction.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="install.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Congjian Wang, Tate H. Shorthill, Edward Chen, Jisuk Kim.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

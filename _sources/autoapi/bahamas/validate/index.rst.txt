@@ -1,0 +1,47 @@
+bahamas.validate
+================
+
+.. py:module:: bahamas.validate
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   bahamas.validate.logger
+   bahamas.validate.bbn_schema
+   bahamas.validate.ccf_schema
+   bahamas.validate.schema
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   bahamas.validate.validate_toml
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:data:: bbn_schema
+
+.. py:data:: ccf_schema
+
+.. py:data:: schema
+
+.. py:function:: validate_toml(config)
+
+   Validate TOML input file
+
+   :param config: Loaded TOML input
+   :type config: dict
+
+   :returns: True if valid
+   :rtype: bool
+
+

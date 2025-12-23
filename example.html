@@ -1,0 +1,280 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Example &mdash; BAHAMAS 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d563738"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Defect Introduction" href="hep.html" />
+    <link rel="prev" title="BAHAMAS Input Configuration (TOML Syntax)" href="input.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            BAHAMAS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bbn.html">BAHAMAS Calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input.html">BAHAMAS Input Configuration (TOML Syntax)</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Example</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#example-software-failure-probability-evaluation">Example: Software Failure Probability Evaluation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#run">Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bahamas-input">BAHAMAS Input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#screen-output">Screen Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#plots">Plots</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#example-common-cause-component-group-generation">Example: Common Cause Component Group Generation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Run</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">BAHAMAS Input</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Screen Output</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">More documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="hep.html">Defect Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="removal.html">Defect Removal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="odc.html">Defect Types (ODC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uca.html">Software Failure Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ccf.html">Consideration for CCF Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autoapi/index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BAHAMAS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Example</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/example.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="example">
+<h1>Example<a class="headerlink" href="#example" title="Link to this heading"></a></h1>
+<section id="example-software-failure-probability-evaluation">
+<h2>Example: Software Failure Probability Evaluation<a class="headerlink" href="#example-software-failure-probability-evaluation" title="Link to this heading"></a></h2>
+<section id="run">
+<h3>Run<a class="headerlink" href="#run" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>bahamas_libs
+<span class="nb">cd</span><span class="w"> </span>/path/to/BAHAMAS/examples
+python<span class="w"> </span>../bahamas/main.py<span class="w"> </span>-i<span class="w"> </span>bbn.toml
+</pre></div>
+</div>
+</section>
+<section id="bahamas-input">
+<h3>BAHAMAS Input<a class="headerlink" href="#bahamas-input" title="Link to this heading"></a></h3>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[BBN]</span>
+<span class="k">[BBN.params]</span>
+<span class="n">samples</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40000</span>
+<span class="n">seed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span>
+
+<span class="k">[BBN.files]</span>
+<span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;../data/Task_List.xlsx&quot;</span>
+<span class="n">defect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;../data/Defect_Data.xlsx&quot;</span>
+<span class="n">approx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;../data/sdlc_macro.xlsx&quot;</span>
+
+<span class="k">[BBN.analysis]</span>
+<span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;precise&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="screen-output">
+<h3>Screen Output<a class="headerlink" href="#screen-output" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">06</span>-Aug-25<span class="w"> </span><span class="m">09</span>:39:54<span class="w"> </span>BAHAMAS<span class="w">              </span>INFO<span class="w">     </span>Welcome!
+<span class="m">06</span>-Aug-25<span class="w"> </span><span class="m">09</span>:39:54<span class="w"> </span>BAHAMAS<span class="w">              </span>INFO<span class="w">     </span>Input<span class="w"> </span>file:<span class="w"> </span>../data/Task_List.xlsx
+<span class="m">06</span>-Aug-25<span class="w"> </span><span class="m">09</span>:39:54<span class="w"> </span>BAHAMAS<span class="w">              </span>WARNING<span class="w">  </span>Default<span class="w"> </span>output<span class="w"> </span>file<span class="w"> </span>../data/out_Task_List.xlsx<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>used
+<span class="m">06</span>-Aug-25<span class="w"> </span><span class="m">09</span>:39:54<span class="w"> </span>BAHAMAS.ODC<span class="w">          </span>INFO<span class="w">     </span>Construct<span class="w"> </span>ODC<span class="w"> </span>Conditional<span class="w"> </span>Distribution<span class="w"> </span><span class="k">for</span><span class="w"> </span>each<span class="w"> </span>SDLC<span class="w"> </span>stage
+<span class="m">06</span>-Aug-25<span class="w"> </span><span class="m">09</span>:39:54<span class="w"> </span>BAHAMAS.UCA<span class="w">          </span>INFO<span class="w">     </span>Construct<span class="w"> </span>UCA<span class="w"> </span>ODC<span class="w"> </span>defect<span class="w"> </span>correlation<span class="w"> </span>distribution.
+<span class="m">06</span>-Aug-25<span class="w"> </span><span class="m">09</span>:39:54<span class="w"> </span>BAHAMAS.BBN<span class="w">          </span>INFO<span class="w">     </span>Sampling<span class="w"> </span>HEP<span class="w"> </span>and<span class="w"> </span>DCP
+<span class="m">06</span>-Aug-25<span class="w"> </span><span class="m">09</span>:39:54<span class="w"> </span>BAHAMAS.HEP<span class="w">          </span>INFO<span class="w">     </span>Calculate<span class="w"> </span>SDLC<span class="w"> </span><span class="s2">&quot;Concept&quot;</span><span class="w"> </span>stage<span class="w"> </span>HEP
+<span class="m">06</span>-Aug-25<span class="w"> </span><span class="m">09</span>:39:54<span class="w"> </span>BAHAMAS.DCP<span class="w">          </span>INFO<span class="w">     </span>Calculate<span class="w"> </span>DCP<span class="w"> </span><span class="k">for</span><span class="w"> </span>SDLC<span class="w"> </span><span class="s2">&quot;Concept&quot;</span><span class="w"> </span>stage
+<span class="m">06</span>-Aug-25<span class="w"> </span><span class="m">09</span>:39:54<span class="w"> </span>BAHAMAS.HEP<span class="w">          </span>INFO<span class="w">     </span>Calculate<span class="w"> </span>SDLC<span class="w"> </span><span class="s2">&quot;Requirement&quot;</span><span class="w"> </span>stage<span class="w"> </span>HEP
+<span class="m">06</span>-Aug-25<span class="w"> </span><span class="m">09</span>:39:54<span class="w"> </span>BAHAMAS.DCP<span class="w">          </span>INFO<span class="w">     </span>Calculate<span class="w"> </span>DCP<span class="w"> </span><span class="k">for</span><span class="w"> </span>SDLC<span class="w"> </span><span class="s2">&quot;Requirement&quot;</span><span class="w"> </span>stage
+<span class="m">06</span>-Aug-25<span class="w"> </span><span class="m">09</span>:39:54<span class="w"> </span>BAHAMAS.HEP<span class="w">          </span>INFO<span class="w">     </span>Calculate<span class="w"> </span>SDLC<span class="w"> </span><span class="s2">&quot;Design&quot;</span><span class="w"> </span>stage<span class="w"> </span>HEP
+<span class="m">06</span>-Aug-25<span class="w"> </span><span class="m">09</span>:39:54<span class="w"> </span>BAHAMAS.DCP<span class="w">          </span>INFO<span class="w">     </span>Calculate<span class="w"> </span>DCP<span class="w"> </span><span class="k">for</span><span class="w"> </span>SDLC<span class="w"> </span><span class="s2">&quot;Design&quot;</span><span class="w"> </span>stage
+<span class="m">06</span>-Aug-25<span class="w"> </span><span class="m">09</span>:39:54<span class="w"> </span>BAHAMAS.HEP<span class="w">          </span>INFO<span class="w">     </span>Calculate<span class="w"> </span>SDLC<span class="w"> </span><span class="s2">&quot;Implementation&quot;</span><span class="w"> </span>stage<span class="w"> </span>HEP
+<span class="m">06</span>-Aug-25<span class="w"> </span><span class="m">09</span>:39:54<span class="w"> </span>BAHAMAS.DCP<span class="w">          </span>INFO<span class="w">     </span>Calculate<span class="w"> </span>DCP<span class="w"> </span><span class="k">for</span><span class="w"> </span>SDLC<span class="w"> </span><span class="s2">&quot;Implementation&quot;</span><span class="w"> </span>stage
+<span class="m">06</span>-Aug-25<span class="w"> </span><span class="m">09</span>:39:54<span class="w"> </span>BAHAMAS.HEP<span class="w">          </span>INFO<span class="w">     </span>Calculate<span class="w"> </span>SDLC<span class="w"> </span><span class="s2">&quot;Testing&quot;</span><span class="w"> </span>stage<span class="w"> </span>HEP
+<span class="m">06</span>-Aug-25<span class="w"> </span><span class="m">09</span>:39:54<span class="w"> </span>BAHAMAS.DCP<span class="w">          </span>INFO<span class="w">     </span>Calculate<span class="w"> </span>DCP<span class="w"> </span><span class="k">for</span><span class="w"> </span>SDLC<span class="w"> </span><span class="s2">&quot;Testing&quot;</span><span class="w"> </span>stage
+<span class="m">06</span>-Aug-25<span class="w"> </span><span class="m">09</span>:39:54<span class="w"> </span>BAHAMAS.HEP<span class="w">          </span>INFO<span class="w">     </span>Calculate<span class="w"> </span>SDLC<span class="w"> </span><span class="s2">&quot;Install and Maintenance&quot;</span><span class="w"> </span>stage<span class="w"> </span>HEP
+<span class="m">06</span>-Aug-25<span class="w"> </span><span class="m">09</span>:39:54<span class="w"> </span>BAHAMAS.DCP<span class="w">          </span>INFO<span class="w">     </span>Calculate<span class="w"> </span>DCP<span class="w"> </span><span class="k">for</span><span class="w"> </span>SDLC<span class="w"> </span><span class="s2">&quot;Install and Maintenance&quot;</span><span class="w"> </span>stage
+<span class="m">06</span>-Aug-25<span class="w"> </span><span class="m">09</span>:39:54<span class="w"> </span>BAHAMAS.BBN<span class="w">          </span>INFO<span class="w">     </span>Sampling<span class="w"> </span>ODC
+<span class="m">06</span>-Aug-25<span class="w"> </span><span class="m">09</span>:39:54<span class="w"> </span>BAHAMAS.BBN<span class="w">          </span>INFO<span class="w">     </span>Sampling<span class="w"> </span>UCA
+<span class="m">06</span>-Aug-25<span class="w"> </span><span class="m">09</span>:39:54<span class="w"> </span>BAHAMAS.BBN<span class="w">          </span>INFO<span class="w">     </span>Compute<span class="w"> </span>marginal<span class="w"> </span>ODC
+<span class="m">06</span>-Aug-25<span class="w"> </span><span class="m">09</span>:39:54<span class="w"> </span>BAHAMAS.BBN<span class="w">          </span>INFO<span class="w">     </span>BBN<span class="w"> </span>Propagation
+<span class="m">06</span>-Aug-25<span class="w"> </span><span class="m">09</span>:39:54<span class="w"> </span>BAHAMAS.BBN<span class="w">          </span>INFO<span class="w">     </span>Compute<span class="w"> </span>UCA<span class="w"> </span>and<span class="w"> </span>total<span class="w"> </span>failure<span class="w"> </span>probabilities
+<span class="m">06</span>-Aug-25<span class="w"> </span><span class="m">09</span>:39:56<span class="w"> </span>BAHAMAS<span class="w">              </span>INFO<span class="w">     </span>Software<span class="w"> </span>total<span class="w"> </span>failure:<span class="w"> </span><span class="m">2</span>.9825182468709206e-05<span class="w"> </span>with<span class="w"> </span>std<span class="w"> </span><span class="m">1</span>.4002568043296736e-05
+<span class="m">06</span>-Aug-25<span class="w"> </span><span class="m">09</span>:39:56<span class="w"> </span>BAHAMAS<span class="w">              </span>INFO<span class="w">     </span>UCA<span class="w"> </span>type:<span class="w"> </span>UCA-A,<span class="w"> </span>Mean:<span class="w"> </span><span class="m">7</span>.127925281781246e-06,<span class="w"> </span>STD:<span class="w"> </span><span class="m">3</span>.4908455837352817e-06
+<span class="m">06</span>-Aug-25<span class="w"> </span><span class="m">09</span>:39:56<span class="w"> </span>BAHAMAS<span class="w">              </span>INFO<span class="w">     </span>UCA<span class="w"> </span>type:<span class="w"> </span>UCA-B,<span class="w"> </span>Mean:<span class="w"> </span><span class="m">1</span>.3451519498232246e-05,<span class="w"> </span>STD:<span class="w"> </span><span class="m">6</span>.3548059571775254e-06
+<span class="m">06</span>-Aug-25<span class="w"> </span><span class="m">09</span>:39:56<span class="w"> </span>BAHAMAS<span class="w">              </span>INFO<span class="w">     </span>UCA<span class="w"> </span>type:<span class="w"> </span>UCA-C,<span class="w"> </span>Mean:<span class="w"> </span><span class="m">4</span>.900300523766049e-06,<span class="w"> </span>STD:<span class="w"> </span><span class="m">2</span>.4943170792606996e-06
+<span class="m">06</span>-Aug-25<span class="w"> </span><span class="m">09</span>:39:56<span class="w"> </span>BAHAMAS<span class="w">              </span>INFO<span class="w">     </span>UCA<span class="w"> </span>type:<span class="w"> </span>UCA-D,<span class="w"> </span>Mean:<span class="w"> </span><span class="m">4</span>.345437164929662e-06,<span class="w"> </span>STD:<span class="w"> </span><span class="m">2</span>.336590212125128e-06
+<span class="m">06</span>-Aug-25<span class="w"> </span><span class="m">09</span>:39:56<span class="w"> </span>BAHAMAS<span class="w">              </span>INFO<span class="w">      </span>...<span class="w"> </span>Complete!
+</pre></div>
+</div>
+</section>
+<section id="plots">
+<h3>Plots<a class="headerlink" href="#plots" title="Link to this heading"></a></h3>
+<figure class="align-center" id="id4">
+<span id="hep-stage"></span><a class="reference internal image-reference" href="_images/hep_stage.png"><img alt="SDLC Stage Failure Probabilities Based on Human Error Propagation" src="_images/hep_stage.png" style="width: 800px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figure 5 </span><span class="caption-text">SDLC Stage Failure Probabilities Based on Human Error Propagation</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id5">
+<span id="odc-sfp"></span><a class="reference internal image-reference" href="_images/odc_sfp.png"><img alt="Software Orthogonal Defect Classification Failure Probabilities" src="_images/odc_sfp.png" style="width: 800px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figure 6 </span><span class="caption-text">Software Orthogonal Defect Classification Failure Probabilities</span><a class="headerlink" href="#id5" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id6">
+<span id="uca-sfp"></span><a class="reference internal image-reference" href="_images/uca_sfp.png"><img alt="Software Unsafe Control Action Failure Probabilities" src="_images/uca_sfp.png" style="width: 800px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figure 7 </span><span class="caption-text">Software Unsafe Control Action Failure Probabilities</span><a class="headerlink" href="#id6" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id7">
+<span id="total-sfp"></span><a class="reference internal image-reference" href="_images/total_sfp.png"><img alt="Total Software Failure Probability" src="_images/total_sfp.png" style="width: 800px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Figure 8 </span><span class="caption-text">Total Software Failure Probability</span><a class="headerlink" href="#id7" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="example-common-cause-component-group-generation">
+<h2>Example: Common Cause Component Group Generation<a class="headerlink" href="#example-common-cause-component-group-generation" title="Link to this heading"></a></h2>
+<section id="id1">
+<h3>Run<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>bahamas_libs
+<span class="nb">cd</span><span class="w"> </span>/path/to/BAHAMAS/examples
+python<span class="w"> </span>../bahamas/main.py<span class="w"> </span>-i<span class="w"> </span>ccf.toml
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3>BAHAMAS Input<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[CCF]</span>
+
+<span class="k">[CCF.files]</span>
+<span class="n">structure</span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;../data/Scenario_6.csv&quot;</span>
+
+<span class="k">[CCF.generate]</span>
+<span class="n">output_file_base</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;s6_cccg&quot;</span>
+<span class="n">output_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;csv&quot;</span>
+<span class="n">final</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="n">single</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="n">double</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="n">triple</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h3>Screen Output<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">22</span>-Oct-25<span class="w"> </span><span class="m">11</span>:19:44<span class="w"> </span>BAHAMAS<span class="w">              </span>INFO<span class="w">     </span>Welcome<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>BAHAMAS!
+<span class="m">22</span>-Oct-25<span class="w"> </span><span class="m">11</span>:19:44<span class="w"> </span>BAHAMAS.Workflow<span class="w">     </span>INFO<span class="w">     </span>Initialization
+<span class="m">22</span>-Oct-25<span class="w"> </span><span class="m">11</span>:19:44<span class="w"> </span>BAHAMAS.validate<span class="w">     </span>INFO<span class="w">     </span>TOML<span class="w"> </span>input<span class="w"> </span>file<span class="w"> </span>is<span class="w"> </span>valid.
+<span class="m">22</span>-Oct-25<span class="w"> </span><span class="m">11</span>:19:44<span class="w"> </span>BAHAMAS.Workflow<span class="w">     </span>INFO<span class="w">     </span>Start<span class="w"> </span>CCCGs<span class="w"> </span>generation
+<span class="m">22</span>-Oct-25<span class="w"> </span><span class="m">11</span>:19:44<span class="w"> </span>BAHAMAS.CCCG<span class="w">         </span>INFO<span class="w">     </span>Generating
+<span class="m">22</span>-Oct-25<span class="w"> </span><span class="m">11</span>:19:45<span class="w"> </span>BAHAMAS.CCCG<span class="w">         </span>INFO<span class="w">     </span>Save<span class="w"> </span>CCCGs<span class="w"> </span>into<span class="w"> </span>s6_cccg_final.csv
+<span class="m">22</span>-Oct-25<span class="w"> </span><span class="m">11</span>:19:45<span class="w"> </span>BAHAMAS.CCCG<span class="w">         </span>INFO<span class="w">     </span>Save<span class="w"> </span>CCCGs<span class="w"> </span>into<span class="w"> </span>s6_cccg_single.csv
+<span class="m">22</span>-Oct-25<span class="w"> </span><span class="m">11</span>:19:45<span class="w"> </span>BAHAMAS.CCCG<span class="w">         </span>INFO<span class="w">     </span>Save<span class="w"> </span>CCCGs<span class="w"> </span>into<span class="w"> </span>s6_cccg_double.csv
+<span class="m">22</span>-Oct-25<span class="w"> </span><span class="m">11</span>:19:45<span class="w"> </span>BAHAMAS.CCCG<span class="w">         </span>INFO<span class="w">     </span>Save<span class="w"> </span>CCCGs<span class="w"> </span>into<span class="w"> </span>s6_cccg_triple.csv
+<span class="m">22</span>-Oct-25<span class="w"> </span><span class="m">11</span>:19:45<span class="w"> </span>BAHAMAS.Workflow<span class="w">     </span>INFO<span class="w">     </span>End<span class="w"> </span>CCCGs<span class="w"> </span>generation
+<span class="m">22</span>-Oct-25<span class="w"> </span><span class="m">11</span>:19:45<span class="w"> </span>BAHAMAS<span class="w">              </span>INFO<span class="w">      </span>...<span class="w"> </span>Complete!
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="input.html" class="btn btn-neutral float-left" title="BAHAMAS Input Configuration (TOML Syntax)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="hep.html" class="btn btn-neutral float-right" title="Defect Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Congjian Wang, Tate H. Shorthill, Edward Chen, Jisuk Kim.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

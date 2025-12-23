@@ -1,0 +1,41 @@
+bahamas.main
+============
+
+.. py:module:: bahamas.main
+
+.. autoapi-nested-parse::
+
+   Created on October 14, 2024
+   @author: wangc
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   bahamas.main.logger
+   bahamas.main.fh
+   bahamas.main.formatter
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   bahamas.main.main
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:data:: fh
+
+.. py:data:: formatter
+
+.. py:function:: main()
+

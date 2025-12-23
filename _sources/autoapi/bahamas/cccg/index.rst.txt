@@ -1,0 +1,324 @@
+bahamas.cccg
+============
+
+.. py:module:: bahamas.cccg
+
+.. autoapi-nested-parse::
+
+   Created on September 7, 2025
+   @author: wangc, chene
+
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   bahamas.cccg.logger
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   bahamas.cccg.CCCG
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   bahamas.cccg.check_valid
+   bahamas.cccg.clean_string
+   bahamas.cccg.merge_multi_lists
+   bahamas.cccg.drop_dup
+   bahamas.cccg.unique_cells
+   bahamas.cccg.match_CCCG_on
+   bahamas.cccg.match_CCCG_list_on
+   bahamas.cccg.match_multi_on
+   bahamas.cccg.match_multi_list_on
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:function:: check_valid(src_arr)
+
+   Check if group is empty
+
+   :param src_arr: data to check
+   :type src_arr: list or pd.DataFrame
+
+   :returns: True if the group is not empty, else False
+   :rtype: bool
+
+
+.. py:function:: clean_string(s)
+
+   Remove "None" and "nan" from str that are separated by ";"
+
+   :param s: string to clean
+   :type s: str
+
+   :returns: cleaned string
+   :rtype: str
+
+
+.. py:function:: merge_multi_lists(*arg)
+
+   Merge multiple pd.DataFrame CCCG data and remove duplicates
+
+   :param arg: list of pd.DataFrame CCCG data
+   :type arg: list
+
+   :returns: merged CCCG data without duplications
+   :rtype: list
+
+
+.. py:function:: drop_dup(list_pd)
+
+   Drop duplicated CCCG data
+
+   :param list_pd: list of pd.DataFrame (CCCG data)
+   :type list_pd: list
+
+   :returns: list of pd.DataFrame (CCCG data) without duplications
+   :rtype: list
+
+
+.. py:function:: unique_cells(src_arr)
+
+   Identify the unique inputs/designs/functions for the given coupling factor (i.e., Input Function and Design)
+
+   :param src_arr: expanded coupling factor data for single coupling factor
+   :type src_arr: pd.DataFrame
+
+   :returns: list of unique inputs/designs/functions among all components
+   :rtype: list
+
+
+.. py:function:: match_CCCG_on(src_arr, col_name)
+
+   Get a list of CCCGs based on single coupling factor, meaning the CCCGs are grouped because
+   they have at least one shared variable of the given coupling factor
+
+   :param src_arr: Component table with expanded coupling factors
+   :type src_arr: pd.DataFrame
+   :param col_name: coupling factor, Function\_, Input\_ or Design\_
+   :type col_name: str
+
+   :returns: list of CCCGs based on single coupling factor, arranged in the order \*_1, \*_2, \*_3, etc. where \* represents the coupling factor
+   :rtype: list
+
+
+.. py:function:: match_CCCG_list_on(list_pd, col_name)
+
+   Identify CCCGs that are also have the "col_name" coupling factor. (This function is used for two or more shared coupling factors.)
+
+   :param list_pd: list of pd.DataFrame of CCCGs
+   :type list_pd: list
+   :param col_name: coupling factor, Function\_, Input\_ or Design\_
+   :type col_name: str
+
+   :returns: CCCGs with the additional coupling factor ("col_name")
+   :rtype: list
+
+
+.. py:function:: match_multi_on(src_arr, col_name)
+
+   Extract a CCCG based on col_name
+
+   :param src_arr: pd.DataFrame of CCCGs
+   :type src_arr: pd.DataFrame
+   :param col_name: coupling factor
+   :type col_name: str
+
+   :returns: extracted the CCCGs based on the given column name
+   :rtype: list
+
+
+.. py:function:: match_multi_list_on(list_pd, col_name)
+
+   Extract the CCCGs from a list of pandas.DataFrame
+
+   :param list_pd: list of pd.DataFrame
+   :type list_pd: list
+   :param col_name: coupling factor name
+   :type col_name: str
+
+   :returns: list of extracted CCCGs
+   :rtype: list
+
+
+.. py:class:: CCCG(file)
+
+   Bases: :py:obj:`object`
+
+
+   Compute CCCGs for the given list of components of diversity and redundancy system
+
+
+   .. py:attribute:: _sys_diagram
+
+
+   .. py:attribute:: _cccg_final
+      :value: []
+
+
+
+   .. py:attribute:: _cccg_function
+      :value: []
+
+
+
+   .. py:attribute:: _cccg_input
+      :value: []
+
+
+
+   .. py:attribute:: _cccg_design
+      :value: []
+
+
+
+   .. py:attribute:: _cccg_single
+      :value: []
+
+
+
+   .. py:attribute:: _cccg_function_input
+      :value: []
+
+
+
+   .. py:attribute:: _cccg_function_design
+      :value: []
+
+
+
+   .. py:attribute:: _cccg_input_function
+      :value: []
+
+
+
+   .. py:attribute:: _cccg_input_design
+      :value: []
+
+
+
+   .. py:attribute:: _cccg_design_input
+      :value: []
+
+
+
+   .. py:attribute:: _cccg_design_function
+      :value: []
+
+
+
+   .. py:attribute:: _cccg_double
+      :value: []
+
+
+
+   .. py:attribute:: _cccg_function_input_design
+      :value: []
+
+
+
+   .. py:attribute:: _cccg_function_design_input
+      :value: []
+
+
+
+   .. py:attribute:: _cccg_input_design_function
+      :value: []
+
+
+
+   .. py:attribute:: _cccg_input_function_design
+      :value: []
+
+
+
+   .. py:attribute:: _cccg_design_input_function
+      :value: []
+
+
+
+   .. py:attribute:: _cccg_design_function_input
+      :value: []
+
+
+
+   .. py:attribute:: _cccg_triple
+      :value: []
+
+
+
+   .. py:attribute:: _function_all
+      :value: []
+
+
+
+   .. py:attribute:: _input_all
+      :value: []
+
+
+
+   .. py:attribute:: _design_all
+      :value: []
+
+
+
+   .. py:method:: generate(config=None)
+
+      Generate CCCGs based on three coupling factors (i.e., Function, Input, and Design)
+
+      :param config: config file for output control. Defaults to None.
+      :type config: dict, optional
+
+
+
+   .. py:method:: get(name)
+
+      Get CCCGs
+
+      :param name: name for CCCGs group
+      :type name: str
+
+      :returns: list of CCCGs
+      :rtype: list (list of Pandas.DataFrame)
+
+
+
+   .. py:method:: write(data, fname, style='csv')
+
+      Dump data
+
+      :param data: output data to dump
+      :type data: list of pandas.DataFrame
+      :param fname: file name to save the data
+      :type fname: str
+      :param style: type of file. Defaults to "csv".
+      :type style: str, optional
+
+
+
+   .. py:method:: aggregate(cccgs)
+
+      Aggregate expanded Function, Input, and Design into Function_Config, Input_Config, and Design_Config
+
+      :param cccgs: list of pd.DataFrame (i.e., CCCGs)
+      :type cccgs: list
+
+      :returns: list of aggregated CCCGs
+      :rtype: list
+
+
+

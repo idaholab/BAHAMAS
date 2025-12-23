@@ -1,0 +1,245 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>bahamas.utils &mdash; BAHAMAS 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="bahamas.validate" href="../validate/index.html" />
+    <link rel="prev" title="bahamas.uca_defect_correlation" href="../uca_defect_correlation/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            BAHAMAS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../bbn.html">BAHAMAS Calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../input.html">BAHAMAS Input Configuration (TOML Syntax)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../example.html">Example</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">More documentation:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../hep.html">Defect Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../removal.html">Defect Removal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../odc.html">Defect Types (ODC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../uca.html">Software Failure Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ccf.html">Consideration for CCF Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../support.html">Support</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">bahamas</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../cccg/index.html">bahamas.cccg</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../defect_conditional_probability/index.html">bahamas.defect_conditional_probability</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../human_error_mode_distribution/index.html">bahamas.human_error_mode_distribution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../main/index.html">bahamas.main</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../plot_utils/index.html">bahamas.plot_utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../sdlc_stage_hep_calculation/index.html">bahamas.sdlc_stage_hep_calculation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../sdlc_stage_hep_calculation_approx/index.html">bahamas.sdlc_stage_hep_calculation_approx</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../software_total_failure_probability_bbn/index.html">bahamas.software_total_failure_probability_bbn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../stage_odc_distribution/index.html">bahamas.stage_odc_distribution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../subfactor/index.html">bahamas.subfactor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../uca_defect_correlation/index.html">bahamas.uca_defect_correlation</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">bahamas.utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../validate/index.html">bahamas.validate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../workflow/index.html">bahamas.workflow</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">BAHAMAS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">API Reference</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">bahamas</a></li>
+      <li class="breadcrumb-item active">bahamas.utils</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/autoapi/bahamas/utils/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-bahamas.utils">
+<span id="bahamas-utils"></span><h1>bahamas.utils<a class="headerlink" href="#module-bahamas.utils" title="Link to this heading"></a></h1>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bahamas.utils.logger" title="bahamas.utils.logger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">logger</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bahamas.utils.SDLC_stages" title="bahamas.utils.SDLC_stages"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SDLC_stages</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bahamas.utils.human_error_modes" title="bahamas.utils.human_error_modes"><code class="xref py py-obj docutils literal notranslate"><span class="pre">human_error_modes</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bahamas.utils.ODC_types" title="bahamas.utils.ODC_types"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ODC_types</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bahamas.utils.UCA_types" title="bahamas.utils.UCA_types"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UCA_types</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bahamas.utils.UCA_mean" title="bahamas.utils.UCA_mean"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UCA_mean</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bahamas.utils.UCA_sigma" title="bahamas.utils.UCA_sigma"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UCA_sigma</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bahamas.utils.read_toml" title="bahamas.utils.read_toml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">read_toml</span></code></a>(file_path)</p></td>
+<td><p>Read TOML-formatted file</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<dl class="py data">
+<dt class="sig sig-object py" id="bahamas.utils.logger">
+<span class="sig-prename descclassname"><span class="pre">bahamas.utils.</span></span><span class="sig-name descname"><span class="pre">logger</span></span><a class="reference internal" href="../../../_modules/bahamas/utils.html#logger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.utils.logger" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bahamas.utils.SDLC_stages">
+<span class="sig-prename descclassname"><span class="pre">bahamas.utils.</span></span><span class="sig-name descname"><span class="pre">SDLC_stages</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['Concept',</span> <span class="pre">'Requirement',</span> <span class="pre">'Design',</span> <span class="pre">'Implementation',</span> <span class="pre">'Testing',</span> <span class="pre">'Install</span> <span class="pre">and</span> <span class="pre">Maintenance']</span></em><a class="reference internal" href="../../../_modules/bahamas/utils.html#SDLC_stages"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.utils.SDLC_stages" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bahamas.utils.human_error_modes">
+<span class="sig-prename descclassname"><span class="pre">bahamas.utils.</span></span><span class="sig-name descname"><span class="pre">human_error_modes</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['D1',</span> <span class="pre">'D2',</span> <span class="pre">'C',</span> <span class="pre">'OC',</span> <span class="pre">'D1C',</span> <span class="pre">'D1OC',</span> <span class="pre">'D2C',</span> <span class="pre">'D2OC',</span> <span class="pre">'O',</span> <span class="pre">'D1O',</span> <span class="pre">'D2O']</span></em><a class="reference internal" href="../../../_modules/bahamas/utils.html#human_error_modes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.utils.human_error_modes" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bahamas.utils.ODC_types">
+<span class="sig-prename descclassname"><span class="pre">bahamas.utils.</span></span><span class="sig-name descname"><span class="pre">ODC_types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['Algorithm',</span> <span class="pre">'Assignment',</span> <span class="pre">'Checking',</span> <span class="pre">'Documentation',</span> <span class="pre">'Function',</span> <span class="pre">'Interface',...</span></em><a class="reference internal" href="../../../_modules/bahamas/utils.html#ODC_types"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.utils.ODC_types" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bahamas.utils.UCA_types">
+<span class="sig-prename descclassname"><span class="pre">bahamas.utils.</span></span><span class="sig-name descname"><span class="pre">UCA_types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['UCA-A',</span> <span class="pre">'UCA-B',</span> <span class="pre">'UCA-C',</span> <span class="pre">'UCA-D']</span></em><a class="reference internal" href="../../../_modules/bahamas/utils.html#UCA_types"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.utils.UCA_types" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bahamas.utils.UCA_mean">
+<span class="sig-prename descclassname"><span class="pre">bahamas.utils.</span></span><span class="sig-name descname"><span class="pre">UCA_mean</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['UCA-A</span> <span class="pre">Mean',</span> <span class="pre">'UCA-B</span> <span class="pre">Mean',</span> <span class="pre">'UCA-C</span> <span class="pre">Mean',</span> <span class="pre">'UCA-D</span> <span class="pre">Mean']</span></em><a class="reference internal" href="../../../_modules/bahamas/utils.html#UCA_mean"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.utils.UCA_mean" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bahamas.utils.UCA_sigma">
+<span class="sig-prename descclassname"><span class="pre">bahamas.utils.</span></span><span class="sig-name descname"><span class="pre">UCA_sigma</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['UCA-A</span> <span class="pre">Sigma',</span> <span class="pre">'UCA-B</span> <span class="pre">Sigma',</span> <span class="pre">'UCA-C</span> <span class="pre">Sigma',</span> <span class="pre">'UCA-D</span> <span class="pre">Sigma']</span></em><a class="reference internal" href="../../../_modules/bahamas/utils.html#UCA_sigma"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.utils.UCA_sigma" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bahamas.utils.read_toml">
+<span class="sig-prename descclassname"><span class="pre">bahamas.utils.</span></span><span class="sig-name descname"><span class="pre">read_toml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bahamas/utils.html#read_toml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.utils.read_toml" title="Link to this definition"></a></dt>
+<dd><p>Read TOML-formatted file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>file_path</strong> (<em>str</em>) – Path to the file</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Dictionary of file content</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../uca_defect_correlation/index.html" class="btn btn-neutral float-left" title="bahamas.uca_defect_correlation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../validate/index.html" class="btn btn-neutral float-right" title="bahamas.validate" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Congjian Wang, Tate H. Shorthill, Edward Chen, Jisuk Kim.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

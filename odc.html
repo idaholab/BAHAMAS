@@ -1,0 +1,224 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Defect Types (ODC) &mdash; BAHAMAS 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d563738"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Software Failure Modes" href="uca.html" />
+    <link rel="prev" title="Defect Removal" href="removal.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            BAHAMAS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bbn.html">BAHAMAS Calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input.html">BAHAMAS Input Configuration (TOML Syntax)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example.html">Example</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">More documentation:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="hep.html">Defect Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="removal.html">Defect Removal</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Defect Types (ODC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uca.html">Software Failure Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ccf.html">Consideration for CCF Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autoapi/index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BAHAMAS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Defect Types (ODC)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/odc.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="defect-types-odc">
+<h1>Defect Types (ODC)<a class="headerlink" href="#defect-types-odc" title="Link to this heading"></a></h1>
+<p>During software development, defects or bugs arise, and their
+concentrations change throughout development as they are influenced by
+the conducted review activities <span id="id1">[<a class="reference internal" href="index.html#id5" title="R. Chillarege, I. S. Bhandari, J. K. Chaar, M. J. Halliday, D. S. Moebus, B. K. Ray, and M.-Y. Wong. Orthogonal defect classification – a concept for in-process measurements. IEEE Transactions on Software Engineering, 18(11):943–956, 1992.">4</a>]</span> <span id="id2">[<a class="reference internal" href="index.html#id6" title="J. Agnelo, N. Naranjeiro, and J. Bernardino. Nosql odc dataset, results, and support code. https://eden.dei.uc.pt/ cnl/papers/2019-jss.zip, March 2019. Accessed: August 2022.">5</a>]</span>
+<span id="id3">[<a class="reference internal" href="index.html#id7" title="J. Agnelo, N. Laranjeiro, and J. Bernardino. Using orthogonal defect classification to characterize nosql database defects. The Journal of Systems and Software, 2020.">6</a>]</span>. The ODC methodology has produced
+a scheme that categorizes software defects into eight orthogonal classes
+(i.e., types). The present work relies on this classification scheme to help
+predict software failure probabilities. Historical ODC data
+provides a collection of defects, along with the activities (and
+triggers) used to find them. We mapped these activities to SDLC stages so as to provide
+a convenient view of defect types for a given stage. ODC design
+review activities are mapped to the concept and requirements stages, ODC
+code inspection activities are mapped to the design and implementation
+stages, and ODC testing activities are mapped to the testing and the
+installation &amp; maintenance stages. Bayesian inference <span id="id4">[<a class="reference internal" href="index.html#id8" title="H. Dezfuli, D. Kelly, C. Smith, K. Vedros, and W. Galyean. Bayesian inference for nasa probabilistic risk and reliability analysis. Technical Report NASA/SP-2009-569, National Aeronautics and Space Administration (NASA), 2009.">7</a>]</span> was applied to
+develop distributions for each defect type at each stage of the SDLC .
+This was done by taking a binomial model, and Jeffreys noninformative prior,
+then obtaining a posterior beta distribution to represent the general
+expected defect types for each stage. The posterior distribution is
+given as a beta with parameters <span class="math">\alpha + x</span> and <span class="math">\beta + y - x</span>,
+where <cite>x</cite> is the number of
+observed events, <cite>y</cite> is the number of trials, and <span class="math">\alpha = 0.5</span> and <span class="math">\beta = 0.5</span> for
+Jeffreys noninformative prior <span id="id5">[<a class="reference internal" href="index.html#id8" title="H. Dezfuli, D. Kelly, C. Smith, K. Vedros, and W. Galyean. Bayesian inference for nasa probabilistic risk and reliability analysis. Technical Report NASA/SP-2009-569, National Aeronautics and Space Administration (NASA), 2009.">7</a>]</span> <span id="id6">[<a class="reference internal" href="index.html#id9" title="C. L. Atwood, J. L. LaChance, H. F. Martz, D. J. Anderson, M. Englehardt, D. Whitehead, and T. Wheeler. Handbook of parameter estimation for probabilistic risk assessment. Technical Report NUREG/CR-6823, U.S. Nuclear Regulatory Commission, Washington, DC, 2003.">8</a>]</span>. Distributions can be produced
+readily from the data given in <a class="reference internal" href="#table-o-1"><span class="std std-numref">Table 3</span></a>.</p>
+<span id="table-o-1"></span><table class="docutils align-center" id="id8">
+<caption><span class="caption-number">Table 3 </span><span class="caption-text">ODC Defect-Type Data for Each Review Activity</span><a class="headerlink" href="#id8" title="Link to this table"></a></caption>
+<thead>
+<tr class="row-odd"><th class="head"><p>Typical categories of review</p></th>
+<th class="head"><p>Al.</p></th>
+<th class="head"><p>As.</p></th>
+<th class="head"><p>Ch.</p></th>
+<th class="head"><p>Doc.</p></th>
+<th class="head"><p>Fun.</p></th>
+<th class="head"><p>Int.</p></th>
+<th class="head"><p>Rel.</p></th>
+<th class="head"><p>Tim.</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Activities</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>Design review</p></td>
+<td><p>56</p></td>
+<td><p>26</p></td>
+<td><p>26</p></td>
+<td><p>107</p></td>
+<td><p>90</p></td>
+<td><p>57</p></td>
+<td><p>0</p></td>
+<td><p>13</p></td>
+</tr>
+<tr class="row-even"><td><p>Code inspection</p></td>
+<td><p>1215</p></td>
+<td><p>153</p></td>
+<td><p>240</p></td>
+<td><p>58</p></td>
+<td><p>372</p></td>
+<td><p>221</p></td>
+<td><p>8</p></td>
+<td><p>25</p></td>
+</tr>
+<tr class="row-odd"><td><p>Testing</p></td>
+<td><p>1277</p></td>
+<td><p>181</p></td>
+<td><p>269</p></td>
+<td><p>12</p></td>
+<td><p>245</p></td>
+<td><p>361</p></td>
+<td><p>91</p></td>
+<td><p>28</p></td>
+</tr>
+</tbody>
+</table>
+<p>Note: Algorithm (Al.), Assignment (As.), Checking (Ch.), Documentation (Doc.), Function (Fun.), Interface (Int.),
+Relationship (Rel.), and Timing (Tim.).</p>
+<p>Defects classification serves as a basis for an equation that can
+predict defect distributions for each software development stage.
+Depending on the defect removal efforts, there is an expectation that
+the probability of defects remaining is expected to be influenced. As expressed by
+Humphreys <span id="id7">[<a class="reference internal" href="index.html#id10" title="R. A. Humphreys. Assigning a numerical value to the beta factor common cause evaluation. In Reliability '87. 1987.">9</a>]</span>, design improvements can be considered a function (likely
+nonlinear) of effort and time. A model was developed for this work so as to
+express the conditional probability of specific defect types remaining,
+given the state defect introduction and removal activities. <a class="reference internal" href="#equation-eq-odc1">Eq. 12</a> is the defect conditional probability (DCP)
+equation, where <cite>G</cite> is the general expected probability for a defect type
+for a given SDLC stage (based on the posterior distributions obtained from
+<a class="reference internal" href="#table-o-1"><span class="std std-numref">Table 3</span></a>), <cite>TC</cite> is the stage-level trigger coverage, and <cite>R</cite> is the average number of
+reviews performed for each task in the SDLC stage.</p>
+<div class="math" id="equation-eq-odc1">
+<p><span class="eqno">(12)<a class="headerlink" href="#equation-eq-odc1" title="Link to this equation"></a></span><span class="math">DCP = \begin{cases} StageReview(all\ states)\ and\ StageDefect\ (yes), &amp; DCP = Ge^{-4TCR}\\ StageReview(all\ states)\ and\ StageDefect(no), &amp; DCP = 0 \end{cases}</span></p>
+</div></section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="removal.html" class="btn btn-neutral float-left" title="Defect Removal" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="uca.html" class="btn btn-neutral float-right" title="Software Failure Modes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Congjian Wang, Tate H. Shorthill, Edward Chen, Jisuk Kim.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,689 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>bahamas.cccg &mdash; BAHAMAS 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            BAHAMAS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bbn.html">BAHAMAS Calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../input.html">BAHAMAS Input Configuration (TOML Syntax)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../example.html">Example</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">More documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../hep.html">Defect Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../removal.html">Defect Removal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../odc.html">Defect Types (ODC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../uca.html">Software Failure Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../ccf.html">Consideration for CCF Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../autoapi/index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">BAHAMAS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">bahamas.cccg</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for bahamas.cccg</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright 2025, Battelle Energy Alliance, LLC  ALL RIGHTS RESERVED</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Created on September 7, 2025</span>
+<span class="sd">@author: wangc, chene</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">copy</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+
+<div class="viewcode-block" id="logger">
+<a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.logger">[docs]</a>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;BAHAMAS.CCCG&#39;</span><span class="p">)</span></div>
+
+
+<span class="c1">########### internal functions</span>
+
+<div class="viewcode-block" id="check_valid">
+<a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.check_valid">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">check_valid</span><span class="p">(</span><span class="n">src_arr</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if group is empty</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        src_arr (list or pd.DataFrame): data to check</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: True if the group is not empty, else False</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">src_arr</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="k">return</span> <span class="kc">True</span></div>
+
+
+<div class="viewcode-block" id="clean_string">
+<a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.clean_string">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">clean_string</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Remove &quot;None&quot; and &quot;nan&quot; from str that are separated by &quot;;&quot;</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        s (str): string to clean</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: cleaned string</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">s</span>
+    <span class="k">return</span> <span class="s1">&#39;;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">item</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">item</span> <span class="o">!=</span> <span class="s1">&#39;None&#39;</span> <span class="ow">and</span> <span class="n">item</span> <span class="o">!=</span> <span class="s1">&#39;nan&#39;</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="merge_multi_lists">
+<a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.merge_multi_lists">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">merge_multi_lists</span><span class="p">(</span><span class="o">*</span><span class="n">arg</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Merge multiple pd.DataFrame CCCG data and remove duplicates</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        arg (list): list of pd.DataFrame CCCG data</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list: merged CCCG data without duplications</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">master</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">pd_multi</span> <span class="ow">in</span> <span class="n">arg</span><span class="p">:</span>
+        <span class="n">master</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">pd_multi</span><span class="p">)</span>
+    <span class="n">master</span> <span class="o">=</span> <span class="n">drop_dup</span><span class="p">(</span><span class="n">master</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">master</span></div>
+
+
+<div class="viewcode-block" id="drop_dup">
+<a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.drop_dup">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">drop_dup</span><span class="p">(</span><span class="n">list_pd</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Drop duplicated CCCG data</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        list_pd (list): list of pd.DataFrame (CCCG data)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list: list of pd.DataFrame (CCCG data) without duplications</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">filtered_list_pd</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+
+    <span class="n">flag</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">for</span> <span class="n">pd_tmp</span> <span class="ow">in</span> <span class="n">list_pd</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">filtered_list_pd</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">filtered_list_pd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">list_pd</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+            <span class="k">continue</span>
+
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">filtered_list_pd</span><span class="p">:</span>
+            <span class="c1"># Drop index comparison</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="n">c</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">pd_tmp</span> <span class="o">=</span> <span class="n">pd_tmp</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">pd_tmp</span><span class="o">.</span><span class="n">equals</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
+                <span class="n">flag</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">flag</span><span class="p">:</span>
+            <span class="n">filtered_list_pd</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd_tmp</span><span class="p">)</span>
+        <span class="n">flag</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="k">return</span> <span class="n">filtered_list_pd</span></div>
+
+
+<div class="viewcode-block" id="unique_cells">
+<a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.unique_cells">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">unique_cells</span><span class="p">(</span><span class="n">src_arr</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Identify the unique inputs/designs/functions for the given coupling factor (i.e., Input Function and Design)</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        src_arr (pd.DataFrame): expanded coupling factor data for single coupling factor</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list: list of unique inputs/designs/functions among all components</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">arr_cols</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">src_arr</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">src_arr</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">arr_unique</span> <span class="o">=</span> <span class="n">arr_cols</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+    <span class="n">arr_unique</span> <span class="o">=</span> <span class="p">[</span><span class="n">cell</span> <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">arr_unique</span> <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">cell</span><span class="p">)]</span>
+
+    <span class="k">return</span> <span class="n">arr_unique</span></div>
+
+
+<div class="viewcode-block" id="match_CCCG_on">
+<a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.match_CCCG_on">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">match_CCCG_on</span><span class="p">(</span><span class="n">src_arr</span><span class="p">,</span> <span class="n">col_name</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Get a list of CCCGs based on single coupling factor, meaning the CCCGs are grouped because</span>
+<span class="sd">    they have at least one shared variable of the given coupling factor</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        src_arr (pd.DataFrame): Component table with expanded coupling factors</span>
+<span class="sd">        col_name (str): coupling factor, Function\_, Input\_ or Design\_</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list: list of CCCGs based on single coupling factor, arranged in the order \*_1, \*_2, \*_3, etc. where \* represents the coupling factor</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">CCCG_arr</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+
+    <span class="c1"># Get columns that start with the coupling factor name, i.e., Function_, Input_, and Design_</span>
+    <span class="n">arr_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">src_arr</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">col</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">col_name</span><span class="p">)]</span>
+
+    <span class="c1"># Get unique values for single coupling factor among all components</span>
+    <span class="n">tmp</span> <span class="o">=</span> <span class="n">unique_cells</span><span class="p">(</span><span class="n">src_arr</span><span class="p">[</span><span class="n">arr_cols</span><span class="p">])</span>
+
+    <span class="c1"># Filter the DataFrame to find rows where any col_name column contains the search string</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tmp</span><span class="p">:</span>
+        <span class="n">matching_rows</span> <span class="o">=</span> <span class="n">src_arr</span><span class="p">[</span><span class="n">arr_cols</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">row</span> <span class="o">==</span> <span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># Get the rows that match the search string</span>
+        <span class="n">result_df</span> <span class="o">=</span> <span class="n">src_arr</span><span class="p">[</span><span class="n">matching_rows</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">result_df</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">continue</span>
+
+        <span class="c1"># Result is a CCCG</span>
+        <span class="n">CCCG_arr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result_df</span><span class="p">)</span>
+
+    <span class="n">CCCG_arr</span> <span class="o">=</span> <span class="n">drop_dup</span><span class="p">(</span><span class="n">CCCG_arr</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">CCCG_arr</span></div>
+
+
+<div class="viewcode-block" id="match_CCCG_list_on">
+<a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.match_CCCG_list_on">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">match_CCCG_list_on</span><span class="p">(</span><span class="n">list_pd</span><span class="p">,</span> <span class="n">col_name</span><span class="p">):</span>
+<span class="w">    </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Identify CCCGs that are also have the &quot;col_name&quot; coupling factor. (This function is used for two or more shared coupling factors.)</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        list_pd (list): list of pd.DataFrame of CCCGs</span>
+<span class="sd">        col_name (str): coupling factor, Function\_, Input\_ or Design\_</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list: CCCGs with the additional coupling factor (&quot;col_name&quot;)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">CCCG_arr</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">pd_tmp</span> <span class="ow">in</span> <span class="n">list_pd</span><span class="p">:</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">match_CCCG_on</span><span class="p">(</span><span class="n">pd_tmp</span><span class="p">,</span> <span class="n">col_name</span><span class="p">)</span>
+        <span class="n">CCCG_arr</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">tmp</span><span class="p">)</span>
+
+    <span class="n">CCCG_arr</span> <span class="o">=</span> <span class="n">drop_dup</span><span class="p">(</span><span class="n">CCCG_arr</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">CCCG_arr</span></div>
+
+
+<div class="viewcode-block" id="match_multi_on">
+<a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.match_multi_on">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">match_multi_on</span><span class="p">(</span><span class="n">src_arr</span><span class="p">,</span> <span class="n">col_name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Extract a CCCG based on col_name</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        src_arr (pd.DataFrame): pd.DataFrame of CCCGs</span>
+<span class="sd">        col_name (str): coupling factor</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list: extracted the CCCGs based on the given column name</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Partially working, only matches on single dependency. Multiple dependencies matching is not implemented.</span>
+    <span class="n">CCCG_arr</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+
+    <span class="c1"># Get columns that start with the coupling factor name</span>
+    <span class="n">arr_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">src_arr</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">col</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">col_name</span><span class="p">)]</span>
+    <span class="n">arr_rows</span> <span class="o">=</span> <span class="n">src_arr</span><span class="p">[</span><span class="n">arr_cols</span><span class="p">]</span>
+
+    <span class="c1"># Filter the DataFrame to find rows where there are multiple dependencies</span>
+    <span class="k">for</span> <span class="n">col_name</span> <span class="ow">in</span> <span class="n">arr_cols</span><span class="p">:</span>
+        <span class="c1"># Check if multiple dependencies</span>
+        <span class="n">matching_rows</span> <span class="o">=</span> <span class="n">src_arr</span><span class="p">[</span><span class="n">col_name</span><span class="p">]</span><span class="o">.</span><span class="n">notna</span><span class="p">()</span>
+
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">src_arr</span><span class="p">[</span><span class="n">matching_rows</span><span class="p">]</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="c1"># Result is a CCCG</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tmp</span><span class="p">)):</span>
+            <span class="n">row</span> <span class="o">=</span> <span class="n">tmp</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="n">i</span><span class="p">]]</span>
+            <span class="n">CCCG_arr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+
+    <span class="n">CCCG_arr</span> <span class="o">=</span> <span class="n">drop_dup</span><span class="p">(</span><span class="n">CCCG_arr</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">CCCG_arr</span></div>
+
+
+<div class="viewcode-block" id="match_multi_list_on">
+<a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.match_multi_list_on">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">match_multi_list_on</span><span class="p">(</span><span class="n">list_pd</span><span class="p">,</span> <span class="n">col_name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Extract the CCCGs from a list of pandas.DataFrame</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        list_pd (list): list of pd.DataFrame</span>
+<span class="sd">        col_name (str): coupling factor name</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        list: list of extracted CCCGs</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">CCCG_arr</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">pd_tmp</span> <span class="ow">in</span> <span class="n">list_pd</span><span class="p">:</span>
+        <span class="n">tmp</span> <span class="o">=</span> <span class="n">match_multi_on</span><span class="p">(</span><span class="n">pd_tmp</span><span class="p">,</span> <span class="n">col_name</span><span class="p">)</span>
+
+        <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">tmp</span><span class="p">:</span>
+            <span class="n">CCCG_arr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+    <span class="n">CCCG_arr</span> <span class="o">=</span> <span class="n">drop_dup</span><span class="p">(</span><span class="n">CCCG_arr</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">CCCG_arr</span></div>
+
+
+<div class="viewcode-block" id="CCCG">
+<a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.CCCG">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">CCCG</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Compute CCCGs for the given list of components of diversity and redundancy system</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="p">):</span>
+<div class="viewcode-block" id="CCCG._sys_diagram">
+<a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.CCCG._sys_diagram">[docs]</a>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sys_diagram</span> <span class="o">=</span> <span class="n">file</span></div>
+
+<div class="viewcode-block" id="CCCG._cccg_final">
+<a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.CCCG._cccg_final">[docs]</a>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_final</span> <span class="o">=</span> <span class="p">[]</span></div>
+
+<div class="viewcode-block" id="CCCG._cccg_function">
+<a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.CCCG._cccg_function">[docs]</a>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function</span> <span class="o">=</span> <span class="p">[]</span></div>
+
+<div class="viewcode-block" id="CCCG._cccg_input">
+<a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.CCCG._cccg_input">[docs]</a>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_input</span> <span class="o">=</span> <span class="p">[]</span></div>
+
+<div class="viewcode-block" id="CCCG._cccg_design">
+<a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.CCCG._cccg_design">[docs]</a>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_design</span> <span class="o">=</span> <span class="p">[]</span></div>
+
+<div class="viewcode-block" id="CCCG._cccg_single">
+<a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.CCCG._cccg_single">[docs]</a>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_single</span> <span class="o">=</span> <span class="p">[]</span></div>
+
+<div class="viewcode-block" id="CCCG._cccg_function_input">
+<a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.CCCG._cccg_function_input">[docs]</a>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function_input</span> <span class="o">=</span> <span class="p">[]</span></div>
+
+<div class="viewcode-block" id="CCCG._cccg_function_design">
+<a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.CCCG._cccg_function_design">[docs]</a>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function_design</span> <span class="o">=</span> <span class="p">[]</span></div>
+
+<div class="viewcode-block" id="CCCG._cccg_input_function">
+<a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.CCCG._cccg_input_function">[docs]</a>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_input_function</span> <span class="o">=</span> <span class="p">[]</span></div>
+
+<div class="viewcode-block" id="CCCG._cccg_input_design">
+<a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.CCCG._cccg_input_design">[docs]</a>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_input_design</span> <span class="o">=</span> <span class="p">[]</span></div>
+
+<div class="viewcode-block" id="CCCG._cccg_design_input">
+<a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.CCCG._cccg_design_input">[docs]</a>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_design_input</span> <span class="o">=</span> <span class="p">[]</span></div>
+
+<div class="viewcode-block" id="CCCG._cccg_design_function">
+<a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.CCCG._cccg_design_function">[docs]</a>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_design_function</span> <span class="o">=</span> <span class="p">[]</span></div>
+
+<div class="viewcode-block" id="CCCG._cccg_double">
+<a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.CCCG._cccg_double">[docs]</a>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_double</span> <span class="o">=</span> <span class="p">[]</span></div>
+
+<div class="viewcode-block" id="CCCG._cccg_function_input_design">
+<a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.CCCG._cccg_function_input_design">[docs]</a>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function_input_design</span> <span class="o">=</span> <span class="p">[]</span></div>
+
+<div class="viewcode-block" id="CCCG._cccg_function_design_input">
+<a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.CCCG._cccg_function_design_input">[docs]</a>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function_design_input</span> <span class="o">=</span> <span class="p">[]</span></div>
+
+<div class="viewcode-block" id="CCCG._cccg_input_design_function">
+<a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.CCCG._cccg_input_design_function">[docs]</a>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_input_design_function</span> <span class="o">=</span> <span class="p">[]</span></div>
+
+<div class="viewcode-block" id="CCCG._cccg_input_function_design">
+<a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.CCCG._cccg_input_function_design">[docs]</a>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_input_function_design</span> <span class="o">=</span> <span class="p">[]</span></div>
+
+<div class="viewcode-block" id="CCCG._cccg_design_input_function">
+<a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.CCCG._cccg_design_input_function">[docs]</a>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_design_input_function</span> <span class="o">=</span> <span class="p">[]</span></div>
+
+<div class="viewcode-block" id="CCCG._cccg_design_function_input">
+<a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.CCCG._cccg_design_function_input">[docs]</a>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_design_function_input</span> <span class="o">=</span> <span class="p">[]</span></div>
+
+<div class="viewcode-block" id="CCCG._cccg_triple">
+<a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.CCCG._cccg_triple">[docs]</a>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_triple</span> <span class="o">=</span> <span class="p">[]</span></div>
+
+<div class="viewcode-block" id="CCCG._function_all">
+<a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.CCCG._function_all">[docs]</a>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_function_all</span> <span class="o">=</span> <span class="p">[]</span></div>
+
+<div class="viewcode-block" id="CCCG._input_all">
+<a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.CCCG._input_all">[docs]</a>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_input_all</span> <span class="o">=</span> <span class="p">[]</span></div>
+
+<div class="viewcode-block" id="CCCG._design_all">
+<a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.CCCG._design_all">[docs]</a>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_design_all</span> <span class="o">=</span> <span class="p">[]</span></div>
+
+        <span class="c1"># self._output_file = &quot;CCCGs.csv&quot;</span>
+
+<div class="viewcode-block" id="CCCG.generate">
+<a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.CCCG.generate">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate CCCGs based on three coupling factors (i.e., Function, Input, and Design)</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            config (dict, optional): config file for output control. Defaults to None.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Generating&quot;</span><span class="p">)</span>
+        <span class="c1"># Read data file into Pandas</span>
+        <span class="n">df_pd</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sys_diagram</span><span class="p">)</span>
+
+        <span class="c1"># Expand Function_Config</span>
+        <span class="n">func_big</span> <span class="o">=</span> <span class="n">df_pd</span><span class="p">[</span><span class="s2">&quot;Function_Config&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;; &#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">func_big</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Function_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">func_big</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
+
+        <span class="n">df_pd_tmp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_pd</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Function_Config&#39;</span><span class="p">]),</span> <span class="n">func_big</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># Expand Input_Config</span>
+        <span class="n">inpt_big</span> <span class="o">=</span> <span class="n">df_pd</span><span class="p">[</span><span class="s2">&quot;Input_Config&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;; &#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">inpt_big</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Input_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">inpt_big</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
+
+        <span class="n">df_pd_tmp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_pd_tmp</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Input_Config&#39;</span><span class="p">]),</span> <span class="n">inpt_big</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># Expand Design Config</span>
+        <span class="n">dsgn_big</span> <span class="o">=</span> <span class="n">df_pd</span><span class="p">[</span><span class="s2">&quot;Design_Config&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;; &#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="n">dsgn_big</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Design_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">dsgn_big</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
+
+        <span class="n">df_pd_tmp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_pd_tmp</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Design_Config&#39;</span><span class="p">]),</span> <span class="n">dsgn_big</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># Get CCCG on single coupling factor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function</span> <span class="o">=</span> <span class="n">match_CCCG_on</span><span class="p">(</span><span class="n">df_pd_tmp</span><span class="p">,</span> <span class="s1">&#39;Function_&#39;</span><span class="p">)</span> <span class="c1"># list[first variable pd.DataFrame, second variable pd.DataFrame, ...]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_design</span>   <span class="o">=</span> <span class="n">match_CCCG_on</span><span class="p">(</span><span class="n">df_pd_tmp</span><span class="p">,</span> <span class="s1">&#39;Design_&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_input</span>    <span class="o">=</span> <span class="n">match_CCCG_on</span><span class="p">(</span><span class="n">df_pd_tmp</span><span class="p">,</span> <span class="s1">&#39;Input_&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Merge all CCCGs on single coupling factor and drop duplicates</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_single</span>   <span class="o">=</span> <span class="n">merge_multi_lists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function</span><span class="p">,</span>
+                                        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_design</span><span class="p">,</span>
+                                        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_input</span>
+                                        <span class="p">)</span>
+        <span class="c1"># remove single entry since there is no other component that has shared coupling factors</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_single</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_single</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">]</span>
+
+        <span class="c1"># Get CCCG on two coupling factor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function_input</span>  <span class="o">=</span> <span class="n">match_CCCG_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function</span><span class="p">,</span> <span class="s1">&#39;Input_&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function_design</span> <span class="o">=</span> <span class="n">match_CCCG_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function</span><span class="p">,</span> <span class="s1">&#39;Design_&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_input_function</span>  <span class="o">=</span> <span class="n">match_CCCG_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_input</span><span class="p">,</span> <span class="s1">&#39;Function_&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_input_design</span> <span class="o">=</span> <span class="n">match_CCCG_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_input</span><span class="p">,</span> <span class="s1">&#39;Design_&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_design_input</span>  <span class="o">=</span> <span class="n">match_CCCG_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_design</span><span class="p">,</span> <span class="s1">&#39;Input_&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_design_function</span> <span class="o">=</span> <span class="n">match_CCCG_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_design</span><span class="p">,</span> <span class="s1">&#39;Function_&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Merge all CCCGs on two coupling factor and drop duplicates</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_double</span>   <span class="o">=</span> <span class="n">merge_multi_lists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function_design</span><span class="p">,</span>
+                                        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function_input</span><span class="p">,</span>
+                                        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_design_input</span><span class="p">,</span>
+                                        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_design_function</span><span class="p">,</span>
+                                        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_input_design</span><span class="p">,</span>
+                                        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_input_function</span>
+                                        <span class="p">)</span>
+        <span class="c1"># remove single entry since there is no other component that has shared coupling factors</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_double</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_double</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">]</span>
+
+        <span class="c1"># Get CCCG on three coupling factor</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function_input_design</span> <span class="o">=</span> <span class="n">match_CCCG_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function_input</span><span class="p">,</span> <span class="s1">&#39;Design_&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function_design_input</span> <span class="o">=</span> <span class="n">match_CCCG_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function_design</span><span class="p">,</span> <span class="s1">&#39;Input_&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_input_design_function</span> <span class="o">=</span> <span class="n">match_CCCG_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_input_design</span><span class="p">,</span> <span class="s1">&#39;Function_&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_input_function_design</span> <span class="o">=</span> <span class="n">match_CCCG_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_input_function</span><span class="p">,</span> <span class="s1">&#39;Design_&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_design_input_function</span> <span class="o">=</span> <span class="n">match_CCCG_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_design_input</span><span class="p">,</span> <span class="s1">&#39;Function_&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_design_function_input</span> <span class="o">=</span> <span class="n">match_CCCG_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_design_function</span><span class="p">,</span> <span class="s1">&#39;Input_&#39;</span><span class="p">)</span>
+
+        <span class="c1"># Merge all CCCGs on triple coupling factor and drop duplicates</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_triple</span>   <span class="o">=</span> <span class="n">merge_multi_lists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function_input_design</span><span class="p">,</span>
+                                        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function_design_input</span><span class="p">,</span>
+                                        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_input_design_function</span><span class="p">,</span>
+                                        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_input_function_design</span><span class="p">,</span>
+                                        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_design_input_function</span><span class="p">,</span>
+                                        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_design_function_input</span><span class="p">,</span>
+                                        <span class="p">)</span>
+        <span class="c1"># remove single entry since there is no other component that has shared coupling factors</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_triple</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_triple</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">]</span>
+
+        <span class="c1"># Merge all CCCGs and drop duplicates</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_final</span> <span class="o">=</span> <span class="n">merge_multi_lists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_single</span><span class="p">,</span>
+                                    <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_double</span><span class="p">,</span>
+                                    <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_triple</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Find all high dependency groups that have function dependency</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_function_all</span> <span class="o">=</span> <span class="n">match_multi_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_final</span><span class="p">,</span> <span class="s1">&#39;Function_&#39;</span><span class="p">)</span>
+        <span class="c1"># Find all high dependency groups that have input dependency</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_input_all</span> <span class="o">=</span> <span class="n">match_multi_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_final</span><span class="p">,</span> <span class="s1">&#39;Input_&#39;</span><span class="p">)</span>
+        <span class="c1"># Find all high dependency groups that have input dependency</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_design_all</span> <span class="o">=</span> <span class="n">match_multi_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_final</span><span class="p">,</span> <span class="s1">&#39;Design_&#39;</span><span class="p">)</span>
+
+        <span class="n">cccg_final</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_final</span><span class="p">)</span>
+
+        <span class="n">file_base</span> <span class="o">=</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;output_file_base&#39;</span><span class="p">]</span>
+        <span class="c1"># output_type = config[&#39;output_type&#39;]</span>
+
+        <span class="k">if</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;final&#39;</span><span class="p">]:</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="n">file_base</span> <span class="o">+</span> <span class="s1">&#39;_final.csv&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">cccg_final</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;single&#39;</span><span class="p">]:</span>
+            <span class="n">cccg_single</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_single</span><span class="p">)</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="n">file_base</span> <span class="o">+</span><span class="s1">&#39;_single.csv&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">cccg_single</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;double&#39;</span><span class="p">]:</span>
+            <span class="n">cccg_double</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_double</span><span class="p">)</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="n">file_base</span> <span class="o">+</span> <span class="s1">&#39;_double.csv&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">cccg_double</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;triple&#39;</span><span class="p">]:</span>
+            <span class="n">cccg_triple</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_triple</span><span class="p">)</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="n">file_base</span> <span class="o">+</span> <span class="s1">&#39;_triple.csv&#39;</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">cccg_triple</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span></div>
+
+        <span class="c1"># if config[&#39;function_all&#39;]:</span>
+        <span class="c1">#   cccg_function_all = self.aggregate(self._function_all)</span>
+        <span class="c1">#   filename = file_base + &#39;_function_all.csv&#39;</span>
+        <span class="c1">#   self.write(cccg_function_all, filename)</span>
+        <span class="c1"># if config[&#39;input_all&#39;]:</span>
+        <span class="c1">#   cccg_input_all = self.aggregate(self._input_all)</span>
+        <span class="c1">#   filename = file_base + &#39;_input_all.csv&#39;</span>
+        <span class="c1">#   self.write(cccg_input_all, filename)</span>
+        <span class="c1"># if config[&#39;design_all&#39;]:</span>
+        <span class="c1">#   cccg_design_all = self.aggregate(self._design_all)</span>
+        <span class="c1">#   filename = file_base + &#39;_design_all.csv&#39;</span>
+        <span class="c1">#   self.write(cccg_design_all, filename)</span>
+
+
+<div class="viewcode-block" id="CCCG.get">
+<a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.CCCG.get">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get CCCGs</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            name (str): name for CCCGs group</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            list (list of Pandas.DataFrame): list of CCCGs</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;final&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_final</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;single&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_single</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;double&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_double</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;triple&#39;</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_triple</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Unrecognized name &quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">&quot;!&#39;</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="CCCG.write">
+<a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.CCCG.write">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">fname</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;csv&#39;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Dump data</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            data (list of pandas.DataFrame): output data to dump</span>
+<span class="sd">            fname (str): file name to save the data</span>
+<span class="sd">            style (str, optional): type of file. Defaults to &quot;csv&quot;.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Save CCCGs into </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">fname</span><span class="p">)</span>
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+                <span class="c1"># Write each DataFrame to the file</span>
+                <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+                <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="CCCG.aggregate">
+<a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.CCCG.aggregate">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">aggregate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cccgs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Aggregate expanded Function, Input, and Design into Function_Config, Input_Config, and Design_Config</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            cccgs (list): list of pd.DataFrame (i.e., CCCGs)</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            list: list of aggregated CCCGs</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cccg_list</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">cccgs</span><span class="p">)</span> <span class="c1"># deepcopy is required, otherwise data manipulation</span>
+        <span class="n">cccg_transfer</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">pd_arr</span> <span class="ow">in</span> <span class="n">cccg_list</span><span class="p">:</span>
+            <span class="n">coupling_factor</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">function_columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">pd_arr</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">col</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Function_&#39;</span><span class="p">)]</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">function_columns</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">pd_arr</span><span class="p">[</span><span class="s2">&quot;Function_Config&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd_arr</span><span class="p">[</span><span class="n">function_columns</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="s1">&#39;;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">))),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+                <span class="n">pd_arr</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">function_columns</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="n">pd_arr</span><span class="p">[</span><span class="s2">&quot;Function_Config&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd_arr</span><span class="p">[</span><span class="s2">&quot;Function_Config&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">clean_string</span><span class="p">)</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pd_arr</span><span class="p">[</span><span class="s2">&quot;Function_Config&quot;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">pd_arr</span><span class="p">[</span><span class="s2">&quot;Function_Config&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">pd_arr</span><span class="p">[</span><span class="s2">&quot;Function_Config&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+                    <span class="n">coupling_factor</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Function&#39;</span><span class="p">)</span>
+
+            <span class="n">input_columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">pd_arr</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">col</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Input_&#39;</span><span class="p">)]</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_columns</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">pd_arr</span><span class="p">[</span><span class="s2">&quot;Input_Config&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd_arr</span><span class="p">[</span><span class="n">input_columns</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="s1">&#39;;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">))),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+                <span class="n">pd_arr</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">input_columns</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="n">pd_arr</span><span class="p">[</span><span class="s2">&quot;Input_Config&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd_arr</span><span class="p">[</span><span class="s2">&quot;Input_Config&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">clean_string</span><span class="p">)</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pd_arr</span><span class="p">[</span><span class="s2">&quot;Input_Config&quot;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">pd_arr</span><span class="p">[</span><span class="s2">&quot;Input_Config&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">pd_arr</span><span class="p">[</span><span class="s2">&quot;Input_Config&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+                    <span class="n">coupling_factor</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Input&#39;</span><span class="p">)</span>
+
+            <span class="n">design_columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">pd_arr</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">col</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Design_&#39;</span><span class="p">)]</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">design_columns</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">pd_arr</span><span class="p">[</span><span class="s2">&quot;Design_Config&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd_arr</span><span class="p">[</span><span class="n">design_columns</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="s1">&#39;;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">row</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">))),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+                <span class="n">pd_arr</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">design_columns</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+                <span class="n">pd_arr</span><span class="p">[</span><span class="s2">&quot;Design_Config&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd_arr</span><span class="p">[</span><span class="s2">&quot;Design_Config&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">clean_string</span><span class="p">)</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pd_arr</span><span class="p">[</span><span class="s2">&quot;Design_Config&quot;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">pd_arr</span><span class="p">[</span><span class="s2">&quot;Design_Config&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">pd_arr</span><span class="p">[</span><span class="s2">&quot;Design_Config&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
+                    <span class="n">coupling_factor</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Design&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">coupling_factor</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">pd_arr</span><span class="p">[</span><span class="s1">&#39;Coupling_Factor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">coupling_factor</span><span class="p">)</span>
+            <span class="n">cccg_transfer</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd_arr</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">cccg_transfer</span></div>
+</div>
+
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Congjian Wang, Tate H. Shorthill, Edward Chen, Jisuk Kim.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,564 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>bahamas.cccg &mdash; BAHAMAS 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=8d563738"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../../_static/copybutton.js?v=f281be69"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="bahamas.defect_conditional_probability" href="../defect_conditional_probability/index.html" />
+    <link rel="prev" title="bahamas" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            BAHAMAS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../bbn.html">BAHAMAS Calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../input.html">BAHAMAS Input Configuration (TOML Syntax)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../example.html">Example</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">More documentation:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../hep.html">Defect Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../removal.html">Defect Removal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../odc.html">Defect Types (ODC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../uca.html">Software Failure Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../ccf.html">Consideration for CCF Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../support.html">Support</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">API Reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">bahamas</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html#submodules">Submodules</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">bahamas.cccg</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../defect_conditional_probability/index.html">bahamas.defect_conditional_probability</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../human_error_mode_distribution/index.html">bahamas.human_error_mode_distribution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../main/index.html">bahamas.main</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../plot_utils/index.html">bahamas.plot_utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../sdlc_stage_hep_calculation/index.html">bahamas.sdlc_stage_hep_calculation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../sdlc_stage_hep_calculation_approx/index.html">bahamas.sdlc_stage_hep_calculation_approx</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../software_total_failure_probability_bbn/index.html">bahamas.software_total_failure_probability_bbn</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../stage_odc_distribution/index.html">bahamas.stage_odc_distribution</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../subfactor/index.html">bahamas.subfactor</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../uca_defect_correlation/index.html">bahamas.uca_defect_correlation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../utils/index.html">bahamas.utils</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../validate/index.html">bahamas.validate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../workflow/index.html">bahamas.workflow</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">BAHAMAS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">API Reference</a></li>
+          <li class="breadcrumb-item"><a href="../index.html">bahamas</a></li>
+      <li class="breadcrumb-item active">bahamas.cccg</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/autoapi/bahamas/cccg/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-bahamas.cccg">
+<span id="bahamas-cccg"></span><h1>bahamas.cccg<a class="headerlink" href="#module-bahamas.cccg" title="Link to this heading"></a></h1>
+<p>Created on September 7, 2025
+&#64;author: wangc, chene</p>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bahamas.cccg.logger" title="bahamas.cccg.logger"><code class="xref py py-obj docutils literal notranslate"><span class="pre">logger</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bahamas.cccg.CCCG" title="bahamas.cccg.CCCG"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CCCG</span></code></a></p></td>
+<td><p>Compute CCCGs for the given list of components of diversity and redundancy system</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bahamas.cccg.check_valid" title="bahamas.cccg.check_valid"><code class="xref py py-obj docutils literal notranslate"><span class="pre">check_valid</span></code></a>(src_arr)</p></td>
+<td><p>Check if group is empty</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bahamas.cccg.clean_string" title="bahamas.cccg.clean_string"><code class="xref py py-obj docutils literal notranslate"><span class="pre">clean_string</span></code></a>(s)</p></td>
+<td><p>Remove &quot;None&quot; and &quot;nan&quot; from str that are separated by &quot;;&quot;</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bahamas.cccg.merge_multi_lists" title="bahamas.cccg.merge_multi_lists"><code class="xref py py-obj docutils literal notranslate"><span class="pre">merge_multi_lists</span></code></a>(*arg)</p></td>
+<td><p>Merge multiple pd.DataFrame CCCG data and remove duplicates</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bahamas.cccg.drop_dup" title="bahamas.cccg.drop_dup"><code class="xref py py-obj docutils literal notranslate"><span class="pre">drop_dup</span></code></a>(list_pd)</p></td>
+<td><p>Drop duplicated CCCG data</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bahamas.cccg.unique_cells" title="bahamas.cccg.unique_cells"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unique_cells</span></code></a>(src_arr)</p></td>
+<td><p>Identify the unique inputs/designs/functions for the given coupling factor (i.e., Input Function and Design)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bahamas.cccg.match_CCCG_on" title="bahamas.cccg.match_CCCG_on"><code class="xref py py-obj docutils literal notranslate"><span class="pre">match_CCCG_on</span></code></a>(src_arr, col_name)</p></td>
+<td><p>Get a list of CCCGs based on single coupling factor, meaning the CCCGs are grouped because</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bahamas.cccg.match_CCCG_list_on" title="bahamas.cccg.match_CCCG_list_on"><code class="xref py py-obj docutils literal notranslate"><span class="pre">match_CCCG_list_on</span></code></a>(list_pd, col_name)</p></td>
+<td><p>Identify CCCGs that are also have the &quot;col_name&quot; coupling factor. (This function is used for two or more shared coupling factors.)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bahamas.cccg.match_multi_on" title="bahamas.cccg.match_multi_on"><code class="xref py py-obj docutils literal notranslate"><span class="pre">match_multi_on</span></code></a>(src_arr, col_name)</p></td>
+<td><p>Extract a CCCG based on col_name</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bahamas.cccg.match_multi_list_on" title="bahamas.cccg.match_multi_list_on"><code class="xref py py-obj docutils literal notranslate"><span class="pre">match_multi_list_on</span></code></a>(list_pd, col_name)</p></td>
+<td><p>Extract the CCCGs from a list of pandas.DataFrame</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="module-contents">
+<h2>Module Contents<a class="headerlink" href="#module-contents" title="Link to this heading"></a></h2>
+<dl class="py data">
+<dt class="sig sig-object py" id="bahamas.cccg.logger">
+<span class="sig-prename descclassname"><span class="pre">bahamas.cccg.</span></span><span class="sig-name descname"><span class="pre">logger</span></span><a class="reference internal" href="../../../_modules/bahamas/cccg.html#logger"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.cccg.logger" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bahamas.cccg.check_valid">
+<span class="sig-prename descclassname"><span class="pre">bahamas.cccg.</span></span><span class="sig-name descname"><span class="pre">check_valid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src_arr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bahamas/cccg.html#check_valid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.cccg.check_valid" title="Link to this definition"></a></dt>
+<dd><p>Check if group is empty</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>src_arr</strong> (<em>list</em><em> or </em><em>pd.DataFrame</em>) – data to check</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if the group is not empty, else False</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bahamas.cccg.clean_string">
+<span class="sig-prename descclassname"><span class="pre">bahamas.cccg.</span></span><span class="sig-name descname"><span class="pre">clean_string</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bahamas/cccg.html#clean_string"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.cccg.clean_string" title="Link to this definition"></a></dt>
+<dd><p>Remove “None” and “nan” from str that are separated by “;”</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>s</strong> (<em>str</em>) – string to clean</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>cleaned string</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bahamas.cccg.merge_multi_lists">
+<span class="sig-prename descclassname"><span class="pre">bahamas.cccg.</span></span><span class="sig-name descname"><span class="pre">merge_multi_lists</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">arg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bahamas/cccg.html#merge_multi_lists"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.cccg.merge_multi_lists" title="Link to this definition"></a></dt>
+<dd><p>Merge multiple pd.DataFrame CCCG data and remove duplicates</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>arg</strong> (<em>list</em>) – list of pd.DataFrame CCCG data</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>merged CCCG data without duplications</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bahamas.cccg.drop_dup">
+<span class="sig-prename descclassname"><span class="pre">bahamas.cccg.</span></span><span class="sig-name descname"><span class="pre">drop_dup</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_pd</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bahamas/cccg.html#drop_dup"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.cccg.drop_dup" title="Link to this definition"></a></dt>
+<dd><p>Drop duplicated CCCG data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>list_pd</strong> (<em>list</em>) – list of pd.DataFrame (CCCG data)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>list of pd.DataFrame (CCCG data) without duplications</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bahamas.cccg.unique_cells">
+<span class="sig-prename descclassname"><span class="pre">bahamas.cccg.</span></span><span class="sig-name descname"><span class="pre">unique_cells</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src_arr</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bahamas/cccg.html#unique_cells"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.cccg.unique_cells" title="Link to this definition"></a></dt>
+<dd><p>Identify the unique inputs/designs/functions for the given coupling factor (i.e., Input Function and Design)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>src_arr</strong> (<em>pd.DataFrame</em>) – expanded coupling factor data for single coupling factor</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>list of unique inputs/designs/functions among all components</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bahamas.cccg.match_CCCG_on">
+<span class="sig-prename descclassname"><span class="pre">bahamas.cccg.</span></span><span class="sig-name descname"><span class="pre">match_CCCG_on</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src_arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bahamas/cccg.html#match_CCCG_on"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.cccg.match_CCCG_on" title="Link to this definition"></a></dt>
+<dd><p>Get a list of CCCGs based on single coupling factor, meaning the CCCGs are grouped because
+they have at least one shared variable of the given coupling factor</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>src_arr</strong> (<em>pd.DataFrame</em>) – Component table with expanded coupling factors</p></li>
+<li><p><strong>col_name</strong> (<em>str</em>) – coupling factor, Function_, Input_ or Design_</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>list of CCCGs based on single coupling factor, arranged in the order *_1, *_2, *_3, etc. where * represents the coupling factor</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bahamas.cccg.match_CCCG_list_on">
+<span class="sig-prename descclassname"><span class="pre">bahamas.cccg.</span></span><span class="sig-name descname"><span class="pre">match_CCCG_list_on</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_pd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bahamas/cccg.html#match_CCCG_list_on"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.cccg.match_CCCG_list_on" title="Link to this definition"></a></dt>
+<dd><p>Identify CCCGs that are also have the “col_name” coupling factor. (This function is used for two or more shared coupling factors.)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>list_pd</strong> (<em>list</em>) – list of pd.DataFrame of CCCGs</p></li>
+<li><p><strong>col_name</strong> (<em>str</em>) – coupling factor, Function_, Input_ or Design_</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>CCCGs with the additional coupling factor (“col_name”)</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bahamas.cccg.match_multi_on">
+<span class="sig-prename descclassname"><span class="pre">bahamas.cccg.</span></span><span class="sig-name descname"><span class="pre">match_multi_on</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src_arr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bahamas/cccg.html#match_multi_on"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.cccg.match_multi_on" title="Link to this definition"></a></dt>
+<dd><p>Extract a CCCG based on col_name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>src_arr</strong> (<em>pd.DataFrame</em>) – pd.DataFrame of CCCGs</p></li>
+<li><p><strong>col_name</strong> (<em>str</em>) – coupling factor</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>extracted the CCCGs based on the given column name</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bahamas.cccg.match_multi_list_on">
+<span class="sig-prename descclassname"><span class="pre">bahamas.cccg.</span></span><span class="sig-name descname"><span class="pre">match_multi_list_on</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">list_pd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bahamas/cccg.html#match_multi_list_on"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.cccg.match_multi_list_on" title="Link to this definition"></a></dt>
+<dd><p>Extract the CCCGs from a list of pandas.DataFrame</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>list_pd</strong> (<em>list</em>) – list of pd.DataFrame</p></li>
+<li><p><strong>col_name</strong> (<em>str</em>) – coupling factor name</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>list of extracted CCCGs</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="bahamas.cccg.CCCG">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bahamas.cccg.</span></span><span class="sig-name descname"><span class="pre">CCCG</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bahamas/cccg.html#CCCG"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.cccg.CCCG" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Compute CCCGs for the given list of components of diversity and redundancy system</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.cccg.CCCG._sys_diagram">
+<span class="sig-name descname"><span class="pre">_sys_diagram</span></span><a class="reference internal" href="../../../_modules/bahamas/cccg.html#CCCG._sys_diagram"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.cccg.CCCG._sys_diagram" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.cccg.CCCG._cccg_final">
+<span class="sig-name descname"><span class="pre">_cccg_final</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="reference internal" href="../../../_modules/bahamas/cccg.html#CCCG._cccg_final"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.cccg.CCCG._cccg_final" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.cccg.CCCG._cccg_function">
+<span class="sig-name descname"><span class="pre">_cccg_function</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="reference internal" href="../../../_modules/bahamas/cccg.html#CCCG._cccg_function"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.cccg.CCCG._cccg_function" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.cccg.CCCG._cccg_input">
+<span class="sig-name descname"><span class="pre">_cccg_input</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="reference internal" href="../../../_modules/bahamas/cccg.html#CCCG._cccg_input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.cccg.CCCG._cccg_input" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.cccg.CCCG._cccg_design">
+<span class="sig-name descname"><span class="pre">_cccg_design</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="reference internal" href="../../../_modules/bahamas/cccg.html#CCCG._cccg_design"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.cccg.CCCG._cccg_design" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.cccg.CCCG._cccg_single">
+<span class="sig-name descname"><span class="pre">_cccg_single</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="reference internal" href="../../../_modules/bahamas/cccg.html#CCCG._cccg_single"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.cccg.CCCG._cccg_single" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.cccg.CCCG._cccg_function_input">
+<span class="sig-name descname"><span class="pre">_cccg_function_input</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="reference internal" href="../../../_modules/bahamas/cccg.html#CCCG._cccg_function_input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.cccg.CCCG._cccg_function_input" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.cccg.CCCG._cccg_function_design">
+<span class="sig-name descname"><span class="pre">_cccg_function_design</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="reference internal" href="../../../_modules/bahamas/cccg.html#CCCG._cccg_function_design"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.cccg.CCCG._cccg_function_design" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.cccg.CCCG._cccg_input_function">
+<span class="sig-name descname"><span class="pre">_cccg_input_function</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="reference internal" href="../../../_modules/bahamas/cccg.html#CCCG._cccg_input_function"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.cccg.CCCG._cccg_input_function" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.cccg.CCCG._cccg_input_design">
+<span class="sig-name descname"><span class="pre">_cccg_input_design</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="reference internal" href="../../../_modules/bahamas/cccg.html#CCCG._cccg_input_design"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.cccg.CCCG._cccg_input_design" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.cccg.CCCG._cccg_design_input">
+<span class="sig-name descname"><span class="pre">_cccg_design_input</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="reference internal" href="../../../_modules/bahamas/cccg.html#CCCG._cccg_design_input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.cccg.CCCG._cccg_design_input" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.cccg.CCCG._cccg_design_function">
+<span class="sig-name descname"><span class="pre">_cccg_design_function</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="reference internal" href="../../../_modules/bahamas/cccg.html#CCCG._cccg_design_function"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.cccg.CCCG._cccg_design_function" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.cccg.CCCG._cccg_double">
+<span class="sig-name descname"><span class="pre">_cccg_double</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="reference internal" href="../../../_modules/bahamas/cccg.html#CCCG._cccg_double"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.cccg.CCCG._cccg_double" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.cccg.CCCG._cccg_function_input_design">
+<span class="sig-name descname"><span class="pre">_cccg_function_input_design</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="reference internal" href="../../../_modules/bahamas/cccg.html#CCCG._cccg_function_input_design"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.cccg.CCCG._cccg_function_input_design" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.cccg.CCCG._cccg_function_design_input">
+<span class="sig-name descname"><span class="pre">_cccg_function_design_input</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="reference internal" href="../../../_modules/bahamas/cccg.html#CCCG._cccg_function_design_input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.cccg.CCCG._cccg_function_design_input" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.cccg.CCCG._cccg_input_design_function">
+<span class="sig-name descname"><span class="pre">_cccg_input_design_function</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="reference internal" href="../../../_modules/bahamas/cccg.html#CCCG._cccg_input_design_function"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.cccg.CCCG._cccg_input_design_function" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.cccg.CCCG._cccg_input_function_design">
+<span class="sig-name descname"><span class="pre">_cccg_input_function_design</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="reference internal" href="../../../_modules/bahamas/cccg.html#CCCG._cccg_input_function_design"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.cccg.CCCG._cccg_input_function_design" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.cccg.CCCG._cccg_design_input_function">
+<span class="sig-name descname"><span class="pre">_cccg_design_input_function</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="reference internal" href="../../../_modules/bahamas/cccg.html#CCCG._cccg_design_input_function"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.cccg.CCCG._cccg_design_input_function" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.cccg.CCCG._cccg_design_function_input">
+<span class="sig-name descname"><span class="pre">_cccg_design_function_input</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="reference internal" href="../../../_modules/bahamas/cccg.html#CCCG._cccg_design_function_input"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.cccg.CCCG._cccg_design_function_input" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.cccg.CCCG._cccg_triple">
+<span class="sig-name descname"><span class="pre">_cccg_triple</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="reference internal" href="../../../_modules/bahamas/cccg.html#CCCG._cccg_triple"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.cccg.CCCG._cccg_triple" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.cccg.CCCG._function_all">
+<span class="sig-name descname"><span class="pre">_function_all</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="reference internal" href="../../../_modules/bahamas/cccg.html#CCCG._function_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.cccg.CCCG._function_all" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.cccg.CCCG._input_all">
+<span class="sig-name descname"><span class="pre">_input_all</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="reference internal" href="../../../_modules/bahamas/cccg.html#CCCG._input_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.cccg.CCCG._input_all" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.cccg.CCCG._design_all">
+<span class="sig-name descname"><span class="pre">_design_all</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="reference internal" href="../../../_modules/bahamas/cccg.html#CCCG._design_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.cccg.CCCG._design_all" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bahamas.cccg.CCCG.generate">
+<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bahamas/cccg.html#CCCG.generate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.cccg.CCCG.generate" title="Link to this definition"></a></dt>
+<dd><p>Generate CCCGs based on three coupling factors (i.e., Function, Input, and Design)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>config</strong> (<em>dict</em><em>, </em><em>optional</em>) – config file for output control. Defaults to None.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bahamas.cccg.CCCG.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bahamas/cccg.html#CCCG.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.cccg.CCCG.get" title="Link to this definition"></a></dt>
+<dd><p>Get CCCGs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – name for CCCGs group</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>list of CCCGs</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list (list of Pandas.DataFrame)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bahamas.cccg.CCCG.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'csv'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bahamas/cccg.html#CCCG.write"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.cccg.CCCG.write" title="Link to this definition"></a></dt>
+<dd><p>Dump data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>list</em><em> of </em><em>pandas.DataFrame</em>) – output data to dump</p></li>
+<li><p><strong>fname</strong> (<em>str</em>) – file name to save the data</p></li>
+<li><p><strong>style</strong> (<em>str</em><em>, </em><em>optional</em>) – type of file. Defaults to “csv”.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bahamas.cccg.CCCG.aggregate">
+<span class="sig-name descname"><span class="pre">aggregate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cccgs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/bahamas/cccg.html#CCCG.aggregate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.cccg.CCCG.aggregate" title="Link to this definition"></a></dt>
+<dd><p>Aggregate expanded Function, Input, and Design into Function_Config, Input_Config, and Design_Config</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cccgs</strong> (<em>list</em>) – list of pd.DataFrame (i.e., CCCGs)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>list of aggregated CCCGs</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="bahamas" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../defect_conditional_probability/index.html" class="btn btn-neutral float-right" title="bahamas.defect_conditional_probability" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Congjian Wang, Tate H. Shorthill, Edward Chen, Jisuk Kim.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

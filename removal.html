@@ -1,0 +1,213 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Defect Removal &mdash; BAHAMAS 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d563738"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Defect Types (ODC)" href="odc.html" />
+    <link rel="prev" title="Defect Introduction" href="hep.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            BAHAMAS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bbn.html">BAHAMAS Calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="input.html">BAHAMAS Input Configuration (TOML Syntax)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example.html">Example</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">More documentation:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="hep.html">Defect Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Defect Removal</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#trigger-coverage">Trigger Coverage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#review">Review</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#odc-triggers">ODC Triggers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="odc.html">Defect Types (ODC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uca.html">Software Failure Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ccf.html">Consideration for CCF Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autoapi/index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BAHAMAS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Defect Removal</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/removal.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="defect-removal">
+<h1>Defect Removal<a class="headerlink" href="#defect-removal" title="Link to this heading"></a></h1>
+<section id="trigger-coverage">
+<h2>Trigger Coverage<a class="headerlink" href="#trigger-coverage" title="Link to this heading"></a></h2>
+<p>Verification and review activities are employed during software development to ensure the
+software is reliable. The quality of these activities influences defect removal and overall
+software quality. Orthogonal defect classification (ODC) indicates that reviews
+performed during the software life cycle can help identify and remove defects.
+Depending on the review, specific concepts, or triggers, are employed and
+may bring out defects or allow them to surface.  High-quality review activities
+should employ these triggers during each stage of the SDLC, thereby reducing
+the probability of defects remaining within the software. On this basis, trigger coverage
+has been selected as a metric for defect removal. The stage-level trigger coverage (TC),
+given by <a class="reference internal" href="#equation-a-1">Eq. 10</a>, is determined from the average of each task-level trigger
+coverage (tc), which is the percent of relevant triggers that have been covered for a task
+in a particular SDLC stage. Note that <span class="math">T</span> is the total number of relevant tasks for a given stage.</p>
+<div class="math" id="equation-a-1">
+<p><span class="eqno">(10)<a class="headerlink" href="#equation-a-1" title="Link to this equation"></a></span><span class="math">TC = \frac{1}{T} \sum_{i=1}^{T} (tc)_i</span></p>
+</div></section>
+<section id="review">
+<h2>Review<a class="headerlink" href="#review" title="Link to this heading"></a></h2>
+<p>In addition to trigger coverage, the average number of reviews for a given SDLC stage
+is also referenced as a metric for defect removal. When tasks are reviewed or checked,
+they are less likely to fail. Checkers are considered in human reliability analysis (e.g., THERP)
+and represent recovery paths for a given activity. The average number of reviews for
+a particular stage is defined by <a class="reference internal" href="#equation-a-2">Eq. 11</a>, where <span class="math">r</span> is the average number of reviews
+performed for each relevant task and <span class="math">T</span> is the total number of relevant tasks for a given
+stage. As an example, for a given task, some triggers may be reviewed or checked multiple
+times, whereas others are not. The average of these reviews represents <span class="math">r</span>.</p>
+<div class="math" id="equation-a-2">
+<p><span class="eqno">(11)<a class="headerlink" href="#equation-a-2" title="Link to this equation"></a></span><span class="math">R = \frac{1}{T} \sum_{i=1}^{T} (r)_i</span></p>
+</div></section>
+<section id="odc-triggers">
+<h2>ODC Triggers<a class="headerlink" href="#odc-triggers" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="#table-r-1"><span class="std std-numref">Table 2</span></a> shows the typical mapping of the triggers and review activities.
+Our work adopts this mapping for convenience.</p>
+<span id="table-r-1"></span><table class="docutils align-center" id="id1">
+<caption><span class="caption-number">Table 2 </span><span class="caption-text">ODC Triggers</span><a class="headerlink" href="#id1" title="Link to this table"></a></caption>
+<colgroup>
+<col style="width: 27.3%" />
+<col style="width: 72.7%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>Review Activities</strong></p></td>
+<td><p><strong>Triggers</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>For use during review activities associated with</p>
+<p>concept, design, and implementation stages of the</p>
+<p>software development life cycle.</p>
+</td>
+<td><p>Design Conformance</p>
+<p>Logic/Flow</p>
+<p>Backward Compatibility</p>
+<p>Lateral Compatibility</p>
+<p>Concurrency</p>
+<p>Internal Document</p>
+<p>Language Dependency</p>
+<p>Side Effect</p>
+<p>Rare Situations</p>
+</td>
+</tr>
+<tr class="row-odd"><td><p>For use during review activities associated with</p>
+<p>testing stages of the software development life</p>
+<p>cycle.</p>
+</td>
+<td><p>Simple Path</p>
+<p>Complex Path</p>
+<p>Test Coverage</p>
+<p>Test Variation</p>
+<p>Test Sequencing</p>
+<p>Test Interaction</p>
+<p>Workload/Stress</p>
+<p>Recovery/Exception</p>
+<p>Startup/Restart</p>
+<p>Hardware Configuration</p>
+<p>Software Configuration</p>
+<p>Blocked Test (Previously Normal Mode)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="hep.html" class="btn btn-neutral float-left" title="Defect Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="odc.html" class="btn btn-neutral float-right" title="Defect Types (ODC)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Congjian Wang, Tate H. Shorthill, Edward Chen, Jisuk Kim.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

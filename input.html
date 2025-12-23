@@ -1,0 +1,366 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BAHAMAS Input Configuration (TOML Syntax) &mdash; BAHAMAS 1.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=8d563738"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Example" href="example.html" />
+    <link rel="prev" title="Installation" href="install.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            BAHAMAS
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bbn.html">BAHAMAS Calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">BAHAMAS Input Configuration (TOML Syntax)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#software-failure-evaluation">Software Failure Evaluation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#bbn-params">BBN.params</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bbn-files">BBN.files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#bbn-analysis">BBN.analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-full-configuration">Example Full Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#validation-summary">Validation Summary</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#common-cause-failure-input-configuration-toml-syntax">Common Cause Failure Input Configuration (TOML Syntax)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overall-structure">Overall Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ccf-files">CCF.files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ccf-generate">CCF.generate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Example Full Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Validation Summary</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="example.html">Example</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">More documentation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="hep.html">Defect Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="removal.html">Defect Removal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="odc.html">Defect Types (ODC)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="uca.html">Software Failure Modes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ccf.html">Consideration for CCF Modeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="support.html">Support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="autoapi/index.html">API Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">BAHAMAS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">BAHAMAS Input Configuration (TOML Syntax)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/input.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="bahamas-input-configuration-toml-syntax">
+<h1>BAHAMAS Input Configuration (TOML Syntax)<a class="headerlink" href="#bahamas-input-configuration-toml-syntax" title="Link to this heading"></a></h1>
+<p><strong>Purpose:</strong>
+This configuration file defines the parameters, input file paths, and analysis options for the BAHAMAS input system.
+The TOML syntax follows the JSON schema validation described in the <em>BAHAMAS/bahamas/validation.py</em>.</p>
+<section id="software-failure-evaluation">
+<h2>Software Failure Evaluation<a class="headerlink" href="#software-failure-evaluation" title="Link to this heading"></a></h2>
+<p>The configuration file contains one top-level table:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[BBN]</span>
+</pre></div>
+</div>
+<p>This table includes three nested subtables:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[BBN.params]</span></code> — Defines sampling and reproducibility parameters.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[BBN.files]</span></code> — Specifies paths to required data files.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[BBN.analysis]</span></code> — Selects the type of analysis to perform.</p></li>
+</ul>
+<section id="bbn-params">
+<h3>BBN.params<a class="headerlink" href="#bbn-params" title="Link to this heading"></a></h3>
+<p><strong>Description:</strong>
+Defines the analysis sampling configuration.</p>
+<p><strong>Syntax Example:</strong></p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[BBN.params]</span>
+<span class="n">samples</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40000</span>
+<span class="n">seed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span>
+</pre></div>
+</div>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>samples</strong> <em>(integer, required)</em>
+The number of samples used in the analysis.
+Must be an integer greater than or equal to 1.
+Example: <code class="docutils literal notranslate"><span class="pre">samples</span> <span class="pre">=</span> <span class="pre">40000</span></code>.</p></li>
+<li><p><strong>seed</strong> <em>(integer, optional)</em>
+The random number seed to ensure reproducibility.
+Must be a positive integer.
+Example: <code class="docutils literal notranslate"><span class="pre">seed</span> <span class="pre">=</span> <span class="pre">2</span></code>.</p></li>
+</ul>
+</section>
+<section id="bbn-files">
+<h3>BBN.files<a class="headerlink" href="#bbn-files" title="Link to this heading"></a></h3>
+<p><strong>Description:</strong>
+Specifies input file paths required for the analysis.</p>
+<p><strong>Syntax Example:</strong></p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[BBN.files]</span>
+<span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;../data/Task_List.xlsx&quot;</span>
+<span class="n">defect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;../data/Defect_Data.xlsx&quot;</span>
+<span class="n">approx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;../data/sdlc_macro.xlsx&quot;</span>
+</pre></div>
+</div>
+<p><strong>File Entries:</strong></p>
+<ul class="simple">
+<li><p><strong>task</strong> <em>(string, conditionally required)</em>
+Path to the task list file.
+Required <strong>only</strong> when <code class="docutils literal notranslate"><span class="pre">[BBN.analysis].type</span> <span class="pre">=</span> <span class="pre">&quot;precise&quot;</span></code>.</p></li>
+<li><p><strong>defect</strong> <em>(string, required)</em>
+Path to the defect data file.</p></li>
+<li><p><strong>approx</strong> <em>(string, conditionally required)</em>
+Path to the SDLC macro data file.
+Required <strong>only</strong> when <code class="docutils literal notranslate"><span class="pre">[BBN.analysis].type</span> <span class="pre">=</span> <span class="pre">&quot;approx&quot;</span></code>.</p></li>
+</ul>
+<p><strong>Notes:</strong>
+All paths should be valid relative or absolute file paths, and may use URI-style notation.</p>
+</section>
+<section id="bbn-analysis">
+<h3>BBN.analysis<a class="headerlink" href="#bbn-analysis" title="Link to this heading"></a></h3>
+<p><strong>Description:</strong>
+Defines the type of analysis to be performed.</p>
+<p><strong>Syntax Example:</strong></p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[BBN.analysis]</span>
+<span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;precise&#39;</span>
+</pre></div>
+</div>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>type</strong> <em>(string, required)</em>
+Defines the analysis mode.
+Acceptable values:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">'precise'</span></code> → Task-level assessment.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">'approx'</span></code> → Stage-level assessment.</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Conditional Logic:</strong></p>
+<ul class="simple">
+<li><p>If <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">=</span> <span class="pre">'precise'</span></code> → <code class="docutils literal notranslate"><span class="pre">[BBN.files].task</span></code> <strong>must</strong> be provided.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">type</span> <span class="pre">=</span> <span class="pre">'approx'</span></code> → <code class="docutils literal notranslate"><span class="pre">[BBN.files].approx</span></code> <strong>must</strong> be provided.</p></li>
+</ul>
+</section>
+<section id="example-full-configuration">
+<h3>Example Full Configuration<a class="headerlink" href="#example-full-configuration" title="Link to this heading"></a></h3>
+<p><strong>Complete Example:</strong></p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[BBN]</span>
+
+<span class="k">[BBN.params]</span>
+<span class="n">samples</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">40000</span>
+<span class="n">seed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span>
+
+<span class="k">[BBN.files]</span>
+<span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;../data/Task_List.xlsx&quot;</span>
+<span class="n">defect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;../data/Defect_Data.xlsx&quot;</span>
+<span class="n">approx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;../data/sdlc_macro.xlsx&quot;</span>
+
+<span class="k">[BBN.analysis]</span>
+<span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;precise&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="validation-summary">
+<h3>Validation Summary<a class="headerlink" href="#validation-summary" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">samples</span></code> and <code class="docutils literal notranslate"><span class="pre">defect</span></code> are always required.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">seed</span></code> is optional.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">task</span></code> or <code class="docutils literal notranslate"><span class="pre">approx</span></code> is required, depending on the analysis <code class="docutils literal notranslate"><span class="pre">type</span></code>.</p></li>
+<li><p>No additional keys beyond those listed are allowed in the <code class="docutils literal notranslate"><span class="pre">BBN</span></code> table.</p></li>
+</ul>
+</section>
+</section>
+<section id="common-cause-failure-input-configuration-toml-syntax">
+<h2>Common Cause Failure Input Configuration (TOML Syntax)<a class="headerlink" href="#common-cause-failure-input-configuration-toml-syntax" title="Link to this heading"></a></h2>
+<p><strong>Purpose:</strong>
+This defines the file inputs and (optionally) which common cause component groups (CCCGs) to generate and how to name the outputs.</p>
+<section id="overall-structure">
+<h3>Overall Structure<a class="headerlink" href="#overall-structure" title="Link to this heading"></a></h3>
+<p>The configuration has one top-level table:</p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[CCF]</span>
+</pre></div>
+</div>
+<p>This table may contain two subtables:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">[CCF.files]</span></code> — <strong>Required.</strong> Declares the input structure file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">[CCF.generate]</span></code> — Optional. Selects which CCCGs to generate, and sets output naming/options.</p></li>
+</ul>
+</section>
+<section id="ccf-files">
+<h3>CCF.files<a class="headerlink" href="#ccf-files" title="Link to this heading"></a></h3>
+<p><strong>Description:</strong>
+CCF file configurations.</p>
+<p><strong>Syntax Example:</strong></p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[CCF.files]</span>
+<span class="n">structure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;../data/Scenario_6.csv&quot;</span>
+</pre></div>
+</div>
+<p><strong>Entries:</strong></p>
+<ul class="simple">
+<li><p><strong>structure</strong> <em>(string, required)</em>
+Path to the structure file.
+Example: <code class="docutils literal notranslate"><span class="pre">structure</span> <span class="pre">=</span> <span class="pre">&quot;../data/Scenario_6.csv&quot;</span></code>.</p></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code class="docutils literal notranslate"><span class="pre">structure</span></code> must be provided in order for the configuration to be valid.</p>
+</div>
+</section>
+<section id="ccf-generate">
+<h3>CCF.generate<a class="headerlink" href="#ccf-generate" title="Link to this heading"></a></h3>
+<p><strong>Description:</strong>
+Optional settings to generate CCCGs and control output naming and type.</p>
+<p><strong>Syntax Example:</strong></p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[CCF.generate]</span>
+<span class="n">output_file_base</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;s6_cccg&quot;</span>
+<span class="n">output_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;csv&quot;</span>
+<span class="n">final</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="n">single</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="n">double</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="n">triple</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+</pre></div>
+</div>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><strong>output_file_base</strong> <em>(string, optional)</em>
+Base name used for generated output files.
+Example: <code class="docutils literal notranslate"><span class="pre">&quot;s6_cccg&quot;</span></code>.</p></li>
+<li><p><strong>output_type</strong> <em>(string, optional; enum)</em>
+Type/format of the output file.
+Allowed values: <code class="docutils literal notranslate"><span class="pre">&quot;csv&quot;</span></code>.
+Example: <code class="docutils literal notranslate"><span class="pre">output_type</span> <span class="pre">=</span> <span class="pre">&quot;csv&quot;</span></code>.</p></li>
+<li><p><strong>final</strong> <em>(boolean, optional)</em>
+Generate the final CCCGs output if <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></li>
+<li><p><strong>single</strong> <em>(boolean, optional)</em>
+Generate single CCCGs output if <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></li>
+<li><p><strong>double</strong> <em>(boolean, optional)</em>
+Generate double CCCGs output if <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></li>
+<li><p><strong>triple</strong> <em>(boolean, optional)</em>
+Generate triple CCCGs output if <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All <code class="docutils literal notranslate"><span class="pre">[CCF.generate]</span></code> keys are optional; include only the ones relevant to your run.</p>
+</div>
+</section>
+<section id="id1">
+<h3>Example Full Configuration<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p><strong>Complete Example:</strong></p>
+<div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[CCF]</span>
+
+<span class="k">[CCF.files]</span>
+<span class="n">structure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;../data/Scenario_6.csv&quot;</span>
+
+<span class="k">[CCF.generate]</span>
+<span class="n">output_file_base</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;s6_cccg&quot;</span>
+<span class="n">output_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;csv&quot;</span>
+<span class="n">final</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="n">single</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="n">double</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="n">triple</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3>Validation Summary<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><strong>Required</strong>
+- <code class="docutils literal notranslate"><span class="pre">CCF.files.structure</span></code> <em>(string)</em>.</p></li>
+<li><p><strong>Optional</strong>
+- All keys under <code class="docutils literal notranslate"><span class="pre">[CCF.generate]</span></code> (strings/booleans as defined above)</p></li>
+<li><p><strong>Types &amp; Constraints</strong>
+- <code class="docutils literal notranslate"><span class="pre">output_type</span></code> must be one of: <code class="docutils literal notranslate"><span class="pre">&quot;csv&quot;</span></code>.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="install.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="example.html" class="btn btn-neutral float-right" title="Example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Congjian Wang, Tate H. Shorthill, Edward Chen, Jisuk Kim.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+bahamas.utils
+=============
+
+.. py:module:: bahamas.utils
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   bahamas.utils.logger
+   bahamas.utils.SDLC_stages
+   bahamas.utils.human_error_modes
+   bahamas.utils.ODC_types
+   bahamas.utils.UCA_types
+   bahamas.utils.UCA_mean
+   bahamas.utils.UCA_sigma
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   bahamas.utils.read_toml
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:data:: SDLC_stages
+   :value: ['Concept', 'Requirement', 'Design', 'Implementation', 'Testing', 'Install and Maintenance']
+
+
+.. py:data:: human_error_modes
+   :value: ['D1', 'D2', 'C', 'OC', 'D1C', 'D1OC', 'D2C', 'D2OC', 'O', 'D1O', 'D2O']
+
+
+.. py:data:: ODC_types
+   :value: ['Algorithm', 'Assignment', 'Checking', 'Documentation', 'Function', 'Interface',...
+
+
+.. py:data:: UCA_types
+   :value: ['UCA-A', 'UCA-B', 'UCA-C', 'UCA-D']
+
+
+.. py:data:: UCA_mean
+   :value: ['UCA-A Mean', 'UCA-B Mean', 'UCA-C Mean', 'UCA-D Mean']
+
+
+.. py:data:: UCA_sigma
+   :value: ['UCA-A Sigma', 'UCA-B Sigma', 'UCA-C Sigma', 'UCA-D Sigma']
+
+
+.. py:function:: read_toml(file_path)
+
+   Read TOML-formatted file
+
+   :param file_path: Path to the file
+   :type file_path: str
+
+   :returns: Dictionary of file content
+   :rtype: dict
+
+

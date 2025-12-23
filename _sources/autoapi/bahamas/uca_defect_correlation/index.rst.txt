@@ -1,0 +1,42 @@
+bahamas.uca_defect_correlation
+==============================
+
+.. py:module:: bahamas.uca_defect_correlation
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   bahamas.uca_defect_correlation.logger
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   bahamas.uca_defect_correlation.get_uca_defect_correlation_dist
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:function:: get_uca_defect_correlation_dist(excel_file, distribution='norm', sheet_name='UCA Correlation')
+
+   Assign distribution for each UCA defect correlation term
+
+   :param excel_file: Excel file to read in
+   :type excel_file: str
+   :param distribution: Type of distribution (defaults to "norm")
+   :type distribution: str, optional
+   :param sheet_name: Name of the sheet with UCA correlation data (defaults to "UCA Correlation")
+   :type sheet_name: str, optional
+
+   :returns: UCA defect correlation distribution, {'UCA type':{'ODC type':Dist},...}
+   :rtype: dict
+
+

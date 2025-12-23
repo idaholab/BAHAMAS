@@ -1,0 +1,42 @@
+bahamas.human_error_mode_distribution
+=====================================
+
+.. py:module:: bahamas.human_error_mode_distribution
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   bahamas.human_error_mode_distribution.logger
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   bahamas.human_error_mode_distribution.get_hemd_from_spreadsheet
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:function:: get_hemd_from_spreadsheet(spreadsheet_file, sheet_name='HEMD', distribution='lognorm')
+
+   :param spreadsheet_file: Filename of the spreadsheet to read in
+   :type spreadsheet_file: str
+   :param sheet_name: Name of the sheet with the human error mode distribution data
+   :type sheet_name: str
+   :param distribution: Type of distribution to use (currently only "lognorm" is supported)
+   :type distribution: str
+
+   :returns: * **hemd, dist_dict** (*dict, dict*) -- The first dictionary contains the rvs sampling function for the action
+               type; the second dictionary contains the distribution dictionary --- both
+               are keyed by the action type.
+             * *gets the human error mode distributions from a spreadsheet*
+
+

@@ -1,0 +1,46 @@
+bahamas.sdlc_stage_hep_calculation
+==================================
+
+.. py:module:: bahamas.sdlc_stage_hep_calculation
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   bahamas.sdlc_stage_hep_calculation.logger
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   bahamas.sdlc_stage_hep_calculation.sdlc_stage_hep_calculation
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:function:: sdlc_stage_hep_calculation(excel_file_path, sheet_name, hemd, num_samples=100, distribution='lognorm')
+
+   :param excel_file_path: Filename of the spreadsheet with the number of actions and types
+   :type excel_file_path: str
+   :param sheet_name: Sheet name in the spreadsheet with the data
+   :type sheet_name: str
+   :param hemd: Dictionary of rvs functions, keyed by action type
+   :type hemd: dict
+   :param num_samples: Number of samples to generate for each action
+   :type num_samples: int
+   :param distribution: Type of distribution to use (currently always "lognorm")
+   :type distribution: str
+
+   :returns: * **total, fitted** (*numpy.array, dict*) -- The samples for the SDLC stage by considering all human error propagations,
+               and a dictionary of the fitted mu and sigma parameters.
+             * *This function reads in the number of human actions and human error modes from a*
+             * *spreadsheet, and calculates the human error probability distributions.*
+
+

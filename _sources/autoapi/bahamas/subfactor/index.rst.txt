@@ -1,0 +1,57 @@
+bahamas.subfactor
+=================
+
+.. py:module:: bahamas.subfactor
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   bahamas.subfactor.subfactor_score_software
+   bahamas.subfactor.defense_factor
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   bahamas.subfactor.compute_beta
+   bahamas.subfactor.compute_phi
+
+
+Module Contents
+---------------
+
+.. py:data:: subfactor_score_software
+
+.. py:data:: defense_factor
+
+.. py:function:: compute_beta(subfactor_dict)
+
+   Compute beta factor for CCF
+
+   :param subfactor_dict: Dictionary of subfactors and their scores {"subfactor":"score"}
+   :type subfactor_dict: dict
+
+   :raises IOError: Error if the score value can not be found
+
+   :returns: beta factor value
+   :rtype: float
+
+
+.. py:function:: compute_phi(subfactor_dict)
+
+   Compute defense factor for CCF
+
+   :param subfactor_dict: Dictionary of subfactors and their scores {"subfactor":"score"}
+   :type subfactor_dict: dict
+
+   :raises IOError: Error if the score value cannot be found
+
+   :returns: defense factor value
+   :rtype: float
+
+

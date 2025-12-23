@@ -1,0 +1,142 @@
+bahamas.software_total_failure_probability_bbn
+==============================================
+
+.. py:module:: bahamas.software_total_failure_probability_bbn
+
+
+Attributes
+----------
+
+.. autoapisummary::
+
+   bahamas.software_total_failure_probability_bbn.logger
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   bahamas.software_total_failure_probability_bbn.BBN
+
+
+Module Contents
+---------------
+
+.. py:data:: logger
+
+.. py:class:: BBN(defect_file, task_file, num_samples=1000, approx=False, data=None, seed=42)
+
+   Bases: :py:obj:`object`
+
+
+   Bayesian belief network for reliability analysis of software
+
+
+   .. py:attribute:: num_samples
+      :value: 1000
+
+
+
+   .. py:attribute:: _approx
+      :value: False
+
+
+
+   .. py:attribute:: _data
+      :value: None
+
+
+
+   .. py:attribute:: _uca
+      :value: ['UCA-A', 'UCA-B', 'UCA-C', 'UCA-D']
+
+
+
+   .. py:attribute:: _odc
+      :value: ['Algorithm', 'Assignment', 'Checking', 'Documentation', 'Function', 'Interface',...
+
+
+
+   .. py:attribute:: _sdlc
+      :value: ['Concept', 'Requirement', 'Design', 'Implementation', 'Testing', 'Install and Maintenance']
+
+
+
+   .. py:attribute:: _defect
+
+
+   .. py:attribute:: _task
+
+
+   .. py:attribute:: prob_stage
+
+
+   .. py:attribute:: prob_odc
+
+
+   .. py:attribute:: prob_dcp
+
+
+   .. py:attribute:: prob_total
+      :value: None
+
+
+
+   .. py:attribute:: prob_uca
+
+
+   .. py:attribute:: _hemd_dist
+
+
+   .. py:attribute:: prob_stage_odc
+
+
+   .. py:attribute:: prob_uca_correlation
+
+
+   .. py:method:: initialize_stage()
+
+
+   .. py:method:: calculate()
+
+      Calculate software failure probability based on BBN
+
+
+
+
+   .. py:method:: get_total_failure_probability()
+
+      Get total failure probability
+
+      :returns: mean, sigma, and samples
+      :rtype: tuple
+
+
+
+   .. py:method:: get_uca(uca_type)
+
+      Get UCA probability
+
+      :param uca_type: Type of UCA
+      :type uca_type: str
+
+      :returns: mean, sigma, and samples
+      :rtype: tuple
+
+
+
+   .. py:method:: plot(type='all', save=False, show=True)
+
+      Plot calculated data
+
+      :param type: Type of plots to plot (defaults to 'all')
+      :type type: str, optional
+      :param save: Save plots into .png file if True (defaults to False)
+      :type save: bool, optional
+
+      :returns: plotly figure object
+      :rtype: list or figure object
+
+
+
