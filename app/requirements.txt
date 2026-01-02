@@ -10,6 +10,7 @@ pytest
 plotly
 kaleido
 matplotlib
+jsonpointer
 streamlit
 streamlit-aggrid
 streamlit-option-menu
