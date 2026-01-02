@@ -31,8 +31,8 @@ def display_main_content():
         This app allows you to perform the following analyses.
 
         **Features:**
-        - **Quick Assessment**: Software reliability assessment based on software development life cycle survey.
-        - **Refined Assessment**: Software reliability assessment based on Bayesian belief network analysis of software development life cycle.
+        - **Preliminary Assessment**: Software reliability assessment based on software development life cycle survey.
+        - **Comprehensive  Assessment**: Software reliability assessment based on Bayesian belief network analysis of software development life cycle.
         - **Common Cause Analysis**: Software common cause analysis including common cause component group generation and evaluation.
 
         **Choose a page from the sidebar to begin!**

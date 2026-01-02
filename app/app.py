@@ -32,7 +32,7 @@ if __name__ == "__main__":
     with st.sidebar:
         selected_page = option_menu(
             "BAHAMAS",
-            ["Welcome","Quick Assessment", "Refined Assessment", "Common Cause Analysis", "Software Quality Survey", "CCCG Evaluation"],
+            ["Welcome","Preliminary Assessment", "Comprehensive  Assessment", "Common Cause Analysis", "Software Quality Survey", "CCCG Evaluation"],
             icons=["house", "rocket","fire", "pen", "pen", "gear"],
             menu_icon="cast",
             default_index=0,
@@ -41,9 +41,9 @@ if __name__ == "__main__":
     # Display the selected page
     if selected_page == "Welcome":
         welcome.app()
-    elif selected_page == "Refined Assessment":
+    elif selected_page == "Comprehensive  Assessment":
         bahamas_calculation.app()
-    elif selected_page == "Quick Assessment":
+    elif selected_page == "Preliminary Assessment":
         bahamas_calculation_approx.app()
     elif selected_page == "Common Cause Analysis":
         cccg_generation.app()
