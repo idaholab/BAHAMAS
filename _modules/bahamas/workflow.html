@@ -106,16 +106,16 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">.cccg</span><span class="w"> </span><span class="kn">import</span> <span class="n">CCCG</span>
 
 <div class="viewcode-block" id="logger">
-<a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.workflow.logger">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.logger">[docs]</a>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;BAHAMAS.Workflow&#39;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="file_dir">
-<a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.workflow.file_dir">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.file_dir">[docs]</a>
 <span class="n">file_dir</span> <span class="o">=</span>  <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="bbn_config_default">
-<a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.workflow.bbn_config_default">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.bbn_config_default">[docs]</a>
 <span class="n">bbn_config_default</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;params&#39;</span><span class="p">:{</span><span class="s1">&#39;seed&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;samples&#39;</span><span class="p">:</span><span class="mi">10000</span><span class="p">},</span>
                 <span class="s1">&#39;files&#39;</span><span class="p">:{</span><span class="s1">&#39;defect&#39;</span><span class="p">:</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">file_dir</span><span class="p">,</span> <span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;data/Defect_Data.xlsx&#39;</span><span class="p">),</span>
                         <span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="kc">None</span><span class="p">,</span>
@@ -125,7 +125,7 @@
 
 
 <div class="viewcode-block" id="ccf_config_default">
-<a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.workflow.ccf_config_default">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.ccf_config_default">[docs]</a>
 <span class="n">ccf_config_default</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;files&#39;</span><span class="p">:{</span><span class="s1">&#39;structure&#39;</span><span class="p">:</span><span class="kc">None</span><span class="p">},</span>
                       <span class="s1">&#39;generate&#39;</span><span class="p">:{</span><span class="s1">&#39;output_file_base&#39;</span><span class="p">:</span><span class="s1">&#39;cccg&#39;</span><span class="p">,</span>
                                   <span class="s1">&#39;output_type&#39;</span><span class="p">:</span><span class="s1">&#39;csv&#39;</span><span class="p">,</span>
@@ -140,7 +140,7 @@
 
 
 <div class="viewcode-block" id="Workflow">
-<a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.workflow.Workflow">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.Workflow">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Workflow</span><span class="p">:</span>
 <span class="w">  </span><span class="sd">&quot;&quot;&quot;Workflow manager for BAHAMAS calculation</span>
 <span class="sd">  &quot;&quot;&quot;</span>
@@ -148,15 +148,15 @@
   <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Initialization&#39;</span><span class="p">)</span>
 <div class="viewcode-block" id="Workflow._config">
-<a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.workflow.Workflow._config">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.Workflow._config">[docs]</a>
     <span class="bp">self</span><span class="o">.</span><span class="n">_config</span> <span class="o">=</span> <span class="n">config</span></div>
 
 <div class="viewcode-block" id="Workflow._bbn_config">
-<a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.workflow.Workflow._bbn_config">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.Workflow._bbn_config">[docs]</a>
     <span class="bp">self</span><span class="o">.</span><span class="n">_bbn_config</span> <span class="o">=</span> <span class="kc">None</span></div>
 
 <div class="viewcode-block" id="Workflow._ccf_config">
-<a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.workflow.Workflow._ccf_config">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.Workflow._ccf_config">[docs]</a>
     <span class="bp">self</span><span class="o">.</span><span class="n">_ccf_config</span> <span class="o">=</span> <span class="kc">None</span></div>
 
     <span class="c1"># validate input</span>
@@ -169,7 +169,7 @@
       <span class="bp">self</span><span class="o">.</span><span class="n">initialize_ccf</span><span class="p">()</span>
 
 <div class="viewcode-block" id="Workflow.update_config">
-<a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.workflow.Workflow.update_config">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.Workflow.update_config">[docs]</a>
   <span class="k">def</span><span class="w"> </span><span class="nf">update_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;update default config with user provided data</span>
 
@@ -196,7 +196,7 @@
 
 
 <div class="viewcode-block" id="Workflow.initialize_bbn">
-<a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.workflow.Workflow.initialize_bbn">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.Workflow.initialize_bbn">[docs]</a>
   <span class="k">def</span><span class="w"> </span><span class="nf">initialize_bbn</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Initialize BBN calculation</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -209,7 +209,7 @@
 
 
 <div class="viewcode-block" id="Workflow.initialize_ccf">
-<a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.workflow.Workflow.initialize_ccf">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.Workflow.initialize_ccf">[docs]</a>
   <span class="k">def</span><span class="w"> </span><span class="nf">initialize_ccf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Initialize CCF calculation</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -217,7 +217,7 @@
 
 
 <div class="viewcode-block" id="Workflow.run_bbn">
-<a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.workflow.Workflow.run_bbn">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.Workflow.run_bbn">[docs]</a>
   <span class="k">def</span><span class="w"> </span><span class="nf">run_bbn</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Run BBN Calculation</span>
 
@@ -242,7 +242,7 @@
 
 
 <div class="viewcode-block" id="Workflow.run_ccf">
-<a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.workflow.Workflow.run_ccf">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.Workflow.run_ccf">[docs]</a>
   <span class="k">def</span><span class="w"> </span><span class="nf">run_ccf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Run CCF calculation</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -251,7 +251,7 @@
 
 
 <div class="viewcode-block" id="Workflow.run">
-<a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.workflow.Workflow.run">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.Workflow.run">[docs]</a>
   <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Execute the workflow</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -267,7 +267,7 @@
 
 
 <div class="viewcode-block" id="Workflow.write">
-<a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.workflow.Workflow.write">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.Workflow.write">[docs]</a>
   <span class="k">def</span><span class="w"> </span><span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">fname</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;csv&#39;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Dump data</span>
 
@@ -283,20 +283,20 @@
 
 
 <div class="viewcode-block" id="Workflow.visualize">
-<a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.workflow.Workflow.visualize">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.Workflow.visualize">[docs]</a>
   <span class="k">def</span><span class="w"> </span><span class="nf">visualize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">pass</span></div>
 
 
 <div class="viewcode-block" id="Workflow.reset">
-<a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.workflow.Workflow.reset">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.Workflow.reset">[docs]</a>
   <span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">pass</span></div>
 
 
 
 <div class="viewcode-block" id="Workflow._validate">
-<a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.workflow.Workflow._validate">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.Workflow._validate">[docs]</a>
   <span class="k">def</span><span class="w"> </span><span class="nf">_validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Validate input file using JSON schema</span>
 

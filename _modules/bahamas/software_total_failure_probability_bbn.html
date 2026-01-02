@@ -104,12 +104,12 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">bahamas.plot_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">plot_histogram</span>
 
 <div class="viewcode-block" id="logger">
-<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.software_total_failure_probability_bbn.logger">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.logger">[docs]</a>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;BAHAMAS.BBN&#39;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="BBN">
-<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.software_total_failure_probability_bbn.BBN">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.BBN">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">BBN</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 <span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Bayesian belief network for reliability analysis of software</span>
@@ -117,75 +117,75 @@
 
   <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">defect_file</span><span class="p">,</span> <span class="n">task_file</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">approx</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">42</span><span class="p">):</span>
 <div class="viewcode-block" id="BBN.num_samples">
-<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.software_total_failure_probability_bbn.BBN.num_samples">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.BBN.num_samples">[docs]</a>
     <span class="bp">self</span><span class="o">.</span><span class="n">num_samples</span> <span class="o">=</span> <span class="n">num_samples</span></div>
 
 <div class="viewcode-block" id="BBN._approx">
-<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.software_total_failure_probability_bbn.BBN._approx">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.BBN._approx">[docs]</a>
     <span class="bp">self</span><span class="o">.</span><span class="n">_approx</span> <span class="o">=</span> <span class="n">approx</span></div>
 
 <div class="viewcode-block" id="BBN._data">
-<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.software_total_failure_probability_bbn.BBN._data">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.BBN._data">[docs]</a>
     <span class="bp">self</span><span class="o">.</span><span class="n">_data</span> <span class="o">=</span> <span class="n">data</span></div>
 
     <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="p">)</span>
 <div class="viewcode-block" id="BBN._uca">
-<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.software_total_failure_probability_bbn.BBN._uca">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.BBN._uca">[docs]</a>
     <span class="bp">self</span><span class="o">.</span><span class="n">_uca</span> <span class="o">=</span> <span class="n">UCA_types</span></div>
 
 <div class="viewcode-block" id="BBN._odc">
-<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.software_total_failure_probability_bbn.BBN._odc">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.BBN._odc">[docs]</a>
     <span class="bp">self</span><span class="o">.</span><span class="n">_odc</span> <span class="o">=</span> <span class="n">ODC_types</span></div>
 
 <div class="viewcode-block" id="BBN._sdlc">
-<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.software_total_failure_probability_bbn.BBN._sdlc">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.BBN._sdlc">[docs]</a>
     <span class="bp">self</span><span class="o">.</span><span class="n">_sdlc</span> <span class="o">=</span> <span class="n">SDLC_stages</span></div>
 
 <div class="viewcode-block" id="BBN._defect">
-<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.software_total_failure_probability_bbn.BBN._defect">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.BBN._defect">[docs]</a>
     <span class="bp">self</span><span class="o">.</span><span class="n">_defect</span> <span class="o">=</span> <span class="n">defect_file</span></div>
 
 <div class="viewcode-block" id="BBN._task">
-<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.software_total_failure_probability_bbn.BBN._task">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.BBN._task">[docs]</a>
     <span class="bp">self</span><span class="o">.</span><span class="n">_task</span> <span class="o">=</span> <span class="n">task_file</span></div>
 
 <div class="viewcode-block" id="BBN.prob_stage">
-<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.software_total_failure_probability_bbn.BBN.prob_stage">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.BBN.prob_stage">[docs]</a>
     <span class="bp">self</span><span class="o">.</span><span class="n">prob_stage</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1"># HEP for each stage</span></div>
 
 <div class="viewcode-block" id="BBN.prob_odc">
-<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.software_total_failure_probability_bbn.BBN.prob_odc">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.BBN.prob_odc">[docs]</a>
     <span class="bp">self</span><span class="o">.</span><span class="n">prob_odc</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1"># ODC marginal probability</span></div>
 
 <div class="viewcode-block" id="BBN.prob_dcp">
-<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.software_total_failure_probability_bbn.BBN.prob_dcp">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.BBN.prob_dcp">[docs]</a>
     <span class="bp">self</span><span class="o">.</span><span class="n">prob_dcp</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1"># DEP for each stage</span></div>
 
 <div class="viewcode-block" id="BBN.prob_total">
-<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.software_total_failure_probability_bbn.BBN.prob_total">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.BBN.prob_total">[docs]</a>
     <span class="bp">self</span><span class="o">.</span><span class="n">prob_total</span> <span class="o">=</span> <span class="kc">None</span> <span class="c1"># Software total probability</span></div>
 
 <div class="viewcode-block" id="BBN.prob_uca">
-<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.software_total_failure_probability_bbn.BBN.prob_uca">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.BBN.prob_uca">[docs]</a>
     <span class="bp">self</span><span class="o">.</span><span class="n">prob_uca</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1"># UCA probability</span></div>
 
 <div class="viewcode-block" id="BBN._hemd_dist">
-<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.software_total_failure_probability_bbn.BBN._hemd_dist">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.BBN._hemd_dist">[docs]</a>
     <span class="bp">self</span><span class="o">.</span><span class="n">_hemd_dist</span> <span class="o">=</span> <span class="p">{}</span></div>
 
     <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_approx</span><span class="p">:</span>
       <span class="n">_</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_hemd_dist</span> <span class="o">=</span>  <span class="n">get_hemd_from_spreadsheet</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_defect</span><span class="p">)</span>
 <div class="viewcode-block" id="BBN.prob_stage_odc">
-<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.software_total_failure_probability_bbn.BBN.prob_stage_odc">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.BBN.prob_stage_odc">[docs]</a>
     <span class="bp">self</span><span class="o">.</span><span class="n">prob_stage_odc</span> <span class="o">=</span> <span class="n">get_stage_odc_dist</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_defect</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="BBN.prob_uca_correlation">
-<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.software_total_failure_probability_bbn.BBN.prob_uca_correlation">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.BBN.prob_uca_correlation">[docs]</a>
     <span class="bp">self</span><span class="o">.</span><span class="n">prob_uca_correlation</span> <span class="o">=</span> <span class="n">get_uca_defect_correlation_dist</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_defect</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="BBN.initialize_stage">
-<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.software_total_failure_probability_bbn.BBN.initialize_stage">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.BBN.initialize_stage">[docs]</a>
   <span class="k">def</span><span class="w"> </span><span class="nf">initialize_stage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="n">G</span> <span class="o">=</span> <span class="mf">0.25</span>
     <span class="k">for</span> <span class="n">stage</span><span class="p">,</span> <span class="n">vals</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -205,7 +205,7 @@
 
 
 <div class="viewcode-block" id="BBN.calculate">
-<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.software_total_failure_probability_bbn.BBN.calculate">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.BBN.calculate">[docs]</a>
   <span class="k">def</span><span class="w"> </span><span class="nf">calculate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate software failure probability based on BBN</span>
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -287,7 +287,7 @@
 
 
 <div class="viewcode-block" id="BBN.get_total_failure_probability">
-<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.software_total_failure_probability_bbn.BBN.get_total_failure_probability">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.BBN.get_total_failure_probability">[docs]</a>
   <span class="k">def</span><span class="w"> </span><span class="nf">get_total_failure_probability</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Get total failure probability</span>
 
@@ -300,7 +300,7 @@
 
 
 <div class="viewcode-block" id="BBN.get_uca">
-<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.software_total_failure_probability_bbn.BBN.get_uca">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.BBN.get_uca">[docs]</a>
   <span class="k">def</span><span class="w"> </span><span class="nf">get_uca</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">uca_type</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Get UCA probability</span>
 
@@ -318,7 +318,7 @@
 
 
 <div class="viewcode-block" id="BBN.plot">
-<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.software_total_failure_probability_bbn.BBN.plot">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.BBN.plot">[docs]</a>
   <span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">save</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">show</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Plot calculated data</span>
 

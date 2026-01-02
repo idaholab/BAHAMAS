@@ -82,6 +82,26 @@
 <li class="toctree-l4"><a class="reference internal" href="workflow/index.html">bahamas.workflow</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#attributes">Attributes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#classes">Classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#functions">Functions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#package-contents">Package Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#bahamas.BBN"><code class="docutils literal notranslate"><span class="pre">BBN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bahamas.sdlc_stage_hep_calculation"><code class="docutils literal notranslate"><span class="pre">sdlc_stage_hep_calculation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bahamas.sdlc_stage_hep_calculation_approx"><code class="docutils literal notranslate"><span class="pre">sdlc_stage_hep_calculation_approx()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bahamas.get_hemd_from_spreadsheet"><code class="docutils literal notranslate"><span class="pre">get_hemd_from_spreadsheet()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bahamas.get_stage_odc_dist"><code class="docutils literal notranslate"><span class="pre">get_stage_odc_dist()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bahamas.stage_dcp_calculation"><code class="docutils literal notranslate"><span class="pre">stage_dcp_calculation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bahamas.get_uca_defect_correlation_dist"><code class="docutils literal notranslate"><span class="pre">get_uca_defect_correlation_dist()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bahamas.SDLC_stages"><code class="docutils literal notranslate"><span class="pre">SDLC_stages</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bahamas.ODC_types"><code class="docutils literal notranslate"><span class="pre">ODC_types</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bahamas.UCA_types"><code class="docutils literal notranslate"><span class="pre">UCA_types</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bahamas.plot_histogram"><code class="docutils literal notranslate"><span class="pre">plot_histogram()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bahamas.CCCG"><code class="docutils literal notranslate"><span class="pre">CCCG</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bahamas.Workflow"><code class="docutils literal notranslate"><span class="pre">Workflow</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#bahamas.validate_toml"><code class="docutils literal notranslate"><span class="pre">validate_toml()</span></code></a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -135,6 +155,702 @@
 <li class="toctree-l1"><a class="reference internal" href="workflow/index.html">bahamas.workflow</a></li>
 </ul>
 </div>
+</section>
+<section id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bahamas.SDLC_stages" title="bahamas.SDLC_stages"><code class="xref py py-obj docutils literal notranslate"><span class="pre">SDLC_stages</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bahamas.ODC_types" title="bahamas.ODC_types"><code class="xref py py-obj docutils literal notranslate"><span class="pre">ODC_types</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bahamas.UCA_types" title="bahamas.UCA_types"><code class="xref py py-obj docutils literal notranslate"><span class="pre">UCA_types</span></code></a></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="classes">
+<h2>Classes<a class="headerlink" href="#classes" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bahamas.BBN" title="bahamas.BBN"><code class="xref py py-obj docutils literal notranslate"><span class="pre">BBN</span></code></a></p></td>
+<td><p>Bayesian belief network for reliability analysis of software</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bahamas.CCCG" title="bahamas.CCCG"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CCCG</span></code></a></p></td>
+<td><p>Compute CCCGs for the given list of components of diversity and redundancy system</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bahamas.Workflow" title="bahamas.Workflow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Workflow</span></code></a></p></td>
+<td><p>Workflow manager for BAHAMAS calculation</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Link to this heading"></a></h2>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="sdlc_stage_hep_calculation/index.html#module-bahamas.sdlc_stage_hep_calculation" title="bahamas.sdlc_stage_hep_calculation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sdlc_stage_hep_calculation</span></code></a>(excel_file_path, ...[, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="sdlc_stage_hep_calculation_approx/index.html#module-bahamas.sdlc_stage_hep_calculation_approx" title="bahamas.sdlc_stage_hep_calculation_approx"><code class="xref py py-obj docutils literal notranslate"><span class="pre">sdlc_stage_hep_calculation_approx</span></code></a>(excel_file_path, ...)</p></td>
+<td><p>This function reads in the human error probability (mean and std) from a</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bahamas.get_hemd_from_spreadsheet" title="bahamas.get_hemd_from_spreadsheet"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_hemd_from_spreadsheet</span></code></a>(spreadsheet_file[, ...])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bahamas.get_stage_odc_dist" title="bahamas.get_stage_odc_dist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_stage_odc_dist</span></code></a>(excel_file[, distribution, sheet_name])</p></td>
+<td><p>Get the distribution of each ODC defect at the given SDLC stage</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bahamas.stage_dcp_calculation" title="bahamas.stage_dcp_calculation"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stage_dcp_calculation</span></code></a>(excel_file, sheet_name)</p></td>
+<td><p>Defect conditional probability calculation for each SDLC stage</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bahamas.get_uca_defect_correlation_dist" title="bahamas.get_uca_defect_correlation_dist"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_uca_defect_correlation_dist</span></code></a>(excel_file[, ...])</p></td>
+<td><p>Assign distribution for each UCA defect correlation term</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#bahamas.plot_histogram" title="bahamas.plot_histogram"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_histogram</span></code></a>(data_dict, title[, save, show])</p></td>
+<td><p>Plot histogram for sampled data</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#bahamas.validate_toml" title="bahamas.validate_toml"><code class="xref py py-obj docutils literal notranslate"><span class="pre">validate_toml</span></code></a>(config)</p></td>
+<td><p>Validate TOML input file</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="package-contents">
+<h2>Package Contents<a class="headerlink" href="#package-contents" title="Link to this heading"></a></h2>
+<dl class="py class">
+<dt class="sig sig-object py" id="bahamas.BBN">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bahamas.</span></span><span class="sig-name descname"><span class="pre">BBN</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">defect_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">task_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_samples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">approx</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">42</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/bahamas/software_total_failure_probability_bbn.html#BBN"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.BBN" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Bayesian belief network for reliability analysis of software</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.BBN.num_samples">
+<span class="sig-name descname"><span class="pre">num_samples</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1000</span></em><a class="headerlink" href="#bahamas.BBN.num_samples" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.BBN._approx">
+<span class="sig-name descname"><span class="pre">_approx</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#bahamas.BBN._approx" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.BBN._data">
+<span class="sig-name descname"><span class="pre">_data</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#bahamas.BBN._data" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.BBN._uca">
+<span class="sig-name descname"><span class="pre">_uca</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['UCA-A',</span> <span class="pre">'UCA-B',</span> <span class="pre">'UCA-C',</span> <span class="pre">'UCA-D']</span></em><a class="headerlink" href="#bahamas.BBN._uca" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.BBN._odc">
+<span class="sig-name descname"><span class="pre">_odc</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['Algorithm',</span> <span class="pre">'Assignment',</span> <span class="pre">'Checking',</span> <span class="pre">'Documentation',</span> <span class="pre">'Function',</span> <span class="pre">'Interface',...</span></em><a class="headerlink" href="#bahamas.BBN._odc" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.BBN._sdlc">
+<span class="sig-name descname"><span class="pre">_sdlc</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['Concept',</span> <span class="pre">'Requirement',</span> <span class="pre">'Design',</span> <span class="pre">'Implementation',</span> <span class="pre">'Testing',</span> <span class="pre">'Install</span> <span class="pre">and</span> <span class="pre">Maintenance']</span></em><a class="headerlink" href="#bahamas.BBN._sdlc" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.BBN._defect">
+<span class="sig-name descname"><span class="pre">_defect</span></span><a class="headerlink" href="#bahamas.BBN._defect" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.BBN._task">
+<span class="sig-name descname"><span class="pre">_task</span></span><a class="headerlink" href="#bahamas.BBN._task" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.BBN.prob_stage">
+<span class="sig-name descname"><span class="pre">prob_stage</span></span><a class="headerlink" href="#bahamas.BBN.prob_stage" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.BBN.prob_odc">
+<span class="sig-name descname"><span class="pre">prob_odc</span></span><a class="headerlink" href="#bahamas.BBN.prob_odc" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.BBN.prob_dcp">
+<span class="sig-name descname"><span class="pre">prob_dcp</span></span><a class="headerlink" href="#bahamas.BBN.prob_dcp" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.BBN.prob_total">
+<span class="sig-name descname"><span class="pre">prob_total</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#bahamas.BBN.prob_total" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.BBN.prob_uca">
+<span class="sig-name descname"><span class="pre">prob_uca</span></span><a class="headerlink" href="#bahamas.BBN.prob_uca" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.BBN._hemd_dist">
+<span class="sig-name descname"><span class="pre">_hemd_dist</span></span><a class="headerlink" href="#bahamas.BBN._hemd_dist" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.BBN.prob_stage_odc">
+<span class="sig-name descname"><span class="pre">prob_stage_odc</span></span><a class="headerlink" href="#bahamas.BBN.prob_stage_odc" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.BBN.prob_uca_correlation">
+<span class="sig-name descname"><span class="pre">prob_uca_correlation</span></span><a class="headerlink" href="#bahamas.BBN.prob_uca_correlation" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bahamas.BBN.initialize_stage">
+<span class="sig-name descname"><span class="pre">initialize_stage</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/bahamas/software_total_failure_probability_bbn.html#BBN.initialize_stage"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.BBN.initialize_stage" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bahamas.BBN.calculate">
+<span class="sig-name descname"><span class="pre">calculate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/bahamas/software_total_failure_probability_bbn.html#BBN.calculate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.BBN.calculate" title="Link to this definition"></a></dt>
+<dd><p>Calculate software failure probability based on BBN</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bahamas.BBN.get_total_failure_probability">
+<span class="sig-name descname"><span class="pre">get_total_failure_probability</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/bahamas/software_total_failure_probability_bbn.html#BBN.get_total_failure_probability"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.BBN.get_total_failure_probability" title="Link to this definition"></a></dt>
+<dd><p>Get total failure probability</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>mean, sigma, and samples</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bahamas.BBN.get_uca">
+<span class="sig-name descname"><span class="pre">get_uca</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">uca_type</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/bahamas/software_total_failure_probability_bbn.html#BBN.get_uca"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.BBN.get_uca" title="Link to this definition"></a></dt>
+<dd><p>Get UCA probability</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>uca_type</strong> (<em>str</em>) – Type of UCA</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>mean, sigma, and samples</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bahamas.BBN.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'all'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/bahamas/software_total_failure_probability_bbn.html#BBN.plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.BBN.plot" title="Link to this definition"></a></dt>
+<dd><p>Plot calculated data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>type</strong> (<em>str</em><em>, </em><em>optional</em>) – Type of plots to plot (defaults to ‘all’)</p></li>
+<li><p><strong>save</strong> (<em>bool</em><em>, </em><em>optional</em>) – Save plots into .png file if True (defaults to False)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>plotly figure object</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list or figure object</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bahamas.sdlc_stage_hep_calculation">
+<span class="sig-prename descclassname"><span class="pre">bahamas.</span></span><span class="sig-name descname"><span class="pre">sdlc_stage_hep_calculation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">excel_file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sheet_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hemd</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_samples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distribution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'lognorm'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/bahamas/sdlc_stage_hep_calculation.html#sdlc_stage_hep_calculation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.sdlc_stage_hep_calculation" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>excel_file_path</strong> (<em>str</em>) – Filename of the spreadsheet with the number of actions and types</p></li>
+<li><p><strong>sheet_name</strong> (<em>str</em>) – Sheet name in the spreadsheet with the data</p></li>
+<li><p><strong>hemd</strong> (<em>dict</em>) – Dictionary of rvs functions, keyed by action type</p></li>
+<li><p><strong>num_samples</strong> (<em>int</em>) – Number of samples to generate for each action</p></li>
+<li><p><strong>distribution</strong> (<em>str</em>) – Type of distribution to use (currently always “lognorm”)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>total, fitted</strong> (<em>numpy.array, dict</em>) – The samples for the SDLC stage by considering all human error propagations,
+and a dictionary of the fitted mu and sigma parameters.</p></li>
+<li><p><em>This function reads in the number of human actions and human error modes from a</em></p></li>
+<li><p><em>spreadsheet, and calculates the human error probability distributions.</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bahamas.sdlc_stage_hep_calculation_approx">
+<span class="sig-prename descclassname"><span class="pre">bahamas.</span></span><span class="sig-name descname"><span class="pre">sdlc_stage_hep_calculation_approx</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">excel_file_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sheet_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_samples</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">100</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distribution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'norm'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/bahamas/sdlc_stage_hep_calculation_approx.html#sdlc_stage_hep_calculation_approx"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.sdlc_stage_hep_calculation_approx" title="Link to this definition"></a></dt>
+<dd><p>This function reads in the human error probability (mean and std) from a
+spreadsheet and calculates the human error probability distributions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>excel_file_path</strong> (<em>str</em>) – Filename of the spreadsheet with the number of actions and types</p></li>
+<li><p><strong>sheet_name</strong> (<em>str</em>) – Sheet name in the spreadsheet with the data</p></li>
+<li><p><strong>num_samples</strong> (<em>int</em>) – Number of samples to generate for each action</p></li>
+<li><p><strong>distribution</strong> (<em>str</em>) – Type of distribution to use (currently always “norm”)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>total, None</strong> – Samples for the SDLC stage by considering all human error propagations</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.array, None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bahamas.get_hemd_from_spreadsheet">
+<span class="sig-prename descclassname"><span class="pre">bahamas.</span></span><span class="sig-name descname"><span class="pre">get_hemd_from_spreadsheet</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">spreadsheet_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sheet_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'HEMD'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distribution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'lognorm'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/bahamas/human_error_mode_distribution.html#get_hemd_from_spreadsheet"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.get_hemd_from_spreadsheet" title="Link to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>spreadsheet_file</strong> (<em>str</em>) – Filename of the spreadsheet to read in</p></li>
+<li><p><strong>sheet_name</strong> (<em>str</em>) – Name of the sheet with the human error mode distribution data</p></li>
+<li><p><strong>distribution</strong> (<em>str</em>) – Type of distribution to use (currently only “lognorm” is supported)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>hemd, dist_dict</strong> (<em>dict, dict</em>) – The first dictionary contains the rvs sampling function for the action
+type; the second dictionary contains the distribution dictionary — both
+are keyed by the action type.</p></li>
+<li><p><em>gets the human error mode distributions from a spreadsheet</em></p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bahamas.get_stage_odc_dist">
+<span class="sig-prename descclassname"><span class="pre">bahamas.</span></span><span class="sig-name descname"><span class="pre">get_stage_odc_dist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">excel_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distribution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'beta'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sheet_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ODC'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/bahamas/stage_odc_distribution.html#get_stage_odc_dist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.get_stage_odc_dist" title="Link to this definition"></a></dt>
+<dd><p>Get the distribution of each ODC defect at the given SDLC stage
+P(Defect type|SDLC Stage) = dist_dict[‘SDLC Stage’][‘Defect type’]</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>excel_file</strong> (<em>str</em>) – Filename of the excel file to read in</p></li>
+<li><p><strong>distribution</strong> (<em>str</em><em>, </em><em>optional</em>) – Type of distribution to use (defaults to “beta”)</p></li>
+<li><p><strong>sheet_name</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of the sheet with the ODC data (defaults to “ODC”)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bahamas.stage_dcp_calculation">
+<span class="sig-prename descclassname"><span class="pre">bahamas.</span></span><span class="sig-name descname"><span class="pre">stage_dcp_calculation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">excel_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sheet_name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/bahamas/defect_conditional_probability.html#stage_dcp_calculation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.stage_dcp_calculation" title="Link to this definition"></a></dt>
+<dd><p>Defect conditional probability calculation for each SDLC stage</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>excel_file</strong> (<em>str</em>) – The filename of the spreadsheet with the review number and trigger coverage</p></li>
+<li><p><strong>sheet_name</strong> (<em>str</em>) – The sheet name in the spreadsheet with the data (i.e., the SDLC stage name)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>defect conditional probability</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dcp (float)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bahamas.get_uca_defect_correlation_dist">
+<span class="sig-prename descclassname"><span class="pre">bahamas.</span></span><span class="sig-name descname"><span class="pre">get_uca_defect_correlation_dist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">excel_file</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distribution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'norm'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sheet_name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'UCA</span> <span class="pre">Correlation'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/bahamas/uca_defect_correlation.html#get_uca_defect_correlation_dist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.get_uca_defect_correlation_dist" title="Link to this definition"></a></dt>
+<dd><p>Assign distribution for each UCA defect correlation term</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>excel_file</strong> (<em>str</em>) – Excel file to read in</p></li>
+<li><p><strong>distribution</strong> (<em>str</em><em>, </em><em>optional</em>) – Type of distribution (defaults to “norm”)</p></li>
+<li><p><strong>sheet_name</strong> (<em>str</em><em>, </em><em>optional</em>) – Name of the sheet with UCA correlation data (defaults to “UCA Correlation”)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>UCA defect correlation distribution, {‘UCA type’:{‘ODC type’:Dist},…}</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bahamas.SDLC_stages">
+<span class="sig-prename descclassname"><span class="pre">bahamas.</span></span><span class="sig-name descname"><span class="pre">SDLC_stages</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['Concept',</span> <span class="pre">'Requirement',</span> <span class="pre">'Design',</span> <span class="pre">'Implementation',</span> <span class="pre">'Testing',</span> <span class="pre">'Install</span> <span class="pre">and</span> <span class="pre">Maintenance']</span></em><a class="reference internal" href="../../_modules/bahamas/utils.html#SDLC_stages"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.SDLC_stages" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bahamas.ODC_types">
+<span class="sig-prename descclassname"><span class="pre">bahamas.</span></span><span class="sig-name descname"><span class="pre">ODC_types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['Algorithm',</span> <span class="pre">'Assignment',</span> <span class="pre">'Checking',</span> <span class="pre">'Documentation',</span> <span class="pre">'Function',</span> <span class="pre">'Interface',...</span></em><a class="reference internal" href="../../_modules/bahamas/utils.html#ODC_types"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.ODC_types" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="bahamas.UCA_types">
+<span class="sig-prename descclassname"><span class="pre">bahamas.</span></span><span class="sig-name descname"><span class="pre">UCA_types</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">['UCA-A',</span> <span class="pre">'UCA-B',</span> <span class="pre">'UCA-C',</span> <span class="pre">'UCA-D']</span></em><a class="reference internal" href="../../_modules/bahamas/utils.html#UCA_types"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.UCA_types" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bahamas.plot_histogram">
+<span class="sig-prename descclassname"><span class="pre">bahamas.</span></span><span class="sig-name descname"><span class="pre">plot_histogram</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data_dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">show</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/bahamas/plot_utils.html#plot_histogram"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.plot_histogram" title="Link to this definition"></a></dt>
+<dd><p>Plot histogram for sampled data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data_dict</strong> (<em>dict</em>) – dictionary of sampled data</p></li>
+<li><p><strong>title</strong> (<em>str</em>) – title for the plot</p></li>
+<li><p><strong>save</strong> (<em>bool</em><em>, </em><em>optional</em>) – Save plot into .png file if True (defaults to False)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>plotly figure object</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>figure object</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="bahamas.CCCG">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bahamas.</span></span><span class="sig-name descname"><span class="pre">CCCG</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/bahamas/cccg.html#CCCG"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.CCCG" title="Link to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Compute CCCGs for the given list of components of diversity and redundancy system</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.CCCG._sys_diagram">
+<span class="sig-name descname"><span class="pre">_sys_diagram</span></span><a class="headerlink" href="#bahamas.CCCG._sys_diagram" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.CCCG._cccg_final">
+<span class="sig-name descname"><span class="pre">_cccg_final</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#bahamas.CCCG._cccg_final" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.CCCG._cccg_function">
+<span class="sig-name descname"><span class="pre">_cccg_function</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#bahamas.CCCG._cccg_function" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.CCCG._cccg_input">
+<span class="sig-name descname"><span class="pre">_cccg_input</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#bahamas.CCCG._cccg_input" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.CCCG._cccg_design">
+<span class="sig-name descname"><span class="pre">_cccg_design</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#bahamas.CCCG._cccg_design" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.CCCG._cccg_single">
+<span class="sig-name descname"><span class="pre">_cccg_single</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#bahamas.CCCG._cccg_single" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.CCCG._cccg_function_input">
+<span class="sig-name descname"><span class="pre">_cccg_function_input</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#bahamas.CCCG._cccg_function_input" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.CCCG._cccg_function_design">
+<span class="sig-name descname"><span class="pre">_cccg_function_design</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#bahamas.CCCG._cccg_function_design" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.CCCG._cccg_input_function">
+<span class="sig-name descname"><span class="pre">_cccg_input_function</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#bahamas.CCCG._cccg_input_function" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.CCCG._cccg_input_design">
+<span class="sig-name descname"><span class="pre">_cccg_input_design</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#bahamas.CCCG._cccg_input_design" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.CCCG._cccg_design_input">
+<span class="sig-name descname"><span class="pre">_cccg_design_input</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#bahamas.CCCG._cccg_design_input" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.CCCG._cccg_design_function">
+<span class="sig-name descname"><span class="pre">_cccg_design_function</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#bahamas.CCCG._cccg_design_function" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.CCCG._cccg_double">
+<span class="sig-name descname"><span class="pre">_cccg_double</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#bahamas.CCCG._cccg_double" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.CCCG._cccg_function_input_design">
+<span class="sig-name descname"><span class="pre">_cccg_function_input_design</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#bahamas.CCCG._cccg_function_input_design" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.CCCG._cccg_function_design_input">
+<span class="sig-name descname"><span class="pre">_cccg_function_design_input</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#bahamas.CCCG._cccg_function_design_input" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.CCCG._cccg_input_design_function">
+<span class="sig-name descname"><span class="pre">_cccg_input_design_function</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#bahamas.CCCG._cccg_input_design_function" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.CCCG._cccg_input_function_design">
+<span class="sig-name descname"><span class="pre">_cccg_input_function_design</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#bahamas.CCCG._cccg_input_function_design" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.CCCG._cccg_design_input_function">
+<span class="sig-name descname"><span class="pre">_cccg_design_input_function</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#bahamas.CCCG._cccg_design_input_function" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.CCCG._cccg_design_function_input">
+<span class="sig-name descname"><span class="pre">_cccg_design_function_input</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#bahamas.CCCG._cccg_design_function_input" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.CCCG._cccg_triple">
+<span class="sig-name descname"><span class="pre">_cccg_triple</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#bahamas.CCCG._cccg_triple" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.CCCG._function_all">
+<span class="sig-name descname"><span class="pre">_function_all</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#bahamas.CCCG._function_all" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.CCCG._input_all">
+<span class="sig-name descname"><span class="pre">_input_all</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#bahamas.CCCG._input_all" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.CCCG._design_all">
+<span class="sig-name descname"><span class="pre">_design_all</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">[]</span></em><a class="headerlink" href="#bahamas.CCCG._design_all" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bahamas.CCCG.generate">
+<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/bahamas/cccg.html#CCCG.generate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.CCCG.generate" title="Link to this definition"></a></dt>
+<dd><p>Generate CCCGs based on three coupling factors (i.e., Function, Input, and Design)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>config</strong> (<em>dict</em><em>, </em><em>optional</em>) – config file for output control. Defaults to None.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bahamas.CCCG.get">
+<span class="sig-name descname"><span class="pre">get</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/bahamas/cccg.html#CCCG.get"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.CCCG.get" title="Link to this definition"></a></dt>
+<dd><p>Get CCCGs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – name for CCCGs group</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>list of CCCGs</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list (list of Pandas.DataFrame)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bahamas.CCCG.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'csv'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/bahamas/cccg.html#CCCG.write"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.CCCG.write" title="Link to this definition"></a></dt>
+<dd><p>Dump data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>list</em><em> of </em><em>pandas.DataFrame</em>) – output data to dump</p></li>
+<li><p><strong>fname</strong> (<em>str</em>) – file name to save the data</p></li>
+<li><p><strong>style</strong> (<em>str</em><em>, </em><em>optional</em>) – type of file. Defaults to “csv”.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bahamas.CCCG.aggregate">
+<span class="sig-name descname"><span class="pre">aggregate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cccgs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/bahamas/cccg.html#CCCG.aggregate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.CCCG.aggregate" title="Link to this definition"></a></dt>
+<dd><p>Aggregate expanded Function, Input, and Design into Function_Config, Input_Config, and Design_Config</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>cccgs</strong> (<em>list</em>) – list of pd.DataFrame (i.e., CCCGs)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>list of aggregated CCCGs</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="bahamas.Workflow">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bahamas.</span></span><span class="sig-name descname"><span class="pre">Workflow</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/bahamas/workflow.html#Workflow"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.Workflow" title="Link to this definition"></a></dt>
+<dd><p>Workflow manager for BAHAMAS calculation</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.Workflow._config">
+<span class="sig-name descname"><span class="pre">_config</span></span><a class="headerlink" href="#bahamas.Workflow._config" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.Workflow._bbn_config">
+<span class="sig-name descname"><span class="pre">_bbn_config</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#bahamas.Workflow._bbn_config" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="bahamas.Workflow._ccf_config">
+<span class="sig-name descname"><span class="pre">_ccf_config</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">None</span></em><a class="headerlink" href="#bahamas.Workflow._ccf_config" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bahamas.Workflow.update_config">
+<span class="sig-name descname"><span class="pre">update_config</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/bahamas/workflow.html#Workflow.update_config"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.Workflow.update_config" title="Link to this definition"></a></dt>
+<dd><p>update default config with user provided data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>config</strong> (<em>dict</em>) – User-provided config file</p></li>
+<li><p><strong>name</strong> (<em>str</em>) – Name for the config file (i.e., BBN or CCF)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>IOError</strong> – If name is valid, raise the error</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>updated config file</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bahamas.Workflow.initialize_bbn">
+<span class="sig-name descname"><span class="pre">initialize_bbn</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/bahamas/workflow.html#Workflow.initialize_bbn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.Workflow.initialize_bbn" title="Link to this definition"></a></dt>
+<dd><p>Initialize BBN calculation</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bahamas.Workflow.initialize_ccf">
+<span class="sig-name descname"><span class="pre">initialize_ccf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/bahamas/workflow.html#Workflow.initialize_ccf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.Workflow.initialize_ccf" title="Link to this definition"></a></dt>
+<dd><p>Initialize CCF calculation</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bahamas.Workflow.run_bbn">
+<span class="sig-name descname"><span class="pre">run_bbn</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/bahamas/workflow.html#Workflow.run_bbn"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.Workflow.run_bbn" title="Link to this definition"></a></dt>
+<dd><p>Run BBN Calculation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>IOError</strong> – Error out if invalid input for analysis type is provided</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bahamas.Workflow.run_ccf">
+<span class="sig-name descname"><span class="pre">run_ccf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/bahamas/workflow.html#Workflow.run_ccf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.Workflow.run_ccf" title="Link to this definition"></a></dt>
+<dd><p>Run CCF calculation</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bahamas.Workflow.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/bahamas/workflow.html#Workflow.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.Workflow.run" title="Link to this definition"></a></dt>
+<dd><p>Execute the workflow</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bahamas.Workflow.write">
+<span class="sig-name descname"><span class="pre">write</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">style</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'csv'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/bahamas/workflow.html#Workflow.write"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.Workflow.write" title="Link to this definition"></a></dt>
+<dd><p>Dump data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>pandas.DataFrame</em>) – Output data to dump</p></li>
+<li><p><strong>fname</strong> (<em>str</em>) – File name for saving the data</p></li>
+<li><p><strong>style</strong> (<em>str</em><em>, </em><em>optional</em>) – Type of file (defaults to “csv”)</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bahamas.Workflow.visualize">
+<span class="sig-name descname"><span class="pre">visualize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/bahamas/workflow.html#Workflow.visualize"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.Workflow.visualize" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bahamas.Workflow.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/bahamas/workflow.html#Workflow.reset"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.Workflow.reset" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="bahamas.Workflow._validate">
+<span class="sig-name descname"><span class="pre">_validate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/bahamas/workflow.html#Workflow._validate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.Workflow._validate" title="Link to this definition"></a></dt>
+<dd><p>Validate input file using JSON schema</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>config</strong> (<em>dict</em>) – Dictionary for input</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>IOError</strong> – Error out if  invalid</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="bahamas.validate_toml">
+<span class="sig-prename descclassname"><span class="pre">bahamas.</span></span><span class="sig-name descname"><span class="pre">validate_toml</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/bahamas/validate.html#validate_toml"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.validate_toml" title="Link to this definition"></a></dt>
+<dd><p>Validate TOML input file</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>config</strong> (<em>dict</em>) – Loaded TOML input</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>True if valid</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
 </section>
 </section>
 

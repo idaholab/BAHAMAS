@@ -97,12 +97,12 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">ODC_types</span><span class="p">,</span> <span class="n">SDLC_stages</span>
 
 <div class="viewcode-block" id="logger">
-<a class="viewcode-back" href="../../autoapi/bahamas/stage_odc_distribution/index.html#bahamas.stage_odc_distribution.logger">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/stage_odc_distribution/index.html#bahamas.logger">[docs]</a>
 <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;BAHAMAS.ODC&#39;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="get_stage_odc_dist">
-<a class="viewcode-back" href="../../autoapi/bahamas/stage_odc_distribution/index.html#bahamas.stage_odc_distribution.get_stage_odc_dist">[docs]</a>
+<a class="viewcode-back" href="../../autoapi/bahamas/stage_odc_distribution/index.html#bahamas.get_stage_odc_dist">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">get_stage_odc_dist</span><span class="p">(</span><span class="n">excel_file</span><span class="p">,</span> <span class="n">distribution</span><span class="o">=</span><span class="s1">&#39;beta&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;ODC&#39;</span><span class="p">):</span>
 <span class="w">  </span><span class="sd">&quot;&quot;&quot;Get the distribution of each ODC defect at the given SDLC stage</span>
 <span class="sd">  P(Defect type|SDLC Stage) = dist_dict[&#39;SDLC Stage&#39;][&#39;Defect type&#39;]</span>

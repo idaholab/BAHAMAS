@@ -26,3 +26,555 @@ Submodules
    /autoapi/bahamas/workflow/index
 
 
+Attributes
+----------
+
+.. autoapisummary::
+
+   bahamas.SDLC_stages
+   bahamas.ODC_types
+   bahamas.UCA_types
+
+
+Classes
+-------
+
+.. autoapisummary::
+
+   bahamas.BBN
+   bahamas.CCCG
+   bahamas.Workflow
+
+
+Functions
+---------
+
+.. autoapisummary::
+
+   bahamas.sdlc_stage_hep_calculation
+   bahamas.sdlc_stage_hep_calculation_approx
+   bahamas.get_hemd_from_spreadsheet
+   bahamas.get_stage_odc_dist
+   bahamas.stage_dcp_calculation
+   bahamas.get_uca_defect_correlation_dist
+   bahamas.plot_histogram
+   bahamas.validate_toml
+
+
+Package Contents
+----------------
+
+.. py:class:: BBN(defect_file, task_file, num_samples=1000, approx=False, data=None, seed=42)
+
+   Bases: :py:obj:`object`
+
+
+   Bayesian belief network for reliability analysis of software
+
+
+   .. py:attribute:: num_samples
+      :value: 1000
+
+
+
+   .. py:attribute:: _approx
+      :value: False
+
+
+
+   .. py:attribute:: _data
+      :value: None
+
+
+
+   .. py:attribute:: _uca
+      :value: ['UCA-A', 'UCA-B', 'UCA-C', 'UCA-D']
+
+
+
+   .. py:attribute:: _odc
+      :value: ['Algorithm', 'Assignment', 'Checking', 'Documentation', 'Function', 'Interface',...
+
+
+
+   .. py:attribute:: _sdlc
+      :value: ['Concept', 'Requirement', 'Design', 'Implementation', 'Testing', 'Install and Maintenance']
+
+
+
+   .. py:attribute:: _defect
+
+
+   .. py:attribute:: _task
+
+
+   .. py:attribute:: prob_stage
+
+
+   .. py:attribute:: prob_odc
+
+
+   .. py:attribute:: prob_dcp
+
+
+   .. py:attribute:: prob_total
+      :value: None
+
+
+
+   .. py:attribute:: prob_uca
+
+
+   .. py:attribute:: _hemd_dist
+
+
+   .. py:attribute:: prob_stage_odc
+
+
+   .. py:attribute:: prob_uca_correlation
+
+
+   .. py:method:: initialize_stage()
+
+
+   .. py:method:: calculate()
+
+      Calculate software failure probability based on BBN
+
+
+
+
+   .. py:method:: get_total_failure_probability()
+
+      Get total failure probability
+
+      :returns: mean, sigma, and samples
+      :rtype: tuple
+
+
+
+   .. py:method:: get_uca(uca_type)
+
+      Get UCA probability
+
+      :param uca_type: Type of UCA
+      :type uca_type: str
+
+      :returns: mean, sigma, and samples
+      :rtype: tuple
+
+
+
+   .. py:method:: plot(type='all', save=False, show=True)
+
+      Plot calculated data
+
+      :param type: Type of plots to plot (defaults to 'all')
+      :type type: str, optional
+      :param save: Save plots into .png file if True (defaults to False)
+      :type save: bool, optional
+
+      :returns: plotly figure object
+      :rtype: list or figure object
+
+
+
+.. py:function:: sdlc_stage_hep_calculation(excel_file_path, sheet_name, hemd, num_samples=100, distribution='lognorm')
+
+   :param excel_file_path: Filename of the spreadsheet with the number of actions and types
+   :type excel_file_path: str
+   :param sheet_name: Sheet name in the spreadsheet with the data
+   :type sheet_name: str
+   :param hemd: Dictionary of rvs functions, keyed by action type
+   :type hemd: dict
+   :param num_samples: Number of samples to generate for each action
+   :type num_samples: int
+   :param distribution: Type of distribution to use (currently always "lognorm")
+   :type distribution: str
+
+   :returns: * **total, fitted** (*numpy.array, dict*) -- The samples for the SDLC stage by considering all human error propagations,
+               and a dictionary of the fitted mu and sigma parameters.
+             * *This function reads in the number of human actions and human error modes from a*
+             * *spreadsheet, and calculates the human error probability distributions.*
+
+
+.. py:function:: sdlc_stage_hep_calculation_approx(excel_file_path, sheet_name, num_samples=100, distribution='norm')
+
+   This function reads in the human error probability (mean and std) from a
+   spreadsheet and calculates the human error probability distributions.
+
+   :param excel_file_path: Filename of the spreadsheet with the number of actions and types
+   :type excel_file_path: str
+   :param sheet_name: Sheet name in the spreadsheet with the data
+   :type sheet_name: str
+   :param num_samples: Number of samples to generate for each action
+   :type num_samples: int
+   :param distribution: Type of distribution to use (currently always "norm")
+   :type distribution: str
+
+   :returns: **total, None** -- Samples for the SDLC stage by considering all human error propagations
+   :rtype: numpy.array, None
+
+
+.. py:function:: get_hemd_from_spreadsheet(spreadsheet_file, sheet_name='HEMD', distribution='lognorm')
+
+   :param spreadsheet_file: Filename of the spreadsheet to read in
+   :type spreadsheet_file: str
+   :param sheet_name: Name of the sheet with the human error mode distribution data
+   :type sheet_name: str
+   :param distribution: Type of distribution to use (currently only "lognorm" is supported)
+   :type distribution: str
+
+   :returns: * **hemd, dist_dict** (*dict, dict*) -- The first dictionary contains the rvs sampling function for the action
+               type; the second dictionary contains the distribution dictionary --- both
+               are keyed by the action type.
+             * *gets the human error mode distributions from a spreadsheet*
+
+
+.. py:function:: get_stage_odc_dist(excel_file, distribution='beta', sheet_name='ODC')
+
+   Get the distribution of each ODC defect at the given SDLC stage
+   P(Defect type|SDLC Stage) = dist_dict['SDLC Stage']['Defect type']
+
+   :param excel_file: Filename of the excel file to read in
+   :type excel_file: str
+   :param distribution: Type of distribution to use (defaults to "beta")
+   :type distribution: str, optional
+   :param sheet_name: Name of the sheet with the ODC data (defaults to "ODC")
+   :type sheet_name: str, optional
+
+
+.. py:function:: stage_dcp_calculation(excel_file, sheet_name)
+
+   Defect conditional probability calculation for each SDLC stage
+
+   :param excel_file: The filename of the spreadsheet with the review number and trigger coverage
+   :type excel_file: str
+   :param sheet_name: The sheet name in the spreadsheet with the data (i.e., the SDLC stage name)
+   :type sheet_name: str
+
+   :returns: defect conditional probability
+   :rtype: dcp (float)
+
+
+.. py:function:: get_uca_defect_correlation_dist(excel_file, distribution='norm', sheet_name='UCA Correlation')
+
+   Assign distribution for each UCA defect correlation term
+
+   :param excel_file: Excel file to read in
+   :type excel_file: str
+   :param distribution: Type of distribution (defaults to "norm")
+   :type distribution: str, optional
+   :param sheet_name: Name of the sheet with UCA correlation data (defaults to "UCA Correlation")
+   :type sheet_name: str, optional
+
+   :returns: UCA defect correlation distribution, {'UCA type':{'ODC type':Dist},...}
+   :rtype: dict
+
+
+.. py:data:: SDLC_stages
+   :value: ['Concept', 'Requirement', 'Design', 'Implementation', 'Testing', 'Install and Maintenance']
+
+
+.. py:data:: ODC_types
+   :value: ['Algorithm', 'Assignment', 'Checking', 'Documentation', 'Function', 'Interface',...
+
+
+.. py:data:: UCA_types
+   :value: ['UCA-A', 'UCA-B', 'UCA-C', 'UCA-D']
+
+
+.. py:function:: plot_histogram(data_dict, title, save=False, show=True)
+
+   Plot histogram for sampled data
+
+   :param data_dict: dictionary of sampled data
+   :type data_dict: dict
+   :param title: title for the plot
+   :type title: str
+   :param save: Save plot into .png file if True (defaults to False)
+   :type save: bool, optional
+
+   :returns: plotly figure object
+   :rtype: figure object
+
+
+.. py:class:: CCCG(file)
+
+   Bases: :py:obj:`object`
+
+
+   Compute CCCGs for the given list of components of diversity and redundancy system
+
+
+   .. py:attribute:: _sys_diagram
+
+
+   .. py:attribute:: _cccg_final
+      :value: []
+
+
+
+   .. py:attribute:: _cccg_function
+      :value: []
+
+
+
+   .. py:attribute:: _cccg_input
+      :value: []
+
+
+
+   .. py:attribute:: _cccg_design
+      :value: []
+
+
+
+   .. py:attribute:: _cccg_single
+      :value: []
+
+
+
+   .. py:attribute:: _cccg_function_input
+      :value: []
+
+
+
+   .. py:attribute:: _cccg_function_design
+      :value: []
+
+
+
+   .. py:attribute:: _cccg_input_function
+      :value: []
+
+
+
+   .. py:attribute:: _cccg_input_design
+      :value: []
+
+
+
+   .. py:attribute:: _cccg_design_input
+      :value: []
+
+
+
+   .. py:attribute:: _cccg_design_function
+      :value: []
+
+
+
+   .. py:attribute:: _cccg_double
+      :value: []
+
+
+
+   .. py:attribute:: _cccg_function_input_design
+      :value: []
+
+
+
+   .. py:attribute:: _cccg_function_design_input
+      :value: []
+
+
+
+   .. py:attribute:: _cccg_input_design_function
+      :value: []
+
+
+
+   .. py:attribute:: _cccg_input_function_design
+      :value: []
+
+
+
+   .. py:attribute:: _cccg_design_input_function
+      :value: []
+
+
+
+   .. py:attribute:: _cccg_design_function_input
+      :value: []
+
+
+
+   .. py:attribute:: _cccg_triple
+      :value: []
+
+
+
+   .. py:attribute:: _function_all
+      :value: []
+
+
+
+   .. py:attribute:: _input_all
+      :value: []
+
+
+
+   .. py:attribute:: _design_all
+      :value: []
+
+
+
+   .. py:method:: generate(config=None)
+
+      Generate CCCGs based on three coupling factors (i.e., Function, Input, and Design)
+
+      :param config: config file for output control. Defaults to None.
+      :type config: dict, optional
+
+
+
+   .. py:method:: get(name)
+
+      Get CCCGs
+
+      :param name: name for CCCGs group
+      :type name: str
+
+      :returns: list of CCCGs
+      :rtype: list (list of Pandas.DataFrame)
+
+
+
+   .. py:method:: write(data, fname, style='csv')
+
+      Dump data
+
+      :param data: output data to dump
+      :type data: list of pandas.DataFrame
+      :param fname: file name to save the data
+      :type fname: str
+      :param style: type of file. Defaults to "csv".
+      :type style: str, optional
+
+
+
+   .. py:method:: aggregate(cccgs)
+
+      Aggregate expanded Function, Input, and Design into Function_Config, Input_Config, and Design_Config
+
+      :param cccgs: list of pd.DataFrame (i.e., CCCGs)
+      :type cccgs: list
+
+      :returns: list of aggregated CCCGs
+      :rtype: list
+
+
+
+.. py:class:: Workflow(config)
+
+   Workflow manager for BAHAMAS calculation
+
+
+
+   .. py:attribute:: _config
+
+
+   .. py:attribute:: _bbn_config
+      :value: None
+
+
+
+   .. py:attribute:: _ccf_config
+      :value: None
+
+
+
+   .. py:method:: update_config(config, name)
+
+      update default config with user provided data
+
+      :param config: User-provided config file
+      :type config: dict
+      :param name: Name for the config file (i.e., BBN or CCF)
+      :type name: str
+
+      :raises IOError: If name is valid, raise the error
+
+      :returns: updated config file
+      :rtype: dict
+
+
+
+   .. py:method:: initialize_bbn()
+
+      Initialize BBN calculation
+
+
+
+
+   .. py:method:: initialize_ccf()
+
+      Initialize CCF calculation
+
+
+
+
+   .. py:method:: run_bbn()
+
+      Run BBN Calculation
+
+      :raises IOError: Error out if invalid input for analysis type is provided
+
+
+
+   .. py:method:: run_ccf()
+
+      Run CCF calculation
+
+
+
+
+   .. py:method:: run()
+
+      Execute the workflow
+
+
+
+
+   .. py:method:: write(data, fname, style='csv')
+
+      Dump data
+
+      :param data: Output data to dump
+      :type data: pandas.DataFrame
+      :param fname: File name for saving the data
+      :type fname: str
+      :param style: Type of file (defaults to "csv")
+      :type style: str, optional
+
+
+
+   .. py:method:: visualize()
+
+
+   .. py:method:: reset()
+
+
+   .. py:method:: _validate(config)
+
+      Validate input file using JSON schema
+
+      :param config: Dictionary for input
+      :type config: dict
+
+      :raises IOError: Error out if  invalid
+
+
+
+.. py:function:: validate_toml(config)
+
+   Validate TOML input file
+
+   :param config: Loaded TOML input
+   :type config: dict
+
+   :returns: True if valid
+   :rtype: bool
+
+
