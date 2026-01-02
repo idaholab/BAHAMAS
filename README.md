@@ -15,6 +15,9 @@ The BAHAMAS Bayesian Belief Network (BBN) consists of the following nodes:
 
 In total, BAHAMAS employs the following concepts. When accounting for defect introduction and removal, specific types of defects will remain in the software. Depending on the types of defects that remain, the software will exhibit certain failure modes.
 
+## Web-App Tool
+https://bahamas.streamlit.app
+
 ## Webpage
 https://idaholab.github.io/BAHAMAS/
 
