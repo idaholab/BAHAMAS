@@ -48,13 +48,13 @@ def configure_sidebar() -> None:
 
 
 def app():
-    st.set_page_config(page_title="BAHAMAS",
-                    # page_icon=":bridge_at_night:",
-                    page_icon="../docs/pics/bahamas_structure.png",
-                    layout="wide",
-                    initial_sidebar_state="auto")
+    # st.set_page_config(page_title="BAHAMAS",
+    #                 # page_icon=":bridge_at_night:",
+    #                 page_icon="../docs/pics/bahamas_structure.png",
+    #                 layout="wide",
+    #                 initial_sidebar_state="auto")
     # st.logo("./docs/pics/bahamas_structure.png")
-    st.image("../docs/pics/bahamas_structure.png", width=200)
+    # st.image("../docs/pics/bahamas_structure.png", width=200)
 
     st.header("""BAHAMAS: Software Reliability Assessment""")
 

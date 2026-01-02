@@ -55,7 +55,7 @@ def app():
     #                 layout="wide",
     #                 initial_sidebar_state="auto")
     # st.logo("./docs/pics/bahamas_structure.png")
-    st.image("../docs/pics/bahamas_structure.png", width=200)
+    # st.image("../docs/pics/bahamas_structure.png", width=200)
 
     st.header("""BAHAMAS: Software Reliability Assessment""")
 
