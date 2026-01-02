@@ -10,28 +10,6 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
 
 from bahamas.cccg import CCCG
 
-# streamlit and extra
-# create badge for github etc.
-from streamlit_extras.badges import badge
-# container always at the bottom
-from streamlit_extras.bottom_container import bottom
-# chart container allows to explore data and download data
-from streamlit_extras.chart_container import chart_container
-# customize the running widget
-from streamlit_extras.customize_running import center_running
-# allow users to explore dataframe data: ranges, variables etc.
-from streamlit_extras.dataframe_explorer import dataframe_explorer
-# Good way to design multi-row, multi-column
-from streamlit_extras.grid import grid
-# similar to grid
-from streamlit_extras.row import row
-# similar to badge
-from streamlit_extras.mention import mention
-# This can be used to report calculation results
-from streamlit_extras.metric_cards import style_metric_cards
-#
-from streamlit_extras.vertical_slider import vertical_slider
-
 workdir = os.path.dirname(__file__)
 sys_data = os.path.join(workdir, '..', '..', 'data', 'Scenario_6.csv')
 

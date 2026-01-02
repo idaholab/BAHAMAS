@@ -2,45 +2,21 @@
 
 import streamlit as st
 import pandas as pd
-import io
 import os, sys
 
 # Bahamas Module
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
-
-from bahamas.utils import SDLC_stages, UCA_types
+from bahamas.utils import  UCA_types
 from bahamas.software_total_failure_probability_bbn import BBN
 
-
 # streamlit and extra
-# create badge for github etc.
-from streamlit_extras.badges import badge
 # container always at the bottom
 from streamlit_extras.bottom_container import bottom
-# chart container allows to explore data and download data
-from streamlit_extras.chart_container import chart_container
-# customize the running widget
-from streamlit_extras.customize_running import center_running
-# allow users to explore dataframe data: ranges, variables etc.
-from streamlit_extras.dataframe_explorer import dataframe_explorer
-# Good way to design multi-row, multi-column
-from streamlit_extras.grid import grid
-# similar to grid
-from streamlit_extras.row import row
-# similar to badge
-from streamlit_extras.mention import mention
-# This can be used to report calculation results
-from streamlit_extras.metric_cards import style_metric_cards
-#
-from streamlit_extras.vertical_slider import vertical_slider
-
 
 # Data:
 
 workdir = os.path.dirname(__file__)
 defect_data = os.path.join(workdir, '..', '..', 'data', 'Defect_Data.xlsx')
-# task_data = os.path.join(workdir, '..', '..', 'data', 'Task_List.xlsx')
-
 
 # Functions for configure
 def configure_sidebar() -> None:

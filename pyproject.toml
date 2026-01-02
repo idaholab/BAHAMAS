@@ -11,7 +11,7 @@ authors = [
 description = "Bayesian and Human Reliability Analysis-Aided Method for the Reliability Analysis of Software (BAHAMAS)"
 readme = "README.md"
 license = {file="LICENSE"}
-requires-python = ">=3.7"
+requires-python = ">=3.9"
 dependencies = [
   "scipy",
   "numpy >= 1.24",
@@ -19,12 +19,20 @@ dependencies = [
   "openpyxl",
   "pytest",
   "jsonpointer",
+  "toml",
+  "streamlit",
+  "plotly",
+  "kaleido",
+  "matplotlib",
+  "streamlit_extras",
+  "streamlit-aggrid",
+  "streamlit-option-menu"
 ]
 classifiers = [
     "Programming Language :: Python :: 3",
-    "License :: OSI Approved :: Apache License",
+    "License :: OSI Approved :: LGPL2.1 License",
     "Operating System :: OS Independent",
-    "Topic :: Scientific/Engineering"
+    "Topic :: Digital I&C Engineering, Software Failure Probability Evaluation"
 ]
 
 [project.urls]

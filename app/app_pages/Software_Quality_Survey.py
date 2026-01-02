@@ -5,7 +5,6 @@ from .regression import get_sil_val
 from scipy.stats import loguniform
 import numpy as np
 import pandas as pd
-import io
 import os, sys
 
 # Bahamas Module
