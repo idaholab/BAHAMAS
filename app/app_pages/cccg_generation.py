@@ -45,10 +45,10 @@ def configure_sidebar() -> None:
 
 def app():
     submitted, sys_data, config = configure_sidebar()
-    st.set_page_config(page_title="Software Common Cause Analysis",
-                    page_icon=":bridge_at_night:",
-                    layout="wide",
-                    initial_sidebar_state="auto")
+    # st.set_page_config(page_title="Software Common Cause Analysis",
+    #                 page_icon=":bridge_at_night:",
+    #                 layout="wide",
+    #                 initial_sidebar_state="auto")
 
     st.header("""Software Common Cause Analysis""")
     if submitted:
