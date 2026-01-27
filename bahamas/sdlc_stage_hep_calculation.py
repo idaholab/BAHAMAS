@@ -39,11 +39,9 @@ def sdlc_stage_hep_calculation(excel_file_path, sheet_name, hemd, num_samples=10
     num_actions = df.iloc[:, 0].to_numpy()
     action_types = df.iloc[:, 1].to_numpy()
 
-    # Fit a lognormal distribution to the total samples
-    total = np.zeros(num_samples)
-    for i in range(len(num_actions)):
-        action_sample = hemd[action_types[i]].rvs(num_samples)
-        total += action_sample
+    # change to bounded method to avoid the explosion of total distribution
+    action_samples = np.array([hemd[action_types[i]].rvs(num_samples) for i in range(len(num_actions))])
+    total = 1 - np.prod(1-action_samples, axis=0)
 
     stage_mean = np.mean(total)
     # Fit the lognormal distribution to the total samples

@@ -43,4 +43,3 @@ def get_hemd_from_spreadsheet(spreadsheet_file, sheet_name="HEMD", distribution=
         dist_dict[series.key] = dist
         hemd[series.key] = dist.rvs
     return hemd, dist_dict
-

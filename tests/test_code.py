@@ -139,16 +139,16 @@ def test_uca_defect_correlation():
 
 def test_BNN():
     uca_mean = [
-        7.154187342983309e-06,
-        1.3478917428646428e-05,
-        4.902251562039053e-06,
-        4.34464021192543e-06,
+        6.961020490811742e-06,
+        1.3120095588845446e-05,
+        4.769145258655531e-06,
+        4.227844956105028e-06,
     ]
     uca_sigma = [
-        3.155548430508983e-06,
-        5.5923036374815045e-06,
-        2.4813382880915815e-06,
-        1.920421171162386e-06,
+        3.0063594160166348e-06,
+        5.322152257419655e-06,
+        2.369530816602122e-06,
+        1.8371002599252646e-06,
     ]
 
     software_BBN = BBN(defect_data, task_data, num_samples=1000)
@@ -162,13 +162,15 @@ def test_BNN():
     abs_tol = 1e-10
 
     assert total_failure_mean == pytest.approx(
-        2.9879996545594217e-05, rel=rel_tol, abs=abs_tol
+        2.9078106294417748e-05, rel=rel_tol, abs=abs_tol
     )
     assert total_failure_sigma == pytest.approx(
-        1.240158963980545e-05, rel=rel_tol, abs=abs_tol
+        1.179881411364726e-05, rel=rel_tol, abs=abs_tol
     )
 
     for i, uca in enumerate(UCA_types):
         mean, sigma, _ = software_BBN.get_uca(uca)
+        print(mean, sigma)
         assert mean == pytest.approx(uca_mean[i], rel=rel_tol, abs=abs_tol)
         assert sigma == pytest.approx(uca_sigma[i], rel=rel_tol, abs=abs_tol)
+
