@@ -170,7 +170,6 @@ def test_BNN():
 
     for i, uca in enumerate(UCA_types):
         mean, sigma, _ = software_BBN.get_uca(uca)
-        print(mean, sigma)
         assert mean == pytest.approx(uca_mean[i], rel=rel_tol, abs=abs_tol)
         assert sigma == pytest.approx(uca_sigma[i], rel=rel_tol, abs=abs_tol)
 
