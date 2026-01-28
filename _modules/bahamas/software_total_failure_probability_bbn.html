@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>bahamas.software_total_failure_probability_bbn &mdash; BAHAMAS 1.0.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
 
@@ -183,11 +183,19 @@
 <a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.BBN.prob_uca_correlation">[docs]</a>
     <span class="bp">self</span><span class="o">.</span><span class="n">prob_uca_correlation</span> <span class="o">=</span> <span class="n">get_uca_defect_correlation_dist</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_defect</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="BBN._G">
+<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.BBN._G">[docs]</a>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_G</span> <span class="o">=</span> <span class="mf">0.25</span></div>
+
+<div class="viewcode-block" id="BBN.review_trigger_factor">
+<a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.BBN.review_trigger_factor">[docs]</a>
+    <span class="bp">self</span><span class="o">.</span><span class="n">review_trigger_factor</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mi">8</span><span class="p">)</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_G</span> <span class="c1"># The same as the value used in Software_Quality_Survey.py</span></div>
+
 
 <div class="viewcode-block" id="BBN.initialize_stage">
 <a class="viewcode-back" href="../../autoapi/bahamas/software_total_failure_probability_bbn/index.html#bahamas.BBN.initialize_stage">[docs]</a>
   <span class="k">def</span><span class="w"> </span><span class="nf">initialize_stage</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="n">G</span> <span class="o">=</span> <span class="mf">0.25</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_G</span>
     <span class="k">for</span> <span class="n">stage</span><span class="p">,</span> <span class="n">vals</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_data</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
       <span class="n">rev</span> <span class="o">=</span> <span class="n">vals</span><span class="p">[</span><span class="s1">&#39;review&#39;</span><span class="p">]</span>
       <span class="n">trigger</span> <span class="o">=</span> <span class="n">vals</span><span class="p">[</span><span class="s1">&#39;trigger&#39;</span><span class="p">]</span>
@@ -199,9 +207,10 @@
         <span class="n">dist</span> <span class="o">=</span> <span class="n">truncnorm</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">mean</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">std</span><span class="p">)</span>
         <span class="n">total</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">num_samples</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">prob_stage</span><span class="p">[</span><span class="n">stage</span><span class="p">]</span> <span class="o">=</span> <span class="n">total</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prob_dcp</span><span class="p">[</span><span class="n">stage</span><span class="p">]</span> <span class="o">=</span> <span class="n">G</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">4.</span><span class="o">*</span><span class="n">rev</span><span class="o">*</span><span class="n">trigger</span><span class="p">)</span>
       <span class="k">else</span><span class="p">:</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">prob_stage</span><span class="p">[</span><span class="n">stage</span><span class="p">]</span> <span class="o">=</span> <span class="n">vals</span><span class="p">[</span><span class="s1">&#39;samples&#39;</span><span class="p">]</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">prob_dcp</span><span class="p">[</span><span class="n">stage</span><span class="p">]</span> <span class="o">=</span> <span class="n">G</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">4.</span><span class="o">*</span><span class="n">rev</span><span class="o">*</span><span class="n">trigger</span><span class="p">)</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prob_dcp</span><span class="p">[</span><span class="n">stage</span><span class="p">]</span> <span class="o">=</span> <span class="n">G</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">4.</span><span class="o">*</span><span class="n">rev</span><span class="o">*</span><span class="n">trigger</span><span class="p">)</span><span class="o">/</span><span class="bp">self</span><span class="o">.</span><span class="n">review_trigger_factor</span></div>
 
 
 <div class="viewcode-block" id="BBN.calculate">
@@ -210,7 +219,6 @@
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Calculate software failure probability based on BBN</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Sampling HEP and DCP&#39;</span><span class="p">)</span>
-
     <span class="k">for</span> <span class="n">stage</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sdlc</span><span class="p">:</span>
       <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_approx</span><span class="p">:</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>

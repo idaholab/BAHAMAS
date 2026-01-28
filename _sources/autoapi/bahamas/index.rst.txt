@@ -134,6 +134,14 @@ Package Contents
    .. py:attribute:: prob_uca_correlation
 
 
+   .. py:attribute:: _G
+      :value: 0.25
+
+
+
+   .. py:attribute:: review_trigger_factor
+
+
    .. py:method:: initialize_stage()
 
 
