@@ -40,9 +40,11 @@ class BBN(object):
       _, self._hemd_dist =  get_hemd_from_spreadsheet(self._defect)
     self.prob_stage_odc = get_stage_odc_dist(self._defect)
     self.prob_uca_correlation = get_uca_defect_correlation_dist(self._defect)
+    self._G = 0.25
+    self.review_trigger_factor = np.exp(-8)*self._G # The same as the value used in Software_Quality_Survey.py
 
   def initialize_stage(self):
-    G = 0.25
+    G = self._G
     for stage, vals in self._data.items():
       rev = vals['review']
       trigger = vals['trigger']
@@ -54,15 +56,15 @@ class BBN(object):
         dist = truncnorm(a, b, loc=mean, scale=std)
         total = dist.rvs(size=self.num_samples)
         self.prob_stage[stage] = total
+        self.prob_dcp[stage] = G*np.exp(-4.*rev*trigger)
       else:
         self.prob_stage[stage] = vals['samples']
-      self.prob_dcp[stage] = G*np.exp(-4.*rev*trigger)
+        self.prob_dcp[stage] = G*np.exp(-4.*rev*trigger)/self.review_trigger_factor
 
   def calculate(self):
     """Calculate software failure probability based on BBN
     """
     logger.info('Sampling HEP and DCP')
-
     for stage in self._sdlc:
       if self._approx:
         if self._task is not None:

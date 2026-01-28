@@ -255,40 +255,52 @@ def app():
   # process data
   if submitted:
     safety_ind = 1 if safety_group == 'Yes' else 0
-    concept_samples = np.zeros(num_samples)
-    requirement_samples = np.zeros(num_samples)
-    design_samples = np.zeros(num_samples)
-    implementation_samples = np.zeros(num_samples)
-    testing_samples = np.zeros(num_samples)
-    InM_samples = np.zeros(num_samples)
+    concept_samples = []
+    requirement_samples = []
+    design_samples = []
+    implementation_samples = []
+    testing_samples = []
+    InM_samples = []
     for key, val in concept.items():
       weight = concept_weight[key][safety_ind]
       a, mean, b = get_sil_val(response_dict[val])
-      concept_samples += loguniform.rvs(a, b, size=num_samples) * weight
+      concept_samples.append(loguniform.rvs(a, b, size=num_samples) * weight)
+    concept_samples = 1 - np.prod(1-np.array(concept_samples), axis=0)
+
+
     for key, val in requirement.items():
       weight = requirement_weight[key][safety_ind]
       a, mean, b = get_sil_val(response_dict[val])
-      requirement_samples += loguniform.rvs(a, b, size=num_samples) * weight
+      requirement_samples.append(loguniform.rvs(a, b, size=num_samples) * weight)
+    requirement_samples = 1 - np.prod(1-np.array(requirement_samples), axis=0)
+
     for key, val in design.items():
       weight = design_weight[key][safety_ind]
       a, mean, b = get_sil_val(response_dict[val])
-      design_samples += loguniform.rvs(a, b, size=num_samples) * weight
+      design_samples.append(loguniform.rvs(a, b, size=num_samples) * weight)
+    design_samples = 1 - np.prod(1-np.array(design_samples), axis=0)
+
     for key, val in implementation.items():
       weight = implementation_weight[key][safety_ind]
       a, mean, b = get_sil_val(response_dict[val])
-      implementation_samples += loguniform.rvs(a, b, size=num_samples) * weight
+      implementation_samples.append(loguniform.rvs(a, b, size=num_samples) * weight)
+    implementation_samples = 1 - np.prod(1-np.array(implementation_samples), axis=0)
+
     for key, val in testing.items():
       weight = testing_weight[key][safety_ind]
       a, mean, b = get_sil_val(response_dict[val])
-      testing_samples += loguniform.rvs(a, b, size=num_samples) * weight
+      testing_samples.append(loguniform.rvs(a, b, size=num_samples) * weight)
+    testing_samples = 1 - np.prod(1-np.array(testing_samples), axis=0)
+
     for key, val in InM.items():
       weight = InM_weight[key][safety_ind]
       a, mean, b = get_sil_val(response_dict[val])
-      InM_samples += loguniform.rvs(a, b, size=num_samples) * weight
+      InM_samples.append(loguniform.rvs(a, b, size=num_samples) * weight)
+    InM_samples = 1 - np.prod(1-np.array(InM_samples), axis=0)
 
     samples = [concept_samples, requirement_samples, design_samples, implementation_samples, testing_samples, InM_samples]
     for i, stage in enumerate(sdlc_stages):
-      software_survey_data[stage] = {'samples':samples[i]/review_trigger_factor, 'review':review_dict[stage], 'trigger':trigger_dict[stage]}
+      software_survey_data[stage] = {'samples':samples[i], 'review':review_dict[stage], 'trigger':trigger_dict[stage]}
 
     # call BAHAMAS BBN with approx
     # update initialize_stage to accept distribution directly
