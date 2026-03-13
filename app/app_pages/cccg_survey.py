@@ -115,12 +115,19 @@ def app():
 
   st.write(afa_score['An|F|Level 2'])
 
-  st.title("Software Common Cause Failure Survey")
+  st.markdown(
+      """
+      <h2 style="white-space: nowrap; text-align: center; color: #16324f;">
+          Common Cause Evaluation
+      </h2>
+      """,
+      unsafe_allow_html=True,
+  )
   qa_default_index = 3
   survey_data = {}
   # Information or Input Similarity
 
-  st.header('Information or Input Similarity:')
+  st.subheader('Information or Input Similarity:')
   ind = 0
   weight = 0.0
   score = None
@@ -147,7 +154,7 @@ def app():
   headers = ['Understanding', 'Analysis and Feedback', 'Human-Machine Interface', 'Safety Culture and Training', 'Access Control', 'Tests']
   qa = [understanding_qa, afa_qa, hmi_qa, culture_qa, control_qa, testing_qa]
   for h, q in zip(headers, qa):
-    st.header(h)
+    st.subheader(h)
     ind = 0
     score = None
     response = []

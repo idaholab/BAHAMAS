@@ -175,7 +175,14 @@ def app():
 
   submitted, num_samples, plot_failure, safety_group = configure_sidebar()
 
-  st.title("Software Quality Survey")
+  st.markdown(
+      """
+      <h2 style="white-space: nowrap; text-align: center; color: #16324f;">
+          Software Quality Survey
+      </h2>
+      """,
+      unsafe_allow_html=True,
+  )
 
   concept = {}
   requirement = {}

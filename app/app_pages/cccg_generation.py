@@ -50,7 +50,14 @@ def app():
     #                 layout="wide",
     #                 initial_sidebar_state="auto")
 
-    st.header("""Software Common Cause Analysis""")
+    st.markdown(
+        """
+        <h2 style="white-space: nowrap; text-align: center; color: #16324f;">
+            Common Cause Identification
+        </h2>
+        """,
+        unsafe_allow_html=True,
+    )
     if submitted:
         cccg_obj = CCCG(file=sys_data)
         cccg_obj.generate(config=config)

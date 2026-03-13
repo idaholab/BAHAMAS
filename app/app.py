@@ -90,8 +90,8 @@ if __name__ == "__main__":
     with st.sidebar:
         selected_page = option_menu(
             "BAHAMAS",
-            ["Welcome","Preliminary Assessment", "Comprehensive  Assessment", "Common Cause Analysis", "Software Quality Survey", "CCCG Evaluation"],
-            icons=["house-door", "clipboard-data", "bar-chart-line", "diagram-3", "ui-checks-grid", "shield-check"],
+            ["Welcome","Preliminary Assessment", "Comprehensive  Assessment", "Software Quality Survey", "Common Cause Identification",  "Common Cause Evaluation"],
+            icons=["house-door", "clipboard-data", "bar-chart-line", "ui-checks-grid", "diagram-3", "shield-check"],
             menu_icon="cast",
             default_index=0,
         )
@@ -103,11 +103,11 @@ if __name__ == "__main__":
         bahamas_calculation.app()
     elif selected_page == "Preliminary Assessment":
         bahamas_calculation_approx.app()
-    elif selected_page == "Common Cause Analysis":
+    elif selected_page == "Common Cause Identification":
         cccg_generation.app()
     elif selected_page == "Software Quality Survey":
         Software_Quality_Survey.app()
-    elif selected_page == "CCCG Evaluation":
+    elif selected_page == "Common Cause Evaluation":
         cccg_survey.app()
 
 

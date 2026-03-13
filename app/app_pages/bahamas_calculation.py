@@ -19,18 +19,17 @@ workdir = os.path.dirname(__file__)
 defect_data = os.path.join(workdir, '..', '..', 'data', 'Defect_Data.xlsx')
 
 # Functions for configure
-def configure_sidebar() -> None:
+def configure_inputs() -> None:
     """
-    Setup and display the sidebar elements.
+    Setup and display the main-page input controls.
 
-    This function configures the sidebar of the Streamlit application,
-    including the form for user inputs and the resources section.
+    This function renders the data upload and calculation controls
+    directly in the main page content area.
     """
-    with st.sidebar:
+    with st.container(border=True):
+        st.subheader("Assessment Inputs")
+        st.caption("Upload the required files and configure the calculation before running the model.")
         with st.form("my_form"):
-            st.info("**Assessment! Start here ↓**", icon="👋🏾")
-            # with st.expander(":orange[**Refine Calculation**]"):
-            # Advanced Settings (for the curious minds!)
             defects = None
             mode = None
             tasks = st.file_uploader('Upload your data', type=['xlsx'])
@@ -38,16 +37,21 @@ def configure_sidebar() -> None:
             # mode = st.selectbox("Calculation mode", ('Stochastic', 'Deterministic'))
             num_samples = st.number_input("Number of samples", value=10000)
             plot_failure = st.checkbox('visualize')
-
-            # The Big Red "Submit" Button!
             submitted = st.form_submit_button(
                 "Calculate", type="primary", use_container_width=True)
-        return submitted, mode, num_samples, plot_failure, tasks, defects
+    return submitted, mode, num_samples, plot_failure, tasks, defects
 
 
 def app():
-    # configure the sidebar
-    submitted, mode, num_samples, plot_failure, tasks, defects = configure_sidebar()
+    st.markdown(
+        """
+        <h2 style="white-space: nowrap; text-align: center; color: #16324f;">
+            Comprehensive Assessment
+        </h2>
+        """,
+        unsafe_allow_html=True,
+    )
+    submitted, mode, num_samples, plot_failure, tasks, defects = configure_inputs()
 
     # st.set_page_config(page_title="BAHAMAS",
     #                 # page_icon=":bridge_at_night:",
@@ -56,8 +60,6 @@ def app():
     #                 initial_sidebar_state="auto")
     # st.logo("./docs/pics/bahamas_structure.png")
     # st.image("../docs/pics/bahamas_structure.png", width=200)
-
-    st.header("""BAHAMAS: Software Reliability Assessment""")
 
     if submitted:
         output = {}
