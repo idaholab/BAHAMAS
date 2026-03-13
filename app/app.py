@@ -56,6 +56,27 @@ def display_sidebar_content() -> None:
         """,
         unsafe_allow_html=True,
     )
+
+    st.sidebar.markdown(
+        """
+        <div style="
+            font-size: 0.8rem;
+            line-height: 1.5;
+            color: #5b6573;
+            border-top: 1px solid #d9dde3;
+            margin-top: 1rem;
+            padding-top: 0.75rem;
+        ">
+            For help or feedback, contact
+            <a href="mailto:congjian.wang@inl.gov">congjian.wang@inl.gov</a>.<br>
+            Additional resources:
+            <a href="https://github.inl.gov/congjian-wang/BAHAMAS">GitHub repository</a>
+            and
+            <a href="https://lwrs.inl.gov/content/uploads/11/2024/11/2448420.pdf">Report</a>.
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
     logger.info("Displayed sidebar content.")
 
 
@@ -70,7 +91,7 @@ if __name__ == "__main__":
         selected_page = option_menu(
             "BAHAMAS",
             ["Welcome","Preliminary Assessment", "Comprehensive  Assessment", "Common Cause Analysis", "Software Quality Survey", "CCCG Evaluation"],
-            icons=["house", "rocket","fire", "pen", "pen", "gear"],
+            icons=["house-door", "clipboard-data", "bar-chart-line", "diagram-3", "ui-checks-grid", "shield-check"],
             menu_icon="cast",
             default_index=0,
         )
@@ -92,4 +113,3 @@ if __name__ == "__main__":
 
     display_logo(logo_path)
     display_sidebar_content()
-

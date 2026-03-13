@@ -25,20 +25,12 @@ def display_main_content():
             margin-bottom: 1rem;
         ">
             <div style="
-                font-size: 0.85rem;
-                font-weight: 700;
-                letter-spacing: 0.08em;
-                text-transform: uppercase;
-                color: #355c7d;
-                margin-bottom: 0.45rem;
-            ">
-                BAHAMAS Platform
-            </div>
-            <div style="
                 font-size: 1.45rem;
                 font-weight: 700;
                 color: #16324f;
+                padding-bottom: 0.85rem;
                 margin-bottom: 0.65rem;
+                border-bottom: 1px solid #dbe4ea;
             ">
                 Welcome to the Digital I&amp;C Risk Assessment Workspace
             </div>
@@ -52,40 +44,47 @@ def display_main_content():
                 early screening, detailed quantification, software quality assessment,
                 and common cause failure evaluation.
             </div>
+            <div style="
+                font-size: 1.45rem;
+                font-weight: 700;
+                color: #16324f;
+                margin-top: 1rem;
+                padding-bottom: 0.85rem;
+                margin-bottom: 0.85rem;
+                border-bottom: 1px solid #dbe4ea;
+            ">
+                Analysis and Evaluation Modules
+            </div>
+            <div style="
+                color: #38506a;
+                line-height: 1.75;
+                margin-bottom: 0.65rem;
+            ">
+                <strong>Preliminary Assessment:</strong> supports rapid, stage-level SDLC evaluation.<br>
+                <strong>Comprehensive Assessment:</strong> delivers refined software failure probability estimates.<br>
+                <strong>Common Cause Analysis:</strong> identifies software-related common cause failure drivers.<br>
+                <strong>Software Quality Survey:</strong> provides structured reliability attribute review.<br>
+                <strong>CCCG Evaluation:</strong> measures vulnerability using qualitative and quantitative criteria.
+            </div>
         </div>
         """
         ,
         unsafe_allow_html=True,
     )
-    col1, col2 = st.columns(2)
-    with col1:
-        st.markdown(
-            """
-            **Core Analyses**
-            - **Preliminary Assessment** for rapid, stage-level SDLC evaluation
-            - **Comprehensive Assessment** for refined failure probability estimates
-            - **Common Cause Analysis** for identifying software-related CCF drivers
-            """
-        )
-    with col2:
-        st.markdown(
-            """
-            **Supporting Evaluations**
-            - **Software Quality Survey** for structured reliability attribute review
-            - **CCCG Evaluation** for qualitative and quantitative vulnerability assessment
-            """
-        )
 
     logger.info("Displayed main welcome content.")
+
+    st.markdown(
+        """
+        <h4 style="text-align: center;">
+            BAHAMAS: Bayesian Belief Network Structure
+        </h4>
+        """,
+        unsafe_allow_html=True,
+    )
+    st.image('../docs/pics/bahamas_structure.png')
 
 
 def app():
 
     display_main_content()
-
-    with bottom():
-        st.markdown('''For help or feedback, contact congjian.wang@inl.gov.
-                For more options and information, check out the
-                [GitHub repository](https://github.inl.gov/congjian-wang/BAHAMAS) or
-                [Report](https://lwrs.inl.gov/content/uploads/11/2024/11/2448420.pdf)
-                ''')

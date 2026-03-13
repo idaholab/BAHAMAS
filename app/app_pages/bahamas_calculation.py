@@ -92,14 +92,3 @@ def app():
 
     else:
         pass
-
-
-
-    with bottom():
-        st.markdown("#### Bayesian and Human Reliability Analysis-Aided Method for the Reliability Analysis of Software (BAHAMAS)")
-        st.markdown('''For help or feedback, contact congjian.wang@inl.gov.
-                For more options and information, check out the
-                [GitHub repository](https://github.inl.gov/congjian-wang/BAHAMAS) or
-                [Report](https://lwrs.inl.gov/content/uploads/11/2024/11/2448420.pdf)
-                ''')
-
