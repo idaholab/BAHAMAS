@@ -34,13 +34,16 @@ def sdlc_stage_hep_calculation(excel_file_path, sheet_name, hemd, num_samples=10
     """
     logger.info('Calculate SDLC "%s" stage HEP', sheet_name)
     # Read the action types from the given sheet
-    df = pd.read_excel(excel_file_path, sheet_name=sheet_name, usecols=["Task Number","Human Error Mode"])
+    df = pd.read_excel(excel_file_path, sheet_name=sheet_name, usecols=["Human Error Mode"])
     df = df.dropna()
-    num_actions = df.iloc[:, 0].to_numpy()
-    action_types = df.iloc[:, 1].to_numpy()
+    if df.empty:
+        logger.error('Try to process %s, but got empty inputs for "Human Error Mode"!', excel_file_path)
+        raise IOError(f'Try to process {excel_file_path}, but got empty inputs "Human Error Mode"!')
+    num_actions = len(df)
+    action_types = df.iloc[:, 0].to_numpy()
 
     # change to bounded method to avoid the explosion of total distribution
-    action_samples = np.array([hemd[action_types[i]].rvs(num_samples) for i in range(len(num_actions))])
+    action_samples = np.array([hemd[action_types[i]].rvs(num_samples) for i in range(num_actions)])
     total = 1 - np.prod(1-action_samples, axis=0)
 
     stage_mean = np.mean(total)

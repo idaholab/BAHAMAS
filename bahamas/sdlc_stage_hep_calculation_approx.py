@@ -32,7 +32,9 @@ def sdlc_stage_hep_calculation_approx(excel_file_path, sheet_name, num_samples=1
     # Read the action types from the given sheet
     df = pd.read_excel(excel_file_path, sheet_name=sheet_name, usecols=["Human Error Probability (Mean)","Human Error Probability (STD)"])
     df = df.dropna()
-
+    if df.empty:
+        logger.error('Try to process %s, but got empty inputs!', excel_file_path)
+        raise IOError(f'Try to process {excel_file_path}, but got empty inputs !')
     mean, std = df.iloc[0, 0], df.iloc[0, 1]
 
     if distribution == "norm":
