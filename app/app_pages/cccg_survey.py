@@ -113,114 +113,175 @@ testing_qa = {'What level of testing is planned or has been implemented for the 
 
 def app():
 
-  st.write(afa_score['An|F|Level 2'])
+  # st.write(afa_score['An|F|Level 2'])
 
-  st.title("Software Common Cause Failure Survey")
+  st.markdown(
+      """
+      <h2 style="white-space: nowrap; text-align: center; color: #16324f;">
+          Common Cause Evaluation
+      </h2>
+      """,
+      unsafe_allow_html=True,
+  )
   qa_default_index = 3
   survey_data = {}
-  # Information or Input Similarity
+  st.markdown(
+      """
+      <style>
+      .stTabs [data-baseweb="tab-list"] {
+          flex-wrap: wrap;
+          gap: 0.4rem;
+          align-items: stretch;
+      }
 
-  st.header('Information or Input Similarity:')
-  ind = 0
-  weight = 0.0
-  score = None
-  for key, val in input_sim_qa.items():
-    ind += 1
-    st.markdown(key)
-    response = st.radio(val, input_sim_scale, horizontal=True, key='input_sim' + str(ind), index=qa_default_index)
-    weight += input_sim_response_dict[response]
+      .stTabs [data-baseweb="tab"] {
+          white-space: normal;
+          min-height: 3rem;
+          height: auto;
+          padding: 0.35rem 0.8rem;
+          line-height: 1.15;
+          text-align: center;
+          justify-content: center;
+          align-items: center;
+          display: flex;
+          border-radius: 10px 10px 0 0;
+          border: 1px solid #d6e0ea;
+          background: #eef3f8;
+          color: #35506b;
+          font-weight: 600;
+      }
 
-  ave = weight/ind
-  # ToDo: need to align with CCF paper
-  if ave == 0.:
-    score = "E"
-  elif ave <= 0.25:
-    score = "D"
-  elif ave <= 0.5:
-    score = "C"
-  elif ave <= 0.75:
-    score = "B"
-  else:
-    score = "A"
-  survey_data["Input Similarity"] = score
+      .stTabs [data-baseweb="tab"]:hover {
+          background: #dfeaf4;
+          color: #16324f;
+      }
+
+      .stTabs [data-baseweb="tab"]:nth-of-type(8) {
+          background: #e8f4ec;
+          color: #1f5f3b;
+          border-color: #b9d7c1;
+          font-weight: 800;
+      }
+
+      .stTabs [data-baseweb="tab"]:nth-of-type(8):hover {
+          background: #d7ebde;
+          color: #15492d;
+      }
+
+      .stTabs [aria-selected="true"] {
+          background: #16324f;
+          color: #ffffff;
+          border-color: #16324f;
+      }
+
+      .stTabs [data-baseweb="tab"] p {
+          margin: 0;
+          font-weight: inherit;
+      }
+      </style>
+      """,
+      unsafe_allow_html=True,
+  )
+  tab_names = [
+      'Information or Input Similarity',
+      'Understanding',
+      'Analysis and Feedback',
+      'Human-Machine Interface',
+      'Safety Culture and Training',
+      'Access Control',
+      'Tests',
+      'Calculation Results',
+  ]
+  tabs = st.tabs(tab_names)
+
+  with tabs[0]:
+    # st.subheader('Information or Input Similarity')
+    ind = 0
+    weight = 0.0
+    score = None
+    for key, val in input_sim_qa.items():
+      ind += 1
+      st.markdown(key)
+      response = st.radio(val, input_sim_scale, horizontal=True, key='input_sim' + str(ind), index=qa_default_index)
+      weight += input_sim_response_dict[response]
+
+    ave = weight / ind
+    # ToDo: need to align with CCF paper
+    if ave == 0.:
+      score = "E"
+    elif ave <= 0.25:
+      score = "D"
+    elif ave <= 0.5:
+      score = "C"
+    elif ave <= 0.75:
+      score = "B"
+    else:
+      score = "A"
+    survey_data["Input Similarity"] = score
 
   headers = ['Understanding', 'Analysis and Feedback', 'Human-Machine Interface', 'Safety Culture and Training', 'Access Control', 'Tests']
   qa = [understanding_qa, afa_qa, hmi_qa, culture_qa, control_qa, testing_qa]
-  for h, q in zip(headers, qa):
-    st.header(h)
-    ind = 0
-    score = None
-    response = []
-    for key, val in q.items():
-      ind += 1
-      if ':' in key:
-        m, k = key.split(':')
-        st.markdown(f'##### {m.strip()}')
+  for tab, h, q in zip(tabs[1:], headers, qa):
+    with tab:
+      # st.subheader(h)
+      ind = 0
+      score = None
+      response = []
+      for key, val in q.items():
+        ind += 1
+        if ':' in key:
+          m, k = key.split(':')
+          st.markdown(f'##### {m.strip()}')
+        else:
+          k = key
+        captions = []
+        options = []
+        for v in val:
+          if ':' in v:
+            o, c = v.split(':')
+            options.append(o.strip())
+            captions.append(c.strip())
+        if len(options) == 0:
+          options = val
+        if len(captions) == 0:
+          captions = None
+
+        r = st.radio(k, options, captions=captions, horizontal=False, key=h + str(ind), index=1)
+        response.append(r)
+
+      if h == 'Understanding':
+        Ut = np.sum([understanding_score[k] for k in response])
+        score = score_transform[Ut]
+      elif h == 'Analysis and Feedback':
+        name = '|'.join(response)
+        score = afa_score[name]
+      elif h == 'Human-Machine Interface':
+        op = '|'.join(response[0:2])
+        mt = response[2]
+        s1 = operator_score[op]
+        s2 = maintenance_score[mt]
+        smax = max(s1, s2)
+        score = score_transform[smax]
+      elif h == 'Safety Culture and Training':
+        cul = culture_score[response[0]]
+        ed = culture_score[response[1]]
+        m = max(cul, ed)
+        score = score_transform[m]
       else:
-        k = key
-      captions = []
-      options = []
-      for v in val:
-        if ':' in v:
-          o, c = v.split(':')
-          options.append(o.strip())
-          captions.append(c.strip())
-      if len(options) == 0:
-        options = val
-      if len(captions) == 0:
-        captions = None
+        score = response[0]
+      survey_data[h] = score
 
-      r = st.radio(k, options, captions=captions, horizontal=False, key=h + str(ind), index=1)
-      response.append(r)
+  with tabs[7]:
+    with st.form("my_form"):
+      # st.info("**Assessment! Start here ↓**", icon="👋🏾")
+      st.caption("Set the survey configuration and run the evaluation.")
+      software_total_failure = st.number_input('Software Total Failure Probability', value=1.0e-4, format='%.2e', key="sfp")
+      submitted = st.form_submit_button(
+          "Evaluate", type="primary", use_container_width=True)
 
-
-    if h == 'Understanding':
-      Ut = np.sum([understanding_score[k] for k in response])
-      score = score_transform[Ut]
-    elif h == 'Analysis and Feedback':
-      name = '|'.join(response)
-      score = afa_score[name]
-    elif h == 'Human-Machine Interface':
-      op = '|'.join(response[0:2])
-      mt = response[2]
-      s1 = operator_score[op]
-      s2 = maintenance_score[mt]
-      smax = max(s1, s2)
-      score = score_transform[smax]
-    elif h == 'Safety Culture and Training':
-      cul = culture_score[response[0]]
-      ed = culture_score[response[1]]
-      m = max (cul, ed)
-      score = score_transform[m]
-    else:
-      score = response[0]
-    survey_data[h] = score
-
-  with st.form("my_form"):
-    st.info("**Assessment! Start here ↓**", icon="👋🏾")
-    # with st.expander(":orange[**Refine Calculation**]"):
-    # Advanced Settings (for the curious minds!)
-
-    software_total_failure = st.number_input('Software Total Failure Probability', value=1.0e-4, format='%.2e', key="sfp")
-
-    # The Big Red "Submit" Button!
-    submitted = st.form_submit_button(
-        "Evaluate", type="primary", use_container_width=True)
-
-
-    # process data
-    if submitted:
-      st.write("Subfactor Scores:")
-      st.write(survey_data)
-      # compute defense factor
-      beta = compute_beta(survey_data)
-      st.write('Defense Factor:', beta)
-      st.write('CCCG Failure Probability:', beta * software_total_failure)
-
-    else:
-        pass
-
-
-
-
-
+      if submitted:
+        st.write("Subfactor Scores:")
+        st.write(survey_data)
+        beta = compute_beta(survey_data)
+        st.write('Defense Factor:', beta)
+        st.write('CCCG Failure Probability:', beta * software_total_failure)

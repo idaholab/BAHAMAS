@@ -56,7 +56,14 @@ def app():
     # st.logo("./docs/pics/bahamas_structure.png")
     # st.image("../docs/pics/bahamas_structure.png", width=200)
 
-    st.header("""BAHAMAS: Software Reliability Assessment""")
+    st.markdown(
+        """
+        <h2 style="white-space: nowrap; text-align: center; color: #16324f;">
+            Preliminary Assessment
+        </h2>
+        """,
+        unsafe_allow_html=True,
+    )
 
     user_inputs = {}
     tasks = None
@@ -119,12 +126,4 @@ def app():
         pass
 
 
-
-    with bottom():
-        st.markdown("#### Bayesian and Human Reliability Analysis-Aided Method for the Reliability Analysis of Software (BAHAMAS)")
-        st.markdown('''For help or feedback, contact congjian.wang@inl.gov.
-                For more options and information, check out the
-                [GitHub repository](https://github.inl.gov/congjian-wang/BAHAMAS) or
-                [Report](https://lwrs.inl.gov/content/uploads/11/2024/11/2448420.pdf)
-                ''')
 

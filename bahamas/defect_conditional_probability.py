@@ -22,6 +22,9 @@ def stage_dcp_calculation(excel_file, sheet_name):
 #   G = 0.125 # given by previous implementation, need to be verified
   df = pd.read_excel(excel_file, sheet_name=sheet_name, usecols=["Review Number","Trigger Coverage"])
   df = df.dropna()
+  if df.empty:
+    logger.error('Try to process %s, but got empty inputs!', excel_file)
+    raise IOError(f'Try to process {excel_file}, but got empty inputs!')
   reviews = df.iloc[:, 0].mean()
   triggers = df.iloc[:, 1].mean()
   dcp = G*np.exp(-4.*reviews*triggers)

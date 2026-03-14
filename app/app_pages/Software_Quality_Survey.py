@@ -16,33 +16,31 @@ workdir = os.path.dirname(__file__)
 defect_data = os.path.join(workdir, '..', '..', 'data', 'Defect_Data.xlsx')
 
 # Functions for configure
-def configure_sidebar() -> None:
+def configure_inputs() -> None:
     """
-    Setup and display the sidebar elements.
+    Setup and display the main-page input controls.
 
-    This function configures the sidebar of the Streamlit application,
-    including the form for user inputs and the resources section.
+    This function renders the survey configuration controls
+    directly within the main page content area.
     """
-    with st.sidebar:
+    with st.container(border=True):
+        st.caption("Set the survey configuration and run the evaluation.")
         with st.form("my_form"):
-            st.info("**Assessment! Start here ↓**", icon="👋🏾")
-            # with st.expander(":orange[**Refine Calculation**]"):
-            # Advanced Settings (for the curious minds!)
             safety_group =  st.radio('Safety related', ['Yes', 'No'], horizontal=True, key='safety_related')
             num_samples = st.number_input("Number of samples", value=10000)
             plot_failure = st.checkbox('visualize')
 
             # The Big Red "Submit" Button!
             submitted = st.form_submit_button(
-                "Calculate", type="primary", use_container_width=True)
-        return submitted, num_samples, plot_failure, safety_group
+                "Evaluate", type="primary", use_container_width=True)
+    return submitted, num_samples, plot_failure, safety_group
 
 
 review_trigger_factor = np.exp(-8)
 response_scale = ['Not at all', 'To a small extent', 'To a moderate extent', 'To a great extent', 'Fully and systematically']
 response_scale_value = [1., 0.75, 0.5, 0.25, 0.]
 response_dict = dict(zip(response_scale, response_scale_value))
-sdlc_stages = ['Concept', 'Requirement', 'Design', 'Implementation', 'Testing', 'Install and Maintenance']
+sdlc_stages = ['Concept', 'Requirement', 'Design', 'Implementation', 'Testing', 'I&M']
 software_survey_data = dict.fromkeys(sdlc_stages, None)
 concept_weight = {'Project management': [0.19, 0.154],
                   'Documentation':[0.19, 0.154],
@@ -172,10 +170,14 @@ InM_qa = {"Operation and maintenance instructions": 'To what extent did the proj
               "Functional testing": 'To what extent did the project perform functional testing during {system installation} to verify that the implemented functions behaved as specified, by applying representative input data and comparing the observed outputs against the system requirements to identify deviations or incomplete specifications'}
 
 def app():
-
-  submitted, num_samples, plot_failure, safety_group = configure_sidebar()
-
-  st.title("Software Quality Survey")
+  st.markdown(
+      """
+      <h2 style="white-space: nowrap; text-align: center; color: #16324f;">
+          Software Quality Survey
+      </h2>
+      """,
+      unsafe_allow_html=True,
+  )
 
   concept = {}
   requirement = {}
@@ -185,6 +187,62 @@ def app():
   InM = {}
   review_dict = {}
   trigger_dict = {}
+
+  st.markdown(
+      """
+      <style>
+      .stTabs [data-baseweb="tab-list"] {
+          gap: 0.35rem;
+      }
+
+      .stTabs [data-baseweb="tab"] {
+          background: #eef3f8;
+          border-radius: 10px 10px 0 0;
+          padding: 0.5rem 0.9rem;
+          color: #35506b;
+          font-weight: 600;
+          border: 1px solid #d6e0ea;
+      }
+
+      .stTabs [data-baseweb="tab"]:nth-of-type(1) { color: #0f4c81; }
+      .stTabs [data-baseweb="tab"]:nth-of-type(2) { color: #1d6f5f; }
+      .stTabs [data-baseweb="tab"]:nth-of-type(3) { color: #8a5a00; }
+      .stTabs [data-baseweb="tab"]:nth-of-type(4) { color: #7a1f5c; }
+      .stTabs [data-baseweb="tab"]:nth-of-type(5) { color: #7a2e1f; }
+      .stTabs [data-baseweb="tab"]:nth-of-type(6) { color: #4b4b9f; }
+      .stTabs [data-baseweb="tab"]:nth-of-type(7) { color: #2f4858; }
+
+      .stTabs [data-baseweb="tab"]:nth-of-type(7) {
+          background: #e8f4ec;
+          color: #1f5f3b;
+          border-color: #b9d7c1;
+          font-weight: 800;
+      }
+
+      .stTabs [data-baseweb="tab"]:nth-of-type(7):hover {
+          background: #d7ebde;
+          color: #15492d;
+      }
+
+      .stTabs [aria-selected="true"] {
+          background: #16324f;
+          color: white !important;
+          border-color: #16324f;
+      }
+
+      .stTabs [data-baseweb="tab"]:hover {
+          background: #dfeaf4;
+          color: #16324f;
+      }
+
+      .stTabs [data-baseweb="tab"] p {
+          margin: 0;
+          font-weight: inherit;
+      }
+      </style>
+      """,
+      unsafe_allow_html=True,
+  )
 
   tabs = st.tabs(sdlc_stages + ['Calculation Results'])
 
@@ -252,76 +310,79 @@ def app():
     review_dict['Install and Maintenance'] = st.slider('Average Review Number', 0.0, 5.0, value=2., step=0.01, key="InM_review")
     trigger_dict['Install and Maintenance'] = st.slider('Average Trigger Coverage', 0.0, 5.0, value=1., step=0.01, key="InM_trigger")
 
-  # process data
-  if submitted:
-    safety_ind = 1 if safety_group == 'Yes' else 0
-    concept_samples = []
-    requirement_samples = []
-    design_samples = []
-    implementation_samples = []
-    testing_samples = []
-    InM_samples = []
-    for key, val in concept.items():
-      weight = concept_weight[key][safety_ind]
-      a, mean, b = get_sil_val(response_dict[val])
-      concept_samples.append(loguniform.rvs(a, b, size=num_samples) * weight)
-    concept_samples = 1 - np.prod(1-np.array(concept_samples), axis=0)
+
+  with tabs[6]:
+    # st.info("**Assessment Result ↓**", icon="👋🏾")
+    submitted, num_samples, plot_failure, safety_group = configure_inputs()
+    # process data
+    if submitted:
+      safety_ind = 1 if safety_group == 'Yes' else 0
+      concept_samples = []
+      requirement_samples = []
+      design_samples = []
+      implementation_samples = []
+      testing_samples = []
+      InM_samples = []
+      for key, val in concept.items():
+        weight = concept_weight[key][safety_ind]
+        a, mean, b = get_sil_val(response_dict[val])
+        concept_samples.append(loguniform.rvs(a, b, size=num_samples) * weight)
+      concept_samples = 1 - np.prod(1-np.array(concept_samples), axis=0)
 
 
-    for key, val in requirement.items():
-      weight = requirement_weight[key][safety_ind]
-      a, mean, b = get_sil_val(response_dict[val])
-      requirement_samples.append(loguniform.rvs(a, b, size=num_samples) * weight)
-    requirement_samples = 1 - np.prod(1-np.array(requirement_samples), axis=0)
+      for key, val in requirement.items():
+        weight = requirement_weight[key][safety_ind]
+        a, mean, b = get_sil_val(response_dict[val])
+        requirement_samples.append(loguniform.rvs(a, b, size=num_samples) * weight)
+      requirement_samples = 1 - np.prod(1-np.array(requirement_samples), axis=0)
 
-    for key, val in design.items():
-      weight = design_weight[key][safety_ind]
-      a, mean, b = get_sil_val(response_dict[val])
-      design_samples.append(loguniform.rvs(a, b, size=num_samples) * weight)
-    design_samples = 1 - np.prod(1-np.array(design_samples), axis=0)
+      for key, val in design.items():
+        weight = design_weight[key][safety_ind]
+        a, mean, b = get_sil_val(response_dict[val])
+        design_samples.append(loguniform.rvs(a, b, size=num_samples) * weight)
+      design_samples = 1 - np.prod(1-np.array(design_samples), axis=0)
 
-    for key, val in implementation.items():
-      weight = implementation_weight[key][safety_ind]
-      a, mean, b = get_sil_val(response_dict[val])
-      implementation_samples.append(loguniform.rvs(a, b, size=num_samples) * weight)
-    implementation_samples = 1 - np.prod(1-np.array(implementation_samples), axis=0)
+      for key, val in implementation.items():
+        weight = implementation_weight[key][safety_ind]
+        a, mean, b = get_sil_val(response_dict[val])
+        implementation_samples.append(loguniform.rvs(a, b, size=num_samples) * weight)
+      implementation_samples = 1 - np.prod(1-np.array(implementation_samples), axis=0)
 
-    for key, val in testing.items():
-      weight = testing_weight[key][safety_ind]
-      a, mean, b = get_sil_val(response_dict[val])
-      testing_samples.append(loguniform.rvs(a, b, size=num_samples) * weight)
-    testing_samples = 1 - np.prod(1-np.array(testing_samples), axis=0)
+      for key, val in testing.items():
+        weight = testing_weight[key][safety_ind]
+        a, mean, b = get_sil_val(response_dict[val])
+        testing_samples.append(loguniform.rvs(a, b, size=num_samples) * weight)
+      testing_samples = 1 - np.prod(1-np.array(testing_samples), axis=0)
 
-    for key, val in InM.items():
-      weight = InM_weight[key][safety_ind]
-      a, mean, b = get_sil_val(response_dict[val])
-      InM_samples.append(loguniform.rvs(a, b, size=num_samples) * weight)
-    InM_samples = 1 - np.prod(1-np.array(InM_samples), axis=0)
+      for key, val in InM.items():
+        weight = InM_weight[key][safety_ind]
+        a, mean, b = get_sil_val(response_dict[val])
+        InM_samples.append(loguniform.rvs(a, b, size=num_samples) * weight)
+      InM_samples = 1 - np.prod(1-np.array(InM_samples), axis=0)
 
-    samples = [concept_samples, requirement_samples, design_samples, implementation_samples, testing_samples, InM_samples]
-    for i, stage in enumerate(sdlc_stages):
-      software_survey_data[stage] = {'samples':samples[i], 'review':review_dict[stage], 'trigger':trigger_dict[stage]}
+      samples = [concept_samples, requirement_samples, design_samples, implementation_samples, testing_samples, InM_samples]
+      for i, stage in enumerate(sdlc_stages):
+        software_survey_data[stage] = {'samples':samples[i], 'review':review_dict[stage], 'trigger':trigger_dict[stage]}
 
-    # call BAHAMAS BBN with approx
-    # update initialize_stage to accept distribution directly
-    output = {}
-    style = {}
-    tasks = None
-    software_BBN = BBN(defect_data, tasks, data=software_survey_data, num_samples=num_samples, approx=True)
-    software_BBN.calculate()
-    total_failure_mean, total_failure_sigma, _ = software_BBN.get_total_failure_probability()
+      # call BAHAMAS BBN with approx
+      # update initialize_stage to accept distribution directly
+      output = {}
+      style = {}
+      tasks = None
+      software_BBN = BBN(defect_data, tasks, data=software_survey_data, num_samples=num_samples, approx=True)
+      software_BBN.calculate()
+      total_failure_mean, total_failure_sigma, _ = software_BBN.get_total_failure_probability()
 
-    output['Total Failure Prob.'] = [total_failure_mean, total_failure_sigma]
-    style['Total Failure Prob.'] = "{:.2e}"
-    # st.write('Software total failure:', total_failure_mean, 'with std:', total_failure_sigma)
-    for uca in UCA_types:
-        mean, sigma, _ = software_BBN.get_uca(uca)
-        output[uca] = [mean, sigma]
-        style[uca] = "{:.2e}"
-    df = pd.DataFrame(output, index=['mean', 'std'])
-    styled_df = df.style.format(style)
-    with tabs[6]:
-      st.info("**Assessment Result ↓**", icon="👋🏾")
+      output['Total Failure Prob.'] = [total_failure_mean, total_failure_sigma]
+      style['Total Failure Prob.'] = "{:.2e}"
+      # st.write('Software total failure:', total_failure_mean, 'with std:', total_failure_sigma)
+      for uca in UCA_types:
+          mean, sigma, _ = software_BBN.get_uca(uca)
+          output[uca] = [mean, sigma]
+          style[uca] = "{:.2e}"
+      df = pd.DataFrame(output, index=['mean', 'std'])
+      styled_df = df.style.format(style)
+
 
       st.dataframe(styled_df)
       # visualize data
@@ -330,10 +391,7 @@ def app():
           if isinstance(fig, list):
               for f in fig:
                   st.plotly_chart(f)
-  else:
-      pass
-
-
-
+    else:
+        pass
 
 
