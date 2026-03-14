@@ -14,16 +14,16 @@ workdir = os.path.dirname(__file__)
 sys_data = os.path.join(workdir, '..', '..', 'data', 'Scenario_6.csv')
 
 # Functions for configure
-def configure_sidebar() -> None:
+def configure_inputs() -> None:
     """
-    Setup and display the sidebar elements.
+    Setup and display the main-page input controls.
 
-    This function configures the sidebar of the Streamlit application,
-    including the form for user inputs and the resources section.
+    This function renders the CCCG generation controls
+    directly within the main page content area.
     """
-    with st.sidebar:
+    with st.container(border=True):
+        st.caption("Upload the system data and select the common cause component group (CCCG) output options to generate.")
         with st.form("my_form"):
-            st.info("**CCCGs Generation! Start here ↓**", icon="👋🏾")
             sys_data = st.file_uploader('Upload your data', type=['csv'])
             st.markdown('**CCCG Output Options**')
             file_base = st.text_input('File Base', 'cccg', key='file_base')
@@ -40,11 +40,10 @@ def configure_sidebar() -> None:
             # The Big Red "Submit" Button!
             submitted = st.form_submit_button(
                 "Generate", type="primary", use_container_width=True)
-        return submitted, sys_data,config
+    return submitted, sys_data,config
 
 
 def app():
-    submitted, sys_data, config = configure_sidebar()
     # st.set_page_config(page_title="Software Common Cause Analysis",
     #                 page_icon=":bridge_at_night:",
     #                 layout="wide",
@@ -58,6 +57,7 @@ def app():
         """,
         unsafe_allow_html=True,
     )
+    submitted, sys_data, config = configure_inputs()
     if submitted:
         cccg_obj = CCCG(file=sys_data)
         cccg_obj.generate(config=config)
@@ -102,4 +102,3 @@ def app():
             for i, df in enumerate(triple):
               st.title(f'CCCG {i+1}')
               st.dataframe(df)
-

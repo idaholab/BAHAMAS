@@ -27,7 +27,6 @@ def configure_inputs() -> None:
     directly in the main page content area.
     """
     with st.container(border=True):
-        st.subheader("Assessment Inputs")
         st.caption("Upload the required files and configure the calculation before running the model.")
         with st.form("my_form"):
             defects = None
