@@ -134,3 +134,7 @@ Software Unsafe Control Action Failure Probabilities
 <img src="./docs/pics/uca_sfp.png" alt="Software Unsafe Control Action Failure Probabilities" width="800">
 Total Software Failure Probability
 <img src="./docs/pics/total_sfp.png" alt="Total Software Failure Probability" width="800">
+
+## Acknowledgement
+
+This code was developed with the assistance of AI tools to aid in code generation, debugging, and optimization. The final implementation has been reviewed and verified by the author to ensure accuracy and adherence to project requirements.
