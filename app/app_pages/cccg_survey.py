@@ -6,6 +6,7 @@ from scipy.stats import loguniform
 import numpy as np
 import os, sys
 from collections import OrderedDict
+import pandas as pd
 
 # Bahamas Module
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
@@ -31,7 +32,7 @@ understanding_qa = {'Novelty: Considering the elements of the CCCG, to what exte
   'Complexity: Do the members of the CCCG perform only a single dedicated function/action?':
   ['Yes', 'No'],
   'Misfit: Do the members of the CCCG ?':
-  ["""High Misfit: The system has high "misfit" if the if the majority of the system's functionality is accomplished through off-the-shelf systems, pre-existing functions, or established functions.""",
+  ["""High Misfit: The system has high "misfit" if the majority of the system's functionality is accomplished through off-the-shelf systems, pre-existing functions, or established functions.""",
   """Low Misfit: The system has low “misfit” if there are zero to minimal off-the-shelf systems, pre-existing functions, or established functions. (mostly purpose-built functions)."""],
   'Experience: Indicate the operational experience of the CCCG':
   ['More: Operational experience is more than 10 years.', 'Less: Operational experience is less than 10 years.']
@@ -207,16 +208,27 @@ def app():
 
     ave = weight / ind
     # ToDo: need to align with CCF paper
-    if ave == 0.:
+    if ave == 1:
       score = "E"
-    elif ave <= 0.25:
+    elif ave >= 0.75:
       score = "D"
-    elif ave <= 0.5:
+    elif ave >= 0.5:
       score = "C"
-    elif ave <= 0.75:
+    elif ave >= 0.25:
       score = "B"
     else:
       score = "A"
+
+    # if ave == 0.:
+    #   score = "A"
+    # elif ave <= 0.25:
+    #   score = "B"
+    # elif ave <= 0.5:
+    #   score = "C"
+    # elif ave <= 0.75:
+    #   score = "D"
+    # else:
+    #   score = "E"
     survey_data["Input Similarity"] = score
 
   headers = ['Understanding', 'Analysis and Feedback', 'Human-Machine Interface', 'Safety Culture and Training', 'Access Control', 'Tests']
@@ -280,8 +292,36 @@ def app():
           "Evaluate", type="primary", use_container_width=True)
 
       if submitted:
-        st.write("Subfactor Scores:")
-        st.write(survey_data)
-        beta = compute_beta(survey_data)
-        st.write('Defense Factor:', beta)
-        st.write('CCCG Failure Probability:', beta * software_total_failure)
+        # st.write("Subfactor Scores:")
+        # st.write(survey_data)
+        beta, sub_beta = compute_beta(survey_data)
+        for key, val in sub_beta.items():
+          sub_beta[key] = val/beta if beta > 0 else 0
+        sub_beta_df = pd.DataFrame(
+            [{"Subfactor": key, "Relative Contribution": val} for key, val in sub_beta.items()]
+        )
+        st.divider()
+        st.subheader("Subfactor Contributions:")
+        st.dataframe(sub_beta_df, width='stretch', hide_index=True)
+        st.markdown(
+            f"""
+            <div style="
+                margin-top: 0.5rem;
+                padding: 1rem 1.1rem;
+                border-radius: 12px;
+                background: linear-gradient(135deg, #f4f8fc 0%, #e9f0f7 100%);
+                border: 1px solid #d6e0ea;
+            ">
+                <div style="font-size: 0.85rem; font-weight: 700; color: #516b86; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.65rem;">
+                    Evaluation Summary
+                </div>
+                <div style="font-size: 1rem; color: #16324f; margin-bottom: 0.4rem;">
+                    <strong>Beta Factor:</strong> {beta:.3g}
+                </div>
+                <div style="font-size: 1rem; color: #16324f;">
+                    <strong>CCCG Failure Probability:</strong> {beta * software_total_failure:.3e}
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
