@@ -54,11 +54,13 @@ def section_label(text: str) -> None:
     )
 
 
-review_trigger_factor = np.exp(-8)
+# review_trigger_factor = np.exp(-8)
 response_scale = ['Not at all or to a partial extent', 'To a small extent', 'To a moderate extent', 'To a great extent', 'Fully and systematically']
 response_scale_value = [1., 0.75, 0.5, 0.25, 0.]
 response_dict = dict(zip(response_scale, response_scale_value))
 sdlc_stages = ['Concept', 'Requirement', 'Design', 'Implementation', 'Testing', 'Install and Maintenance']
+# Assuming equal contribution for each SDLC stage
+sdlc_weight = [1/6]*6
 software_survey_data = dict.fromkeys(sdlc_stages, None)
 concept_weight = {'Project management': [1, 0.154],
                   'Documentation':[1, 0.154],
@@ -412,7 +414,8 @@ def app():
       samples = [concept_samples, requirement_samples, design_samples, implementation_samples, testing_samples, InM_samples]
       for i, stage in enumerate(sdlc_stages):
         # software_survey_data[stage] = {'samples':samples[i], 'review':review_dict[stage], 'trigger':trigger_dict[stage]}
-        software_survey_data[stage] = {'samples':samples[i], 'review':2, 'trigger':1}
+        # provide weights for each stage of samples
+        software_survey_data[stage] = {'samples':samples[i]*sdlc_weight[i], 'review':2, 'trigger':1}
 
       # call BAHAMAS BBN with approx
       # update initialize_stage to accept distribution directly
