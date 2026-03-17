@@ -37,6 +37,23 @@ def configure_inputs() -> None:
     return submitted, num_samples, plot_failure, safety_group
 
 
+def section_label(text: str) -> None:
+    """Render a compact section heading."""
+    st.markdown(
+        f"""
+        <div style="
+            font-size: 1rem;
+            font-weight: 600;
+            color: #16324f;
+            margin: 0.35rem 0 0.6rem 0;
+        ">
+            {text}
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
 review_trigger_factor = np.exp(-8)
 response_scale = ['Not at all or to a partial extent', 'To a small extent', 'To a moderate extent', 'To a great extent', 'Fully and systematically']
 response_scale_value = [1., 0.75, 0.5, 0.25, 0.]
@@ -275,7 +292,7 @@ def app():
     for key, val in concept_qa.items():
       ind += 1
       # st.markdown(f"### **{key}**")
-      st.subheader(key)
+      section_label(key)
       concept[key] = st.radio(val, response_scale, horizontal=True, key='concept' + str(ind), index=qa_default_index)
     # st.subheader('Quality of Review Activities')
     # review_dict['Concept'] = st.slider('Average Review Number', 0.0, 5.0, value=2., step=0.01, key="concept_review")
@@ -285,7 +302,7 @@ def app():
     ind = 0
     for key, val in requirement_qa.items():
       ind += 1
-      st.subheader(key)
+      section_label(key)
       requirement[key] = st.radio(val, response_scale, horizontal=True, key='requirement' + str(ind), index=qa_default_index)
     # st.subheader('Quality of Review Activities')
     # review_dict['Requirement'] = st.slider('Average Review Number', 0.0, 5.0, value=2., step=0.01, key="requirement_review")
@@ -295,7 +312,7 @@ def app():
     ind = 0
     for key, val in design_qa.items():
       ind += 1
-      st.subheader(key)
+      section_label(key)
       design[key] = st.radio(val, response_scale, horizontal=True, key='design' + str(ind), index=qa_default_index)
     # st.subheader('Quality of Review Activities')
     # review_dict['Design'] = st.slider('Average Review Number', 0.0, 5.0, value=2., step=0.01, key="design_review")
@@ -305,7 +322,7 @@ def app():
     ind = 0
     for key, val in implementation_qa.items():
       ind += 1
-      st.subheader(key)
+      section_label(key)
       implementation[key] = st.radio(val, response_scale, horizontal=True, key='implementation' + str(ind), index=qa_default_index)
     # st.subheader('Quality of Review Activities')
     # review_dict['Implementation'] = st.slider('Average Review Number', 0.0, 5.0, value=2., step=0.01, key="implementation_review")
@@ -315,7 +332,7 @@ def app():
     ind = 0
     for key, val in testing_qa.items():
       ind += 1
-      st.subheader(key)
+      section_label(key)
       testing[key] = st.radio(val, response_scale, horizontal=True, key='testing' + str(ind), index=qa_default_index)
     # st.subheader('Quality of Review Activities')
     # review_dict['Testing'] = st.slider('Average Review Number', 0.0, 5.0, value=2., step=0.01, key="testing_review")
@@ -325,7 +342,7 @@ def app():
     ind = 0
     for key, val in InM_qa.items():
       ind += 1
-      st.subheader(key)
+      section_label(key)
       InM[key] = st.radio(val, response_scale, horizontal=True, key='InM' + str(ind), index=qa_default_index)
     # st.subheader('Quality of Review Activities')
     # review_dict['Install and Maintenance'] = st.slider('Average Review Number', 0.0, 5.0, value=2., step=0.01, key="InM_review")
@@ -426,4 +443,3 @@ def app():
                   st.plotly_chart(f)
     else:
         pass
-
