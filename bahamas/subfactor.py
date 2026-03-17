@@ -150,6 +150,7 @@ def compute_beta(subfactor_dict):
       float: beta factor value
   """
   tot = 0
+  ind = {}
   for factor, score in subfactor_dict.items():
     if factor not in subfactor_score_software:
       raise IOError(f"Unidentified subfactor '{factor}'!")
@@ -162,8 +163,9 @@ def compute_beta(subfactor_dict):
       else:
         raise IOError(f'Unidentified value for subfactor "{factor}" with score "{score}" for beta factor calculation!')
     tot += value
+    ind[factor] = value/subfactor_score_software['Denominator']
   beta = tot/subfactor_score_software['Denominator']
-  return beta
+  return beta, ind
 
 def compute_phi(subfactor_dict):
   """Compute defense factor for CCF
@@ -178,6 +180,7 @@ def compute_phi(subfactor_dict):
       float: defense factor value
   """
   tot = 0
+  ind = {}
   for factor, score in subfactor_dict.items():
     if factor not in defense_factor:
       raise IOError(f"Unidentified subfactor '{factor}'!")
@@ -188,5 +191,6 @@ def compute_phi(subfactor_dict):
       else:
         raise IOError(f'Unidentified value for subfactor "{factor}" with score "{score}" for defense factor calculation!')
     tot += value
+    ind[factor] = value/defense_factor['Denominator']
   phi = tot/defense_factor['Denominator']
-  return phi
+  return phi, ind
