@@ -248,6 +248,7 @@
 <span class="sd">      float: beta factor value</span>
 <span class="sd">  &quot;&quot;&quot;</span>
   <span class="n">tot</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">ind</span> <span class="o">=</span> <span class="p">{}</span>
   <span class="k">for</span> <span class="n">factor</span><span class="p">,</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">subfactor_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="k">if</span> <span class="n">factor</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">subfactor_score_software</span><span class="p">:</span>
       <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unidentified subfactor &#39;</span><span class="si">{</span><span class="n">factor</span><span class="si">}</span><span class="s2">&#39;!&quot;</span><span class="p">)</span>
@@ -260,8 +261,9 @@
       <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Unidentified value for subfactor &quot;</span><span class="si">{</span><span class="n">factor</span><span class="si">}</span><span class="s1">&quot; with score &quot;</span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s1">&quot; for beta factor calculation!&#39;</span><span class="p">)</span>
     <span class="n">tot</span> <span class="o">+=</span> <span class="n">value</span>
+    <span class="n">ind</span><span class="p">[</span><span class="n">factor</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="o">/</span><span class="n">subfactor_score_software</span><span class="p">[</span><span class="s1">&#39;Denominator&#39;</span><span class="p">]</span>
   <span class="n">beta</span> <span class="o">=</span> <span class="n">tot</span><span class="o">/</span><span class="n">subfactor_score_software</span><span class="p">[</span><span class="s1">&#39;Denominator&#39;</span><span class="p">]</span>
-  <span class="k">return</span> <span class="n">beta</span></div>
+  <span class="k">return</span> <span class="n">beta</span><span class="p">,</span> <span class="n">ind</span></div>
 
 
 <div class="viewcode-block" id="compute_phi">
@@ -279,6 +281,7 @@
 <span class="sd">      float: defense factor value</span>
 <span class="sd">  &quot;&quot;&quot;</span>
   <span class="n">tot</span> <span class="o">=</span> <span class="mi">0</span>
+  <span class="n">ind</span> <span class="o">=</span> <span class="p">{}</span>
   <span class="k">for</span> <span class="n">factor</span><span class="p">,</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">subfactor_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="k">if</span> <span class="n">factor</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">defense_factor</span><span class="p">:</span>
       <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unidentified subfactor &#39;</span><span class="si">{</span><span class="n">factor</span><span class="si">}</span><span class="s2">&#39;!&quot;</span><span class="p">)</span>
@@ -289,8 +292,9 @@
       <span class="k">else</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Unidentified value for subfactor &quot;</span><span class="si">{</span><span class="n">factor</span><span class="si">}</span><span class="s1">&quot; with score &quot;</span><span class="si">{</span><span class="n">score</span><span class="si">}</span><span class="s1">&quot; for defense factor calculation!&#39;</span><span class="p">)</span>
     <span class="n">tot</span> <span class="o">+=</span> <span class="n">value</span>
+    <span class="n">ind</span><span class="p">[</span><span class="n">factor</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span><span class="o">/</span><span class="n">defense_factor</span><span class="p">[</span><span class="s1">&#39;Denominator&#39;</span><span class="p">]</span>
   <span class="n">phi</span> <span class="o">=</span> <span class="n">tot</span><span class="o">/</span><span class="n">defense_factor</span><span class="p">[</span><span class="s1">&#39;Denominator&#39;</span><span class="p">]</span>
-  <span class="k">return</span> <span class="n">phi</span></div>
+  <span class="k">return</span> <span class="n">phi</span><span class="p">,</span> <span class="n">ind</span></div>
 
 </pre></div>
 
