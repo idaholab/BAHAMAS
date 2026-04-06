@@ -33,7 +33,6 @@ extensions = ['sphinx.ext.intersphinx',
   "sphinx.ext.autosummary",
 	"nbsphinx",  # <- For Jupyter Notebook support
 	"sphinx.ext.napoleon",  # <- For Google style docstrings
-	"sphinx.ext.imgmath",
 	"sphinx.ext.viewcode",
 	'autoapi.extension',
   'sphinx_copybutton',
