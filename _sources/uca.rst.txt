@@ -10,14 +10,14 @@ software failure given the existence of certain defect types, has been
 discussed and developed in previous work by Idaho National Laboratory (see :cite:`Bao2023RiskAssessment`). Data from
 :cite:`Agnelo2019NoSQLDataset` and :cite:`Agnelo2020NoSQLDefects` were assessed in terms of their impact on the usability,
 functionality, and performance from an end-user perspective, and were
-assigned a unsafe control action (UCA) or unsafe information flow (UIF) category (equivalently, a mode of failure). The
+assigned an unsafe control action (UCA) or unsafe information flow (UIF) category (equivalently, a mode of failure). The
 assessment result provided conditional relationships, shown in
 :numref:`table-u-1`. More specifically, :numref:`table-u-1`,
 which provides a global perspective on the relationship between defect
 types and UCA/UIF failure modes :cite:`Bao2023RiskAssessment`. As further classifications are
 performed, these distributions can be continually improved. These
-correlations are used by :eq:`uca1`, where is the
-total number of defect types considered by BAHAMAS, and is the UCA/UIF
+correlations are used by :eq:`uca1`, where `I` is the
+total number of defect types considered by BAHAMAS, and `x` is the UCA/UIF
 failure mode being evaluated. :numref:`table-u-1` provides the conditional probabilities used for:
 
 .. _eq-uca1:

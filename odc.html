@@ -21,6 +21,8 @@
       <script src="_static/clipboard.min.js?v=a7894cd8"></script>
       <script src="_static/copybutton.js?v=f281be69"></script>
       <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -110,9 +112,9 @@ develop distributions for each defect type at each stage of the SDLC .
 This was done by taking a binomial model, and Jeffreys noninformative prior,
 then obtaining a posterior beta distribution to represent the general
 expected defect types for each stage. The posterior distribution is
-given as a beta with parameters <span class="math">\alpha + x</span> and <span class="math">\beta + y - x</span>,
+given as a beta with parameters <span class="math notranslate nohighlight">\(\alpha + x\)</span> and <span class="math notranslate nohighlight">\(\beta + y - x\)</span>,
 where <cite>x</cite> is the number of
-observed events, <cite>y</cite> is the number of trials, and <span class="math">\alpha = 0.5</span> and <span class="math">\beta = 0.5</span> for
+observed events, <cite>y</cite> is the number of trials, and <span class="math notranslate nohighlight">\(\alpha = 0.5\)</span> and <span class="math notranslate nohighlight">\(\beta = 0.5\)</span> for
 Jeffreys noninformative prior <span id="id5">[<a class="reference internal" href="index.html#id8" title="H. Dezfuli, D. Kelly, C. Smith, K. Vedros, and W. Galyean. Bayesian inference for nasa probabilistic risk and reliability analysis. Technical Report NASA/SP-2009-569, National Aeronautics and Space Administration (NASA), 2009.">7</a>]</span> <span id="id6">[<a class="reference internal" href="index.html#id9" title="C. L. Atwood, J. L. LaChance, H. F. Martz, D. J. Anderson, M. Englehardt, D. Whitehead, and T. Wheeler. Handbook of parameter estimation for probabilistic risk assessment. Technical Report NUREG/CR-6823, U.S. Nuclear Regulatory Commission, Washington, DC, 2003.">8</a>]</span>. Distributions can be produced
 readily from the data given in <a class="reference internal" href="#table-o-1"><span class="std std-numref">Table 3</span></a>.</p>
 <span id="table-o-1"></span><table class="docutils align-center" id="id8">
@@ -186,9 +188,9 @@ equation, where <cite>G</cite> is the general expected probability for a defect 
 for a given SDLC stage (based on the posterior distributions obtained from
 <a class="reference internal" href="#table-o-1"><span class="std std-numref">Table 3</span></a>), <cite>TC</cite> is the stage-level trigger coverage, and <cite>R</cite> is the average number of
 reviews performed for each task in the SDLC stage.</p>
-<div class="math" id="equation-eq-odc1">
-<p><span class="eqno">(12)<a class="headerlink" href="#equation-eq-odc1" title="Link to this equation"></a></span><span class="math">DCP = \begin{cases} StageReview(all\ states)\ and\ StageDefect\ (yes), &amp; DCP = Ge^{-4TCR}\\ StageReview(all\ states)\ and\ StageDefect(no), &amp; DCP = 0 \end{cases}</span></p>
-</div></section>
+<div class="math notranslate nohighlight" id="equation-eq-odc1">
+<span class="eqno">(12)<a class="headerlink" href="#equation-eq-odc1" title="Link to this equation"></a></span>\[\begin{split}DCP = \begin{cases} StageReview(all\ states)\ and\ StageDefect\ (yes), &amp; DCP = Ge^{-4TCR}\\ StageReview(all\ states)\ and\ StageDefect(no), &amp; DCP = 0 \end{cases}\end{split}\]</div>
+</section>
 
 
            </div>

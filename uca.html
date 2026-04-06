@@ -21,6 +21,8 @@
       <script src="_static/clipboard.min.js?v=a7894cd8"></script>
       <script src="_static/copybutton.js?v=f281be69"></script>
       <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -102,18 +104,18 @@ software failure given the existence of certain defect types, has been
 discussed and developed in previous work by Idaho National Laboratory (see <span id="id1">[<a class="reference internal" href="index.html#id2" title="H. Bao, T. Shorthill, E. Chen, J. Park, J. Kim, G. S. Turkmen, H. Ban, N. Dinh, T. Aldemir, S. Zhang, and S. Lawrence. An integrated framework for risk assessment of safety-related digital instrumentation and control systems in nuclear power plants: methodology refinement and exploration. Technical Report INL/RPT-23-74412, Idaho National Laboratory, Idaho Falls, ID, September 2023.">1</a>]</span>). Data from
 <span id="id2">[<a class="reference internal" href="index.html#id6" title="J. Agnelo, N. Naranjeiro, and J. Bernardino. Nosql odc dataset, results, and support code. https://eden.dei.uc.pt/ cnl/papers/2019-jss.zip, March 2019. Accessed: August 2022.">5</a>]</span> and <span id="id3">[<a class="reference internal" href="index.html#id7" title="J. Agnelo, N. Laranjeiro, and J. Bernardino. Using orthogonal defect classification to characterize nosql database defects. The Journal of Systems and Software, 2020.">6</a>]</span> were assessed in terms of their impact on the usability,
 functionality, and performance from an end-user perspective, and were
-assigned a unsafe control action (UCA) or unsafe information flow (UIF) category (equivalently, a mode of failure). The
+assigned an unsafe control action (UCA) or unsafe information flow (UIF) category (equivalently, a mode of failure). The
 assessment result provided conditional relationships, shown in
 <a class="reference internal" href="#table-u-1"><span class="std std-numref">Table 4</span></a>. More specifically, <a class="reference internal" href="#table-u-1"><span class="std std-numref">Table 4</span></a>,
 which provides a global perspective on the relationship between defect
 types and UCA/UIF failure modes <span id="id4">[<a class="reference internal" href="index.html#id2" title="H. Bao, T. Shorthill, E. Chen, J. Park, J. Kim, G. S. Turkmen, H. Ban, N. Dinh, T. Aldemir, S. Zhang, and S. Lawrence. An integrated framework for risk assessment of safety-related digital instrumentation and control systems in nuclear power plants: methodology refinement and exploration. Technical Report INL/RPT-23-74412, Idaho National Laboratory, Idaho Falls, ID, September 2023.">1</a>]</span>. As further classifications are
 performed, these distributions can be continually improved. These
-correlations are used by <a class="reference internal" href="#equation-uca1">Eq. 13</a>, where is the
-total number of defect types considered by BAHAMAS, and is the UCA/UIF
+correlations are used by <a class="reference internal" href="#equation-uca1">Eq. 13</a>, where <cite>I</cite> is the
+total number of defect types considered by BAHAMAS, and <cite>x</cite> is the UCA/UIF
 failure mode being evaluated. <a class="reference internal" href="#table-u-1"><span class="std std-numref">Table 4</span></a> provides the conditional probabilities used for:</p>
-<div class="math" id="equation-uca1">
-<span id="eq-uca1"></span><p><span class="eqno">(13)<a class="headerlink" href="#equation-uca1" title="Link to this equation"></a></span><span class="math">P(software\ failure\ of\ mode\ x) = \sum_{i=1}^{I} P(UC_x|Type_i)P(Type_i)</span></p>
-</div><p>An inherent assumption in this work is that software failure results from active
+<div class="math notranslate nohighlight" id="equation-uca1">
+<span id="eq-uca1"></span><span class="eqno">(13)<a class="headerlink" href="#equation-uca1" title="Link to this equation"></a></span>\[P(software\ failure\ of\ mode\ x) = \sum_{i=1}^{I} P(UC_x|Type_i)P(Type_i)\]</div>
+<p>An inherent assumption in this work is that software failure results from active
 defects. An implication of <a class="reference internal" href="#equation-uca1">Eq. 13</a> is that the defect activation probability
 equals one, and that the activation of defects is mutually exclusive (i.e.,
 multiple defects are not activated simultaneously). In other words,

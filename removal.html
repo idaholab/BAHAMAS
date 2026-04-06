@@ -21,6 +21,8 @@
       <script src="_static/clipboard.min.js?v=a7894cd8"></script>
       <script src="_static/copybutton.js?v=f281be69"></script>
       <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -110,23 +112,23 @@ the probability of defects remaining within the software. On this basis, trigger
 has been selected as a metric for defect removal. The stage-level trigger coverage (TC),
 given by <a class="reference internal" href="#equation-a-1">Eq. 10</a>, is determined from the average of each task-level trigger
 coverage (tc), which is the percent of relevant triggers that have been covered for a task
-in a particular SDLC stage. Note that <span class="math">T</span> is the total number of relevant tasks for a given stage.</p>
-<div class="math" id="equation-a-1">
-<p><span class="eqno">(10)<a class="headerlink" href="#equation-a-1" title="Link to this equation"></a></span><span class="math">TC = \frac{1}{T} \sum_{i=1}^{T} (tc)_i</span></p>
-</div></section>
+in a particular SDLC stage. Note that <span class="math notranslate nohighlight">\(T\)</span> is the total number of relevant tasks for a given stage.</p>
+<div class="math notranslate nohighlight" id="equation-a-1">
+<span class="eqno">(10)<a class="headerlink" href="#equation-a-1" title="Link to this equation"></a></span>\[TC = \frac{1}{T} \sum_{i=1}^{T} (tc)_i\]</div>
+</section>
 <section id="review">
 <h2>Review<a class="headerlink" href="#review" title="Link to this heading"></a></h2>
 <p>In addition to trigger coverage, the average number of reviews for a given SDLC stage
 is also referenced as a metric for defect removal. When tasks are reviewed or checked,
 they are less likely to fail. Checkers are considered in human reliability analysis (e.g., THERP)
 and represent recovery paths for a given activity. The average number of reviews for
-a particular stage is defined by <a class="reference internal" href="#equation-a-2">Eq. 11</a>, where <span class="math">r</span> is the average number of reviews
-performed for each relevant task and <span class="math">T</span> is the total number of relevant tasks for a given
+a particular stage is defined by <a class="reference internal" href="#equation-a-2">Eq. 11</a>, where <span class="math notranslate nohighlight">\(r\)</span> is the average number of reviews
+performed for each relevant task and <span class="math notranslate nohighlight">\(T\)</span> is the total number of relevant tasks for a given
 stage. As an example, for a given task, some triggers may be reviewed or checked multiple
-times, whereas others are not. The average of these reviews represents <span class="math">r</span>.</p>
-<div class="math" id="equation-a-2">
-<p><span class="eqno">(11)<a class="headerlink" href="#equation-a-2" title="Link to this equation"></a></span><span class="math">R = \frac{1}{T} \sum_{i=1}^{T} (r)_i</span></p>
-</div></section>
+times, whereas others are not. The average of these reviews represents <span class="math notranslate nohighlight">\(r\)</span>.</p>
+<div class="math notranslate nohighlight" id="equation-a-2">
+<span class="eqno">(11)<a class="headerlink" href="#equation-a-2" title="Link to this equation"></a></span>\[R = \frac{1}{T} \sum_{i=1}^{T} (r)_i\]</div>
+</section>
 <section id="odc-triggers">
 <h2>ODC Triggers<a class="headerlink" href="#odc-triggers" title="Link to this heading"></a></h2>
 <p><a class="reference internal" href="#table-r-1"><span class="std std-numref">Table 2</span></a> shows the typical mapping of the triggers and review activities.
