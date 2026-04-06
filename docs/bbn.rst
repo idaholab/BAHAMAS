@@ -104,7 +104,7 @@ stage. Thus, :math:`P(c_i|a_2,b_k)=0` when :math:`P(a_2)\geq 0` .
 
 Further reduction is achieved by recognizing that review either occurs
 or does not occur, with a probability of zero or one (i.e., if
-:math:`P(b_1) = 1` , then :math:`P(b_1) = 0` ). If review is performed,
+:math:`P(b_1) = 1` , then :math:`P(b_2) = 0` ). If review is performed,
 then :math:`P(b_1) = 1` and :math:`P(b_2) = 0`, and the equation reduces
 to:
 
