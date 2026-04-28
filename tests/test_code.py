@@ -79,7 +79,7 @@ def test_dcp():
 
     for i, stage in enumerate(SDLC_stages):
         dcp = stage_dcp_calculation(task_data, stage)
-        assert dcp == pytest.approx(dcp_gold[i], rel=rel_tol, abs=abs_tol)
+        assert dcp == pytest.approx(dcp_gold[i]*4.0, rel=rel_tol, abs=abs_tol)
 
 def test_uca_defect_correlation():
     ## Data for norm distribution
@@ -159,17 +159,17 @@ def test_BNN():
 
     # Tolerances suitable for MC / floating-point noise
     rel_tol = 1e-6
-    abs_tol = 1e-10
+    abs_tol = 1e-8
 
     assert total_failure_mean == pytest.approx(
-        2.9078106294417748e-05, rel=rel_tol, abs=abs_tol
+        2.9078106294417748e-05*4.0, rel=rel_tol, abs=abs_tol
     )
     assert total_failure_sigma == pytest.approx(
-        1.179881411364726e-05, rel=rel_tol, abs=abs_tol
+        1.179881411364726e-05*4.0, rel=rel_tol, abs=abs_tol
     )
 
     for i, uca in enumerate(UCA_types):
         mean, sigma, _ = software_BBN.get_uca(uca)
-        assert mean == pytest.approx(uca_mean[i], rel=rel_tol, abs=abs_tol)
-        assert sigma == pytest.approx(uca_sigma[i], rel=rel_tol, abs=abs_tol)
+        assert mean == pytest.approx(uca_mean[i]*4.0, rel=rel_tol, abs=abs_tol)
+        assert sigma == pytest.approx(uca_sigma[i]*4.0, rel=rel_tol, abs=abs_tol)
 

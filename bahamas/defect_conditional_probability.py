@@ -18,7 +18,8 @@ def stage_dcp_calculation(excel_file, sheet_name):
   """
   logger.info('Calculate DCP for SDLC "%s" stage', sheet_name)
   # TODO: how to determine G value?
-  G = 0.25 # Based on normalization
+  # G = 0.25 # Based on normalization
+  G = 1.0
 #   G = 0.125 # given by previous implementation, need to be verified
   df = pd.read_excel(excel_file, sheet_name=sheet_name, usecols=["Review Number","Trigger Coverage"])
   df = df.dropna()
