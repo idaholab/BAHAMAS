@@ -113,7 +113,8 @@
 <span class="sd">  &quot;&quot;&quot;</span>
   <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Calculate DCP for SDLC &quot;</span><span class="si">%s</span><span class="s1">&quot; stage&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">)</span>
   <span class="c1"># TODO: how to determine G value?</span>
-  <span class="n">G</span> <span class="o">=</span> <span class="mf">0.25</span> <span class="c1"># Based on normalization</span>
+  <span class="c1"># G = 0.25 # Based on normalization</span>
+  <span class="n">G</span> <span class="o">=</span> <span class="mf">1.0</span>
 <span class="c1">#   G = 0.125 # given by previous implementation, need to be verified</span>
   <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">excel_file</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="n">sheet_name</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Review Number&quot;</span><span class="p">,</span><span class="s2">&quot;Trigger Coverage&quot;</span><span class="p">])</span>
   <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
