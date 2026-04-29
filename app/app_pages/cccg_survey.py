@@ -1,7 +1,7 @@
 # Copyright 2025, Battelle Energy Alliance, LLC  ALL RIGHTS RESERVED
 
 import streamlit as st
-from .regression import get_sil_val
+#from .regression import get_sil_val
 from scipy.stats import loguniform
 import numpy as np
 import os, sys
@@ -53,17 +53,28 @@ afa_qa['Awareness: Indicate the level of awareness of CCF as evident in the desi
   'Level 2: There is evidence of general CCF knowledge as demonstrated by the existence of redundant configurations within the design. No diversity is used to support design.',
   'Level 3: There is evidence of awareness of software-based CCFs. Diverse software configurations are used. The analyst may also reason that there are other advanced methods beyond diversity that merit a score beyond Level 2.']
 
-key = [['No-An', 'No-F', 'Level 1'], ['No-An', 'No-F', 'Level 2'], ['No-An', 'No-F', 'Level 3'],
-      ['An', 'F', 'Level 1'], ['An', 'F', 'Level 2'], ['An', 'F', 'Level 3'],
-      ['An+', 'F', 'Level 1'], ['An+', 'F', 'Level 2'], ['An+', 'F', 'Level 3'],
-      ['An', 'F+', 'Level 1'], ['An', 'F+', 'Level 2'], ['An', 'F+', 'Level 3'],
-      ['An+', 'F+', 'Level 1'], ['An+', 'F+', 'Level 2'], ['An+', 'F+', 'Level 3']
-    ]
+key = [
+       ['No-An', 'No-F', 'Level 1'], ['No-An', 'No-F', 'Level 2'], ['No-An', 'No-F', 'Level 3'],
+       ['An',    'No-F', 'Level 1'], ['An',    'No-F', 'Level 2'], ['An',    'No-F', 'Level 3'],
+       ['An+',   'No-F', 'Level 1'], ['An+',   'No-F', 'Level 2'], ['An+',   'No-F', 'Level 3'],
+       ['No-An', 'F',    'Level 1'], ['No-An', 'F',    'Level 2'], ['No-An', 'F',    'Level 3'],
+       ['An',    'F',    'Level 1'], ['An',    'F',    'Level 2'], ['An',    'F',    'Level 3'],
+       ['An+',   'F',    'Level 1'], ['An+',   'F',    'Level 2'], ['An+',   'F',    'Level 3'],
+       ['No-An', 'F+',   'Level 1'], ['No-An', 'F+',   'Level 2'], ['No-An', 'F+',   'Level 3'],
+       ['An',    'F+',   'Level 1'], ['An',    'F+',   'Level 2'], ['An',    'F+',   'Level 3'],
+       ['An+',   'F+',   'Level 1'], ['An+',   'F+',   'Level 2'], ['An+',   'F+',   'Level 3']
+      ]
+#Key-Val Note: [No-An,F, *] and [No-An, F+, *] do not have key values as there cannot be feedback without analysis.
+
 val = ['A', 'B', 'C',
-      'B', 'C', 'D',
-      'B', 'C', 'D',
-      'B', 'C', 'D',
-      'B', 'D', 'E']
+       'A', 'B', 'C',
+       'A', 'B', 'C',
+       None, None, None,
+       'B', 'C', 'D',
+       'B', 'C', 'D',
+       None, None, None,
+       'B', 'C', 'D',
+       'B', 'D', 'E']
 
 afa_score = {}
 for k, v in zip(key, val):
@@ -96,22 +107,24 @@ culture_score = {'Casual': 4, 'Safety Oriented':2, 'Safety Oriented+': 0, 'On-th
 
 control_qa = {'What level of access control is in place for the components and software of the CCCG?':
   ['A: No control, open access networks, unsecured physical locations.',
-  'B: Secured physical locations, private networks, general institutional access, multiple unrelated software systems found in single physical location.',
-  'C: Secured physical locations, private networks, limited institutional access (e.g., authorized personnel only, and passwords).',
-  'D: Secured physical locations, private networks, limited access to authorized and trained personnel only. Close supervision is employed. The area where software is found is limited to software of similar purposes (i.e., multiple software programs on the same machine but all related to similar purpose) multiple systems may be present in the same area.',
-  'E: Secured physical locations, private networks, extremely limited access, trained personnel only operating under close supervision, specialized machines (i.e., no other software present), only a single-purpose system is present in the area.']
+   'B: Secured physical locations, private networks, general institutional access, multiple unrelated software systems found in single physical location.',
+   'C: Secured physical locations, private networks, limited institutional access (e.g., authorized personnel only, and passwords).',
+   'D: Secured physical locations, private networks, limited access to authorized and trained personnel only. Close supervision is employed. The area where software is found is limited to software of similar purposes (i.e., multiple software programs on the same machine but all related to similar purpose) multiple systems may be present in the same area.',
+   'E: Secured physical locations, private networks, extremely limited access, trained personnel only operating under close supervision, specialized machines (i.e., no other software present), only a single-purpose system is present in the area.']
   }
 
 testing_qa = {'What level of testing is planned or has been implemented for the CCCG?':
   ['A: No testing of the system, specifically the CCCG.',
-  'B: Individual unit testing (single examples for each software type within CCCG). An example unit has been tested.',
-  'C: Detailed testing is performed on an example system (i.e., CCCG). Testing includes verification and compliance testing to ensure the CCCG meets all required criteria as a unit.',
-  'D: Commissioning tests performed on the specific CCCG to be employed. Detailed integration testing of the CCCG, in addition to stress testing.',
-  'E: In addition to C&D levels, a long-term test is conducted for the CCCG. The test is performed in parallel with existing system for approximately for a specified duration (e.g.,1 year.)']
+   'B: Individual unit testing (single examples for each software type within CCCG). An example unit has been tested.',
+   'C: Detailed testing is performed on an example system (i.e., CCCG). Testing includes verification and compliance testing to ensure the CCCG meets all required criteria as a unit.',
+   'D: Commissioning tests performed on the specific CCCG to be employed. Detailed integration testing of the CCCG, in addition to stress testing.',
+   'E: In addition to C&D levels, a long-term test is conducted for the CCCG. The test is performed in parallel with existing system for approximately for a specified duration (e.g.,1 year.)']
   }
 
-
-
+@st.dialog(title="Analysis & Feedback Selection Error:")    
+def analysis():
+    st.write("You've selected \"No Analysis\" with feedback. It is not possible to have feedback without analysis. Rechoose your \"Analysis\" parameter or select \"No-F\" under \"Feedback\".")
+    
 def app():
 
   # st.write(afa_score['An|F|Level 2'])
@@ -219,16 +232,6 @@ def app():
     else:
       score = "A"
 
-    # if ave == 0.:
-    #   score = "A"
-    # elif ave <= 0.25:
-    #   score = "B"
-    # elif ave <= 0.5:
-    #   score = "C"
-    # elif ave <= 0.75:
-    #   score = "D"
-    # else:
-    #   score = "E"
     survey_data["Input Similarity"] = score
 
   headers = ['Understanding', 'Analysis and Feedback', 'Human-Machine Interface', 'Safety Culture and Training', 'Access Control', 'Tests']
@@ -264,9 +267,14 @@ def app():
       if h == 'Understanding':
         Ut = np.sum([understanding_score[k] for k in response])
         score = score_transform[Ut]
+        
       elif h == 'Analysis and Feedback':
         name = '|'.join(response)
-        score = afa_score[name]
+        if afa_score[name] != None:
+            score = afa_score[name]
+        else:
+            analysis()
+        
       elif h == 'Human-Machine Interface':
         op = '|'.join(response[0:2])
         mt = response[2]
@@ -274,13 +282,16 @@ def app():
         s2 = maintenance_score[mt]
         smax = max(s1, s2)
         score = score_transform[smax]
+        
       elif h == 'Safety Culture and Training':
         cul = culture_score[response[0]]
         ed = culture_score[response[1]]
         m = max(cul, ed)
         score = score_transform[m]
+        
       else:
         score = response[0]
+        
       survey_data[h] = score
 
   with tabs[7]:

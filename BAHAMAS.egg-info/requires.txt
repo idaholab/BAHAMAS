@@ -1,0 +1,14 @@
+scipy
+numpy>=1.24
+pandas
+openpyxl
+pytest
+jsonpointer
+toml
+streamlit
+plotly
+kaleido
+matplotlib
+streamlit_extras
+streamlit-aggrid
+streamlit-option-menu
