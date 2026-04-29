@@ -302,7 +302,7 @@ def app():
         )
         st.divider()
         st.subheader("Subfactor Contributions:")
-        st.dataframe(sub_beta_df, width='stretch', hide_index=True)
+        st.dataframe(sub_beta_df, use_container_width=True, hide_index=True)
         st.markdown(
             f"""
             <div style="
