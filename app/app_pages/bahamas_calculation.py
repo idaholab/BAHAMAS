@@ -73,7 +73,7 @@ def runAndPlot(software_BBN):
     st.info("**Assessment Result ↓**", icon="👋🏾")
 
     st.dataframe(styled_df)
-    # visualize data
+    # Visualize data
     if st.session_state.CA_plot_failure:
         fig = software_BBN.plot(save=False, show=False)
         if isinstance(fig, list):
@@ -177,7 +177,7 @@ def app():
     st.session_state.CA_num_samples = st.number_input("Number of samples", value=st.session_state.CA_num_samples, key="CA_num", on_change=reset_submission)
     
     # Plot option checkbox w/ persistence
-    st.session_state.CA_plot_failure = st.checkbox('visualize', value=st.session_state.CA_plot_failure, key="CA_plot", on_change=reset_submission)
+    st.session_state.CA_plot_failure = st.checkbox('Visualize', value=st.session_state.CA_plot_failure, key="CA_plot", on_change=reset_submission)
     
     with st.form("CA_user_form"):
         try:
