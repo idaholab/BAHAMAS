@@ -64,19 +64,19 @@ def SQS_persistence_survey(state_key, section, index):
         if state_key not in st.session_state.SQS_concept:
             st.session_state.SQS_concept[state_key] = index
     if section == "requirement":
-        if state_key not in st.session_state.SQS_concept:
+        if state_key not in st.session_state.SQS_requirement:
             st.session_state.SQS_requirement[state_key] = index    
     if section == "design":
-        if state_key not in st.session_state.SQS_concept:
+        if state_key not in st.session_state.SQS_design:
             st.session_state.SQS_design[state_key] = index
     if section == "implementation":
-        if state_key not in st.session_state.SQS_concept:
+        if state_key not in st.session_state.SQS_implementation:
             st.session_state.SQS_implementation[state_key] = index
     if section == "testing":
-        if state_key not in st.session_state.SQS_concept:
+        if state_key not in st.session_state.SQS_testing:
             st.session_state.SQS_testing[state_key] = index
     if section == "inM":
-        if state_key not in st.session_state.SQS_concept:
+        if state_key not in st.session_state.SQS_InM:
             st.session_state.SQS_InM[state_key] = index
             
 # Function to reset submission button status when a change is made in the input
