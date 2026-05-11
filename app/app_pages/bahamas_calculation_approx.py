@@ -17,6 +17,7 @@ from bahamas.software_total_failure_probability_bbn import BBN
 workdir = os.path.dirname(__file__)
 defect_data = os.path.join(workdir, '..', '..', 'data', 'Defect_Data.xlsx')
 
+# Function to initialize persistence of data
 def PA_persistence():
     # Persistent page assets 
     if "PA_input_method" not in st.session_state:
@@ -24,9 +25,9 @@ def PA_persistence():
         
     if "PA_tasks" not in st.session_state:
         st.session_state.PA_tasks = None
-        st.session_state.uploaded_file_data = None
-        st.session_state.uploaded_file_name = None
-        st.session_state.uploaded_file_type = None
+        st.session_state.PA_uploaded_file_data = None
+        st.session_state.PA_uploaded_file_name = None
+        st.session_state.PA_uploaded_file_type = None
         
     if "PA_num_samples" not in st.session_state:
         st.session_state.PA_num_samples = 10000
@@ -43,6 +44,7 @@ def PA_persistence():
     if "PA_user_inputs" not in st.session_state:
         st.session_state.PA_user_inputs = {}
 
+# Function to initialize persistence of table data
 def PA_persistence_value(rewrite):
     if rewrite:
         st.write("Here")
@@ -58,6 +60,7 @@ def PA_persistence_value(rewrite):
                 st.session_state[f"trigger_{i}"] = 0.90
     else: return
 
+# Function to show previously loaded files
 def task_box():
     col1, col2 = st.columns([8, 1])
 
@@ -69,7 +72,7 @@ def task_box():
                         border-radius:5px; 
                         background-color:#f7f7f7;
                         font-weight:600;">
-                {st.session_state.uploaded_file_name}
+                {st.session_state.PA_uploaded_file_name}
             </div>
             """,
             unsafe_allow_html=True
@@ -77,13 +80,16 @@ def task_box():
 
     with col2:
         st.button("✖", key="clear_title_btn", on_click=clear_task)
-        
+    
+# Function to clear previous uploaded file if user clicks on the X
 def clear_task():
     st.session_state.PA_tasks = None
     
+# Function to reset submission button status when a change is made in the input
 def reset_submission():
     st.session_state.PA_submitted = False
 
+# Function to run and plot the output
 def runAndPlot(software_BBN):
     output = {}
     style = {}
@@ -93,7 +99,7 @@ def runAndPlot(software_BBN):
 
     output['Total Failure Prob.'] = [total_failure_mean, total_failure_sigma]
     style['Total Failure Prob.'] = "{:.2e}"
-    # st.write('Software total failure:', total_failure_mean, 'with std:', total_failure_sigma)
+
     for uca in UCA_types:
         mean, sigma, _ = software_BBN.get_uca(uca)
         output[uca] = [mean, sigma]
@@ -122,10 +128,12 @@ def error_NoMethod():
     
 # Main App Page
 def app():
+    # Initialize persistent data storage
     PA_persistence()
     PA_persistence_value(st.session_state.PA_value)
     st.session_state.PA_value = False
     
+    # Begin header
     st.markdown(
         """
         <h2 style="white-space: nowrap; text-align: center; color: #16324f;">
@@ -145,13 +153,13 @@ def app():
     # Upload data 
     if st.session_state.PA_input_method == "Upload Data":
         
-        uploaded = st.file_uploader('Upload your data', type=['xlsx'])
+        uploaded = st.file_uploader('Upload your data', type=['xlsx'], key="PA_uploader")
         
         if st.session_state.PA_tasks != None and uploaded == None:
             # Show last uploaded file with option to remove
-            st.session_state.uploaded_file_data = st.session_state.PA_tasks.read()
-            st.session_state.uploaded_file_name = st.session_state.PA_tasks.name
-            st.session_state.uploaded_file_type = st.session_state.PA_tasks.type
+            st.session_state.PA_uploaded_file_data = st.session_state.PA_tasks.read()
+            st.session_state.PA_uploaded_file_name = st.session_state.PA_tasks.name
+            st.session_state.PA_uploaded_file_type = st.session_state.PA_tasks.type
             task_box()
         else:
             # Overwrite stored information
@@ -175,19 +183,19 @@ def app():
             st.session_state.PA_user_inputs[SDLC_stages[i]] = {'mean':st.session_state[f"mean_{i}"], 'std':st.session_state[f"std_{i}"], 'review':st.session_state[f"review_{i}"], 'trigger':st.session_state[f"trigger_{i}"]}
     
     # Number of samples w/ persistence
-    st.session_state.PA_num_samples = st.number_input("Number of samples", value=st.session_state.PA_num_samples)
+    st.session_state.PA_num_samples = st.number_input("Number of samples", value=st.session_state.PA_num_samples, key="PA_num", on_change=reset_submission)
     
     # Plot option checkbox w/ persistence
-    st.session_state.PA_plot_failure = st.checkbox('visualize', value=st.session_state.PA_plot_failure)
+    st.session_state.PA_plot_failure = st.checkbox('visualize', value=st.session_state.PA_plot_failure, key="PA_plot", on_change=reset_submission)
 
-    with st.form("user_form"):
+    with st.form("PA_user_form"):
         # The Big Red "Submit" Button!
         try:
             submitted = st.form_submit_button("Calculate", type="primary", width="stretch")
             if submitted == True:
                 st.session_state.PA_submitted = submitted
         except:
-            st.session_state.PA_submitted = st.form_submit_button("Calculate", type="primary", use_container_width=True)
+            submitted = st.form_submit_button("Calculate", type="primary", use_container_width=True)
             if submitted == True:
                 st.session_state.PA_submitted = submitted
         
