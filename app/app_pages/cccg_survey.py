@@ -293,6 +293,7 @@ def app():
       try:
           submitted = st.form_submit_button("Evaluate", type="primary", width="stretch", hide_index=True)
 
+      # Note: except statement should target the exact exception that occurs. Need to fix. 
       except:
           submitted = st.form_submit_button("Evaluate", type="primary", use_container_width=True)
 
@@ -310,6 +311,7 @@ def app():
         try:
             st.dataframe(sub_beta_df, width="stretch", hide_index=True)
 
+        # Note: except statement should target the exact exception that occurs. Need to fix. 
         except:
             st.dataframe(sub_beta_df, use_container_width=True, hide_index=True)
 
