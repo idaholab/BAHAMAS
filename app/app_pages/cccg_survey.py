@@ -291,11 +291,11 @@ def app():
       
       # use_container_width=True deprecated in streamlit version. Line for backwards compatibility. 
       try:
-          submitted = st.form_submit_button("Evaluate", type="primary", use_container_width=True)
+          submitted = st.form_submit_button("Evaluate", type="primary", width="stretch", hide_index=True)
 
       except:
-          submitted = st.form_submit_button("Evaluate", type="primary", width="stretch", hide_index=True)
-        
+          submitted = st.form_submit_button("Evaluate", type="primary", use_container_width=True)
+
       if submitted:
         # st.write("Subfactor Scores:")
         # st.write(survey_data)
@@ -308,11 +308,11 @@ def app():
         st.divider()
         st.subheader("Subfactor Contributions:")
         try:
-            st.dataframe(sub_beta_df, use_container_width=True, hide_index=True)
-        
-        except:
             st.dataframe(sub_beta_df, width="stretch", hide_index=True)
-            
+
+        except:
+            st.dataframe(sub_beta_df, use_container_width=True, hide_index=True)
+
         st.markdown(
             f"""
             <div style="
