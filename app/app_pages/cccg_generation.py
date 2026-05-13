@@ -65,6 +65,15 @@ def CCI_persistence():
         
     if "CCI_expand" not in st.session_state:
         st.session_state.CCI_expand = False
+    
+    if "CCI_CCCG" not in st.session_state:
+        st.session_state.CCI_CCCG        = False
+        st.session_state.CCI_final       = None
+        st.session_state.CCI_single      = None
+        st.session_state.CCI_double      = None
+        st.session_state.CCI_triple      = None
+        st.session_state.skip_generation = True
+        
 
 # Function to show previously loaded files     
 def task_box():
@@ -94,10 +103,14 @@ def reset_submission():
 # Function to clear previous uploaded file if user clicks on the X
 def clear_task():
     st.session_state.CCI_tasks = None
+    st.session_state.submitted = False
 
 @st.dialog("Input Error")
 def error_InputError():
     st.write("The input file chosen is incorrect. Please try again.")
+    
+def update_generation():
+    st.session_state.skip_generation = False
     
 def download_template():
     with st.expander("General Instructions"):
@@ -134,9 +147,16 @@ def download_template():
 
     return 
 
-def show_CCCG(expanded, sys_data):
-    cccg_obj = CCCG(file=sys_data)
-    cccg_obj.generate()
+def show_CCCG(expanded, sys_data, skip_generate):
+    
+    if not skip_generate:    
+        cccg_obj = CCCG(file=sys_data)
+        cccg_obj.generate()
+        st.session_state.CCI_final  = cccg_obj.get('final')
+        st.session_state.CCI_single = cccg_obj.get('single')
+        st.session_state.CCI_double = cccg_obj.get('double')
+        st.session_state.CCI_triple = cccg_obj.get('triple')
+        st.session_state.skip_generation = True
     
     opts = ['Summary Statistics', 'All Groups', 'Single Factor', 'Double Factor', 'Triple Factors']
     opt_index = list(range(len(opts)))
@@ -144,12 +164,18 @@ def show_CCCG(expanded, sys_data):
     
     tabs = st.tabs(opts)
     
+    final  = st.session_state.CCI_final
+    single = st.session_state.CCI_single
+    double = st.session_state.CCI_double
+    triple = st.session_state.CCI_triple
+    
+    plot_statistics(tabs, opt_dict, final, single, double, triple, expanded)
+    
+    return tabs, opt_dict, final, single, double, triple
+    
+def plot_statistics(tabs, opt_dict, final, single, double, triple, expanded):
+    
     with tabs[opt_dict["Summary Statistics"]]:
-        final  = cccg_obj.get('final')
-        single = cccg_obj.get('single')
-        double = cccg_obj.get('double')
-        triple = cccg_obj.get('triple') 
-        
         df = pd.concat(final)
         
         # Show frequency of components in CCCG
@@ -211,7 +237,6 @@ def show_CCCG(expanded, sys_data):
             st.dataframe(factor_df, hide_index=True)            
         
     with tabs[opt_dict['All Groups']]:
-        final = cccg_obj.get('final')
         st.subheader("All CCCGs based on different combination of coupling factors (i.e., Function, Input and Design)")
         for i, df in enumerate(final):
             label = f"CCCG {i+1}"
@@ -219,7 +244,6 @@ def show_CCCG(expanded, sys_data):
                 st.dataframe(df)
 
     with tabs[opt_dict['Single Factor']]: 
-        single = cccg_obj.get('single')
         st.subheader("CCCGs Based on Single Coupling Factor")
         for i, df in enumerate(single):
             label = f"CCCG {i+1}"
@@ -227,7 +251,6 @@ def show_CCCG(expanded, sys_data):
                 st.dataframe(df)
           
     with tabs[opt_dict['Double Factor']]:
-        double = cccg_obj.get('double')
         st.subheader("CCCGs Based on Two Coupling Factors")
         for i, df in enumerate(double):
             label = f"CCCG {i+1}"
@@ -235,7 +258,6 @@ def show_CCCG(expanded, sys_data):
                 st.dataframe(df)
           
     with tabs[opt_dict['Triple Factors']]:
-        triple = cccg_obj.get('triple')
         st.subheader("CCCG Based on Three Coupling Factors")
         for i, df in enumerate(triple):
             label = f"CCCG {i+1}"
@@ -262,12 +284,12 @@ def app():
     else:
         # Overwrite stored information
         st.session_state.CCI_tasks = uploaded
-        
+    
     with st.form("CCI_opener"):             
         try:
-            submitted = st.form_submit_button("Generate", type="primary", width="stretch")
+            submitted = st.form_submit_button("Generate", type="primary", width="stretch", on_click=update_generation)
         except:
-            submitted = st.form_submit_button("Generate", type="primary", use_container_width=True)
+            submitted = st.form_submit_button("Generate", type="primary", use_container_width=True, on_click=update_generation)
                 
         if submitted == True:
             st.session_state.CCI_submitted = submitted
@@ -276,5 +298,5 @@ def app():
         st.session_state.CCI_expand     = st.checkbox('Expand All Results?', value=st.session_state.CCI_expand)
     
     
-    if submitted and st.session_state.CCI_tasks is not None:
-        show_CCCG(st.session_state.CCI_expand, st.session_state.CCI_tasks)
+    if st.session_state.CCI_submitted and st.session_state.CCI_tasks is not None:
+        show_CCCG(st.session_state.CCI_expand, st.session_state.CCI_tasks, st.session_state.skip_generation)
