@@ -4,11 +4,8 @@ Created on September 7, 2025
 """
 import pandas as pd
 import warnings
-import sys
-import os
 import copy
 warnings.filterwarnings('ignore')
-
 import logging
 
 logger = logging.getLogger('BAHAMAS.CCCG')
@@ -234,8 +231,12 @@ class CCCG(object):
     """
     logger.info("Generating")
     # Read data file into Pandas
-    df_pd = pd.read_csv(self._sys_diagram)
-
+    df_pd = pd.read_excel(self._sys_diagram)
+    
+    # Expand Function_Config
+    func_big = df_pd["Function_Config"].str.split('; ', expand=True)
+    func_big.columns = [f'Function_{i+1}' for i in range(func_big.shape[1])]
+    
     # Expand Function_Config
     func_big = df_pd["Function_Config"].str.split('; ', expand=True)
     func_big.columns = [f'Function_{i+1}' for i in range(func_big.shape[1])]

@@ -1,18 +1,17 @@
 # Copyright 2025, Battelle Energy Alliance, LLC  ALL RIGHTS RESERVED
 
-import streamlit as st
-import pandas as pd
-import io
+# built-in libraries
 import os, sys
-
-# Bahamas Module
+import io
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
 
+# implicit libraries
+import streamlit as st
+import pandas as pd
+
+# explicit libraries
 from bahamas.cccg import CCCG
-
-workdir = os.path.dirname(__file__)
-sys_data = os.path.join(workdir, '..', '..', 'data', 'Scenario_6.csv')
-
+workdir = os.path.dirname(__file__)        
 
 #%% --- Page Overview Text Descriptions ---
 page_overview = "Upload the system data and select the common cause component group (CCCG) output options to generate."
@@ -52,18 +51,54 @@ general_instructions = """
 # --- End Tab ---
 
 #%% --- Function Blocks ---
-def load_file():
-    """
-    Enables users to load a csv file to compute. 
-    """
-    with st.container(border=False):
-        with st.form("opener"):
-            sys_data = st.file_uploader('Upload your data', type=['csv'])
-            submitted = st.form_submit_button("Generate", 
-                                              type="primary",
-                                              use_container_width=True)
-    return submitted, sys_data
+# Function to initialize persistence of data
+def CCI_persistence():
+    # Persistent page assets        
+    if "CCI_tasks" not in st.session_state:
+        st.session_state.CCI_tasks = None
+        st.session_state.CCI_uploaded_file_data = None
+        st.session_state.CCI_uploaded_file_name = None
+        st.session_state.CCI_uploaded_file_type = None
+        
+    if "CCI_submitted" not in st.session_state:
+        st.session_state.CCI_submitted = False
+        
+    if "CCI_expand" not in st.session_state:
+        st.session_state.CCI_expand = False
 
+# Function to show previously loaded files     
+def task_box():
+    col1, col2 = st.columns([8, 1])
+
+    with col1:
+        st.write(
+            f"""
+            <div style="padding:10px; 
+                        border:1px solid #ccc; 
+                        border-radius:5px; 
+                        background-color:#f7f7f7;
+                        font-weight:600;">
+                {st.session_state.CCI_uploaded_file_name}
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+
+    with col2:
+        st.button("✖", key="clear_title_btn", on_click=clear_task)
+
+# Function to reset submission button status when a change is made in the input
+def reset_submission():
+    st.session_state.CCI_submitted = False
+    
+# Function to clear previous uploaded file if user clicks on the X
+def clear_task():
+    st.session_state.CCI_tasks = None
+
+@st.dialog("Input Error")
+def error_InputError():
+    st.write("The input file chosen is incorrect. Please try again.")
+    
 def download_template():
     with st.expander("General Instructions"):
         st.text(general_instructions)
@@ -99,21 +134,6 @@ def download_template():
 
     return 
 
-def configuration_options():
-    with st.form("Options"):
-        all_groups = st.checkbox('All', value=True)
-        single     = st.checkbox('Single')
-        double     = st.checkbox('Double')
-        triple     = st.checkbox('Triple')
-                
-        config = {'output_file_base': None,
-                  'final':all_groups,
-                  'single':single,
-                  'double':double,
-                  'triple':triple}
-    
-    return config
-
 def show_CCCG(expanded, sys_data):
     cccg_obj = CCCG(file=sys_data)
     cccg_obj.generate()
@@ -129,11 +149,6 @@ def show_CCCG(expanded, sys_data):
         single = cccg_obj.get('single')
         double = cccg_obj.get('double')
         triple = cccg_obj.get('triple') 
-        
-        total_cnt    = len(final)
-        total_single = len(single)
-        total_double = len(double)
-        total_triple = len(triple)
         
         df = pd.concat(final)
         
@@ -229,21 +244,37 @@ def show_CCCG(expanded, sys_data):
     
 #%% --- Main Page Information    
 def app():
-    # st.set_page_config(page_title="Software Common Cause Analysis",
-    #                 page_icon=":bridge_at_night:",
-    #                 layout="wide",
-    #                 initial_sidebar_state="auto")
-    
+    CCI_persistence()    
     
     st.markdown(page_title,unsafe_allow_html=True,)
     
     download_template()
+
+    #uploaded = st.file_uploader('Upload your data', type=['csv'], key="CCI_uploader")
+    uploaded = st.file_uploader('Upload your data', type=['xlsx'], key="CCI_uploader")    
     
-    submitted, sys_data = load_file()
-    
-    with st.container(border=True):
-        expanded     = st.checkbox('Expand All Results?')
-    
-    if submitted:
-        show_CCCG(expanded, sys_data)
+    if st.session_state.CCI_tasks != None and uploaded == None:
+        # Show last uploaded file with option to remove
+        st.session_state.CCI_uploaded_file_data = st.session_state.CCI_tasks.read()
+        st.session_state.CCI_uploaded_file_name = st.session_state.CCI_tasks.name
+        st.session_state.CCI_uploaded_file_type = st.session_state.CCI_tasks.type
+        task_box()
+    else:
+        # Overwrite stored information
+        st.session_state.CCI_tasks = uploaded
         
+    with st.form("CCI_opener"):             
+        try:
+            submitted = st.form_submit_button("Generate", type="primary", width="stretch")
+        except:
+            submitted = st.form_submit_button("Generate", type="primary", use_container_width=True)
+                
+        if submitted == True:
+            st.session_state.CCI_submitted = submitted
+            
+    with st.container(border=True):
+        st.session_state.CCI_expand     = st.checkbox('Expand All Results?', value=st.session_state.CCI_expand)
+    
+    
+    if submitted and st.session_state.CCI_tasks is not None:
+        show_CCCG(st.session_state.CCI_expand, st.session_state.CCI_tasks)
