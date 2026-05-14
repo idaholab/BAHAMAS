@@ -180,7 +180,7 @@
 <td><p>Bayesian belief network for reliability analysis of software</p></td>
 </tr>
 <tr class="row-even"><td><p><a class="reference internal" href="#bahamas.CCCG" title="bahamas.CCCG"><code class="xref py py-obj docutils literal notranslate"><span class="pre">CCCG</span></code></a></p></td>
-<td><p>Compute CCCGs for the given list of components of diversity and redundancy system</p></td>
+<td><p>Compute CCCGs for given list of components of diversity and redundancy system</p></td>
 </tr>
 <tr class="row-odd"><td><p><a class="reference internal" href="#bahamas.Workflow" title="bahamas.Workflow"><code class="xref py py-obj docutils literal notranslate"><span class="pre">Workflow</span></code></a></p></td>
 <td><p>Workflow manager for BAHAMAS calculation</p></td>
@@ -548,7 +548,12 @@ P(Defect type|SDLC Stage) = dist_dict[‘SDLC Stage’][‘Defect type’]</p>
 <dt class="sig sig-object py" id="bahamas.CCCG">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">bahamas.</span></span><span class="sig-name descname"><span class="pre">CCCG</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/bahamas/cccg.html#CCCG"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.CCCG" title="Link to this definition"></a></dt>
 <dd><p>Bases: <code class="xref py py-obj docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Compute CCCGs for the given list of components of diversity and redundancy system</p>
+<p>Compute CCCGs for given list of components of diversity and redundancy system</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>object</strong> (<em>_type_</em>) – _description_</p>
+</dd>
+</dl>
 <dl class="py attribute">
 <dt class="sig sig-object py" id="bahamas.CCCG._sys_diagram">
 <span class="sig-name descname"><span class="pre">_sys_diagram</span></span><a class="headerlink" href="#bahamas.CCCG._sys_diagram" title="Link to this definition"></a></dt>
@@ -667,12 +672,7 @@ P(Defect type|SDLC Stage) = dist_dict[‘SDLC Stage’][‘Defect type’]</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="bahamas.CCCG.generate">
 <span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/bahamas/cccg.html#CCCG.generate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.CCCG.generate" title="Link to this definition"></a></dt>
-<dd><p>Generate CCCGs based on three coupling factors (i.e., Function, Input, and Design)</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><p><strong>config</strong> (<em>dict</em><em>, </em><em>optional</em>) – config file for output control. Defaults to None.</p>
-</dd>
-</dl>
+<dd><p>Generate CCCGs based on three coupling factors, i.e., Function, Input and Design</p>
 </dd></dl>
 
 <dl class="py method">
@@ -684,7 +684,7 @@ P(Defect type|SDLC Stage) = dist_dict[‘SDLC Stage’][‘Defect type’]</p>
 <dd class="field-odd"><p><strong>name</strong> (<em>str</em>) – name for CCCGs group</p>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p>list of CCCGs</p>
+<dd class="field-even"><p>List of CCCGs</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>list (list of Pandas.DataFrame)</p>
@@ -701,7 +701,7 @@ P(Defect type|SDLC Stage) = dist_dict[‘SDLC Stage’][‘Defect type’]</p>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>data</strong> (<em>list</em><em> of </em><em>pandas.DataFrame</em>) – output data to dump</p></li>
 <li><p><strong>fname</strong> (<em>str</em>) – file name to save the data</p></li>
-<li><p><strong>style</strong> (<em>str</em><em>, </em><em>optional</em>) – type of file. Defaults to “csv”.</p></li>
+<li><p><strong>style</strong> (<em>str</em><em>, </em><em>optional</em>) – type of file. Defaults to ‘csv’.</p></li>
 </ul>
 </dd>
 </dl>
@@ -710,7 +710,7 @@ P(Defect type|SDLC Stage) = dist_dict[‘SDLC Stage’][‘Defect type’]</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="bahamas.CCCG.aggregate">
 <span class="sig-name descname"><span class="pre">aggregate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cccgs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/bahamas/cccg.html#CCCG.aggregate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#bahamas.CCCG.aggregate" title="Link to this definition"></a></dt>
-<dd><p>Aggregate expanded Function, Input, and Design into Function_Config, Input_Config, and Design_Config</p>
+<dd><p>Aggregate expanded Function, Input, Design into Function_Config, Input_Config and Design_Config</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>cccgs</strong> (<em>list</em>) – list of pd.DataFrame (i.e., CCCGs)</p>

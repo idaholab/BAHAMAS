@@ -312,7 +312,10 @@ Package Contents
    Bases: :py:obj:`object`
 
 
-   Compute CCCGs for the given list of components of diversity and redundancy system
+   Compute CCCGs for given list of components of diversity and redundancy system
+
+   :param object: _description_
+   :type object: _type_
 
 
    .. py:attribute:: _sys_diagram
@@ -430,10 +433,7 @@ Package Contents
 
    .. py:method:: generate(config=None)
 
-      Generate CCCGs based on three coupling factors (i.e., Function, Input, and Design)
-
-      :param config: config file for output control. Defaults to None.
-      :type config: dict, optional
+      Generate CCCGs based on three coupling factors, i.e., Function, Input and Design
 
 
 
@@ -444,7 +444,7 @@ Package Contents
       :param name: name for CCCGs group
       :type name: str
 
-      :returns: list of CCCGs
+      :returns: List of CCCGs
       :rtype: list (list of Pandas.DataFrame)
 
 
@@ -457,14 +457,14 @@ Package Contents
       :type data: list of pandas.DataFrame
       :param fname: file name to save the data
       :type fname: str
-      :param style: type of file. Defaults to "csv".
+      :param style: type of file. Defaults to 'csv'.
       :type style: str, optional
 
 
 
    .. py:method:: aggregate(cccgs)
 
-      Aggregate expanded Function, Input, and Design into Function_Config, Input_Config, and Design_Config
+      Aggregate expanded Function, Input, Design into Function_Config, Input_Config and Design_Config
 
       :param cccgs: list of pd.DataFrame (i.e., CCCGs)
       :type cccgs: list

@@ -54,13 +54,13 @@ Module Contents
    :param src_arr: data to check
    :type src_arr: list or pd.DataFrame
 
-   :returns: True if the group is not empty, else False
+   :returns: True if the group is not empty else False
    :rtype: bool
 
 
 .. py:function:: clean_string(s)
 
-   Remove "None" and "nan" from str that are separated by ";"
+   remove "None" and "nan" from str that are separated by ";"
 
    :param s: string to clean
    :type s: str
@@ -76,7 +76,7 @@ Module Contents
    :param arg: list of pd.DataFrame CCCG data
    :type arg: list
 
-   :returns: merged CCCG data without duplications
+   :returns: Merged CCCG data without duplications
    :rtype: list
 
 
@@ -93,9 +93,9 @@ Module Contents
 
 .. py:function:: unique_cells(src_arr)
 
-   Identify the unique inputs/designs/functions for the given coupling factor (i.e., Input Function and Design)
+   Identify the unique inputs/designs/functions for given coupling factor (i.e., Input, Function and Design)
 
-   :param src_arr: expanded coupling factor data for single coupling factor
+   :param src_arr: Expanded Coupling Factor data for single coupling factor
    :type src_arr: pd.DataFrame
 
    :returns: list of unique inputs/designs/functions among all components
@@ -104,63 +104,44 @@ Module Contents
 
 .. py:function:: match_CCCG_on(src_arr, col_name)
 
-   Get a list of CCCGs based on single coupling factor, meaning the CCCGs are grouped because
+   Get a list of CCCGs based on single coupling factor, which means the CCCGs are grouped because
    they have at least one shared variable of the given coupling factor
 
    :param src_arr: Component table with expanded coupling factors
    :type src_arr: pd.DataFrame
-   :param col_name: coupling factor, Function\_, Input\_ or Design\_
+   :param col_name: coupling factor, Function_, Input_ or Design_
    :type col_name: str
 
-   :returns: list of CCCGs based on single coupling factor, arranged in the order \*_1, \*_2, \*_3, etc. where \* represents the coupling factor
+   :returns: list of CCCGs based on single coupling factor, arranged in order *_1, *_2, *_3, etc. where * represent the coupling factor
    :rtype: list
 
 
 .. py:function:: match_CCCG_list_on(list_pd, col_name)
 
-   Identify CCCGs that are also have the "col_name" coupling factor. (This function is used for two or more shared coupling factors.)
+   Identify CCCGs that are also have "col_name" coupling factor (this function is used for two or more shared coupling factors)
 
    :param list_pd: list of pd.DataFrame of CCCGs
    :type list_pd: list
-   :param col_name: coupling factor, Function\_, Input\_ or Design\_
+   :param col_name: coupling factor, Function_, Input_ or Design_
    :type col_name: str
 
-   :returns: CCCGs with the additional coupling factor ("col_name")
+   :returns: CCCGs with additional coupling factor ("col_name")
    :rtype: list
 
 
 .. py:function:: match_multi_on(src_arr, col_name)
 
-   Extract a CCCG based on col_name
-
-   :param src_arr: pd.DataFrame of CCCGs
-   :type src_arr: pd.DataFrame
-   :param col_name: coupling factor
-   :type col_name: str
-
-   :returns: extracted the CCCGs based on the given column name
-   :rtype: list
-
-
 .. py:function:: match_multi_list_on(list_pd, col_name)
-
-   Extract the CCCGs from a list of pandas.DataFrame
-
-   :param list_pd: list of pd.DataFrame
-   :type list_pd: list
-   :param col_name: coupling factor name
-   :type col_name: str
-
-   :returns: list of extracted CCCGs
-   :rtype: list
-
 
 .. py:class:: CCCG(file)
 
    Bases: :py:obj:`object`
 
 
-   Compute CCCGs for the given list of components of diversity and redundancy system
+   Compute CCCGs for given list of components of diversity and redundancy system
+
+   :param object: _description_
+   :type object: _type_
 
 
    .. py:attribute:: _sys_diagram
@@ -278,10 +259,7 @@ Module Contents
 
    .. py:method:: generate(config=None)
 
-      Generate CCCGs based on three coupling factors (i.e., Function, Input, and Design)
-
-      :param config: config file for output control. Defaults to None.
-      :type config: dict, optional
+      Generate CCCGs based on three coupling factors, i.e., Function, Input and Design
 
 
 
@@ -292,7 +270,7 @@ Module Contents
       :param name: name for CCCGs group
       :type name: str
 
-      :returns: list of CCCGs
+      :returns: List of CCCGs
       :rtype: list (list of Pandas.DataFrame)
 
 
@@ -305,14 +283,14 @@ Module Contents
       :type data: list of pandas.DataFrame
       :param fname: file name to save the data
       :type fname: str
-      :param style: type of file. Defaults to "csv".
+      :param style: type of file. Defaults to 'csv'.
       :type style: str, optional
 
 
 
    .. py:method:: aggregate(cccgs)
 
-      Aggregate expanded Function, Input, and Design into Function_Config, Input_Config, and Design_Config
+      Aggregate expanded Function, Input, Design into Function_Config, Input_Config and Design_Config
 
       :param cccgs: list of pd.DataFrame (i.e., CCCGs)
       :type cccgs: list
