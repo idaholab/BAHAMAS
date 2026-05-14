@@ -99,10 +99,10 @@ if __name__ == "__main__":
     # Display the selected page
     if selected_page == "Welcome":
         welcome.app()
+    elif selected_page == "Preliminary Assessment":
+            bahamas_calculation_approx.app()
     elif selected_page == "Comprehensive  Assessment":
         bahamas_calculation.app()
-    elif selected_page == "Preliminary Assessment":
-        bahamas_calculation_approx.app()
     elif selected_page == "Common Cause Identification":
         cccg_generation.app()
     elif selected_page == "Software Quality Survey":
