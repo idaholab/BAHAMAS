@@ -96,8 +96,8 @@
 <h1>Defect Types (ODC)<a class="headerlink" href="#defect-types-odc" title="Link to this heading"></a></h1>
 <p>During software development, defects or bugs arise, and their
 concentrations change throughout development as they are influenced by
-the conducted review activities <span id="id1">[<a class="reference internal" href="index.html#id5" title="R. Chillarege, I. S. Bhandari, J. K. Chaar, M. J. Halliday, D. S. Moebus, B. K. Ray, and M.-Y. Wong. Orthogonal defect classification – a concept for in-process measurements. IEEE Transactions on Software Engineering, 18(11):943–956, 1992.">4</a>]</span> <span id="id2">[<a class="reference internal" href="index.html#id6" title="J. Agnelo, N. Naranjeiro, and J. Bernardino. Nosql odc dataset, results, and support code. https://eden.dei.uc.pt/ cnl/papers/2019-jss.zip, March 2019. Accessed: August 2022.">5</a>]</span>
-<span id="id3">[<a class="reference internal" href="index.html#id7" title="J. Agnelo, N. Laranjeiro, and J. Bernardino. Using orthogonal defect classification to characterize nosql database defects. The Journal of Systems and Software, 2020.">6</a>]</span>. The ODC methodology has produced
+the conducted review activities <span class="bibtex-citation" id="id1">[<a class="reference internal" href="index.html#id5" title="R. Chillarege, I. S. Bhandari, J. K. Chaar, M. J. Halliday, D. S. Moebus, B. K. Ray, and M.-Y. Wong. Orthogonal defect classification – a concept for in-process measurements. IEEE Transactions on Software Engineering, 18(11):943–956, 1992.">4</a>]</span> <span class="bibtex-citation" id="id2">[<a class="reference internal" href="index.html#id6" title="J. Agnelo, N. Naranjeiro, and J. Bernardino. Nosql odc dataset, results, and support code. https://eden.dei.uc.pt/ cnl/papers/2019-jss.zip, March 2019. Accessed: August 2022.">5</a>]</span>
+<span class="bibtex-citation" id="id3">[<a class="reference internal" href="index.html#id7" title="J. Agnelo, N. Laranjeiro, and J. Bernardino. Using orthogonal defect classification to characterize nosql database defects. The Journal of Systems and Software, 2020.">6</a>]</span>. The ODC methodology has produced
 a scheme that categorizes software defects into eight orthogonal classes
 (i.e., types). The present work relies on this classification scheme to help
 predict software failure probabilities. Historical ODC data
@@ -107,7 +107,7 @@ a convenient view of defect types for a given stage. ODC design
 review activities are mapped to the concept and requirements stages, ODC
 code inspection activities are mapped to the design and implementation
 stages, and ODC testing activities are mapped to the testing and the
-installation &amp; maintenance stages. Bayesian inference <span id="id4">[<a class="reference internal" href="index.html#id8" title="H. Dezfuli, D. Kelly, C. Smith, K. Vedros, and W. Galyean. Bayesian inference for nasa probabilistic risk and reliability analysis. Technical Report NASA/SP-2009-569, National Aeronautics and Space Administration (NASA), 2009.">7</a>]</span> was applied to
+installation &amp; maintenance stages. Bayesian inference <span class="bibtex-citation" id="id4">[<a class="reference internal" href="index.html#id8" title="H. Dezfuli, D. Kelly, C. Smith, K. Vedros, and W. Galyean. Bayesian inference for nasa probabilistic risk and reliability analysis. Technical Report NASA/SP-2009-569, National Aeronautics and Space Administration (NASA), 2009.">7</a>]</span> was applied to
 develop distributions for each defect type at each stage of the SDLC .
 This was done by taking a binomial model, and Jeffreys noninformative prior,
 then obtaining a posterior beta distribution to represent the general
@@ -115,7 +115,7 @@ expected defect types for each stage. The posterior distribution is
 given as a beta with parameters <span class="math notranslate nohighlight">\(\alpha + x\)</span> and <span class="math notranslate nohighlight">\(\beta + y - x\)</span>,
 where <cite>x</cite> is the number of
 observed events, <cite>y</cite> is the number of trials, and <span class="math notranslate nohighlight">\(\alpha = 0.5\)</span> and <span class="math notranslate nohighlight">\(\beta = 0.5\)</span> for
-Jeffreys noninformative prior <span id="id5">[<a class="reference internal" href="index.html#id8" title="H. Dezfuli, D. Kelly, C. Smith, K. Vedros, and W. Galyean. Bayesian inference for nasa probabilistic risk and reliability analysis. Technical Report NASA/SP-2009-569, National Aeronautics and Space Administration (NASA), 2009.">7</a>]</span> <span id="id6">[<a class="reference internal" href="index.html#id9" title="C. L. Atwood, J. L. LaChance, H. F. Martz, D. J. Anderson, M. Englehardt, D. Whitehead, and T. Wheeler. Handbook of parameter estimation for probabilistic risk assessment. Technical Report NUREG/CR-6823, U.S. Nuclear Regulatory Commission, Washington, DC, 2003.">8</a>]</span>. Distributions can be produced
+Jeffreys noninformative prior <span class="bibtex-citation" id="id5">[<a class="reference internal" href="index.html#id8" title="H. Dezfuli, D. Kelly, C. Smith, K. Vedros, and W. Galyean. Bayesian inference for nasa probabilistic risk and reliability analysis. Technical Report NASA/SP-2009-569, National Aeronautics and Space Administration (NASA), 2009.">7</a>]</span> <span class="bibtex-citation" id="id6">[<a class="reference internal" href="index.html#id9" title="C. L. Atwood, J. L. LaChance, H. F. Martz, D. J. Anderson, M. Englehardt, D. Whitehead, and T. Wheeler. Handbook of parameter estimation for probabilistic risk assessment. Technical Report NUREG/CR-6823, U.S. Nuclear Regulatory Commission, Washington, DC, 2003.">8</a>]</span>. Distributions can be produced
 readily from the data given in <a class="reference internal" href="#table-o-1"><span class="std std-numref">Table 3</span></a>.</p>
 <span id="table-o-1"></span><table class="docutils align-center" id="id8">
 <caption><span class="caption-number">Table 3 </span><span class="caption-text">ODC Defect-Type Data for Each Review Activity</span><a class="headerlink" href="#id8" title="Link to this table"></a></caption>
@@ -180,7 +180,7 @@ Relationship (Rel.), and Timing (Tim.).</p>
 predict defect distributions for each software development stage.
 Depending on the defect removal efforts, there is an expectation that
 the probability of defects remaining is expected to be influenced. As expressed by
-Humphreys <span id="id7">[<a class="reference internal" href="index.html#id10" title="R. A. Humphreys. Assigning a numerical value to the beta factor common cause evaluation. In Reliability '87. 1987.">9</a>]</span>, design improvements can be considered a function (likely
+Humphreys <span class="bibtex-citation" id="id7">[<a class="reference internal" href="index.html#id10" title="R. A. Humphreys. Assigning a numerical value to the beta factor common cause evaluation. In Reliability '87. 1987.">9</a>]</span>, design improvements can be considered a function (likely
 nonlinear) of effort and time. A model was developed for this work so as to
 express the conditional probability of specific defect types remaining,
 given the state defect introduction and removal activities. <a class="reference internal" href="#equation-eq-odc1">Eq. 12</a> is the defect conditional probability (DCP)
