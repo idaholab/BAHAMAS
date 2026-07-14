@@ -172,18 +172,18 @@ def app():
             col1, col2, col3, col4 = st.columns(4)
             
             with col1:
-                st.session_state[f"mean_{i}"]      = st.number_input('Human Error Prob. (Mean)', value=st.session_state[f"mean_{i}"],    step=0.0001, key=f"MN_{i}", on_change=reset_submission)
+                st.session_state[f"mean_{i}"]      = st.number_input('Human Error Prob. (Mean)', min_value=0.0, max_value=1.0, value=st.session_state[f"mean_{i}"],    step=0.01, key=f"MN_{i}", on_change=reset_submission)
             with col2:
-                st.session_state[f"std_{i}"]       = st.number_input('Human Error Prob. (STD)',  value=st.session_state[f"std_{i}"],     step=0.0001, key=f"SD_{i}", on_change=reset_submission)
+                st.session_state[f"std_{i}"]       = st.number_input('Human Error Prob. (STD)',  min_value=0.0, max_value=99.0, value=st.session_state[f"std_{i}"],     step=0.01, key=f"SD_{i}", on_change=reset_submission)
             with col3:
-                st.session_state[f"review_{i}"]    = st.number_input('Review Number',            value=st.session_state[f"review_{i}"],  step=0.01,   key=f"RV_{i}", on_change=reset_submission)
+                st.session_state[f"review_{i}"]    = st.number_input('Review Number',            min_value=0.0, max_value=100.0, value=st.session_state[f"review_{i}"],  step=1.0,   key=f"RV_{i}", on_change=reset_submission)
             with col4:
-                st.session_state[f"trigger_{i}"]   = st.number_input('Trigger Coverage',         value=st.session_state[f"trigger_{i}"], step=0.01,   key=f"TG_{i}", on_change=reset_submission)
+                st.session_state[f"trigger_{i}"]   = st.number_input('Trigger Coverage',         min_value=0.0, max_value=1.0, value=st.session_state[f"trigger_{i}"], step=0.1,   key=f"TG_{i}", on_change=reset_submission)
                 
             st.session_state.PA_user_inputs[SDLC_stages[i]] = {'mean':st.session_state[f"mean_{i}"], 'std':st.session_state[f"std_{i}"], 'review':st.session_state[f"review_{i}"], 'trigger':st.session_state[f"trigger_{i}"]}
     
     # Number of samples w/ persistence
-    st.session_state.PA_num_samples = st.number_input("Number of samples", value=st.session_state.PA_num_samples, key="PA_num", on_change=reset_submission)
+    st.session_state.PA_num_samples = st.number_input("Number of samples", min_value=1, max_value=99999, value=st.session_state.PA_num_samples, key="PA_num", on_change=reset_submission)
     
     # Plot option checkbox w/ persistence
     st.session_state.PA_plot_failure = st.checkbox('visualize', value=st.session_state.PA_plot_failure, key="PA_plot", on_change=reset_submission)
