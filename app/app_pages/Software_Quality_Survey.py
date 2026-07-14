@@ -534,6 +534,7 @@ def app():
     
           tasks = None
           software_BBN = BBN(defect_data, tasks, data=software_survey_data, num_samples=st.session_state.SQS_num_samples, approx=True)
+          
           runAndPlot(software_BBN)
                 
       else:

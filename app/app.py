@@ -1,10 +1,16 @@
 # Copyright 2025, Battelle Energy Alliance, LLC  ALL RIGHTS RESERVED
 
-import streamlit as st
+# built-in libraries
 import logging
 import os
+import requests
+import certifi
+
+# implicit libraries
+import streamlit as st
 from streamlit_option_menu import option_menu
 
+# explicit libraries
 from app_pages import bahamas_calculation
 from app_pages import bahamas_calculation_approx
 from app_pages import cccg_generation
@@ -15,6 +21,13 @@ from app_pages import welcome
 logger = logging.getLogger(__name__)
 
 logo_path = "../docs/pics/BAHAMAS_color.png"
+
+# Retrieve software version number and release date
+url = "https://api.github.com/repos/idaholab/BAHAMAS/releases/latest"
+response = requests.get(url, verify=certifi.where()).json()
+
+version  = response.get("name")
+pub_date = response.get("published_at")[:10]
 
 # Set page configuration
 st.set_page_config(
@@ -56,6 +69,14 @@ def display_sidebar_content() -> None:
         """,
         unsafe_allow_html=True,
     )
+    st.sidebar.markdown(
+        f"""
+        <h4 style='text-align: center;'> Version Number: {version} \n
+        Release Date: {pub_date}
+        """,
+        unsafe_allow_html=True
+    )
+    
 
     st.sidebar.markdown(
         """
