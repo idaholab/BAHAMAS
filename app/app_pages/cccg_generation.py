@@ -1,8 +1,12 @@
 # Copyright 2025, Battelle Energy Alliance, LLC  ALL RIGHTS RESERVED
 
+'''
+Name of Tab on Webpage: Common Cause Identification
+'''
+
 # built-in libraries
 import os, sys
-import io
+from io import BytesIO
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
 
 # implicit libraries
@@ -136,13 +140,17 @@ def download_template():
             ]
         )
         
-        csv_data = df.to_csv(index=False)
+        # Setup for xlsx download of the template
+        output = BytesIO()
+        with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+            df.to_excel(writer, index=False)
+        xlsx_data = output.getvalue()
         
         st.download_button(
-            label="⬇️ Download Template.csv",
-            data=csv_data,
-            file_name="Template.csv",
-            mime="text/csv"
+            label="⬇️ Download Template.xlsx",
+            data=xlsx_data,
+            file_name="Template.xlsx",
+            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
             )
 
     return 
