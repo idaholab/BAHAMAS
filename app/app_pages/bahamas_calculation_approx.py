@@ -1,7 +1,11 @@
 # Copyright 2025, Battelle Energy Alliance, LLC  ALL RIGHTS RESERVED
 
+'''
+Name of Tab on Webpage: Preliminary Assessment 
+'''
 # built-in libraries
 import os, sys
+from io import BytesIO
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
 
 # implicit libraries
@@ -17,6 +21,28 @@ from bahamas.software_total_failure_probability_bbn import BBN
 workdir = os.path.dirname(__file__)
 defect_data = os.path.join(workdir, '..', '..', 'data', 'Defect_Data.xlsx')
 
+#%% --- Page Overview Text Descriptions ---
+page_title="""
+           <h2 style="white-space: nowrap; text-align: center; color: #16324f;">
+               Preliminary Assessment
+           </h2>
+           """
+general_instructions = """
+    This page enables a preliminary assessment of the software development lifecycle and the rate human error probability affects software failure probability. In summary, the user generates a list SDLC activities with corresponding quality level. There are two methods to generate a calculation. Manually inputting the values or uploading an Excel files with the same numbers. If the Excel template is used, note that there is only **ONE** row of data that needs to be entered. 
+    
+    Under Task Data, the Excel file should contain: 
+        <ul>
+            <li> **Human Error Probability (Mean)**: Expected probability of human error in document creation and review </li>
+            <li> **Human Error Probability (STD)**: Expected standard deviation of human error in document creation and review </li>
+            <li> **Review Number**: Float value (e.g., 2 for 2 full-time reviewers or 1.5 for 1 full-time reviewer and  1 half-time reviewer), must be greater than 0. Represents how many qualified individuals have reviewed the document for quality assurance and completeness. </li>
+            <li> **Trigger Coverage**: Float value, ranging from 0 to 1. Cannot be below 0 or exceed 1. Represents the percentage of coverage for common software failure triggers that is completed in quality assurance process or testing. </li>
+            <li> **SDLC Lifecycle Tabs**: [Mandatory] Names of the SDLC stages. Cannot be modified. Each tab represents a different lifecycle stage and must be filled out. For processes that have not completed all stages, leave blank any stages not yet accomplished. </li>     
+        </ul>
+    To begin, first download the template provided below. Do not change the column names. For each component (whether redundant or unique) enter a new line and the associated factors. When complete, upload the csv file to the site for generation.
+"""
+# --- End Page Overview 
+
+#%% --- Function Blocks ---
 # Function to initialize persistence of data
 def PA_persistence():
     # Persistent page assets 
@@ -47,7 +73,6 @@ def PA_persistence():
 # Function to initialize persistence of table data
 def PA_persistence_value(rewrite):
     if rewrite:
-        st.write("Here")
         # Ensure persistent values exist for all 6 stages & values
         for i in range(6):
             if f"mean_{i}" not in st.session_state:
@@ -59,6 +84,52 @@ def PA_persistence_value(rewrite):
             if f"trigger_{i}" not in st.session_state:
                 st.session_state[f"trigger_{i}"] = 0.90
     else: return
+
+# Enables download of templates
+def download_template():
+    # Task Data metadata
+    columns = [
+        "Human Error Probability (Mean)",
+        "Human Error Probability (STD)",
+        "Review Number",
+        "Trigger Coverage"
+    ]
+    mean   = [0.25]
+    std    = [0.05]
+    review = [2.26]
+    trigger= [0.98]
+
+    df_Task = pd.DataFrame({
+        "Human Error Probability (Mean)": mean,
+        "Human Error Probability (STD)": std,
+        "Review Number": review,
+        "Trigger Coverage": trigger
+    })
+        
+    with st.expander("General Instructions"):
+        st.markdown(general_instructions, unsafe_allow_html=True)
+        st.text("Click below to download a template to input SDLC data.")
+        
+        # Setup for xlsx download of the Task data template
+        output2 = BytesIO()
+        with pd.ExcelWriter(output2, engine='xlsxwriter') as writer:
+            df_Task.to_excel(writer, sheet_name="Concept", index=False)
+            df_Task.to_excel(writer, sheet_name="Requirement", index=False)
+            df_Task.to_excel(writer, sheet_name="Design", index=False)
+            df_Task.to_excel(writer, sheet_name="Implementation", index=False)
+            df_Task.to_excel(writer, sheet_name="Testing", index=False)
+            df_Task.to_excel(writer, sheet_name="Install and Maintenance", index=False)
+            
+        task_xlsx_data = output2.getvalue()
+        
+        st.download_button(
+            label="⬇️ Download Template_Prelim_Data.xlsx",
+            data=task_xlsx_data,
+            file_name="Template_Prelim_Data.xlsx",
+            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+            )
+
+    return
 
 # Function to show previously loaded files
 def task_box():
@@ -134,14 +205,9 @@ def app():
     st.session_state.PA_value = False
     
     # Begin header
-    st.markdown(
-        """
-        <h2 style="white-space: nowrap; text-align: center; color: #16324f;">
-            Preliminary Assessment
-        </h2>
-        """,
-        unsafe_allow_html=True,
-    )
+    st.markdown(page_title,unsafe_allow_html=True)
+    
+    download_template()
     
     # Input choice 
     options = ["Choose...", "Upload Data", "Type in Data"]
