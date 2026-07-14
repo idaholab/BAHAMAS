@@ -452,7 +452,7 @@ def app():
       st.write("Set the survey configuration and run the evaluation.")
     
       # Number of samples w/ persistence
-      st.session_state.SQS_num_samples = st.number_input("Number of samples", value=10000, key="SQS_num", on_change=reset_submission)
+      st.session_state.SQS_num_samples = st.number_input("Number of samples", max_value=99999, min_value=1, value=10000, key="SQS_num", on_change=reset_submission)
 
       # Plot option checkbox w/ persistence
       st.session_state.SQS_plot_failure = st.checkbox('Visualize', key="SQS_plot", on_change=reset_submission)
