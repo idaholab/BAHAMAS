@@ -1,17 +1,28 @@
 # Copyright 2025, Battelle Energy Alliance, LLC  ALL RIGHTS RESERVED
 
-import streamlit as st
-#from .regression import get_sil_val
-from scipy.stats import loguniform
-import numpy as np
+'''
+Name of Tab on Webpage: Common Cause Evaluation
+'''
+
+# built-in libraries
 import os, sys
+sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
+
+# implicit libraries
+import streamlit as st
+import numpy as np
 from collections import OrderedDict
 import pandas as pd
 
-# Bahamas Module
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
-from bahamas.subfactor import compute_beta, compute_phi
+# explicit libraries
+from bahamas.subfactor import compute_beta
 
+#%% --- Page Overview Text Descriptions ---
+page_title = """
+            <h2 style="white-space: nowrap; text-align: center; color: #16324f;">
+                Common Cause Evaluation
+            </h2>
+            """
 input_sim_scale = ['Not at all', 'To a small extent', 'To a moderate extent', 'To a great extent', 'Fully and systematically']
 input_sim_scale_value = [1., 0.75, 0.5, 0.25, 0.]
 input_sim_response_dict = dict(zip(input_sim_scale, input_sim_scale_value))
@@ -120,21 +131,16 @@ testing_qa = {'What level of testing is planned or has been implemented for the 
    'D: Commissioning tests performed on the specific CCCG to be employed. Detailed integration testing of the CCCG, in addition to stress testing.',
    'E: In addition to C&D levels, a long-term test is conducted for the CCCG. The test is performed in parallel with existing system for approximately for a specified duration (e.g.,1 year.)']
   }
+# --- End Page Overview 
 
+#%% --- Function Blocks ---
 @st.dialog(title="Analysis & Feedback Selection Error:")    
 def analysis():
     st.write("You've selected \"No Analysis\" with feedback. It is not possible to have feedback without analysis. Rechoose your \"Analysis\" parameter or select \"No-F\" under \"Feedback\".")
     
 def app():
-
-  # st.write(afa_score['An|F|Level 2'])
-
   st.markdown(
-      """
-      <h2 style="white-space: nowrap; text-align: center; color: #16324f;">
-          Common Cause Evaluation
-      </h2>
-      """,
+      page_title,
       unsafe_allow_html=True,
   )
   qa_default_index = 3
