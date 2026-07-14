@@ -298,7 +298,7 @@ def app():
     with st.form("my_form"):
       # st.info("**Assessment! Start here ↓**", icon="👋🏾")
       st.caption("Set the survey configuration and run the evaluation.")
-      software_total_failure = st.number_input('Software Total Failure Probability', value=1.0e-4, format='%.2e', key="sfp")
+      software_total_failure = st.number_input('Software Total Failure Probability', min_value=0.0, max_value=1.0, value=1.0e-4, step=1.0e-5, format='%.2e', key="sfp")
       
       # use_container_width=True deprecated in streamlit version. Line for backwards compatibility. 
       try:
