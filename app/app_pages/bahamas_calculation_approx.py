@@ -176,7 +176,7 @@ def app():
             with col2:
                 st.session_state[f"std_{i}"]       = st.number_input('Human Error Prob. (STD)',  min_value=0.0, max_value=99.0, value=st.session_state[f"std_{i}"],     step=0.01, key=f"SD_{i}", on_change=reset_submission)
             with col3:
-                st.session_state[f"review_{i}"]    = st.number_input('Review Number',            min_value=0.0, max_value=100.0, value=st.session_state[f"review_{i}"],  step=1.0,   key=f"RV_{i}", on_change=reset_submission)
+                st.session_state[f"review_{i}"]    = st.number_input('Review Number',            min_value=0.0, max_value=6.0, value=st.session_state[f"review_{i}"],  step=1.0,   key=f"RV_{i}", on_change=reset_submission)
             with col4:
                 st.session_state[f"trigger_{i}"]   = st.number_input('Trigger Coverage',         min_value=0.0, max_value=1.0, value=st.session_state[f"trigger_{i}"], step=0.1,   key=f"TG_{i}", on_change=reset_submission)
                 
