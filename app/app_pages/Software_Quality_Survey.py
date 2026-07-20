@@ -37,7 +37,7 @@ sdlc_weight = [1/6]*6
 software_survey_data = dict.fromkeys(sdlc_stages, None)
 
 general_instructions = """
-                        There are two methods to input the data for the Software Quality survey. Option 1, manually inputting the data using the provided web interface. Option 2, uploading an Excel file covering the same questions. 
+                       The Software Quality Survey is a preliminary assessment method to give the user an idea of the current quality of their SDLC without having to invest significant time into process analysis. There are two methods to input the data for the Software Quality survey. Option 1, manually inputting the data using the provided web interface. Option 2, uploading an Excel file covering the same questions. 
                        """
 
 #%% Descriptors
