@@ -37,7 +37,7 @@ sdlc_weight = [1/6]*6
 software_survey_data = dict.fromkeys(sdlc_stages, None)
 
 general_instructions = """
-                        There are two methods to input the data for the common cause evaluation survey. Option 1, manually inputing the data using the provided web interface. Option 2, uploading an Excel file covering the same questions. 
+                        There are two methods to input the data for the Software Quality survey. Option 1, manually inputting the data using the provided web interface. Option 2, uploading an Excel file covering the same questions. 
                        """
 
 #%% Descriptors
@@ -208,12 +208,12 @@ dropdown_values = response_scale
 manual_instructions = """
                         For manual input, navigate and complete the survey across the below tabs:
                         <ol>
-                            <li> <strong>Concept</strong>: Knowledge questions related to input requirements on system. </li>
-                            <li> <strong>Requirement</strong>: Knowledge questions related to system operation. </li>
-                            <li> <strong>Design</strong>: Knowledge questions related to the analysis of design documents. </li>
-                            <li> <strong>Implementation</strong>: Complexity of interface and experience utilizing system. </li>
-                            <li> <strong>Testing</strong>: Related to safety training and culture related the system. </li>
-                            <li> <strong>Install and Maintenance</strong>: Availability of access to the system by plant operators and maintenance staff. </li>
+                            <li> <strong>Concept</strong>: First phase of the SDLC where initial ideas of the system are collected. </li>
+                            <li> <strong>Requirement</strong>: Second phase, where specific requirements of system function are described. </li>
+                            <li> <strong>Design</strong>: Also known as detailed design, where design details of specified requirements are described. </li>
+                            <li> <strong>Implementation</strong>: Phase where the design is implemented in software or hardware. </li>
+                            <li> <strong>Testing</strong>: Post implementation, this phase is where the system is evaluated for performance. </li>
+                            <li> <strong>Install and Maintenance</strong>: This phase describes when the equipment is actually being installed into the plant or system. </li>
                         </ol>
                       """
             
@@ -553,8 +553,8 @@ def app():
 
       st.subheader('Uploading Information')
       st.markdown("""
-                For uploaded data, the format is the same. There are two columns; column 1 asks the same questions as the web survey. The second column is answers. **Answers are selected from a dropdown menu from each cell. Do not customize the answers.** \n
-                To upload the data, navigate to the Calculation Results tab, enter a software total failure probability, and upload the data. Any answers provided in the manual input tabs are overridden by the uploaded file.  
+                For uploaded data, the format is the same. There are three columns; column 1 specifies the lifecycle stage (do not modify); column 2 asks the same questions as the web survey. The third column is answers. **Answers are selected from a dropdown menu from each cell. Do not customize the answers.** \n
+                To upload the data, navigate to the Calculation Results tab, enter the total number of samples to draw from, and upload the data. Any answers provided in the manual input tabs are overridden by the uploaded file.  
                 """)
         
       download_template()      
