@@ -1,22 +1,29 @@
 # Copyright 2025, Battelle Energy Alliance, LLC  ALL RIGHTS RESERVED
 
+'''
+Name of Tab on Webpage: Common Cause Evaluation
+'''
+
 # built-in libraries
-from bahamas.subfactor import compute_beta, compute_phi
-import pandas as pd
-from collections import OrderedDict
-import numpy as np
-from scipy.stats import loguniform
-import streamlit as st
-from io import BytesIO
-import os
-import sys
+import os, sys
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
+from io import BytesIO
 
 # implicit libraries
+import streamlit as st
+import numpy as np
+from collections import OrderedDict
+import pandas as pd
 
 # explicit libraries
+from bahamas.subfactor import compute_beta
 
-# %% --- Page Overview Text Descriptions ---
+#%% --- Page Overview Text Descriptions ---
+page_title = """
+            <h2 style="white-space: nowrap; text-align: center; color: #16324f;">
+                Common Cause Evaluation
+            </h2>
+            """
 general_instructions = """
     There are two methods to input the data for the common cause evaluation survey. Option 1, manually inputing the data using the provided web interface. Option 2, uploading an Excel file covering the same questions. 
 """
@@ -111,6 +118,7 @@ input_sim_qa = {'##### What of Information: What is the information or variable 
                 '##### Format of Information: What is the format of the information or data and is that the same format employed for all members of the CCCG? ': "Considering the elements of the CCCG, to what extent do the elements rely on the same “format” information?",
                 '##### Means of Information: How is the information transferred (wireless, fiberoptic, wired, etc.) and is that the same means employed for all members of the CCCG?': 'Considering the elements of the CCCG, to what extent do the elements rely on the same “how” information?',
                 '##### When of Information: When is the information required (i.e. timing of information) and is that the same timing employed for all members of the CCCG?': 'Considering the elements of the CCCG, to what extent do the elements rely on the same “when” information?'}
+
 input_sim_scale = ['Not at all', 'To a small extent', 'To a moderate extent', 'To a great extent', 'Fully and systematically']
 input_sim_scale_value = [1., 0.75, 0.5, 0.25, 0.]
 input_sim_response_dict = dict(zip(input_sim_scale, input_sim_scale_value))
@@ -194,7 +202,6 @@ testing_qa = {'What level of testing is planned or has been implemented for the 
 # --- End Tab ---
 
 # %% --- Function Blocks ---
-
 def transform_data(data):
     """
     Takes a panadas dataframe and, utilizing the above scoring tables, transforms the values into scoring values for calculation.
@@ -456,8 +463,9 @@ def print_subBeta(beta, sub_beta, software_total_failure):
                                             </div>
                                             </div>
                 """,
-                              unsafe_allow_html=True,
-                              )    
+                unsafe_allow_html=True,
+                )    
+                
 def app():
       CCGS_persistence() 
     

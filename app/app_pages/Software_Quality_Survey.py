@@ -1,5 +1,9 @@
 # Copyright 2025, Battelle Energy Alliance, LLC  ALL RIGHTS RESERVED
 
+'''
+Name of Tab on Webpage: Software Quality Survey
+'''
+
 # built-in libraries
 import os, sys
 sys.path.append(os.path.join(os.path.dirname(__file__), '..', '..'))
@@ -534,6 +538,7 @@ def app():
     
           tasks = None
           software_BBN = BBN(defect_data, tasks, data=software_survey_data, num_samples=st.session_state.SQS_num_samples, approx=True)
+          
           runAndPlot(software_BBN)
                 
       else:
