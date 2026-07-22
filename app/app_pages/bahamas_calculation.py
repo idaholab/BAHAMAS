@@ -424,7 +424,7 @@ def app():
         st.session_state.CA_defects = CAdefects
         
     # Number of samples w/ persistence
-    st.session_state.CA_num_samples = st.number_input("Number of samples", value=st.session_state.CA_num_samples, key="CA_num", on_change=reset_submission)
+    st.session_state.CA_num_samples = st.number_input("Number of samples", min_value=1, max_value=99999, value=st.session_state.CA_num_samples, key="CA_num", on_change=reset_submission)
     
     # Plot option checkbox w/ persistence
     st.session_state.CA_plot_failure = st.checkbox('Visualize', value=st.session_state.CA_plot_failure, key="CA_plot", on_change=reset_submission)
