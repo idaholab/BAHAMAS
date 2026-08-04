@@ -55,7 +55,7 @@ python ../bahamas/main.py -i bbn.toml
 If you want to install dependencies manually instead of installing the package directly:
 
 ```bash
-pip install toml streamlit==1.35 streamlit-aggrid==1.1.5 numpy>=1.24 pandas==2.3 scipy openpyxl pytest plotly kaleido matplotlib streamlit-option-menu jsonpointer streamlit_extras
+pip install toml streamlit==1.35 streamlit-aggrid==1.1.5 numpy>=1.24 pandas==2.3 scipy openpyxl xlsxwriter pytest plotly kaleido matplotlib streamlit-option-menu jsonpointer streamlit_extras
 ```
 
 You can also install the package in non-editable mode:
