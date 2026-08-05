@@ -17,6 +17,7 @@ dependencies = [
   "numpy >= 1.24",
   "pandas",
   "openpyxl",
+  "xlsxwriter",
   "pytest",
   "jsonpointer",
   "toml",
