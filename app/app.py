@@ -112,8 +112,8 @@ if __name__ == "__main__":
     with st.sidebar:
         selected_page = option_menu(
             "BAHAMAS",
-            ["Welcome","Preliminary Assessment", "Comprehensive Assessment", "Software Quality Survey", "Common Cause Identification",  "Common Cause Evaluation"],
-            icons=["house-door", "clipboard-data", "bar-chart-line", "ui-checks-grid", "diagram-3", "shield-check"],
+            ["Welcome","Preliminary Assessment", "Comprehensive Assessment", "Assessment Support", "Software Quality Survey", "Common Cause Identification",  "Common Cause Evaluation"],
+            icons=["house-door", "clipboard-data", "bar-chart-line", "gear", "ui-checks-grid", "diagram-3", "shield-check"],
             menu_icon="cast",
             default_index=0,
         )
