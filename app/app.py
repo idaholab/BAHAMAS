@@ -128,11 +128,11 @@ if __name__ == "__main__":
     elif selected_page == "Assessment Support":
         Assessment_Support.app()
     elif selected_page == "Common Cause Identification":
-        Common_Cause_Evaluation.app()
+        Common_Cause_Identification.app()
     elif selected_page == "Software Quality Survey":
         Software_Quality_Survey.app()
     elif selected_page == "Common Cause Evaluation":
-        Common_Cause_Identification.app()
+        Common_Cause_Evaluation.app()
 
 
     display_logo(logo_path)
