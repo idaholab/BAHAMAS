@@ -11,12 +11,13 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 
 # explicit libraries
-from app_pages import bahamas_calculation
-from app_pages import bahamas_calculation_approx
-from app_pages import cccg_generation
-from app_pages import Software_Quality_Survey, Analysis
-from app_pages import cccg_survey
-from app_pages import welcome
+from app_pages import Comprehensive_Assessment
+from app_pages import Assessment_Support
+from app_pages import Preliminary_Assessment
+from app_pages import Common_Cause_Evaluation
+from app_pages import Common_Cause_Identification
+from app_pages import Software_Quality_Survey
+from app_pages import Welcome
 
 logger = logging.getLogger(__name__)
 
@@ -111,25 +112,27 @@ if __name__ == "__main__":
     with st.sidebar:
         selected_page = option_menu(
             "BAHAMAS",
-            ["Welcome","Preliminary Assessment", "Comprehensive  Assessment", "Software Quality Survey", "Common Cause Identification",  "Common Cause Evaluation"],
-            icons=["house-door", "clipboard-data", "bar-chart-line", "ui-checks-grid", "diagram-3", "shield-check"],
+            ["Welcome","Preliminary Assessment", "Comprehensive Assessment", "Assessment Support", "Software Quality Survey", "Common Cause Identification",  "Common Cause Evaluation"],
+            icons=["house-door", "clipboard-data", "bar-chart-line", "gear", "ui-checks-grid", "diagram-3", "shield-check"],
             menu_icon="cast",
             default_index=0,
         )
 
     # Display the selected page
     if selected_page == "Welcome":
-        welcome.app()
+        Welcome.app()
     elif selected_page == "Preliminary Assessment":
-            bahamas_calculation_approx.app()
-    elif selected_page == "Comprehensive  Assessment":
-        bahamas_calculation.app()
+        Preliminary_Assessment.app()
+    elif selected_page == "Comprehensive Assessment":
+        Comprehensive_Assessment.app()
+    elif selected_page == "Assessment Support":
+        Assessment_Support.app()
     elif selected_page == "Common Cause Identification":
-        cccg_generation.app()
+        Common_Cause_Identification.app()
     elif selected_page == "Software Quality Survey":
         Software_Quality_Survey.app()
     elif selected_page == "Common Cause Evaluation":
-        cccg_survey.app()
+        Common_Cause_Evaluation.app()
 
 
     display_logo(logo_path)

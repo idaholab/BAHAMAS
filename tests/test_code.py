@@ -14,8 +14,8 @@ from bahamas.utils import SDLC_stages, ODC_types, UCA_types
 
 
 workdir = os.path.dirname(__file__)
-defect_data = os.path.join(workdir, '..', 'data', 'Defect_Data.xlsx')
-task_data = os.path.join(workdir, '..', 'data', 'Task_List.xlsx')
+defect_data = os.path.join(workdir, '..', 'data', 'Example_ComprehensiveAssessment_Defect_Data.xlsx')
+task_data = os.path.join(workdir, '..', 'data', 'Example_ComprehensiveAssessment_Task_List.xlsx')
 
 def test_HEP_EMD():
     _, d = get_hemd_from_spreadsheet(defect_data)
