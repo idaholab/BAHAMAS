@@ -1,8 +1,9 @@
 # Copyright 2025, Battelle Energy Alliance, LLC  ALL RIGHTS RESERVED
 
-import pandas as pd
 import logging
 import numpy as np
+
+from .utils import read_excel
 
 logger = logging.getLogger('BAHAMAS.DCP')
 
@@ -21,7 +22,7 @@ def stage_dcp_calculation(excel_file, sheet_name):
   # G = 0.25 # Based on normalization
   G = 1.0
 #   G = 0.125 # given by previous implementation, need to be verified
-  df = pd.read_excel(excel_file, sheet_name=sheet_name, usecols=["Review Number","Trigger Coverage"])
+  df = read_excel(excel_file, sheet_name=sheet_name, usecols=["Review Number","Trigger Coverage"])
   df = df.dropna()
   if df.empty:
     logger.error('Try to process %s, but got empty inputs!', excel_file)

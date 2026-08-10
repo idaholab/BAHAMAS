@@ -17,7 +17,7 @@ import pandas as pd
 
 # explicit libraries
 from .regression import get_sil_val
-from bahamas.utils import UCA_types
+from bahamas.utils import UCA_types, read_excel
 from bahamas.software_total_failure_probability_bbn import BBN
 
 # Reference data location for defect correlations
@@ -756,7 +756,7 @@ def app():
       if st.session_state.SQS_submitted and st.session_state.SQS_tasks != None:
           st.text("Here")
           safety_ind = 0 if safety_group == 'Yes' else 1
-          survey_data = pd.read_excel(st.session_state.SQS_tasks, sheet_name="Questions", engine="openpyxl")
+          survey_data = read_excel(st.session_state.SQS_tasks, sheet_name="Questions", engine="openpyxl")
           samples = transform_data(survey_data, safety_ind)
 
           for i, stage in enumerate(sdlc_stages):

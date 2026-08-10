@@ -1,9 +1,10 @@
 # Copyright 2025, Battelle Energy Alliance, LLC  ALL RIGHTS RESERVED
 
 import numpy as np
-import pandas as pd
 from scipy.stats import lognorm, norm, truncnorm
 import logging
+
+from .utils import read_excel
 
 logger = logging.getLogger('BAHAMAS.HEPApprox')
 
@@ -30,7 +31,7 @@ def sdlc_stage_hep_calculation_approx(excel_file_path, sheet_name, num_samples=1
     """
     logger.info('Calculate SDLC "%s" stage HEP', sheet_name)
     # Read the action types from the given sheet
-    df = pd.read_excel(excel_file_path, sheet_name=sheet_name, usecols=["Human Error Probability (Mean)","Human Error Probability (STD)"])
+    df = read_excel(excel_file_path, sheet_name=sheet_name, usecols=["Human Error Probability (Mean)","Human Error Probability (STD)"])
     df = df.dropna()
     if df.empty:
         logger.error('Try to process %s, but got empty inputs!', excel_file_path)

@@ -1,10 +1,9 @@
 # Copyright 2025, Battelle Energy Alliance, LLC  ALL RIGHTS RESERVED
 
-import pandas as pd
 from scipy.stats import beta
 import logging
 
-from .utils import ODC_types, SDLC_stages
+from .utils import ODC_types, SDLC_stages, read_excel
 
 logger = logging.getLogger('BAHAMAS.ODC')
 
@@ -22,7 +21,7 @@ def get_stage_odc_dist(excel_file, distribution='beta', sheet_name='ODC'):
   beta_prior = 0.5
   dist_dict = {}
 
-  df = pd.read_excel(excel_file, sheet_name=sheet_name)
+  df = read_excel(excel_file, sheet_name=sheet_name)
   for _, row in df.iterrows():
     dist_dict[row.Stages] = {}
     total = row.Total

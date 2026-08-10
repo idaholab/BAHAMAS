@@ -17,6 +17,7 @@ import pandas as pd
 
 # explicit libraries
 from bahamas.subfactor import compute_beta
+from bahamas.utils import read_excel
 
 #%% --- Page Overview Text Descriptions ---
 page_title = """
@@ -680,7 +681,7 @@ def app():
                  
           elif st.session_state.CCGS_submitted and st.session_state.CCGS_tasks != None:
               survey_data = st.session_state.CCGS_tasks
-              survey_data = pd.read_excel(survey_data, usecols=[1], sheet_name="Questions", engine="openpyxl")
+              survey_data = read_excel(survey_data, usecols=[1], sheet_name="Questions", engine="openpyxl")
               survey_data = transform_data(survey_data)
                   
               beta, sub_beta = compute_beta(survey_data)
