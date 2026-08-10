@@ -4,9 +4,9 @@ samples = 40000
 seed = 2
 
 [BBN.files]
-task = "../data/Task_List.xlsx"
-defect = "../data/Defect_Data.xlsx"
-approx = "../data/sdlc_macro.xlsx"
+task = "../data/Example_ComprehensiveAssessment_Task_List.xlsx"
+defect = "../data/Example_ComprehensiveAssessment_Defect_Data.xlsx"
+approx = "../data/Example_PreliminaryAssessment.xlsx"
 
 [BBN.analysis]
 type = 'precise' # 'precise': task level assessment, 'approx': stage level assessment

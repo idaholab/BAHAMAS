@@ -22,8 +22,8 @@ from bahamas.software_total_failure_probability_bbn import BBN
 
 # Reference data location for defect correlations
 workdir = os.path.dirname(__file__)
-defect_data = os.path.join(workdir, '..', '..', 'data', 'Defect_Data.xlsx')
-                
+defect_data = os.path.join(workdir, '..', '..', 'data', 'Example_ComprehensiveAssessment_Defect_Data.xlsx')
+
 # Response scale in dictionary
 response_scale       = ['Not at all or to a partial extent', 'To a small extent', 'To a moderate extent', 'To a great extent', 'Fully and systematically']
 response_index       = [0, 1, 2, 3, 4]
@@ -37,7 +37,7 @@ sdlc_weight = [1/6]*6
 software_survey_data = dict.fromkeys(sdlc_stages, None)
 
 general_instructions = """
-                       The Software Quality Survey is a preliminary assessment method to give the user an idea of the current quality of their SDLC without having to invest significant time into process analysis. There are two methods to input the data for the Software Quality survey. Option 1, manually inputting the data using the provided web interface. Option 2, uploading an Excel file covering the same questions. 
+                       The Software Quality Survey is a preliminary assessment method to give the user an idea of the current quality of their SDLC without having to invest significant time into process analysis. There are two methods to input the data for the Software Quality survey. Option 1, manually inputting the data using the provided web interface. Option 2, uploading an Excel file covering the same questions.
                        """
 
 #%% Descriptors
@@ -182,7 +182,7 @@ InM_weight             = {"Operation and maintenance instructions (Install and M
                           "Black-box testing (Install and Maintenance)":[1/6, 1/9],
                           "Field experience (Install and Maintenance)":[1/6, 1/9],
                           "Statistical testing (Install and Maintenance)":[1/6, 1/9]}
-    
+
 InM_qa                 = {"Operation and maintenance instructions (Install and Maintenance)": 'To what extent did the project employ operation and maintenance instructions—providing essential information on how to use, maintain, and, where applicable, install the safety-related system—during the implementation and maintenance stage activities of the SDLC to help prevent operational and maintenance errors?',
                           "User friendliness (Install and Maintenance)": 'To what extent did the project employ user friendliness concepts in the design to reduce the potential for operator error, minimize the need for intervention, simplify necessary actions, ensuring ergonomic and intuitive interactions, and providing consideration of extreme conditions?',
                           "Maintenance friendliness (Install and Maintenance)": 'To what extent did the project employ maintenance friendliness in the design—by minimizing the need for safety-related maintenance, providing sufficient and easy-to-use diagnostic tools and interfaces, and ensuring that all necessary tools and procedures were available and practical?',
@@ -202,7 +202,7 @@ questions = []
 for d in all_qa_dicts:
     questions.extend(d.values())
 
-stages = ["Concept"] * len(concept_qa) + ["Requirement"] * len(requirement_qa) + ["Design"] * len(design_qa) + ["Implementation"] * len(implementation_qa) + ["Testing"] * len(testing_qa) + ["Install and Maintenance"] * len(InM_qa) 
+stages = ["Concept"] * len(concept_qa) + ["Requirement"] * len(requirement_qa) + ["Design"] * len(design_qa) + ["Implementation"] * len(implementation_qa) + ["Testing"] * len(testing_qa) + ["Install and Maintenance"] * len(InM_qa)
 answers = ["To a great extent"] * len(questions)
 dropdown_values = response_scale
 manual_instructions = """
@@ -216,7 +216,7 @@ manual_instructions = """
                             <li> <strong>Install and Maintenance</strong>: This phase describes when the equipment is actually being installed into the plant or system. </li>
                         </ol>
                       """
-            
+
 #%% Function Blocks
 
 def section_label(text: str) -> None:
@@ -239,39 +239,39 @@ def section_label(text: str) -> None:
 def SQS_persistence():
     if "SQS_plot_failure" not in st.session_state:
         st.session_state.SQS_plot_failure = False
-        
+
     if "SQS_num_samples" not in st.session_state:
         st.session_state.SQS_num_samples = 10000
-        
+
     if "SQS_submitted" not in st.session_state:
         st.session_state.SQS_submitted = False
-    
+
     if "SQS_safety" not in st.session_state:
         st.session_state.SQS_safety = False
-    
+
     if "SQS_survey" not in st.session_state:
         st.session_state.SQS_survey          = True
-        st.session_state.SQS_concept         = {} 
+        st.session_state.SQS_concept         = {}
         st.session_state.SQS_requirement     = {}
         st.session_state.SQS_design          = {}
         st.session_state.SQS_implementation  = {}
         st.session_state.SQS_testing         = {}
         st.session_state.SQS_InM             = {}
-        
+
     if "SQS_tasks" not in st.session_state:
         st.session_state.SQS_tasks = None
         st.session_state.SQS_uploaded_file_data = None
         st.session_state.SQS_uploaded_file_name = None
         st.session_state.SQS_uploaded_file_type = None
-        
+
 # Function to add persistence to survey values
-def SQS_persistence_survey(state_key, section, index):       
+def SQS_persistence_survey(state_key, section, index):
     if section == "concept":
         if state_key not in st.session_state.SQS_concept:
             st.session_state.SQS_concept[state_key] = index
     if section == "requirement":
         if state_key not in st.session_state.SQS_requirement:
-            st.session_state.SQS_requirement[state_key] = index    
+            st.session_state.SQS_requirement[state_key] = index
     if section == "design":
         if state_key not in st.session_state.SQS_design:
             st.session_state.SQS_design[state_key] = index
@@ -284,28 +284,28 @@ def SQS_persistence_survey(state_key, section, index):
     if section == "inM":
         if state_key not in st.session_state.SQS_InM:
             st.session_state.SQS_InM[state_key] = index
-            
+
 # Function to reset submission button status when a change is made in the input
 def reset_submission():
     st.session_state.PA_submitted = False
-        
+
 # Function to run and plot the output
 def runAndPlot(software_BBN):
     # Calculate results
     output = {}
     style = {}
-    
+
     software_BBN.calculate()
     total_failure_mean, total_failure_sigma, _ = software_BBN.get_total_failure_probability()
 
     output['Total Failure Prob.'] = [total_failure_mean, total_failure_sigma]
     style['Total Failure Prob.'] = "{:.2e}"
-    
+
     for uca in UCA_types:
         mean, sigma, _ = software_BBN.get_uca(uca)
         output[uca] = [mean, sigma]
         style[uca] = "{:.2e}"
-        
+
     df = pd.DataFrame(output, index=['mean', 'std'])
     styled_df = df.style.format(style)
     st.subheader("""Calculation Results""")
@@ -318,7 +318,7 @@ def runAndPlot(software_BBN):
         if isinstance(fig, list):
             for f in fig:
                 st.plotly_chart(f)
-                
+
 def download_template():
     st.text("Click below to download a template to input Common Cause Evaluation data.")
 
@@ -358,31 +358,31 @@ def download_template():
     return
 
 def get_weight(user_input, qa, weight):
-    # Get question 
+    # Get question
     cat      = user_input["Stage"]
     question = user_input["Questions"]
-        
+
     for cat, cat_question in qa.items():
-        if cat_question == question: 
+        if cat_question == question:
             return weight.get(cat)
-    return None 
+    return None
 
 def transform_data(survey_data, safety_ind):
-    # Set return variables    
+    # Set return variables
     concept_samples = []
     requirement_samples = []
     design_samples = []
     implementation_samples = []
     testing_samples = []
     InM_samples = []
-    
+
     sum_c = 0
     sum_r = 0
     sum_d = 0
     sum_i = 0
     sum_t = 0
     sum_InM = 0
-    
+
     for _, row in survey_data.iterrows():
         cat = row["Stage"]
         val = row["Answers"]
@@ -397,7 +397,7 @@ def transform_data(survey_data, safety_ind):
              sum_r += weight
              a, mean, b = get_sil_val(response_dict[val])
              requirement_samples.append(loguniform.rvs(a, b, size=st.session_state.SQS_num_samples) * weight)
-                            
+
         elif cat == "Design":
              weight = get_weight(row, design_qa, design_weight)[safety_ind]
              sum_d += weight
@@ -421,7 +421,7 @@ def transform_data(survey_data, safety_ind):
              sum_InM += weight
              a, mean, b = get_sil_val(response_dict[val])
              InM_samples.append(loguniform.rvs(a, b, size=st.session_state.SQS_num_samples) * weight)
-            
+
         else:
             print(cat)
             return None
@@ -434,22 +434,22 @@ def transform_data(survey_data, safety_ind):
     InM_samples            = 1 - np.prod(1-np.array(InM_samples)/sum_InM, axis=0)
 
     return [concept_samples, requirement_samples, design_samples, implementation_samples, testing_samples, InM_samples]
-    
+
 
 # Function to clear previous uploaded file if user clicks on the X
 def clear_task():
     st.session_state.SQS_tasks = None
     st.session_state.submitted = False
-    
+
 def task_box():
     col1, col2 = st.columns([8, 1])
 
     with col1:
         st.write(
             f"""
-            <div style="padding:10px; 
-                        border:1px solid #ccc; 
-                        border-radius:5px; 
+            <div style="padding:10px;
+                        border:1px solid #ccc;
+                        border-radius:5px;
                         background-color:#f7f7f7;
                         font-weight:600;">
                 {st.session_state.SQS_uploaded_file_name}
@@ -460,7 +460,7 @@ def task_box():
 
     with col2:
         st.button("✖", key="clear_title_btn", on_click=clear_task)
-        
+
 def app():
   SQS_persistence()
   st.markdown(
@@ -497,7 +497,7 @@ def app():
           justify-content: center;
           text-align: center;
       }
-      
+
       .stTabs [data-baseweb="tab"]:nth-of-type(1) { color: #0f4c81; }
       .stTabs [data-baseweb="tab"]:nth-of-type(2) { color: #0f4c81; }
       .stTabs [data-baseweb="tab"]:nth-of-type(3) { color: #1d6f5f; }
@@ -547,18 +547,18 @@ def app():
   # General Instructions:
   with tabs[0]:
       st.markdown(general_instructions)
-        
+
       st.subheader('Manual Input')
       st.markdown(manual_instructions, unsafe_allow_html=True)
 
       st.subheader('Uploading Information')
       st.markdown("""
                 For uploaded data, the format is the same. There are three columns; column 1 specifies the lifecycle stage (do not modify); column 2 asks the same questions as the web survey. The third column is answers. **Answers are selected from a dropdown menu from each cell. Do not customize the answers.** \n
-                To upload the data, navigate to the Calculation Results tab, enter the total number of samples to draw from, and upload the data. Any answers provided in the manual input tabs are overridden by the uploaded file.  
+                To upload the data, navigate to the Calculation Results tab, enter the total number of samples to draw from, and upload the data. Any answers provided in the manual input tabs are overridden by the uploaded file.
                 """)
-        
-      download_template()      
-      
+
+      download_template()
+
   # Concept
   with tabs[1]:
       ind = 0
@@ -567,15 +567,15 @@ def app():
           state_key = f"concept{ind}"
           SQS_persistence_survey(state_key, section="concept", index=qa_default_index)
           section_label(key) # Display question
-          concept[key]   = st.radio(label=val, 
-                                    options=response_scale, 
+          concept[key]   = st.radio(label=val,
+                                    options=response_scale,
                                     horizontal=True,
                                     key='CT' + str(ind),
                                     index=st.session_state.SQS_concept[state_key])
-                                    
+
           st.session_state.SQS_concept[state_key] = response_ref[concept[key]]
 
-  # Requirement  
+  # Requirement
   with tabs[2]:
       ind = 0
       for key, val in requirement_qa.items():
@@ -598,13 +598,13 @@ def app():
           state_key = f"design{ind}"
           SQS_persistence_survey(state_key, section="design", index=qa_default_index)
           section_label(key) # Display question
-          design[key] = st.radio(label=val, 
-                                 options=response_scale, 
-                                 horizontal=True, 
-                                 key='DN' + str(ind), 
+          design[key] = st.radio(label=val,
+                                 options=response_scale,
+                                 horizontal=True,
+                                 key='DN' + str(ind),
                                  index=st.session_state.SQS_design[state_key])
           st.session_state.SQS_design[state_key] = response_ref[design[key]]
-  
+
   # Implementation
   with tabs[4]:
       ind = 0
@@ -613,13 +613,13 @@ def app():
           state_key = f"implementation{ind}"
           SQS_persistence_survey(state_key, section="implementation", index=qa_default_index)
           section_label(key) # Display question
-          implementation[key] = st.radio(label=val, 
-                                         options=response_scale, 
-                                         horizontal=True, 
-                                         key='IP' + str(ind), 
+          implementation[key] = st.radio(label=val,
+                                         options=response_scale,
+                                         horizontal=True,
+                                         key='IP' + str(ind),
                                          index=st.session_state.SQS_implementation[state_key])
           st.session_state.SQS_implementation[state_key] = response_ref[implementation[key]]
-  
+
   # Testing
   with tabs[5]:
       ind = 0
@@ -628,13 +628,13 @@ def app():
           state_key = f"testing{ind}"
           SQS_persistence_survey(state_key, section="testing", index=qa_default_index)
           section_label(key)
-          testing[key] = st.radio(label=val, 
-                                  options=response_scale, 
-                                  horizontal=True, 
-                                  key='TG' + str(ind), 
+          testing[key] = st.radio(label=val,
+                                  options=response_scale,
+                                  horizontal=True,
+                                  key='TG' + str(ind),
                                   index=st.session_state.SQS_testing[state_key])
           st.session_state.SQS_testing[state_key] = response_ref[testing[key]]
-  
+
   # Install and Maintenance
   with tabs[6]:
       ind = 0
@@ -643,38 +643,38 @@ def app():
           state_key = f"InM{ind}"
           SQS_persistence_survey(state_key, section="inM", index=qa_default_index)
           section_label(key)
-          InM[key] = st.radio(label=val, 
-                              options=response_scale, 
-                              horizontal=True, 
-                              key='IM' + str(ind), 
+          InM[key] = st.radio(label=val,
+                              options=response_scale,
+                              horizontal=True,
+                              key='IM' + str(ind),
                               index=st.session_state.SQS_InM[state_key])
           st.session_state.SQS_InM[state_key] = response_ref[InM[key]]
-  
-  # Calculation Results   
+
+  # Calculation Results
   with tabs[-1]:
       # Functions for configure
       st.write("Set the survey configuration and run the evaluation.")
-    
+
       # Number of samples w/ persistence
       st.session_state.SQS_num_samples = st.number_input("Number of samples", max_value=99999, min_value=1, value=10000, key="SQS_num", on_change=reset_submission)
 
       # Plot option checkbox w/ persistence
       st.session_state.SQS_plot_failure = st.checkbox('Visualize', key="SQS_plot", on_change=reset_submission)
-    
+
       # Safety grouping option
       safety_group = st.checkbox('Safety-Related Grouping?', key="SQS_safety", on_change=reset_submission)
-    
+
       with st.form("SQS_user_form"):
           try:
               submitted = st.form_submit_button("Calculate", type="primary", width="stretch", key="SQS_submit")
           except:
               submitted = st.form_submit_button("Calculate", type="primary", use_container_width=True, key="SQS_submit")
-          
+
           if submitted == True:
               st.session_state.SQS_submitted = submitted
-      
+
       uploaded = st.file_uploader('Upload your data', type=['xlsx'], key="SQS_uploader")
-      
+
       if st.session_state.SQS_tasks != None and uploaded == None:
         # Show last uploaded file with option to remove
         st.session_state.SQS_uploaded_file_data = st.session_state.SQS_tasks.read()
@@ -683,8 +683,8 @@ def app():
         task_box()
       else:
         # Overwrite stored information
-        st.session_state.SQS_tasks = uploaded 
-        
+        st.session_state.SQS_tasks = uploaded
+
       # Process data
       if st.session_state.SQS_submitted and st.session_state.SQS_tasks == None:
           st.text("There")
@@ -695,7 +695,7 @@ def app():
           implementation_samples = []
           testing_samples = []
           InM_samples = []
-          
+
           sum_c = 0
           for key, val in concept.items():
               weight = concept_weight[key][safety_ind]
@@ -719,7 +719,7 @@ def app():
               a, mean, b = get_sil_val(response_dict[val])
               design_samples.append(loguniform.rvs(a, b, size=st.session_state.SQS_num_samples) * weight)
           design_samples = 1 - np.prod(1-np.array(design_samples)/sum_d, axis=0)
-    
+
           sum_i = 0
           for key, val in implementation.items():
               weight = implementation_weight[key][safety_ind]
@@ -727,7 +727,7 @@ def app():
               a, mean, b = get_sil_val(response_dict[val])
               implementation_samples.append(loguniform.rvs(a, b, size=st.session_state.SQS_num_samples) * weight)
           implementation_samples = 1 - np.prod(1-np.array(implementation_samples)/sum_i, axis=0)
-    
+
           sum_t = 0
           for key, val in testing.items():
               weight = testing_weight[key][safety_ind]
@@ -735,7 +735,7 @@ def app():
               a, mean, b = get_sil_val(response_dict[val])
               testing_samples.append(loguniform.rvs(a, b, size=st.session_state.SQS_num_samples) * weight)
           testing_samples = 1 - np.prod(1-np.array(testing_samples)/sum_t, axis=0)
-    
+
           sum_InM = 0
           for key, val in InM.items():
               weight = InM_weight[key][safety_ind]
@@ -747,25 +747,25 @@ def app():
           samples = [concept_samples, requirement_samples, design_samples, implementation_samples, testing_samples, InM_samples]
           for i, stage in enumerate(sdlc_stages):
               software_survey_data[stage] = {'samples':samples[i]*sdlc_weight[i], 'review':2, 'trigger':1}
-    
+
           tasks = None
           software_BBN = BBN(defect_data, tasks, data=software_survey_data, num_samples=st.session_state.SQS_num_samples, approx=True)
-          
+
           runAndPlot(software_BBN)
-                
+
       if st.session_state.SQS_submitted and st.session_state.SQS_tasks != None:
           st.text("Here")
           safety_ind = 0 if safety_group == 'Yes' else 1
           survey_data = pd.read_excel(st.session_state.SQS_tasks, sheet_name="Questions", engine="openpyxl")
           samples = transform_data(survey_data, safety_ind)
-          
+
           for i, stage in enumerate(sdlc_stages):
               software_survey_data[stage] = {'samples':samples[i]*sdlc_weight[i], 'review':2, 'trigger':1}
-    
-          
+
+
           tasks = None
           software_BBN = BBN(defect_data, tasks, data=software_survey_data, num_samples=st.session_state.SQS_num_samples, approx=True)
-          
+
           runAndPlot(software_BBN)
 
 if __name__ == "__main__":
