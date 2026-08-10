@@ -43,7 +43,7 @@ def sdlc_stage_hep_calculation(excel_file_path, sheet_name, hemd, num_samples=10
     action_types = df.iloc[:, 0].to_numpy()
 
     # change to bounded method to avoid the explosion of total distribution
-    action_samples = np.array([hemd[action_types[i]].rvs(num_samples) for i in range(num_actions)])
+    action_samples = np.array([hemd[action_types[i].strip()].rvs(num_samples) for i in range(num_actions)])
     total = 1 - np.prod(1-action_samples, axis=0)
 
     stage_mean = np.mean(total)
