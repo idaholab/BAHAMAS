@@ -21,7 +21,7 @@ from app_pages import Welcome
 
 logger = logging.getLogger(__name__)
 
-logo_path = "../docs/pics/BAHAMAS_color.png"
+logo_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "pics", "BAHAMAS_color.png")
 
 # Retrieve software version number and release date
 url = "https://api.github.com/repos/idaholab/BAHAMAS/releases/latest"
