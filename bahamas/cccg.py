@@ -366,7 +366,7 @@ class CCCG(object):
         coupling_factor = []
         function_columns = [col for col in pd_arr.columns if col.startswith('Function_')]
         if len(function_columns) > 0:
-          pd_arr["Function_Config"] = pd_arr[function_columns].apply(lambda row: ';'.join(sorted(row.values.astype(str))), axis=1)
+          pd_arr["Function_Config"] = pd_arr[function_columns].apply(lambda row: ';'.join(sorted(str(v) for v in row.values)), axis=1)
           pd_arr.drop(columns=function_columns, inplace=True)
           pd_arr["Function_Config"] = pd_arr["Function_Config"].apply(clean_string)
           if len(pd_arr["Function_Config"]) > 1 and pd_arr["Function_Config"].nunique() == 1 and pd_arr["Function_Config"].iloc[0] != '':
@@ -374,7 +374,7 @@ class CCCG(object):
 
         input_columns = [col for col in pd_arr.columns if col.startswith('Input_')]
         if len(input_columns) > 0:
-          pd_arr["Input_Config"] = pd_arr[input_columns].apply(lambda row: ';'.join(sorted(row.values.astype(str))), axis=1)
+          pd_arr["Input_Config"] = pd_arr[input_columns].apply(lambda row: ';'.join(sorted(str(v) for v in row.values)), axis=1)
           pd_arr.drop(columns=input_columns, inplace=True)
           pd_arr["Input_Config"] = pd_arr["Input_Config"].apply(clean_string)
           if len(pd_arr["Input_Config"]) > 1 and pd_arr["Input_Config"].nunique() == 1 and pd_arr["Input_Config"].iloc[0] != '':
@@ -382,7 +382,7 @@ class CCCG(object):
 
         design_columns = [col for col in pd_arr.columns if col.startswith('Design_')]
         if len(design_columns) > 0:
-          pd_arr["Design_Config"] = pd_arr[design_columns].apply(lambda row: ';'.join(sorted(row.values.astype(str))), axis=1)
+          pd_arr["Design_Config"] = pd_arr[design_columns].apply(lambda row: ';'.join(sorted(str(v) for v in row.values)), axis=1)
           pd_arr.drop(columns=design_columns, inplace=True)
           pd_arr["Design_Config"] = pd_arr["Design_Config"].apply(clean_string)
           if len(pd_arr["Design_Config"]) > 1 and pd_arr["Design_Config"].nunique() == 1 and pd_arr["Design_Config"].iloc[0] != '':
