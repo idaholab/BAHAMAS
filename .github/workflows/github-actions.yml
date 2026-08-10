@@ -36,7 +36,7 @@ jobs:
       - name: Install BAHAMAS Required Libraries
         run: |
           pwd
-          conda create -n BAHAMAS_libs python=3.11 pip
+          conda create -n BAHAMAS_libs python=3.13 pip
           conda init bash && source ~/.bashrc && conda activate BAHAMAS_libs
           python -m pip install -U pip setuptools wheel
           pip install toml streamlit streamlit-aggrid numpy pandas scipy openpyxl pytest plotly kaleido matplotlib streamlit-option-menu jsonpointer streamlit_extras
@@ -72,7 +72,7 @@ jobs:
       - name: Install BAHAMAS Required Libraries
         run: |
           pwd
-          conda create -n BAHAMAS_libs python=3.11 pip
+          conda create -n BAHAMAS_libs python=3.13 pip
           conda init zsh && source ~/.zshrc && conda activate BAHAMAS_libs
           python -m pip install -U pip setuptools wheel
           pip install toml streamlit streamlit-aggrid numpy pandas scipy openpyxl pytest plotly kaleido matplotlib streamlit-option-menu jsonpointer streamlit_extras
@@ -108,7 +108,7 @@ jobs:
       - name: Install BAHAMAS Required Libraries
         run: |
           echo " Create BAHAMAS_libs"
-          conda install python=3.11 pip
+          conda install python=3.13 pip
           echo " Conda information"
           conda info
           echo " Activate BAHAMAS conda environment"
@@ -119,4 +119,58 @@ jobs:
         run: |
           cd tests
           pytest
+
+
+  Test-BAHAMAS-uv-Linux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch and Branch
+        uses: actions/checkout@v3
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+
+      - name: Install BAHAMAS with uv
+        run: uv sync --python 3.13
+
+      - name: Test
+        run: |
+          cd tests
+          uv run pytest
+
+
+  Test-BAHAMAS-uv-Macos:
+    runs-on: macos-latest
+    steps:
+      - name: Fetch and Branch
+        uses: actions/checkout@v3
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+
+      - name: Install BAHAMAS with uv
+        run: uv sync --python 3.13
+
+      - name: Test
+        run: |
+          cd tests
+          uv run pytest
+
+
+  Test-BAHAMAS-uv-Windows:
+    runs-on: windows-2025
+    steps:
+      - name: Fetch and Branch
+        uses: actions/checkout@v3
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v3
+
+      - name: Install BAHAMAS with uv
+        run: uv sync --python 3.13
+
+      - name: Test
+        run: |
+          cd tests
+          uv run pytest
 
