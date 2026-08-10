@@ -8,7 +8,9 @@ from streamlit_extras.bottom_container import bottom
 
 logger = logging.getLogger(__name__)
 
-logo_path = "../docs/pics/BAHAMAS_color.png"
+PICS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "pics")
+logo_path = os.path.join(PICS_DIR, "BAHAMAS_color.png")
+structure_path = os.path.join(PICS_DIR, "bahamas_structure.png")
 
 # Function to display main content
 def display_main_content():
@@ -82,7 +84,7 @@ def display_main_content():
         """,
         unsafe_allow_html=True,
     )
-    st.image('../docs/pics/bahamas_structure.png')
+    st.image(structure_path)
 
 
 def app():
