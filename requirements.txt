@@ -1,18 +1,16 @@
-toml==0.10.2
-streamlit
+scipy
 numpy >= 1.24
 pandas==2.3.0
-streamlit-aggrid==1.1.5
-streamlit-extras
-scipy
 openpyxl
+xlsxwriter
 pytest
+jsonpointer
+jsonschema
+toml==0.10.2
+streamlit
 plotly
 kaleido
 matplotlib
-streamlit
-streamlit-aggrid
+streamlit_extras
+streamlit-aggrid==1.1.5
 streamlit-option-menu
-jsonpointer
-jsonschema
-pathlib
