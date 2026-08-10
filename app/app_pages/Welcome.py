@@ -8,7 +8,7 @@ from streamlit_extras.bottom_container import bottom
 
 logger = logging.getLogger(__name__)
 
-logo_path = "../docs/pics/BAHAMAS_color.png"
+logo_path = "pics/BAHAMAS_color.png"
 
 # Function to display main content
 def display_main_content():
