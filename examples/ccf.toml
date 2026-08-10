@@ -1,7 +1,7 @@
 [CCF]
 
 [CCF.files]
-structure= "path/to/system_diagram.csv"
+structure= "../data/Example_CCCG_Identification.xlsx"
 
 [CCF.generate]
 output_file_base = "cccg"

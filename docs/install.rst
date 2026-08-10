@@ -8,11 +8,20 @@ How to Install
 Installation
 ++++++++++++
 
+Using conda:
+
 .. code:: bash
 
   conda create -n bahamas_libs python=3.13
   conda activate bahamas_libs
-  pip install toml streamlit==1.35 streamlit-aggrid==1.1.5 numpy>=1.24 pandas==2.3 scipy openpyxl xlsxwriter pytest plotly kaleido matplotlib streamlit-option-menu jsonpointer streamlit_extras
+  pip install toml streamlit streamlit-aggrid==1.1.5 numpy>=1.24 pandas==2.3 scipy openpyxl xlsxwriter pytest plotly kaleido matplotlib streamlit-option-menu jsonpointer streamlit_extras
+
+Using `uv <https://docs.astral.sh/uv/>`_:
+
+.. code:: bash
+
+  uv sync --python 3.13
+  source .venv/bin/activate
 
 Clone
 +++++

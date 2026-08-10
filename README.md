@@ -29,10 +29,19 @@ In practical terms, BAHAMAS links SDLC activities, human reliability, defect pro
 
 ### Install
 
+Using conda:
+
 ```bash
 conda create -n bahamas_libs python=3.13
 conda activate bahamas_libs
 pip install --verbose --editable .
+```
+
+Using [uv](https://docs.astral.sh/uv/):
+
+```bash
+uv sync --python 3.13
+source .venv/bin/activate
 ```
 
 ### Run the web app
@@ -50,12 +59,19 @@ cd /path/to/BAHAMAS/examples
 python ../bahamas/main.py -i bbn.toml
 ```
 
+Or, if installed with uv:
+
+```bash
+cd /path/to/BAHAMAS/examples
+uv run ../bahamas/main.py -i bbn.toml
+```
+
 ## Installation Details
 
 If you want to install dependencies manually instead of installing the package directly:
 
 ```bash
-pip install toml streamlit==1.35 streamlit-aggrid==1.1.5 numpy>=1.24 pandas==2.3 scipy openpyxl xlsxwriter pytest plotly kaleido matplotlib streamlit-option-menu jsonpointer streamlit_extras
+pip install toml streamlit streamlit-aggrid==1.1.5 numpy>=1.24 pandas==2.3 scipy openpyxl xlsxwriter pytest plotly kaleido matplotlib streamlit-option-menu jsonpointer streamlit_extras
 ```
 
 You can also install the package in non-editable mode:
@@ -100,9 +116,9 @@ samples = 40000
 seed = 2
 
 [BBN.files]
-task = "../data/Task_List.xlsx"
-defect = "../data/Defect_Data.xlsx"
-approx = "../data/sdlc_macro.xlsx"
+task = "../data/Example_ComprehensiveAssessment_Task_List.xlsx"
+defect = "../data/Example_ComprehensiveAssessment_Defect_Data.xlsx"
+approx = "../data/Example_PreliminaryAssessment.xlsx"
 
 [BBN.analysis]
 type = "precise"
@@ -115,8 +131,8 @@ type = "precise"
 
 ```text
 06-Aug-25 09:39:54 BAHAMAS              INFO     Welcome!
-06-Aug-25 09:39:54 BAHAMAS              INFO     Input file: ../data/Task_List.xlsx
-06-Aug-25 09:39:54 BAHAMAS              WARNING  Default output file ../data/out_Task_List.xlsx will be used
+06-Aug-25 09:39:54 BAHAMAS              INFO     Input file: ../data/Example_ComprehensiveAssessment_Task_List.xlsx
+06-Aug-25 09:39:54 BAHAMAS              WARNING  Default output file ../data/out_Example_ComprehensiveAssessment_Task_List.xlsx will be used
 06-Aug-25 09:39:54 BAHAMAS.ODC          INFO     Construct ODC Conditional Distribution for each SDLC stage
 06-Aug-25 09:39:54 BAHAMAS.UCA          INFO     Construct UCA ODC defect correlation distribution.
 06-Aug-25 09:39:54 BAHAMAS.BBN          INFO     Sampling HEP and DCP
