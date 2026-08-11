@@ -1,10 +1,10 @@
 # Copyright 2025, Battelle Energy Alliance, LLC  ALL RIGHTS RESERVED
 
 import numpy as np
-import pandas as pd
 from scipy.stats import lognorm
 import logging
 from . import human_error_mode_distribution
+from .utils import read_excel
 
 logger = logging.getLogger('BAHAMAS.HEP')
 
@@ -34,7 +34,7 @@ def sdlc_stage_hep_calculation(excel_file_path, sheet_name, hemd, num_samples=10
     """
     logger.info('Calculate SDLC "%s" stage HEP', sheet_name)
     # Read the action types from the given sheet
-    df = pd.read_excel(excel_file_path, sheet_name=sheet_name, usecols=["Human Error Mode"])
+    df = read_excel(excel_file_path, sheet_name=sheet_name, usecols=["Human Error Mode"])
     df = df.dropna()
     if df.empty:
         logger.error('Try to process %s, but got empty inputs for "Human Error Mode"!', excel_file_path)
@@ -43,7 +43,7 @@ def sdlc_stage_hep_calculation(excel_file_path, sheet_name, hemd, num_samples=10
     action_types = df.iloc[:, 0].to_numpy()
 
     # change to bounded method to avoid the explosion of total distribution
-    action_samples = np.array([hemd[action_types[i]].rvs(num_samples) for i in range(num_actions)])
+    action_samples = np.array([hemd[action_types[i].strip()].rvs(num_samples) for i in range(num_actions)])
     total = 1 - np.prod(1-action_samples, axis=0)
 
     stage_mean = np.mean(total)

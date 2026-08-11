@@ -8,6 +8,8 @@ import copy
 warnings.filterwarnings('ignore')
 import logging
 
+from .utils import read_excel
+
 logger = logging.getLogger('BAHAMAS.CCCG')
 
 ########### internal functions
@@ -231,7 +233,7 @@ class CCCG(object):
     """
     logger.info("Generating")
     # Read data file into Pandas
-    df_pd = pd.read_excel(self._sys_diagram)
+    df_pd = read_excel(self._sys_diagram)
     
     # Expand Function_Config
     func_big = df_pd["Function_Config"].str.split('; ', expand=True)

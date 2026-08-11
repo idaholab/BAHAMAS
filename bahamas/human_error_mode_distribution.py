@@ -1,13 +1,12 @@
 # Copyright 2025, Battelle Energy Alliance, LLC  ALL RIGHTS RESERVED
 
 import numpy as np
-import pandas as pd
 from scipy.stats import lognorm
 import logging
 
 logger = logging.getLogger('BAHAMAS.HEMD')
 
-from .utils import SDLC_stages, human_error_modes
+from .utils import SDLC_stages, human_error_modes, read_excel
 
 
 def get_hemd_from_spreadsheet(spreadsheet_file, sheet_name="HEMD", distribution="lognorm"):
@@ -32,7 +31,7 @@ def get_hemd_from_spreadsheet(spreadsheet_file, sheet_name="HEMD", distribution=
     """
     hemd = {}
     dist_dict = {}
-    df = pd.read_excel(spreadsheet_file,sheet_name=sheet_name)
+    df = read_excel(spreadsheet_file,sheet_name=sheet_name)
     for row in df.iterrows():
         series = row[1]
         # logger.info(f"{series.key} {series.sigma} {series.mu}")

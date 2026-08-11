@@ -1,11 +1,10 @@
 # Copyright 2025, Battelle Energy Alliance, LLC  ALL RIGHTS RESERVED
 
 import numpy as np
-import pandas as pd
 from scipy.stats import truncnorm, norm, uniform
 import logging
 
-from .utils import ODC_types, UCA_types, UCA_mean, UCA_sigma
+from .utils import ODC_types, UCA_types, UCA_mean, UCA_sigma, read_excel
 
 logger = logging.getLogger('BAHAMAS.UCA')
 
@@ -26,7 +25,7 @@ def get_uca_defect_correlation_dist(excel_file, distribution='norm', sheet_name=
   if distribution != 'norm':
     raise IOError(f'Unrecognized distribution {distribution}. Valid distribution is "norm"!')
 
-  df = pd.read_excel(excel_file, sheet_name=sheet_name, index_col=0)
+  df = read_excel(excel_file, sheet_name=sheet_name, index_col=0)
   dist_dict = {}
   for i, uca_name in enumerate(UCA_types):
     dist_dict[uca_name] = {}
