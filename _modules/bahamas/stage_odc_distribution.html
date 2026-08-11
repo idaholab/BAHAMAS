@@ -90,11 +90,10 @@
   <h1>Source code for bahamas.stage_odc_distribution</h1><div class="highlight"><pre>
 <span></span><span class="c1"># Copyright 2025, Battelle Energy Alliance, LLC  ALL RIGHTS RESERVED</span>
 
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">beta</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">ODC_types</span><span class="p">,</span> <span class="n">SDLC_stages</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">ODC_types</span><span class="p">,</span> <span class="n">SDLC_stages</span><span class="p">,</span> <span class="n">read_excel</span>
 
 <div class="viewcode-block" id="logger">
 <a class="viewcode-back" href="../../autoapi/bahamas/stage_odc_distribution/index.html#bahamas.logger">[docs]</a>
@@ -117,7 +116,7 @@
   <span class="n">beta_prior</span> <span class="o">=</span> <span class="mf">0.5</span>
   <span class="n">dist_dict</span> <span class="o">=</span> <span class="p">{}</span>
 
-  <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">excel_file</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="n">sheet_name</span><span class="p">)</span>
+  <span class="n">df</span> <span class="o">=</span> <span class="n">read_excel</span><span class="p">(</span><span class="n">excel_file</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="n">sheet_name</span><span class="p">)</span>
   <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
     <span class="n">dist_dict</span><span class="p">[</span><span class="n">row</span><span class="o">.</span><span class="n">Stages</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">total</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">Total</span>

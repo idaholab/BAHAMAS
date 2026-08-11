@@ -94,6 +94,7 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">toml</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <div class="viewcode-block" id="logger">
 <a class="viewcode-back" href="../../autoapi/bahamas/utils/index.html#bahamas.logger">[docs]</a>
@@ -131,6 +132,28 @@
 <div class="viewcode-block" id="UCA_sigma">
 <a class="viewcode-back" href="../../autoapi/bahamas/utils/index.html#bahamas.UCA_sigma">[docs]</a>
 <span class="n">UCA_sigma</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;UCA-A Sigma&#39;</span><span class="p">,</span>	<span class="s1">&#39;UCA-B Sigma&#39;</span><span class="p">,</span><span class="s1">&#39;UCA-C Sigma&#39;</span><span class="p">,</span><span class="s1">&#39;UCA-D Sigma&#39;</span><span class="p">]</span></div>
+
+
+
+<div class="viewcode-block" id="read_excel">
+<a class="viewcode-back" href="../../autoapi/bahamas/utils/index.html#bahamas.read_excel">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">read_excel</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">&quot;&quot;&quot;Read an excel file into a pandas DataFrame, stripping trailing/leading</span>
+<span class="sd">  whitespace from string values (including the column index if it holds strings)</span>
+
+<span class="sd">  Args:</span>
+<span class="sd">      *args, **kwargs: Arguments passed directly to pandas.read_excel</span>
+
+<span class="sd">  Returns:</span>
+<span class="sd">      pandas.DataFrame: The parsed excel data with string values stripped</span>
+<span class="sd">  &quot;&quot;&quot;</span>
+  <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+  <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">object</span><span class="p">:</span>
+      <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">val</span><span class="p">:</span> <span class="n">val</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="n">val</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">dtype</span> <span class="o">==</span> <span class="nb">object</span><span class="p">:</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">val</span><span class="p">:</span> <span class="n">val</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="k">else</span> <span class="n">val</span><span class="p">)</span>
+  <span class="k">return</span> <span class="n">df</span></div>
 
 
 

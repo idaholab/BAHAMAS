@@ -23,6 +23,7 @@ Functions
 
 .. autoapisummary::
 
+   bahamas.utils.read_excel
    bahamas.utils.read_toml
 
 
@@ -53,6 +54,18 @@ Module Contents
 
 .. py:data:: UCA_sigma
    :value: ['UCA-A Sigma', 'UCA-B Sigma', 'UCA-C Sigma', 'UCA-D Sigma']
+
+
+.. py:function:: read_excel(*args, **kwargs)
+
+   Read an excel file into a pandas DataFrame, stripping trailing/leading
+   whitespace from string values (including the column index if it holds strings)
+
+   :param \*args: Arguments passed directly to pandas.read_excel
+   :param **kwargs: Arguments passed directly to pandas.read_excel
+
+   :returns: The parsed excel data with string values stripped
+   :rtype: pandas.DataFrame
 
 
 .. py:function:: read_toml(file_path)

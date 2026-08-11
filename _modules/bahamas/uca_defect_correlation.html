@@ -91,11 +91,10 @@
 <span></span><span class="c1"># Copyright 2025, Battelle Energy Alliance, LLC  ALL RIGHTS RESERVED</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">scipy.stats</span><span class="w"> </span><span class="kn">import</span> <span class="n">truncnorm</span><span class="p">,</span> <span class="n">norm</span><span class="p">,</span> <span class="n">uniform</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
 
-<span class="kn">from</span><span class="w"> </span><span class="nn">.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">ODC_types</span><span class="p">,</span> <span class="n">UCA_types</span><span class="p">,</span> <span class="n">UCA_mean</span><span class="p">,</span> <span class="n">UCA_sigma</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">ODC_types</span><span class="p">,</span> <span class="n">UCA_types</span><span class="p">,</span> <span class="n">UCA_mean</span><span class="p">,</span> <span class="n">UCA_sigma</span><span class="p">,</span> <span class="n">read_excel</span>
 
 <div class="viewcode-block" id="logger">
 <a class="viewcode-back" href="../../autoapi/bahamas/uca_defect_correlation/index.html#bahamas.logger">[docs]</a>
@@ -121,7 +120,7 @@
   <span class="k">if</span> <span class="n">distribution</span> <span class="o">!=</span> <span class="s1">&#39;norm&#39;</span><span class="p">:</span>
     <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Unrecognized distribution </span><span class="si">{</span><span class="n">distribution</span><span class="si">}</span><span class="s1">. Valid distribution is &quot;norm&quot;!&#39;</span><span class="p">)</span>
 
-  <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="n">excel_file</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="n">sheet_name</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+  <span class="n">df</span> <span class="o">=</span> <span class="n">read_excel</span><span class="p">(</span><span class="n">excel_file</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="n">sheet_name</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
   <span class="n">dist_dict</span> <span class="o">=</span> <span class="p">{}</span>
   <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">uca_name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">UCA_types</span><span class="p">):</span>
     <span class="n">dist_dict</span><span class="p">[</span><span class="n">uca_name</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
