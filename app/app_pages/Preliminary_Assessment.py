@@ -273,7 +273,7 @@ def app():
                 software_BBN = BBN(defect_data, st.session_state.PA_tasks, num_samples=st.session_state.PA_num_samples, approx=True)
                 runAndPlot(software_BBN)
         elif st.session_state.PA_input_method == "Type in Data":
-            software_BBN = BBN(defect_data, st.session_state.PA_tasks, data=st.session_state.PA_user_inputs, num_samples=st.session_state.PA_num_samples, approx=True)
+            software_BBN = BBN(defect_data, None, data=st.session_state.PA_user_inputs, num_samples=st.session_state.PA_num_samples, approx=True)
             runAndPlot(software_BBN)
         else:
             error_NoMethod()
