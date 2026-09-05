@@ -21,7 +21,32 @@ def plot_histogram(data_dict, title, save=False, show=True):
   for key, values in data_dict.items():
     hist_data.append(go.Histogram(x=values, name=key, opacity=0.75))
   # create a layout
-  layout = go.Layout(title=title, barmode='overlay', xaxis_title='Value', yaxis_title='Count')
+  layout = go. Layout(
+    title=dict(
+      text=title,
+      font=dict(size=24)
+    ),
+    barmode='overlay',
+    xaxis=dict(
+      title=dict(
+        text='Occurrence Probability',
+        font=dict(color='black', size=18)
+      ),
+      tickfont=dict(color='black', size=14)
+    ),
+    yaxis=dict(
+      title=dict(
+        text='Count',
+        font=dict(color='black', size=18)
+      ),
+      tickfont=dict(color='black', size=14)
+    ),
+    legend=dict(
+      font=dict(color='black', size=14)
+    )
+  )
+
+  # layout = go.Layout(title=title, barmode='overlay', xaxis_title='Value', yaxis_title='Count')
   # create a figure
   fig = go.Figure(data=hist_data, layout=layout)
   # save the plot as image

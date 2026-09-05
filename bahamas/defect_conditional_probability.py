@@ -29,6 +29,7 @@ def stage_dcp_calculation(excel_file, sheet_name):
     raise IOError(f'Try to process {excel_file}, but got empty inputs!')
   reviews = df.iloc[:, 0].mean()
   triggers = df.iloc[:, 1].mean()
+  # TODO: Sample reviews and triggers based on mean and std for given num_samples
   dcp = G*np.exp(-4.*reviews*triggers)
 
   return dcp

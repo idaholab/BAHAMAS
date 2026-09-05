@@ -40,6 +40,7 @@ jobs:
           conda init bash && source ~/.bashrc && conda activate BAHAMAS_libs
           python -m pip install -U pip setuptools wheel
           pip install toml streamlit streamlit-aggrid numpy pandas scipy openpyxl pytest plotly kaleido matplotlib streamlit-option-menu jsonpointer streamlit_extras
+          pip install -e .
 
       - name: Test
         run: |
@@ -76,6 +77,7 @@ jobs:
           conda init zsh && source ~/.zshrc && conda activate BAHAMAS_libs
           python -m pip install -U pip setuptools wheel
           pip install toml streamlit streamlit-aggrid numpy pandas scipy openpyxl pytest plotly kaleido matplotlib streamlit-option-menu jsonpointer streamlit_extras
+          pip install -e .
 
       - name: Test
         run: |
@@ -114,6 +116,7 @@ jobs:
           echo " Activate BAHAMAS conda environment"
           python -m pip install -U pip setuptools wheel
           pip install toml streamlit streamlit-aggrid numpy pandas scipy openpyxl pytest plotly kaleido matplotlib streamlit-option-menu jsonpointer streamlit_extras
+          pip install -e .
 
       - name: Test
         run: |
