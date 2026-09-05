@@ -97,21 +97,21 @@
 
 <div class="viewcode-block" id="logger">
 <a class="viewcode-back" href="../../autoapi/bahamas/stage_odc_distribution/index.html#bahamas.logger">[docs]</a>
-<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;BAHAMAS.ODC&#39;</span><span class="p">)</span></div>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">'BAHAMAS.ODC'</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="get_stage_odc_dist">
 <a class="viewcode-back" href="../../autoapi/bahamas/stage_odc_distribution/index.html#bahamas.get_stage_odc_dist">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">get_stage_odc_dist</span><span class="p">(</span><span class="n">excel_file</span><span class="p">,</span> <span class="n">distribution</span><span class="o">=</span><span class="s1">&#39;beta&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;ODC&#39;</span><span class="p">):</span>
-<span class="w">  </span><span class="sd">&quot;&quot;&quot;Get the distribution of each ODC defect at the given SDLC stage</span>
-<span class="sd">  P(Defect type|SDLC Stage) = dist_dict[&#39;SDLC Stage&#39;][&#39;Defect type&#39;]</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_stage_odc_dist</span><span class="p">(</span><span class="n">excel_file</span><span class="p">,</span> <span class="n">distribution</span><span class="o">=</span><span class="s1">'beta'</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">'ODC'</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">"""Get the distribution of each ODC defect at the given SDLC stage</span>
+<span class="sd">  P(Defect type|SDLC Stage) = dist_dict['SDLC Stage']['Defect type']</span>
 
 <span class="sd">  Args:</span>
 <span class="sd">      excel_file (str): Filename of the excel file to read in</span>
-<span class="sd">      distribution (str, optional): Type of distribution to use (defaults to &quot;beta&quot;)</span>
-<span class="sd">      sheet_name (str, optional): Name of the sheet with the ODC data (defaults to &quot;ODC&quot;)</span>
-<span class="sd">  &quot;&quot;&quot;</span>
-  <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Construct ODC Conditional Distribution for each SDLC stage&#39;</span><span class="p">)</span>
+<span class="sd">      distribution (str, optional): Type of distribution to use (defaults to "beta")</span>
+<span class="sd">      sheet_name (str, optional): Name of the sheet with the ODC data (defaults to "ODC")</span>
+<span class="sd">  """</span>
+  <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'Construct ODC Conditional Distribution for each SDLC stage'</span><span class="p">)</span>
   <span class="n">alpha_prior</span> <span class="o">=</span> <span class="mf">0.5</span>
   <span class="n">beta_prior</span> <span class="o">=</span> <span class="mf">0.5</span>
   <span class="n">dist_dict</span> <span class="o">=</span> <span class="p">{}</span>
@@ -122,12 +122,12 @@
     <span class="n">total</span> <span class="o">=</span> <span class="n">row</span><span class="o">.</span><span class="n">Total</span>
     <span class="k">for</span> <span class="n">odc</span> <span class="ow">in</span> <span class="n">ODC_types</span><span class="p">:</span>
       <span class="n">val</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">odc</span><span class="p">)</span>
-      <span class="k">if</span> <span class="n">distribution</span> <span class="o">==</span> <span class="s1">&#39;beta&#39;</span><span class="p">:</span>
+      <span class="k">if</span> <span class="n">distribution</span> <span class="o">==</span> <span class="s1">'beta'</span><span class="p">:</span>
         <span class="n">a</span> <span class="o">=</span> <span class="n">alpha_prior</span> <span class="o">+</span> <span class="n">val</span>
         <span class="n">b</span> <span class="o">=</span> <span class="n">beta_prior</span> <span class="o">+</span> <span class="n">total</span> <span class="o">-</span> <span class="n">val</span>
         <span class="n">dist</span>  <span class="o">=</span> <span class="n">beta</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
       <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unsupported distribution type </span><span class="si">{</span><span class="n">distribution</span><span class="si">}</span><span class="s2"> for function &#39;get_odc_dist&#39;&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Unsupported distribution type </span><span class="si">{</span><span class="n">distribution</span><span class="si">}</span><span class="s2"> for function 'get_odc_dist'"</span><span class="p">)</span>
       <span class="n">dist_dict</span><span class="p">[</span><span class="n">row</span><span class="o">.</span><span class="n">Stages</span><span class="p">][</span><span class="n">odc</span><span class="p">]</span> <span class="o">=</span> <span class="n">dist</span>
   <span class="k">return</span> <span class="n">dist_dict</span></div>
 

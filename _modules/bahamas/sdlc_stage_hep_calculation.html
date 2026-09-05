@@ -98,13 +98,13 @@
 
 <div class="viewcode-block" id="logger">
 <a class="viewcode-back" href="../../autoapi/bahamas/sdlc_stage_hep_calculation/index.html#bahamas.logger">[docs]</a>
-<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;BAHAMAS.HEP&#39;</span><span class="p">)</span></div>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">'BAHAMAS.HEP'</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="sdlc_stage_hep_calculation">
 <a class="viewcode-back" href="../../autoapi/bahamas/sdlc_stage_hep_calculation/index.html#bahamas.sdlc_stage_hep_calculation">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">sdlc_stage_hep_calculation</span><span class="p">(</span><span class="n">excel_file_path</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">,</span> <span class="n">hemd</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">distribution</span><span class="o">=</span><span class="s2">&quot;lognorm&quot;</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sdlc_stage_hep_calculation</span><span class="p">(</span><span class="n">excel_file_path</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">,</span> <span class="n">hemd</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">distribution</span><span class="o">=</span><span class="s2">"lognorm"</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    excel_file_path : str</span>
@@ -116,7 +116,7 @@
 <span class="sd">    num_samples : int</span>
 <span class="sd">        Number of samples to generate for each action</span>
 <span class="sd">    distribution : str</span>
-<span class="sd">        Type of distribution to use (currently always &quot;lognorm&quot;)</span>
+<span class="sd">        Type of distribution to use (currently always "lognorm")</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -126,14 +126,14 @@
 
 <span class="sd">    This function reads in the number of human actions and human error modes from a</span>
 <span class="sd">    spreadsheet, and calculates the human error probability distributions.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Calculate SDLC &quot;</span><span class="si">%s</span><span class="s1">&quot; stage HEP&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">)</span>
+<span class="sd">    """</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'Calculate SDLC "</span><span class="si">%s</span><span class="s1">" stage HEP'</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">)</span>
     <span class="c1"># Read the action types from the given sheet</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">read_excel</span><span class="p">(</span><span class="n">excel_file_path</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="n">sheet_name</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Human Error Mode&quot;</span><span class="p">])</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">read_excel</span><span class="p">(</span><span class="n">excel_file_path</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="n">sheet_name</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="s2">"Human Error Mode"</span><span class="p">])</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">df</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;Try to process </span><span class="si">%s</span><span class="s1">, but got empty inputs for &quot;Human Error Mode&quot;!&#39;</span><span class="p">,</span> <span class="n">excel_file_path</span><span class="p">)</span>
-        <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Try to process </span><span class="si">{</span><span class="n">excel_file_path</span><span class="si">}</span><span class="s1">, but got empty inputs &quot;Human Error Mode&quot;!&#39;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">'Try to process </span><span class="si">%s</span><span class="s1">, but got empty inputs for "Human Error Mode"!'</span><span class="p">,</span> <span class="n">excel_file_path</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Try to process </span><span class="si">{</span><span class="n">excel_file_path</span><span class="si">}</span><span class="s1">, but got empty inputs "Human Error Mode"!'</span><span class="p">)</span>
     <span class="n">num_actions</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
     <span class="n">action_types</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
 
@@ -143,17 +143,17 @@
 
     <span class="n">stage_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
     <span class="c1"># Fit the lognormal distribution to the total samples</span>
-    <span class="k">if</span> <span class="n">distribution</span> <span class="o">==</span> <span class="s2">&quot;lognorm&quot;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">distribution</span> <span class="o">==</span> <span class="s2">"lognorm"</span><span class="p">:</span>
         <span class="n">shape</span><span class="p">,</span> <span class="n">loc</span><span class="p">,</span> <span class="n">scale</span> <span class="o">=</span> <span class="n">lognorm</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">total</span><span class="p">,</span> <span class="n">floc</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
         <span class="n">fitted</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s1">&#39;mu&#39;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">scale</span><span class="p">),</span>
-            <span class="s1">&#39;sigma&#39;</span><span class="p">:</span> <span class="n">shape</span><span class="p">,</span>
-            <span class="s1">&#39;mean&#39;</span> <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">total</span><span class="p">),</span>
-            <span class="s1">&#39;median&#39;</span> <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">total</span><span class="p">),</span>
-            <span class="s1">&#39;std&#39;</span> <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
+            <span class="s1">'mu'</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">scale</span><span class="p">),</span>
+            <span class="s1">'sigma'</span><span class="p">:</span> <span class="n">shape</span><span class="p">,</span>
+            <span class="s1">'mean'</span> <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">total</span><span class="p">),</span>
+            <span class="s1">'median'</span> <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">total</span><span class="p">),</span>
+            <span class="s1">'std'</span> <span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">total</span><span class="p">)</span>
         <span class="p">}</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s2">&quot;Unsupported distribution type </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">distribution</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s2">"Unsupported distribution type </span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span> <span class="n">distribution</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">total</span><span class="p">,</span> <span class="n">fitted</span></div>
 

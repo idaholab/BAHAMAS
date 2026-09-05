@@ -90,16 +90,16 @@
   <h1>Source code for bahamas.main</h1><div class="highlight"><pre>
 <span></span><span class="c1"># Copyright 2025, Battelle Energy Alliance, LLC  ALL RIGHTS RESERVED</span>
 
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 <span class="sd">Created on October 14, 2024</span>
 <span class="sd">@author: wangc</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span>
 
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s1">&#39;..&#39;</span><span class="p">))</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s1">'..'</span><span class="p">))</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">bahamas.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">SDLC_stages</span><span class="p">,</span> <span class="n">UCA_types</span><span class="p">,</span> <span class="n">read_toml</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">bahamas.workflow</span><span class="w"> </span><span class="kn">import</span> <span class="n">Workflow</span>
@@ -108,40 +108,40 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">bahamas.software_total_failure_probability_bbn</span><span class="w"> </span><span class="kn">import</span> <span class="n">BBN</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">bahamas.cccg</span><span class="w"> </span><span class="kn">import</span> <span class="n">CCCG</span>
 
-<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(asctime)s</span><span class="s1"> </span><span class="si">%(name)-20s</span><span class="s1"> </span><span class="si">%(levelname)-8s</span><span class="s1"> </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">datefmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">-%b-%y %H:%M:%S&#39;</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s1">'</span><span class="si">%(asctime)s</span><span class="s1"> </span><span class="si">%(name)-20s</span><span class="s1"> </span><span class="si">%(levelname)-8s</span><span class="s1"> </span><span class="si">%(message)s</span><span class="s1">'</span><span class="p">,</span> <span class="n">datefmt</span><span class="o">=</span><span class="s1">'</span><span class="si">%d</span><span class="s1">-%b-%y %H:%M:%S'</span><span class="p">,</span> <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
 <span class="c1"># To enable the logging to both file and console, the logger for the main should be the root,</span>
 <span class="c1"># otherwise, a function to add the file handler and stream handler need to be created and called by each module.</span>
 <span class="c1"># logger = logging.getLogger(__name__)</span>
 <div class="viewcode-block" id="logger">
 <a class="viewcode-back" href="../../autoapi/bahamas/main/index.html#bahamas.main.logger">[docs]</a>
-<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;BAHAMAS&#39;</span><span class="p">)</span></div>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">'BAHAMAS'</span><span class="p">)</span></div>
 
 <span class="c1"># # create file handler which logs debug messages</span>
 <div class="viewcode-block" id="fh">
 <a class="viewcode-back" href="../../autoapi/bahamas/main/index.html#bahamas.main.fh">[docs]</a>
-<span class="n">fh</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">FileHandler</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">&#39;bahamas.log&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">)</span></div>
+<span class="n">fh</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">FileHandler</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s1">'bahamas.log'</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">'w'</span><span class="p">)</span></div>
 
 <span class="n">fh</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span><span class="p">)</span>
 <div class="viewcode-block" id="formatter">
 <a class="viewcode-back" href="../../autoapi/bahamas/main/index.html#bahamas.main.formatter">[docs]</a>
-<span class="n">formatter</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%(asctime)s</span><span class="s1"> </span><span class="si">%(name)-20s</span><span class="s1"> </span><span class="si">%(levelname)-8s</span><span class="s1"> </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">)</span></div>
+<span class="n">formatter</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">Formatter</span><span class="p">(</span><span class="s1">'</span><span class="si">%(asctime)s</span><span class="s1"> </span><span class="si">%(name)-20s</span><span class="s1"> </span><span class="si">%(levelname)-8s</span><span class="s1"> </span><span class="si">%(message)s</span><span class="s1">'</span><span class="p">)</span></div>
 
 <span class="n">fh</span><span class="o">.</span><span class="n">setFormatter</span><span class="p">(</span><span class="n">formatter</span><span class="p">)</span>
 <span class="c1"># add the handlers to the logger</span>
 <span class="n">logger</span><span class="o">.</span><span class="n">addHandler</span><span class="p">(</span><span class="n">fh</span><span class="p">)</span>
 
 <span class="c1"># file_dir =  os.path.dirname(__file__)</span>
-<span class="c1"># config_default ={&#39;params&#39;:{&#39;seed&#39;:2, &#39;samples&#39;:10000},</span>
-<span class="c1">#                 &#39;files&#39;:{&#39;defect&#39;:os.path.join(file_dir, &#39;..&#39;, &#39;data/Defect_Data.xlsx&#39;)}</span>
+<span class="c1"># config_default ={'params':{'seed':2, 'samples':10000},</span>
+<span class="c1">#                 'files':{'defect':os.path.join(file_dir, '..', 'data/Defect_Data.xlsx')}</span>
 <span class="c1">#               }</span>
 
 <div class="viewcode-block" id="main">
 <a class="viewcode-back" href="../../autoapi/bahamas/main/index.html#bahamas.main.main">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
-  <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Welcome to use BAHAMAS!&#39;</span><span class="p">)</span>
-  <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
-  <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-i&#39;</span><span class="p">,</span> <span class="s1">&#39;--input&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;../examples/bbn.toml&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;The path to the input file&#39;</span><span class="p">)</span>
-  <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">&#39;-o&#39;</span><span class="p">,</span> <span class="s1">&#39;--output&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;output.csv&#39;</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">&#39;The output file path to save the output to&#39;</span><span class="p">)</span>
+  <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'Welcome to use BAHAMAS!'</span><span class="p">)</span>
+  <span class="n">parser</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="s1">''</span><span class="p">)</span>
+  <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">'-i'</span><span class="p">,</span> <span class="s1">'--input'</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">'../examples/bbn.toml'</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">'The path to the input file'</span><span class="p">)</span>
+  <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s1">'-o'</span><span class="p">,</span> <span class="s1">'--output'</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s1">'output.csv'</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s1">'The output file path to save the output to'</span><span class="p">)</span>
   <span class="c1"># parse the arguments</span>
   <span class="n">args</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
   <span class="n">in_file</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">input</span>
@@ -154,12 +154,12 @@
   <span class="n">module</span> <span class="o">=</span> <span class="n">Workflow</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
   <span class="n">module</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
 
-  <span class="c1"># logger.info(&#39;Outputs are saved to: %s&#39;, out_file)</span>
+  <span class="c1"># logger.info('Outputs are saved to: %s', out_file)</span>
 
-  <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39; ... Complete!&#39;</span><span class="p">)</span></div>
+  <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">' ... Complete!'</span><span class="p">)</span></div>
 
 
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
   <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
 
 

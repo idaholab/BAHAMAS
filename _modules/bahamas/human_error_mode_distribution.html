@@ -96,7 +96,7 @@
 
 <div class="viewcode-block" id="logger">
 <a class="viewcode-back" href="../../autoapi/bahamas/human_error_mode_distribution/index.html#bahamas.human_error_mode_distribution.logger">[docs]</a>
-<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;BAHAMAS.HEMD&#39;</span><span class="p">)</span></div>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">'BAHAMAS.HEMD'</span><span class="p">)</span></div>
 
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">SDLC_stages</span><span class="p">,</span> <span class="n">human_error_modes</span><span class="p">,</span> <span class="n">read_excel</span>
@@ -104,8 +104,8 @@
 
 <div class="viewcode-block" id="get_hemd_from_spreadsheet">
 <a class="viewcode-back" href="../../autoapi/bahamas/index.html#bahamas.human_error_mode_distribution.get_hemd_from_spreadsheet">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">get_hemd_from_spreadsheet</span><span class="p">(</span><span class="n">spreadsheet_file</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s2">&quot;HEMD&quot;</span><span class="p">,</span> <span class="n">distribution</span><span class="o">=</span><span class="s2">&quot;lognorm&quot;</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_hemd_from_spreadsheet</span><span class="p">(</span><span class="n">spreadsheet_file</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s2">"HEMD"</span><span class="p">,</span> <span class="n">distribution</span><span class="o">=</span><span class="s2">"lognorm"</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    spreadsheet_file : str</span>
@@ -113,7 +113,7 @@
 <span class="sd">    sheet_name : str</span>
 <span class="sd">        Name of the sheet with the human error mode distribution data</span>
 <span class="sd">    distribution : str</span>
-<span class="sd">        Type of distribution to use (currently only &quot;lognorm&quot; is supported)</span>
+<span class="sd">        Type of distribution to use (currently only "lognorm" is supported)</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
@@ -123,17 +123,17 @@
 <span class="sd">        are keyed by the action type.</span>
 
 <span class="sd">    gets the human error mode distributions from a spreadsheet</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">hemd</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">dist_dict</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">read_excel</span><span class="p">(</span><span class="n">spreadsheet_file</span><span class="p">,</span><span class="n">sheet_name</span><span class="o">=</span><span class="n">sheet_name</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
         <span class="n">series</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-        <span class="c1"># logger.info(f&quot;{series.key} {series.sigma} {series.mu}&quot;)</span>
-        <span class="k">if</span> <span class="n">distribution</span> <span class="o">==</span> <span class="s2">&quot;lognorm&quot;</span><span class="p">:</span>
+        <span class="c1"># logger.info(f"{series.key} {series.sigma} {series.mu}")</span>
+        <span class="k">if</span> <span class="n">distribution</span> <span class="o">==</span> <span class="s2">"lognorm"</span><span class="p">:</span>
             <span class="n">dist</span> <span class="o">=</span> <span class="n">lognorm</span><span class="p">(</span><span class="n">s</span><span class="o">=</span><span class="n">series</span><span class="o">.</span><span class="n">sigma</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">series</span><span class="o">.</span><span class="n">mu</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;Unsupported distribution type </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">distribution</span><span class="p">)</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">"Unsupported distribution type </span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span> <span class="n">distribution</span><span class="p">)</span>
         <span class="n">dist_dict</span><span class="p">[</span><span class="n">series</span><span class="o">.</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">dist</span>
         <span class="n">hemd</span><span class="p">[</span><span class="n">series</span><span class="o">.</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">rvs</span>
     <span class="k">return</span> <span class="n">hemd</span><span class="p">,</span> <span class="n">dist_dict</span></div>

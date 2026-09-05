@@ -97,13 +97,13 @@
 
 <div class="viewcode-block" id="logger">
 <a class="viewcode-back" href="../../autoapi/bahamas/defect_conditional_probability/index.html#bahamas.defect_conditional_probability.logger">[docs]</a>
-<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;BAHAMAS.DCP&#39;</span><span class="p">)</span></div>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">'BAHAMAS.DCP'</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="stage_dcp_calculation">
 <a class="viewcode-back" href="../../autoapi/bahamas/index.html#bahamas.defect_conditional_probability.stage_dcp_calculation">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">stage_dcp_calculation</span><span class="p">(</span><span class="n">excel_file</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">):</span>
-<span class="w">  </span><span class="sd">&quot;&quot;&quot;Defect conditional probability calculation for each SDLC stage</span>
+<span class="w">  </span><span class="sd">"""Defect conditional probability calculation for each SDLC stage</span>
 
 <span class="sd">  Args:</span>
 <span class="sd">      excel_file (str): The filename of the spreadsheet with the review number and trigger coverage</span>
@@ -111,19 +111,20 @@
 
 <span class="sd">  Returns:</span>
 <span class="sd">      dcp (float): defect conditional probability</span>
-<span class="sd">  &quot;&quot;&quot;</span>
-  <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Calculate DCP for SDLC &quot;</span><span class="si">%s</span><span class="s1">&quot; stage&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">)</span>
+<span class="sd">  """</span>
+  <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'Calculate DCP for SDLC "</span><span class="si">%s</span><span class="s1">" stage'</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">)</span>
   <span class="c1"># TODO: how to determine G value?</span>
   <span class="c1"># G = 0.25 # Based on normalization</span>
   <span class="n">G</span> <span class="o">=</span> <span class="mf">1.0</span>
 <span class="c1">#   G = 0.125 # given by previous implementation, need to be verified</span>
-  <span class="n">df</span> <span class="o">=</span> <span class="n">read_excel</span><span class="p">(</span><span class="n">excel_file</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="n">sheet_name</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Review Number&quot;</span><span class="p">,</span><span class="s2">&quot;Trigger Coverage&quot;</span><span class="p">])</span>
+  <span class="n">df</span> <span class="o">=</span> <span class="n">read_excel</span><span class="p">(</span><span class="n">excel_file</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="n">sheet_name</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="s2">"Review Number"</span><span class="p">,</span><span class="s2">"Trigger Coverage"</span><span class="p">])</span>
   <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
   <span class="k">if</span> <span class="n">df</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;Try to process </span><span class="si">%s</span><span class="s1">, but got empty inputs!&#39;</span><span class="p">,</span> <span class="n">excel_file</span><span class="p">)</span>
-    <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Try to process </span><span class="si">{</span><span class="n">excel_file</span><span class="si">}</span><span class="s1">, but got empty inputs!&#39;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">'Try to process </span><span class="si">%s</span><span class="s1">, but got empty inputs!'</span><span class="p">,</span> <span class="n">excel_file</span><span class="p">)</span>
+    <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Try to process </span><span class="si">{</span><span class="n">excel_file</span><span class="si">}</span><span class="s1">, but got empty inputs!'</span><span class="p">)</span>
   <span class="n">reviews</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
   <span class="n">triggers</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+  <span class="c1"># TODO: Sample reviews and triggers based on mean and std for given num_samples</span>
   <span class="n">dcp</span> <span class="o">=</span> <span class="n">G</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">4.</span><span class="o">*</span><span class="n">reviews</span><span class="o">*</span><span class="n">triggers</span><span class="p">)</span>
 
   <span class="k">return</span> <span class="n">dcp</span></div>

@@ -90,10 +90,10 @@
   <h1>Source code for bahamas.workflow</h1><div class="highlight"><pre>
 <span></span><span class="c1"># Copyright 2025, Battelle Energy Alliance, LLC  ALL RIGHTS RESERVED</span>
 
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 <span class="sd">Created on September 8, 2025</span>
 <span class="sd">@author: wangc</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
@@ -107,7 +107,7 @@
 
 <div class="viewcode-block" id="logger">
 <a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.logger">[docs]</a>
-<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;BAHAMAS.Workflow&#39;</span><span class="p">)</span></div>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">'BAHAMAS.Workflow'</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="file_dir">
@@ -116,37 +116,37 @@
 
 <div class="viewcode-block" id="bbn_config_default">
 <a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.bbn_config_default">[docs]</a>
-<span class="n">bbn_config_default</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;params&#39;</span><span class="p">:{</span><span class="s1">&#39;seed&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;samples&#39;</span><span class="p">:</span><span class="mi">10000</span><span class="p">},</span>
-                <span class="s1">&#39;files&#39;</span><span class="p">:{</span><span class="s1">&#39;defect&#39;</span><span class="p">:</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">file_dir</span><span class="p">,</span> <span class="s1">&#39;..&#39;</span><span class="p">,</span> <span class="s1">&#39;data/Defect_Data.xlsx&#39;</span><span class="p">),</span>
-                        <span class="s1">&#39;task&#39;</span><span class="p">:</span><span class="kc">None</span><span class="p">,</span>
-                        <span class="s1">&#39;approx&#39;</span><span class="p">:</span><span class="kc">None</span><span class="p">},</span>
-                <span class="s1">&#39;analysis&#39;</span><span class="p">:{</span><span class="s1">&#39;type&#39;</span><span class="p">:</span><span class="s1">&#39;precise&#39;</span><span class="p">}</span>
+<span class="n">bbn_config_default</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'params'</span><span class="p">:{</span><span class="s1">'seed'</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s1">'samples'</span><span class="p">:</span><span class="mi">10000</span><span class="p">},</span>
+                <span class="s1">'files'</span><span class="p">:{</span><span class="s1">'defect'</span><span class="p">:</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">file_dir</span><span class="p">,</span> <span class="s1">'..'</span><span class="p">,</span> <span class="s1">'data/Defect_Data.xlsx'</span><span class="p">),</span>
+                        <span class="s1">'task'</span><span class="p">:</span><span class="kc">None</span><span class="p">,</span>
+                        <span class="s1">'approx'</span><span class="p">:</span><span class="kc">None</span><span class="p">},</span>
+                <span class="s1">'analysis'</span><span class="p">:{</span><span class="s1">'type'</span><span class="p">:</span><span class="s1">'precise'</span><span class="p">}</span>
               <span class="p">}</span></div>
 
 
 <div class="viewcode-block" id="ccf_config_default">
 <a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.ccf_config_default">[docs]</a>
-<span class="n">ccf_config_default</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;files&#39;</span><span class="p">:{</span><span class="s1">&#39;structure&#39;</span><span class="p">:</span><span class="kc">None</span><span class="p">},</span>
-                      <span class="s1">&#39;generate&#39;</span><span class="p">:{</span><span class="s1">&#39;output_file_base&#39;</span><span class="p">:</span><span class="s1">&#39;cccg&#39;</span><span class="p">,</span>
-                                  <span class="s1">&#39;output_type&#39;</span><span class="p">:</span><span class="s1">&#39;csv&#39;</span><span class="p">,</span>
-                                  <span class="s1">&#39;final&#39;</span><span class="p">:</span><span class="kc">True</span><span class="p">,</span>
-                                  <span class="s1">&#39;single&#39;</span><span class="p">:</span><span class="kc">False</span><span class="p">,</span>
-                                  <span class="s1">&#39;double&#39;</span><span class="p">:</span><span class="kc">False</span><span class="p">,</span>
-                                  <span class="s1">&#39;triple&#39;</span><span class="p">:</span><span class="kc">False</span><span class="p">,</span>
-                                  <span class="s1">&#39;function_all&#39;</span><span class="p">:</span><span class="kc">False</span><span class="p">,</span>
-                                  <span class="s1">&#39;input_all&#39;</span><span class="p">:</span><span class="kc">False</span><span class="p">,</span>
-                                  <span class="s1">&#39;design_all&#39;</span><span class="p">:</span><span class="kc">False</span><span class="p">}</span>
+<span class="n">ccf_config_default</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'files'</span><span class="p">:{</span><span class="s1">'structure'</span><span class="p">:</span><span class="kc">None</span><span class="p">},</span>
+                      <span class="s1">'generate'</span><span class="p">:{</span><span class="s1">'output_file_base'</span><span class="p">:</span><span class="s1">'cccg'</span><span class="p">,</span>
+                                  <span class="s1">'output_type'</span><span class="p">:</span><span class="s1">'csv'</span><span class="p">,</span>
+                                  <span class="s1">'final'</span><span class="p">:</span><span class="kc">True</span><span class="p">,</span>
+                                  <span class="s1">'single'</span><span class="p">:</span><span class="kc">False</span><span class="p">,</span>
+                                  <span class="s1">'double'</span><span class="p">:</span><span class="kc">False</span><span class="p">,</span>
+                                  <span class="s1">'triple'</span><span class="p">:</span><span class="kc">False</span><span class="p">,</span>
+                                  <span class="s1">'function_all'</span><span class="p">:</span><span class="kc">False</span><span class="p">,</span>
+                                  <span class="s1">'input_all'</span><span class="p">:</span><span class="kc">False</span><span class="p">,</span>
+                                  <span class="s1">'design_all'</span><span class="p">:</span><span class="kc">False</span><span class="p">}</span>
               <span class="p">}</span></div>
 
 
 <div class="viewcode-block" id="Workflow">
 <a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.Workflow">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Workflow</span><span class="p">:</span>
-<span class="w">  </span><span class="sd">&quot;&quot;&quot;Workflow manager for BAHAMAS calculation</span>
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="w">  </span><span class="sd">"""Workflow manager for BAHAMAS calculation</span>
+<span class="sd">  """</span>
 
   <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Initialization&#39;</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'Initialization'</span><span class="p">)</span>
 <div class="viewcode-block" id="Workflow._config">
 <a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.Workflow._config">[docs]</a>
     <span class="bp">self</span><span class="o">.</span><span class="n">_config</span> <span class="o">=</span> <span class="n">config</span></div>
@@ -161,17 +161,17 @@
 
     <span class="c1"># validate input</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_validate</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
-    <span class="k">if</span> <span class="s1">&#39;BBN&#39;</span> <span class="ow">in</span> <span class="n">config</span><span class="p">:</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">_bbn_config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_config</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;BBN&#39;</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;BBN&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s1">'BBN'</span> <span class="ow">in</span> <span class="n">config</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">_bbn_config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_config</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">'BBN'</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">"BBN"</span><span class="p">)</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">initialize_bbn</span><span class="p">()</span>
-    <span class="k">elif</span> <span class="s1">&#39;CCF&#39;</span> <span class="ow">in</span> <span class="n">config</span><span class="p">:</span>
-      <span class="bp">self</span><span class="o">.</span><span class="n">_ccf_config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_config</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">&#39;CCF&#39;</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;CCF&quot;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="s1">'CCF'</span> <span class="ow">in</span> <span class="n">config</span><span class="p">:</span>
+      <span class="bp">self</span><span class="o">.</span><span class="n">_ccf_config</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">update_config</span><span class="p">(</span><span class="n">config</span><span class="p">[</span><span class="s1">'CCF'</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">"CCF"</span><span class="p">)</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">initialize_ccf</span><span class="p">()</span>
 
 <div class="viewcode-block" id="Workflow.update_config">
 <a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.Workflow.update_config">[docs]</a>
   <span class="k">def</span><span class="w"> </span><span class="nf">update_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;update default config with user provided data</span>
+<span class="w">    </span><span class="sd">"""update default config with user provided data</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        config (dict): User-provided config file</span>
@@ -182,13 +182,13 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        dict: updated config file</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;BBN&quot;</span><span class="p">:</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">"BBN"</span><span class="p">:</span>
       <span class="n">default</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">bbn_config_default</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;CCF&quot;</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">"CCF"</span><span class="p">:</span>
       <span class="n">default</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">ccf_config_default</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Unrecognized config file name: </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+      <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Unrecognized config file name: </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">'</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">config</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
       <span class="n">default</span><span class="p">[</span><span class="n">key</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">default</span></div>
@@ -198,84 +198,84 @@
 <div class="viewcode-block" id="Workflow.initialize_bbn">
 <a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.Workflow.initialize_bbn">[docs]</a>
   <span class="k">def</span><span class="w"> </span><span class="nf">initialize_bbn</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Initialize BBN calculation</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_num_samples</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bbn_config</span><span class="p">[</span><span class="s1">&#39;params&#39;</span><span class="p">][</span><span class="s1">&#39;samples&#39;</span><span class="p">]</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_seed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bbn_config</span><span class="p">[</span><span class="s1">&#39;params&#39;</span><span class="p">][</span><span class="s1">&#39;seed&#39;</span><span class="p">]</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_defect_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bbn_config</span><span class="p">[</span><span class="s1">&#39;files&#39;</span><span class="p">][</span><span class="s1">&#39;defect&#39;</span><span class="p">]</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_task_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bbn_config</span><span class="p">[</span><span class="s1">&#39;files&#39;</span><span class="p">][</span><span class="s1">&#39;task&#39;</span><span class="p">]</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_analysis_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bbn_config</span><span class="p">[</span><span class="s1">&#39;analysis&#39;</span><span class="p">][</span><span class="s1">&#39;type&#39;</span><span class="p">]</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_approx_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bbn_config</span><span class="p">[</span><span class="s1">&#39;files&#39;</span><span class="p">][</span><span class="s1">&#39;approx&#39;</span><span class="p">]</span></div>
+<span class="w">    </span><span class="sd">"""Initialize BBN calculation</span>
+<span class="sd">    """</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_num_samples</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bbn_config</span><span class="p">[</span><span class="s1">'params'</span><span class="p">][</span><span class="s1">'samples'</span><span class="p">]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_seed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bbn_config</span><span class="p">[</span><span class="s1">'params'</span><span class="p">][</span><span class="s1">'seed'</span><span class="p">]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_defect_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bbn_config</span><span class="p">[</span><span class="s1">'files'</span><span class="p">][</span><span class="s1">'defect'</span><span class="p">]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_task_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bbn_config</span><span class="p">[</span><span class="s1">'files'</span><span class="p">][</span><span class="s1">'task'</span><span class="p">]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_analysis_type</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bbn_config</span><span class="p">[</span><span class="s1">'analysis'</span><span class="p">][</span><span class="s1">'type'</span><span class="p">]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_approx_file</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bbn_config</span><span class="p">[</span><span class="s1">'files'</span><span class="p">][</span><span class="s1">'approx'</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="Workflow.initialize_ccf">
 <a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.Workflow.initialize_ccf">[docs]</a>
   <span class="k">def</span><span class="w"> </span><span class="nf">initialize_ccf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Initialize CCF calculation</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_sys_diagram</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ccf_config</span><span class="p">[</span><span class="s1">&#39;files&#39;</span><span class="p">][</span><span class="s1">&#39;structure&#39;</span><span class="p">]</span></div>
+<span class="w">    </span><span class="sd">"""Initialize CCF calculation</span>
+<span class="sd">    """</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_sys_diagram</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ccf_config</span><span class="p">[</span><span class="s1">'files'</span><span class="p">][</span><span class="s1">'structure'</span><span class="p">]</span></div>
 
 
 <div class="viewcode-block" id="Workflow.run_bbn">
 <a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.Workflow.run_bbn">[docs]</a>
   <span class="k">def</span><span class="w"> </span><span class="nf">run_bbn</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Run BBN Calculation</span>
+<span class="w">    </span><span class="sd">"""Run BBN Calculation</span>
 
 <span class="sd">    Raises:</span>
 <span class="sd">        IOError: Error out if invalid input for analysis type is provided</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_analysis_type</span> <span class="o">==</span> <span class="s1">&#39;precise&#39;</span><span class="p">:</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_analysis_type</span> <span class="o">==</span> <span class="s1">'precise'</span><span class="p">:</span>
       <span class="n">software_BBN</span> <span class="o">=</span> <span class="n">BBN</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_defect_data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_task_data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_samples</span><span class="p">,</span> <span class="n">approx</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_seed</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_analysis_type</span> <span class="o">==</span> <span class="s1">&#39;approx&#39;</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_analysis_type</span> <span class="o">==</span> <span class="s1">'approx'</span><span class="p">:</span>
       <span class="n">software_BBN</span> <span class="o">=</span> <span class="n">BBN</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_defect_data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_approx_file</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_num_samples</span><span class="p">,</span> <span class="n">approx</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_seed</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s1">&#39;Invalid input&#39;</span><span class="p">)</span>
+      <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s1">'Invalid input'</span><span class="p">)</span>
     <span class="n">software_BBN</span><span class="o">.</span><span class="n">calculate</span><span class="p">()</span>
     <span class="n">software_BBN</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">save</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
     <span class="n">total_failure_mean</span><span class="p">,</span> <span class="n">total_failure_sigma</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">software_BBN</span><span class="o">.</span><span class="n">get_total_failure_probability</span><span class="p">()</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Software total failure: </span><span class="si">%s</span><span class="s1"> with std </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">total_failure_mean</span><span class="p">,</span> <span class="n">total_failure_sigma</span><span class="p">)</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'Software total failure: </span><span class="si">%s</span><span class="s1"> with std </span><span class="si">%s</span><span class="s1">'</span><span class="p">,</span> <span class="n">total_failure_mean</span><span class="p">,</span> <span class="n">total_failure_sigma</span><span class="p">)</span>
 
     <span class="k">for</span> <span class="n">uca</span> <span class="ow">in</span> <span class="n">UCA_types</span><span class="p">:</span>
       <span class="n">mean</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">software_BBN</span><span class="o">.</span><span class="n">get_uca</span><span class="p">(</span><span class="n">uca</span><span class="p">)</span>
-      <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;UCA type: </span><span class="si">%s</span><span class="s1">, Mean: </span><span class="si">%s</span><span class="s1">, STD: </span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">uca</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span></div>
+      <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'UCA type: </span><span class="si">%s</span><span class="s1">, Mean: </span><span class="si">%s</span><span class="s1">, STD: </span><span class="si">%s</span><span class="s1">'</span><span class="p">,</span> <span class="n">uca</span><span class="p">,</span> <span class="n">mean</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Workflow.run_ccf">
 <a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.Workflow.run_ccf">[docs]</a>
   <span class="k">def</span><span class="w"> </span><span class="nf">run_ccf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Run CCF calculation</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Run CCF calculation</span>
+<span class="sd">    """</span>
     <span class="n">cccg_obj</span> <span class="o">=</span> <span class="n">CCCG</span><span class="p">(</span><span class="n">file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_sys_diagram</span><span class="p">)</span>
-    <span class="n">cccg_obj</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_ccf_config</span><span class="p">[</span><span class="s1">&#39;generate&#39;</span><span class="p">])</span></div>
+    <span class="n">cccg_obj</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">config</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_ccf_config</span><span class="p">[</span><span class="s1">'generate'</span><span class="p">])</span></div>
 
 
 <div class="viewcode-block" id="Workflow.run">
 <a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.Workflow.run">[docs]</a>
   <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Execute the workflow</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""Execute the workflow</span>
+<span class="sd">    """</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_bbn_config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-      <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Start BBN Calculation ...&#39;</span><span class="p">)</span>
+      <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'Start BBN Calculation ...'</span><span class="p">)</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">run_bbn</span><span class="p">()</span>
-      <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;End BBN Calculation&#39;</span><span class="p">)</span>
+      <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'End BBN Calculation'</span><span class="p">)</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ccf_config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-      <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Start CCCGs generation&#39;</span><span class="p">)</span>
+      <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'Start CCCGs generation'</span><span class="p">)</span>
       <span class="bp">self</span><span class="o">.</span><span class="n">run_ccf</span><span class="p">()</span>
-      <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;End CCCGs generation&#39;</span><span class="p">)</span></div>
+      <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'End CCCGs generation'</span><span class="p">)</span></div>
 
 
 
 <div class="viewcode-block" id="Workflow.write">
 <a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.Workflow.write">[docs]</a>
-  <span class="k">def</span><span class="w"> </span><span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">fname</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;csv&#39;</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Dump data</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">fname</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">'csv'</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Dump data</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        data (pandas.DataFrame): Output data to dump</span>
 <span class="sd">        fname (str): File name for saving the data</span>
-<span class="sd">        style (str, optional): Type of file (defaults to &quot;csv&quot;)</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">        style (str, optional): Type of file (defaults to "csv")</span>
+<span class="sd">    """</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">):</span>
       <span class="n">data</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
@@ -298,19 +298,19 @@
 <div class="viewcode-block" id="Workflow._validate">
 <a class="viewcode-back" href="../../autoapi/bahamas/workflow/index.html#bahamas.Workflow._validate">[docs]</a>
   <span class="k">def</span><span class="w"> </span><span class="nf">_validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Validate input file using JSON schema</span>
+<span class="w">    </span><span class="sd">"""Validate input file using JSON schema</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        config (dict): Dictionary for input</span>
 
 <span class="sd">    Raises:</span>
 <span class="sd">        IOError: Error out if  invalid</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="c1"># validate</span>
     <span class="n">validate</span> <span class="o">=</span> <span class="n">validate_toml</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">validate</span><span class="p">:</span>
-      <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">&quot;TOML input file is invalid.&quot;</span><span class="p">)</span>
-      <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s2">&quot;TOML input file is invalid.&quot;</span><span class="p">)</span></div>
+      <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s2">"TOML input file is invalid."</span><span class="p">)</span>
+      <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="s2">"TOML input file is invalid."</span><span class="p">)</span></div>
 </div>
 
 </pre></div>

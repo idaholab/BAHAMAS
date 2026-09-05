@@ -98,13 +98,13 @@
 
 <div class="viewcode-block" id="logger">
 <a class="viewcode-back" href="../../autoapi/bahamas/sdlc_stage_hep_calculation_approx/index.html#bahamas.logger">[docs]</a>
-<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;BAHAMAS.HEPApprox&#39;</span><span class="p">)</span></div>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">'BAHAMAS.HEPApprox'</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="sdlc_stage_hep_calculation_approx">
 <a class="viewcode-back" href="../../autoapi/bahamas/sdlc_stage_hep_calculation_approx/index.html#bahamas.sdlc_stage_hep_calculation_approx">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">sdlc_stage_hep_calculation_approx</span><span class="p">(</span><span class="n">excel_file_path</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">distribution</span><span class="o">=</span><span class="s2">&quot;norm&quot;</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">sdlc_stage_hep_calculation_approx</span><span class="p">(</span><span class="n">excel_file_path</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">,</span> <span class="n">num_samples</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">distribution</span><span class="o">=</span><span class="s2">"norm"</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    This function reads in the human error probability (mean and std) from a</span>
 <span class="sd">    spreadsheet and calculates the human error probability distributions.</span>
 
@@ -117,29 +117,29 @@
 <span class="sd">    num_samples : int</span>
 <span class="sd">        Number of samples to generate for each action</span>
 <span class="sd">    distribution : str</span>
-<span class="sd">        Type of distribution to use (currently always &quot;norm&quot;)</span>
+<span class="sd">        Type of distribution to use (currently always "norm")</span>
 
 <span class="sd">    Returns</span>
 <span class="sd">    -------</span>
 <span class="sd">    total, None : numpy.array, None</span>
 <span class="sd">        Samples for the SDLC stage by considering all human error propagations</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Calculate SDLC &quot;</span><span class="si">%s</span><span class="s1">&quot; stage HEP&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">)</span>
+<span class="sd">    """</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'Calculate SDLC "</span><span class="si">%s</span><span class="s1">" stage HEP'</span><span class="p">,</span> <span class="n">sheet_name</span><span class="p">)</span>
     <span class="c1"># Read the action types from the given sheet</span>
-    <span class="n">df</span> <span class="o">=</span> <span class="n">read_excel</span><span class="p">(</span><span class="n">excel_file_path</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="n">sheet_name</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Human Error Probability (Mean)&quot;</span><span class="p">,</span><span class="s2">&quot;Human Error Probability (STD)&quot;</span><span class="p">])</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">read_excel</span><span class="p">(</span><span class="n">excel_file_path</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="n">sheet_name</span><span class="p">,</span> <span class="n">usecols</span><span class="o">=</span><span class="p">[</span><span class="s2">"Human Error Probability (Mean)"</span><span class="p">,</span><span class="s2">"Human Error Probability (STD)"</span><span class="p">])</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">df</span><span class="o">.</span><span class="n">empty</span><span class="p">:</span>
-        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">&#39;Try to process </span><span class="si">%s</span><span class="s1">, but got empty inputs!&#39;</span><span class="p">,</span> <span class="n">excel_file_path</span><span class="p">)</span>
-        <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Try to process </span><span class="si">{</span><span class="n">excel_file_path</span><span class="si">}</span><span class="s1">, but got empty inputs !&#39;</span><span class="p">)</span>
+        <span class="n">logger</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="s1">'Try to process </span><span class="si">%s</span><span class="s1">, but got empty inputs!'</span><span class="p">,</span> <span class="n">excel_file_path</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Try to process </span><span class="si">{</span><span class="n">excel_file_path</span><span class="si">}</span><span class="s1">, but got empty inputs !'</span><span class="p">)</span>
     <span class="n">mean</span><span class="p">,</span> <span class="n">std</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 
-    <span class="k">if</span> <span class="n">distribution</span> <span class="o">==</span> <span class="s2">&quot;norm&quot;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">distribution</span> <span class="o">==</span> <span class="s2">"norm"</span><span class="p">:</span>
         <span class="n">a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">/</span> <span class="n">std</span>
         <span class="n">b</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">mean</span><span class="p">)</span> <span class="o">/</span> <span class="n">std</span>
         <span class="n">dist</span> <span class="o">=</span> <span class="n">truncnorm</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">mean</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">std</span><span class="p">)</span>
         <span class="n">total</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="n">num_samples</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Unsupported distribution type </span><span class="si">{</span><span class="n">distribution</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Unsupported distribution type </span><span class="si">{</span><span class="n">distribution</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">total</span><span class="p">,</span> <span class="kc">None</span></div>
 

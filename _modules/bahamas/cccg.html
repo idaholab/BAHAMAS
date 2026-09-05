@@ -88,21 +88,21 @@
            <div itemprop="articleBody">
              
   <h1>Source code for bahamas.cccg</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span></span><span class="sd">"""</span>
 <span class="sd">Created on September 7, 2025</span>
 <span class="sd">@author: wangc, chene</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">"""</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">copy</span>
-<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">'ignore'</span><span class="p">)</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">read_excel</span>
 
 <div class="viewcode-block" id="logger">
 <a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.logger">[docs]</a>
-<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;BAHAMAS.CCCG&#39;</span><span class="p">)</span></div>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">'BAHAMAS.CCCG'</span><span class="p">)</span></div>
 
 
 <span class="c1">########### internal functions</span>
@@ -110,14 +110,14 @@
 <div class="viewcode-block" id="check_valid">
 <a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.check_valid">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">check_valid</span><span class="p">(</span><span class="n">src_arr</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Check if group is empty</span>
+<span class="w">    </span><span class="sd">"""Check if group is empty</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        src_arr (list or pd.DataFrame): data to check</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        bool: True if the group is not empty else False</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">src_arr</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="k">return</span> <span class="kc">False</span>
 
@@ -127,30 +127,30 @@
 <div class="viewcode-block" id="clean_string">
 <a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.clean_string">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">clean_string</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;remove &quot;None&quot; and &quot;nan&quot; from str that are separated by &quot;;&quot;</span>
+<span class="w">    </span><span class="sd">"""remove "None" and "nan" from str that are separated by ";"</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        s (str): string to clean</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        str: cleaned string</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">isna</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
         <span class="k">return</span> <span class="n">s</span>
-    <span class="k">return</span> <span class="s1">&#39;;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">item</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;;&#39;</span><span class="p">)</span> <span class="k">if</span> <span class="n">item</span> <span class="o">!=</span> <span class="s1">&#39;None&#39;</span> <span class="ow">and</span> <span class="n">item</span> <span class="o">!=</span> <span class="s1">&#39;nan&#39;</span><span class="p">])</span></div>
+    <span class="k">return</span> <span class="s1">';'</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">item</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">s</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">';'</span><span class="p">)</span> <span class="k">if</span> <span class="n">item</span> <span class="o">!=</span> <span class="s1">'None'</span> <span class="ow">and</span> <span class="n">item</span> <span class="o">!=</span> <span class="s1">'nan'</span><span class="p">])</span></div>
 
 
 <div class="viewcode-block" id="merge_multi_lists">
 <a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.merge_multi_lists">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">merge_multi_lists</span><span class="p">(</span><span class="o">*</span><span class="n">arg</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Merge multiple pd.DataFrame CCCG data and remove duplicates</span>
+<span class="w">    </span><span class="sd">"""Merge multiple pd.DataFrame CCCG data and remove duplicates</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        arg (list): list of pd.DataFrame CCCG data</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        list: Merged CCCG data without duplications</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">master</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
     <span class="k">for</span> <span class="n">pd_multi</span> <span class="ow">in</span> <span class="n">arg</span><span class="p">:</span>
         <span class="n">master</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">pd_multi</span><span class="p">)</span>
@@ -161,14 +161,14 @@
 <div class="viewcode-block" id="drop_dup">
 <a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.drop_dup">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">drop_dup</span><span class="p">(</span><span class="n">list_pd</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Drop duplicated CCCG data</span>
+<span class="w">    </span><span class="sd">"""Drop duplicated CCCG data</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        list_pd (list): list of pd.DataFrame (CCCG data)</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        list: list of pd.DataFrame (CCCG data) without duplications</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">filtered_list_pd</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
 
     <span class="n">flag</span> <span class="o">=</span> <span class="kc">False</span>
@@ -194,14 +194,14 @@
 <div class="viewcode-block" id="unique_cells">
 <a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.unique_cells">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">unique_cells</span><span class="p">(</span><span class="n">src_arr</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Identify the unique inputs/designs/functions for given coupling factor (i.e., Input, Function and Design)</span>
+<span class="w">    </span><span class="sd">"""Identify the unique inputs/designs/functions for given coupling factor (i.e., Input, Function and Design)</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        src_arr (pd.DataFrame): Expanded Coupling Factor data for single coupling factor</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        list: list of unique inputs/designs/functions among all components</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">arr_cols</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">src_arr</span><span class="p">[</span><span class="n">col</span><span class="p">]</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">src_arr</span><span class="p">],</span> <span class="n">ignore_index</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">arr_unique</span> <span class="o">=</span> <span class="n">arr_cols</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
     <span class="n">arr_unique</span> <span class="o">=</span> <span class="p">[</span><span class="n">cell</span> <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">arr_unique</span> <span class="k">if</span> <span class="n">pd</span><span class="o">.</span><span class="n">notna</span><span class="p">(</span><span class="n">cell</span><span class="p">)]</span>
@@ -212,7 +212,7 @@
 <div class="viewcode-block" id="match_CCCG_on">
 <a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.match_CCCG_on">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">match_CCCG_on</span><span class="p">(</span><span class="n">src_arr</span><span class="p">,</span> <span class="n">col_name</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get a list of CCCGs based on single coupling factor, which means the CCCGs are grouped because</span>
+<span class="w">    </span><span class="sd">"""Get a list of CCCGs based on single coupling factor, which means the CCCGs are grouped because</span>
 <span class="sd">    they have at least one shared variable of the given coupling factor</span>
 
 <span class="sd">    Args:</span>
@@ -221,7 +221,7 @@
 
 <span class="sd">    Returns:</span>
 <span class="sd">        list: list of CCCGs based on single coupling factor, arranged in order *_1, *_2, *_3, etc. where * represent the coupling factor</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">CCCG_arr</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
 
     <span class="c1"># Get columns that start with the coupling factor name, i.e., Function_, Input_, and Design_</span>
@@ -250,15 +250,15 @@
 <div class="viewcode-block" id="match_CCCG_list_on">
 <a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.match_CCCG_list_on">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">match_CCCG_list_on</span><span class="p">(</span><span class="n">list_pd</span><span class="p">,</span> <span class="n">col_name</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Identify CCCGs that are also have &quot;col_name&quot; coupling factor (this function is used for two or more shared coupling factors)</span>
+<span class="w">    </span><span class="sd">"""Identify CCCGs that are also have "col_name" coupling factor (this function is used for two or more shared coupling factors)</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        list_pd (list): list of pd.DataFrame of CCCGs</span>
 <span class="sd">        col_name (str): coupling factor, Function_, Input_ or Design_</span>
 
 <span class="sd">    Returns:</span>
-<span class="sd">        list: CCCGs with additional coupling factor (&quot;col_name&quot;)</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">        list: CCCGs with additional coupling factor ("col_name")</span>
+<span class="sd">    """</span>
     <span class="n">CCCG_arr</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
 
     <span class="k">for</span> <span class="n">pd_tmp</span> <span class="ow">in</span> <span class="n">list_pd</span><span class="p">:</span>
@@ -316,12 +316,12 @@
 <div class="viewcode-block" id="CCCG">
 <a class="viewcode-back" href="../../autoapi/bahamas/index.html#bahamas.cccg.CCCG">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">CCCG</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-<span class="w">  </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">  </span><span class="sd">"""</span>
 <span class="sd">  Compute CCCGs for given list of components of diversity and redundancy system</span>
 
 <span class="sd">  Args:</span>
 <span class="sd">      object (_type_): _description_</span>
-<span class="sd">  &quot;&quot;&quot;</span>
+<span class="sd">  """</span>
 
   <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="p">):</span>
 <div class="viewcode-block" id="CCCG._sys_diagram">
@@ -416,44 +416,44 @@
 <a class="viewcode-back" href="../../autoapi/bahamas/cccg/index.html#bahamas.cccg.CCCG._design_all">[docs]</a>
     <span class="bp">self</span><span class="o">.</span><span class="n">_design_all</span> <span class="o">=</span> <span class="p">[]</span></div>
 
-    <span class="c1"># self._output_file = &quot;CCCGs.csv&quot;</span>
+    <span class="c1"># self._output_file = "CCCGs.csv"</span>
 
 <div class="viewcode-block" id="CCCG.generate">
 <a class="viewcode-back" href="../../autoapi/bahamas/index.html#bahamas.cccg.CCCG.generate">[docs]</a>
   <span class="k">def</span><span class="w"> </span><span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Generate CCCGs based on three coupling factors, i.e., Function, Input and Design</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Generating&quot;</span><span class="p">)</span>
+<span class="sd">    """</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Generating"</span><span class="p">)</span>
     <span class="c1"># Read data file into Pandas</span>
     <span class="n">df_pd</span> <span class="o">=</span> <span class="n">read_excel</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_sys_diagram</span><span class="p">)</span>
     
     <span class="c1"># Expand Function_Config</span>
-    <span class="n">func_big</span> <span class="o">=</span> <span class="n">df_pd</span><span class="p">[</span><span class="s2">&quot;Function_Config&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;; &#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">func_big</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Function_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">func_big</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
+    <span class="n">func_big</span> <span class="o">=</span> <span class="n">df_pd</span><span class="p">[</span><span class="s2">"Function_Config"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'; '</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">func_big</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">'Function_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">'</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">func_big</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
     
     <span class="c1"># Expand Function_Config</span>
-    <span class="n">func_big</span> <span class="o">=</span> <span class="n">df_pd</span><span class="p">[</span><span class="s2">&quot;Function_Config&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;; &#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">func_big</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Function_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">func_big</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
+    <span class="n">func_big</span> <span class="o">=</span> <span class="n">df_pd</span><span class="p">[</span><span class="s2">"Function_Config"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'; '</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">func_big</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">'Function_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">'</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">func_big</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
 
-    <span class="n">df_pd_tmp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_pd</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Function_Config&#39;</span><span class="p">]),</span> <span class="n">func_big</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">df_pd_tmp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_pd</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'Function_Config'</span><span class="p">]),</span> <span class="n">func_big</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="c1"># Expand Input_Config</span>
-    <span class="n">inpt_big</span> <span class="o">=</span> <span class="n">df_pd</span><span class="p">[</span><span class="s2">&quot;Input_Config&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;; &#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">inpt_big</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Input_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">inpt_big</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
+    <span class="n">inpt_big</span> <span class="o">=</span> <span class="n">df_pd</span><span class="p">[</span><span class="s2">"Input_Config"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'; '</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">inpt_big</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">'Input_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">'</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">inpt_big</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
 
-    <span class="n">df_pd_tmp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_pd_tmp</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Input_Config&#39;</span><span class="p">]),</span> <span class="n">inpt_big</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">df_pd_tmp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_pd_tmp</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'Input_Config'</span><span class="p">]),</span> <span class="n">inpt_big</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="c1"># Expand Design Config</span>
-    <span class="n">dsgn_big</span> <span class="o">=</span> <span class="n">df_pd</span><span class="p">[</span><span class="s2">&quot;Design_Config&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;; &#39;</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">dsgn_big</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">&#39;Design_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">dsgn_big</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
+    <span class="n">dsgn_big</span> <span class="o">=</span> <span class="n">df_pd</span><span class="p">[</span><span class="s2">"Design_Config"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">'; '</span><span class="p">,</span> <span class="n">expand</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">dsgn_big</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="sa">f</span><span class="s1">'Design_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">'</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">dsgn_big</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])]</span>
 
-    <span class="n">df_pd_tmp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_pd_tmp</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Design_Config&#39;</span><span class="p">]),</span> <span class="n">dsgn_big</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">df_pd_tmp</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_pd_tmp</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'Design_Config'</span><span class="p">]),</span> <span class="n">dsgn_big</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="c1"># Get CCCG on single coupling factor</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function</span> <span class="o">=</span> <span class="n">match_CCCG_on</span><span class="p">(</span><span class="n">df_pd_tmp</span><span class="p">,</span> <span class="s1">&#39;Function_&#39;</span><span class="p">)</span> <span class="c1"># list[first variable pd.DataFrame, second variable pd.DataFrame, ...]</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_design</span>   <span class="o">=</span> <span class="n">match_CCCG_on</span><span class="p">(</span><span class="n">df_pd_tmp</span><span class="p">,</span> <span class="s1">&#39;Design_&#39;</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_input</span>    <span class="o">=</span> <span class="n">match_CCCG_on</span><span class="p">(</span><span class="n">df_pd_tmp</span><span class="p">,</span> <span class="s1">&#39;Input_&#39;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function</span> <span class="o">=</span> <span class="n">match_CCCG_on</span><span class="p">(</span><span class="n">df_pd_tmp</span><span class="p">,</span> <span class="s1">'Function_'</span><span class="p">)</span> <span class="c1"># list[first variable pd.DataFrame, second variable pd.DataFrame, ...]</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_design</span>   <span class="o">=</span> <span class="n">match_CCCG_on</span><span class="p">(</span><span class="n">df_pd_tmp</span><span class="p">,</span> <span class="s1">'Design_'</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_input</span>    <span class="o">=</span> <span class="n">match_CCCG_on</span><span class="p">(</span><span class="n">df_pd_tmp</span><span class="p">,</span> <span class="s1">'Input_'</span><span class="p">)</span>
 
     <span class="c1"># Merge all CCCGs on single coupling factor and drop duplicates</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_single</span>   <span class="o">=</span> <span class="n">merge_multi_lists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function</span><span class="p">,</span>
@@ -464,14 +464,14 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_single</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_single</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">]</span>
 
     <span class="c1"># Get CCCG on two coupling factor</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function_input</span>  <span class="o">=</span> <span class="n">match_CCCG_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function</span><span class="p">,</span> <span class="s1">&#39;Input_&#39;</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function_design</span> <span class="o">=</span> <span class="n">match_CCCG_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function</span><span class="p">,</span> <span class="s1">&#39;Design_&#39;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function_input</span>  <span class="o">=</span> <span class="n">match_CCCG_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function</span><span class="p">,</span> <span class="s1">'Input_'</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function_design</span> <span class="o">=</span> <span class="n">match_CCCG_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function</span><span class="p">,</span> <span class="s1">'Design_'</span><span class="p">)</span>
 
-    <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_input_function</span>  <span class="o">=</span> <span class="n">match_CCCG_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_input</span><span class="p">,</span> <span class="s1">&#39;Function_&#39;</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_input_design</span> <span class="o">=</span> <span class="n">match_CCCG_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_input</span><span class="p">,</span> <span class="s1">&#39;Design_&#39;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_input_function</span>  <span class="o">=</span> <span class="n">match_CCCG_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_input</span><span class="p">,</span> <span class="s1">'Function_'</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_input_design</span> <span class="o">=</span> <span class="n">match_CCCG_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_input</span><span class="p">,</span> <span class="s1">'Design_'</span><span class="p">)</span>
 
-    <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_design_input</span>  <span class="o">=</span> <span class="n">match_CCCG_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_design</span><span class="p">,</span> <span class="s1">&#39;Input_&#39;</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_design_function</span> <span class="o">=</span> <span class="n">match_CCCG_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_design</span><span class="p">,</span> <span class="s1">&#39;Function_&#39;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_design_input</span>  <span class="o">=</span> <span class="n">match_CCCG_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_design</span><span class="p">,</span> <span class="s1">'Input_'</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_design_function</span> <span class="o">=</span> <span class="n">match_CCCG_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_design</span><span class="p">,</span> <span class="s1">'Function_'</span><span class="p">)</span>
 
     <span class="c1"># Merge all CCCGs on two coupling factor and drop duplicates</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_double</span>   <span class="o">=</span> <span class="n">merge_multi_lists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function_design</span><span class="p">,</span>
@@ -485,14 +485,14 @@
     <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_double</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_double</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">]</span>
 
     <span class="c1"># Get CCCG on three coupling factor</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function_input_design</span> <span class="o">=</span> <span class="n">match_CCCG_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function_input</span><span class="p">,</span> <span class="s1">&#39;Design_&#39;</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function_design_input</span> <span class="o">=</span> <span class="n">match_CCCG_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function_design</span><span class="p">,</span> <span class="s1">&#39;Input_&#39;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function_input_design</span> <span class="o">=</span> <span class="n">match_CCCG_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function_input</span><span class="p">,</span> <span class="s1">'Design_'</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function_design_input</span> <span class="o">=</span> <span class="n">match_CCCG_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function_design</span><span class="p">,</span> <span class="s1">'Input_'</span><span class="p">)</span>
 
-    <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_input_design_function</span> <span class="o">=</span> <span class="n">match_CCCG_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_input_design</span><span class="p">,</span> <span class="s1">&#39;Function_&#39;</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_input_function_design</span> <span class="o">=</span> <span class="n">match_CCCG_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_input_function</span><span class="p">,</span> <span class="s1">&#39;Design_&#39;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_input_design_function</span> <span class="o">=</span> <span class="n">match_CCCG_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_input_design</span><span class="p">,</span> <span class="s1">'Function_'</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_input_function_design</span> <span class="o">=</span> <span class="n">match_CCCG_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_input_function</span><span class="p">,</span> <span class="s1">'Design_'</span><span class="p">)</span>
 
-    <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_design_input_function</span> <span class="o">=</span> <span class="n">match_CCCG_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_design_input</span><span class="p">,</span> <span class="s1">&#39;Function_&#39;</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_design_function_input</span> <span class="o">=</span> <span class="n">match_CCCG_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_design_function</span><span class="p">,</span> <span class="s1">&#39;Input_&#39;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_design_input_function</span> <span class="o">=</span> <span class="n">match_CCCG_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_design_input</span><span class="p">,</span> <span class="s1">'Function_'</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_design_function_input</span> <span class="o">=</span> <span class="n">match_CCCG_list_on</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_design_function</span><span class="p">,</span> <span class="s1">'Input_'</span><span class="p">)</span>
 
     <span class="c1"># Merge all CCCGs on triple coupling factor and drop duplicates</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">_cccg_triple</span>   <span class="o">=</span> <span class="n">merge_multi_lists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_function_input_design</span><span class="p">,</span>
@@ -515,84 +515,84 @@
 <div class="viewcode-block" id="CCCG.get">
 <a class="viewcode-back" href="../../autoapi/bahamas/index.html#bahamas.cccg.CCCG.get">[docs]</a>
   <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get CCCGs</span>
+<span class="w">    </span><span class="sd">"""Get CCCGs</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        name (str): name for CCCGs group</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        list (list of Pandas.DataFrame): List of CCCGs</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;final&#39;</span><span class="p">:</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">'final'</span><span class="p">:</span>
       <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_final</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;single&#39;</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">'single'</span><span class="p">:</span>
       <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_single</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;double&#39;</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">'double'</span><span class="p">:</span>
       <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_double</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">&#39;triple&#39;</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="n">name</span> <span class="o">==</span> <span class="s1">'triple'</span><span class="p">:</span>
       <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_cccg_triple</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-      <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Unrecognized name &quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">&quot;!&#39;</span><span class="p">)</span></div>
+      <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Unrecognized name "</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s1">"!'</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="CCCG.write">
 <a class="viewcode-back" href="../../autoapi/bahamas/index.html#bahamas.cccg.CCCG.write">[docs]</a>
-  <span class="k">def</span><span class="w"> </span><span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">fname</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">&#39;csv&#39;</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Dump data</span>
+  <span class="k">def</span><span class="w"> </span><span class="nf">write</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">fname</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="s1">'csv'</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Dump data</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        data (list of pandas.DataFrame): output data to dump</span>
 <span class="sd">        fname (str): file name to save the data</span>
-<span class="sd">        style (str, optional): type of file. Defaults to &#39;csv&#39;.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Save CCCGs into </span><span class="si">%s</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">fname</span><span class="p">)</span>
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<span class="sd">        style (str, optional): type of file. Defaults to 'csv'.</span>
+<span class="sd">    """</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">"Save CCCGs into </span><span class="si">%s</span><span class="s2">"</span><span class="p">,</span> <span class="n">fname</span><span class="p">)</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fname</span><span class="p">,</span> <span class="s1">'w'</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">''</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">'utf-8'</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
       <span class="k">for</span> <span class="n">df</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
           <span class="c1"># Write each DataFrame to the file</span>
           <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-          <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span></div>
+          <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">'</span><span class="se">\n</span><span class="s1">'</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="CCCG.aggregate">
 <a class="viewcode-back" href="../../autoapi/bahamas/index.html#bahamas.cccg.CCCG.aggregate">[docs]</a>
   <span class="k">def</span><span class="w"> </span><span class="nf">aggregate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">cccgs</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Aggregate expanded Function, Input, Design into Function_Config, Input_Config and Design_Config</span>
+<span class="w">    </span><span class="sd">"""Aggregate expanded Function, Input, Design into Function_Config, Input_Config and Design_Config</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        cccgs (list): list of pd.DataFrame (i.e., CCCGs)</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        list: list of aggregated CCCGs</span>
-<span class="sd">    &quot;&quot;&quot;</span>
+<span class="sd">    """</span>
     <span class="n">cccg_list</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="n">cccgs</span><span class="p">)</span> <span class="c1"># deepcopy is required, otherwise data manipulation</span>
     <span class="n">cccg_transfer</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">pd_arr</span> <span class="ow">in</span> <span class="n">cccg_list</span><span class="p">:</span>
         <span class="n">coupling_factor</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">function_columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">pd_arr</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">col</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Function_&#39;</span><span class="p">)]</span>
+        <span class="n">function_columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">pd_arr</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">col</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">'Function_'</span><span class="p">)]</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">function_columns</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-          <span class="n">pd_arr</span><span class="p">[</span><span class="s2">&quot;Function_Config&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd_arr</span><span class="p">[</span><span class="n">function_columns</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="s1">&#39;;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">row</span><span class="o">.</span><span class="n">values</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+          <span class="n">pd_arr</span><span class="p">[</span><span class="s2">"Function_Config"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd_arr</span><span class="p">[</span><span class="n">function_columns</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="s1">';'</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">row</span><span class="o">.</span><span class="n">values</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
           <span class="n">pd_arr</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">function_columns</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-          <span class="n">pd_arr</span><span class="p">[</span><span class="s2">&quot;Function_Config&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd_arr</span><span class="p">[</span><span class="s2">&quot;Function_Config&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">clean_string</span><span class="p">)</span>
-          <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pd_arr</span><span class="p">[</span><span class="s2">&quot;Function_Config&quot;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">pd_arr</span><span class="p">[</span><span class="s2">&quot;Function_Config&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">pd_arr</span><span class="p">[</span><span class="s2">&quot;Function_Config&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
-              <span class="n">coupling_factor</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Function&#39;</span><span class="p">)</span>
+          <span class="n">pd_arr</span><span class="p">[</span><span class="s2">"Function_Config"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd_arr</span><span class="p">[</span><span class="s2">"Function_Config"</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">clean_string</span><span class="p">)</span>
+          <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pd_arr</span><span class="p">[</span><span class="s2">"Function_Config"</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">pd_arr</span><span class="p">[</span><span class="s2">"Function_Config"</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">pd_arr</span><span class="p">[</span><span class="s2">"Function_Config"</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">''</span><span class="p">:</span>
+              <span class="n">coupling_factor</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'Function'</span><span class="p">)</span>
 
-        <span class="n">input_columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">pd_arr</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">col</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Input_&#39;</span><span class="p">)]</span>
+        <span class="n">input_columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">pd_arr</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">col</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">'Input_'</span><span class="p">)]</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_columns</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-          <span class="n">pd_arr</span><span class="p">[</span><span class="s2">&quot;Input_Config&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd_arr</span><span class="p">[</span><span class="n">input_columns</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="s1">&#39;;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">row</span><span class="o">.</span><span class="n">values</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+          <span class="n">pd_arr</span><span class="p">[</span><span class="s2">"Input_Config"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd_arr</span><span class="p">[</span><span class="n">input_columns</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="s1">';'</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">row</span><span class="o">.</span><span class="n">values</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
           <span class="n">pd_arr</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">input_columns</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-          <span class="n">pd_arr</span><span class="p">[</span><span class="s2">&quot;Input_Config&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd_arr</span><span class="p">[</span><span class="s2">&quot;Input_Config&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">clean_string</span><span class="p">)</span>
-          <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pd_arr</span><span class="p">[</span><span class="s2">&quot;Input_Config&quot;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">pd_arr</span><span class="p">[</span><span class="s2">&quot;Input_Config&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">pd_arr</span><span class="p">[</span><span class="s2">&quot;Input_Config&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
-              <span class="n">coupling_factor</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Input&#39;</span><span class="p">)</span>
+          <span class="n">pd_arr</span><span class="p">[</span><span class="s2">"Input_Config"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd_arr</span><span class="p">[</span><span class="s2">"Input_Config"</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">clean_string</span><span class="p">)</span>
+          <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pd_arr</span><span class="p">[</span><span class="s2">"Input_Config"</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">pd_arr</span><span class="p">[</span><span class="s2">"Input_Config"</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">pd_arr</span><span class="p">[</span><span class="s2">"Input_Config"</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">''</span><span class="p">:</span>
+              <span class="n">coupling_factor</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'Input'</span><span class="p">)</span>
 
-        <span class="n">design_columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">pd_arr</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">col</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;Design_&#39;</span><span class="p">)]</span>
+        <span class="n">design_columns</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">pd_arr</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">col</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">'Design_'</span><span class="p">)]</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">design_columns</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-          <span class="n">pd_arr</span><span class="p">[</span><span class="s2">&quot;Design_Config&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd_arr</span><span class="p">[</span><span class="n">design_columns</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="s1">&#39;;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">row</span><span class="o">.</span><span class="n">values</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+          <span class="n">pd_arr</span><span class="p">[</span><span class="s2">"Design_Config"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd_arr</span><span class="p">[</span><span class="n">design_columns</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="s1">';'</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">row</span><span class="o">.</span><span class="n">values</span><span class="p">)),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
           <span class="n">pd_arr</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="n">design_columns</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-          <span class="n">pd_arr</span><span class="p">[</span><span class="s2">&quot;Design_Config&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd_arr</span><span class="p">[</span><span class="s2">&quot;Design_Config&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">clean_string</span><span class="p">)</span>
-          <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pd_arr</span><span class="p">[</span><span class="s2">&quot;Design_Config&quot;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">pd_arr</span><span class="p">[</span><span class="s2">&quot;Design_Config&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">pd_arr</span><span class="p">[</span><span class="s2">&quot;Design_Config&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">:</span>
-              <span class="n">coupling_factor</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;Design&#39;</span><span class="p">)</span>
+          <span class="n">pd_arr</span><span class="p">[</span><span class="s2">"Design_Config"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd_arr</span><span class="p">[</span><span class="s2">"Design_Config"</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">clean_string</span><span class="p">)</span>
+          <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">pd_arr</span><span class="p">[</span><span class="s2">"Design_Config"</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">pd_arr</span><span class="p">[</span><span class="s2">"Design_Config"</span><span class="p">]</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">pd_arr</span><span class="p">[</span><span class="s2">"Design_Config"</span><span class="p">]</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">''</span><span class="p">:</span>
+              <span class="n">coupling_factor</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">'Design'</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">coupling_factor</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-          <span class="n">pd_arr</span><span class="p">[</span><span class="s1">&#39;Coupling_Factor&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">coupling_factor</span><span class="p">)</span>
+          <span class="n">pd_arr</span><span class="p">[</span><span class="s1">'Coupling_Factor'</span><span class="p">]</span> <span class="o">=</span> <span class="s2">";"</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">coupling_factor</span><span class="p">)</span>
         <span class="n">cccg_transfer</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">pd_arr</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">cccg_transfer</span></div>

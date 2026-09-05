@@ -153,9 +153,9 @@ Example: <code class="docutils literal notranslate"><span class="pre">seed</span
 Specifies input file paths required for the analysis.</p>
 <p><strong>Syntax Example:</strong></p>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[BBN.files]</span>
-<span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;../data/Task_List.xlsx&quot;</span>
-<span class="n">defect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;../data/Defect_Data.xlsx&quot;</span>
-<span class="n">approx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;../data/sdlc_macro.xlsx&quot;</span>
+<span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"../data/Task_List.xlsx"</span>
+<span class="n">defect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"../data/Defect_Data.xlsx"</span>
+<span class="n">approx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"../data/sdlc_macro.xlsx"</span>
 </pre></div>
 </div>
 <p><strong>File Entries:</strong></p>
@@ -178,7 +178,7 @@ All paths should be valid relative or absolute file paths, and may use URI-style
 Defines the type of analysis to be performed.</p>
 <p><strong>Syntax Example:</strong></p>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[BBN.analysis]</span>
-<span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;precise&#39;</span>
+<span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'precise'</span>
 </pre></div>
 </div>
 <p><strong>Parameters:</strong></p>
@@ -208,12 +208,12 @@ Acceptable values:</p>
 <span class="n">seed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span>
 
 <span class="k">[BBN.files]</span>
-<span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;../data/Task_List.xlsx&quot;</span>
-<span class="n">defect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;../data/Defect_Data.xlsx&quot;</span>
-<span class="n">approx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;../data/sdlc_macro.xlsx&quot;</span>
+<span class="n">task</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"../data/Task_List.xlsx"</span>
+<span class="n">defect</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"../data/Defect_Data.xlsx"</span>
+<span class="n">approx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"../data/sdlc_macro.xlsx"</span>
 
 <span class="k">[BBN.analysis]</span>
-<span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;precise&#39;</span>
+<span class="n">type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">'precise'</span>
 </pre></div>
 </div>
 </section>
@@ -249,7 +249,7 @@ This defines the file inputs and (optionally) which common cause component group
 CCF file configurations.</p>
 <p><strong>Syntax Example:</strong></p>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[CCF.files]</span>
-<span class="n">structure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;../data/Scenario_6.csv&quot;</span>
+<span class="n">structure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"../data/Scenario_6.csv"</span>
 </pre></div>
 </div>
 <p><strong>Entries:</strong></p>
@@ -269,8 +269,8 @@ Example: <code class="docutils literal notranslate"><span class="pre">structure<
 Optional settings to generate CCCGs and control output naming and type.</p>
 <p><strong>Syntax Example:</strong></p>
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[CCF.generate]</span>
-<span class="n">output_file_base</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;s6_cccg&quot;</span>
-<span class="n">output_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;csv&quot;</span>
+<span class="n">output_file_base</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"s6_cccg"</span>
+<span class="n">output_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"csv"</span>
 <span class="n">final</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 <span class="n">single</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 <span class="n">double</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
@@ -306,11 +306,11 @@ Generate triple CCCGs output if <code class="docutils literal notranslate"><span
 <div class="highlight-toml notranslate"><div class="highlight"><pre><span></span><span class="k">[CCF]</span>
 
 <span class="k">[CCF.files]</span>
-<span class="n">structure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;../data/Scenario_6.csv&quot;</span>
+<span class="n">structure</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"../data/Scenario_6.csv"</span>
 
 <span class="k">[CCF.generate]</span>
-<span class="n">output_file_base</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;s6_cccg&quot;</span>
-<span class="n">output_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;csv&quot;</span>
+<span class="n">output_file_base</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"s6_cccg"</span>
+<span class="n">output_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"csv"</span>
 <span class="n">final</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 <span class="n">single</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
 <span class="n">double</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>

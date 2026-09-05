@@ -98,27 +98,27 @@
 
 <div class="viewcode-block" id="logger">
 <a class="viewcode-back" href="../../autoapi/bahamas/uca_defect_correlation/index.html#bahamas.logger">[docs]</a>
-<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;BAHAMAS.UCA&#39;</span><span class="p">)</span></div>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">'BAHAMAS.UCA'</span><span class="p">)</span></div>
 
 
 
 <div class="viewcode-block" id="get_uca_defect_correlation_dist">
 <a class="viewcode-back" href="../../autoapi/bahamas/uca_defect_correlation/index.html#bahamas.get_uca_defect_correlation_dist">[docs]</a>
-<span class="k">def</span><span class="w"> </span><span class="nf">get_uca_defect_correlation_dist</span><span class="p">(</span><span class="n">excel_file</span><span class="p">,</span> <span class="n">distribution</span><span class="o">=</span><span class="s1">&#39;norm&#39;</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">&#39;UCA Correlation&#39;</span><span class="p">):</span>
-<span class="w">  </span><span class="sd">&quot;&quot;&quot;Assign distribution for each UCA defect correlation term</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_uca_defect_correlation_dist</span><span class="p">(</span><span class="n">excel_file</span><span class="p">,</span> <span class="n">distribution</span><span class="o">=</span><span class="s1">'norm'</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="s1">'UCA Correlation'</span><span class="p">):</span>
+<span class="w">  </span><span class="sd">"""Assign distribution for each UCA defect correlation term</span>
 
 <span class="sd">  Args:</span>
 <span class="sd">      excel_file (str): Excel file to read in</span>
-<span class="sd">      distribution (str, optional): Type of distribution (defaults to &quot;norm&quot;)</span>
-<span class="sd">      sheet_name (str, optional): Name of the sheet with UCA correlation data (defaults to &quot;UCA Correlation&quot;)</span>
+<span class="sd">      distribution (str, optional): Type of distribution (defaults to "norm")</span>
+<span class="sd">      sheet_name (str, optional): Name of the sheet with UCA correlation data (defaults to "UCA Correlation")</span>
 
 <span class="sd">  Returns:</span>
-<span class="sd">      dict: UCA defect correlation distribution, {&#39;UCA type&#39;:{&#39;ODC type&#39;:Dist},...}</span>
-<span class="sd">  &quot;&quot;&quot;</span>
-  <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">&#39;Construct UCA ODC defect correlation distribution.&#39;</span><span class="p">)</span>
+<span class="sd">      dict: UCA defect correlation distribution, {'UCA type':{'ODC type':Dist},...}</span>
+<span class="sd">  """</span>
+  <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s1">'Construct UCA ODC defect correlation distribution.'</span><span class="p">)</span>
 
-  <span class="k">if</span> <span class="n">distribution</span> <span class="o">!=</span> <span class="s1">&#39;norm&#39;</span><span class="p">:</span>
-    <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Unrecognized distribution </span><span class="si">{</span><span class="n">distribution</span><span class="si">}</span><span class="s1">. Valid distribution is &quot;norm&quot;!&#39;</span><span class="p">)</span>
+  <span class="k">if</span> <span class="n">distribution</span> <span class="o">!=</span> <span class="s1">'norm'</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">IOError</span><span class="p">(</span><span class="sa">f</span><span class="s1">'Unrecognized distribution </span><span class="si">{</span><span class="n">distribution</span><span class="si">}</span><span class="s1">. Valid distribution is "norm"!'</span><span class="p">)</span>
 
   <span class="n">df</span> <span class="o">=</span> <span class="n">read_excel</span><span class="p">(</span><span class="n">excel_file</span><span class="p">,</span> <span class="n">sheet_name</span><span class="o">=</span><span class="n">sheet_name</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
   <span class="n">dist_dict</span> <span class="o">=</span> <span class="p">{}</span>
