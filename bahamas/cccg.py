@@ -107,10 +107,10 @@ def match_CCCG_on(src_arr, col_name):
 
     Args:
         src_arr (pd.DataFrame): Component table with expanded coupling factors
-        col_name (str): coupling factor, Function_, Input_ or Design_
+        col_name (str): coupling factor, ``Function_``, ``Input_`` or ``Design_``
 
     Returns:
-        list: list of CCCGs based on single coupling factor, arranged in order *_1, *_2, *_3, etc. where * represent the coupling factor
+        list: list of CCCGs based on single coupling factor, arranged in order ``*_1``, ``*_2``, ``*_3``, etc. where ``*`` represent the coupling factor
     """
     CCCG_arr = list()
 
@@ -141,7 +141,7 @@ def match_CCCG_list_on(list_pd, col_name):
 
     Args:
         list_pd (list): list of pd.DataFrame of CCCGs
-        col_name (str): coupling factor, Function_, Input_ or Design_
+        col_name (str): coupling factor, ``Function_``, ``Input_`` or ``Design_``
 
     Returns:
         list: CCCGs with additional coupling factor ("col_name")

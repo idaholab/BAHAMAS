@@ -63,16 +63,23 @@ How to Run BAHAMAS Web App
 How to Build the User Manual
 ----------------------------
 
-* Install Sphinx libraries.
+* Install the documentation build dependencies (the ``docs`` optional
+  dependency group defined in ``pyproject.toml``) plus pandoc (required by
+  nbsphinx to render Jupyter notebooks).
+
+  Using pip:
 
   .. code:: bash
 
-    pip install sphinx sphinx-rtd-theme nbsphinx sphinx-copybutton sphinxcontrib-bibtex sphinx-autoapi
+    pip install --editable ".[docs]"
     conda install pandoc
-    cd docs
-    make html
-    cd _build/html
-    python3 -m http.server
+
+  Using `uv <https://docs.astral.sh/uv/>`_:
+
+  .. code:: bash
+
+    uv sync --extra docs
+    conda install pandoc
 
 * Build the HTML and open your browser (http://localhost:8000).
 

@@ -65,8 +65,6 @@ marginal probability is determined.
 (i.e., `c`) with two parents (i.e., `a`, `b`), within a BBN. The parents have
 `n` and `m` total states.
 
-.. _eq-bbn1:
-
 .. math::
   :label: bbn-1
 
@@ -85,8 +83,6 @@ human errors, `b` represents review, and `c` represents a specific defect
 type for a given stage. Each has two states (i.e., `1 = yes`; `2 = no`). The
 expansion of the equation is as follows:
 
-.. _eq-bbn2:
-
 .. math::
   :label: bbn-2
 
@@ -97,9 +93,9 @@ This expansion can be reduced. The conditional probability of a specific
 defect remaining is zero when there are no human errors for a given
 stage. Thus, :math:`P(c_i|a_2,b_k)=0` when :math:`P(a_2)\geq 0` .
 
-.. _eq-bbn3:
-
 .. math::
+  :label: bbn-3
+
   P(c_i) = P(c_i|a_1,b_1)P(a_1)P(b_1) + P(c_i|a_1,b_2)P(a_1)P(b_2)
 
 Further reduction is achieved by recognizing that review either occurs
@@ -108,17 +104,17 @@ or does not occur, with a probability of zero or one (i.e., if
 then :math:`P(b_1) = 1` and :math:`P(b_2) = 0`, and the equation reduces
 to:
 
-.. _eq-bbn4:
-
 .. math::
+  :label: bbn-4
+
   P(c_i) = P(c_i|a_1, b_1)P(a_1)
 
 If no review is performed, then :math:`P(b_1) = 0` and
 :math:`P(b_2) = 1`, and the equation reduces to:
 
-.. _eq-bbn5:
-
 .. math::
+  :label: bbn-5
+
   P(c_i) = P(c_i|a_1, b_2)P(a_1)
 
 Thus, the probability of a specific defect type remaining for a
@@ -127,18 +123,18 @@ reduced form of the marginal probability, where :math:`P(D_j)` is the
 probability of defects introduced (i.e., human error, as given by Equation
 (1)).
 
-.. _eq-bbn6:
-
 .. math::
+  :label: bbn-6
+
   P(Type_{ij} = True) = P(Type_{ij}|D_j, R_j)P(D_j)
 
 where :math:`P(Type_{ij}|D_j,R_j)` is the conditional probability of a
 specific defect type, given the human errors and review activities. It
 is determined via the defect conditional probability equation, as follows:
 
-.. _eq-bbn7:
-
 .. math::
+  :label: bbn-7
+
   DCP = \begin{cases} StageReview(all\ states)\ and\ StageDefect\ (yes), & DCP = Ge^{-4TCR} \\ StageReview(all\ states)\ and\ StageDefect(no), & DCP = 0 \end{cases}
 
 where `G` is the general expected probability of a defect type for a given SDLC
@@ -154,9 +150,9 @@ stage's defect types existing exceeds zero, :math:`P(Type_{ij})>0` ,
 otherwise, :math:`P(Type_i|a_k,b_l,c_m,d_n,e_p,f_q)=0`.
 
 
-.. _eq-bbn8:
-
 .. math::
+  :label: bbn-8
+
   P(Type_{j} = True)
   = \sum_{k=1}^{2} \sum_{l=1}^{2} \sum_{m=1}^{2} \sum_{n=1}^{2} \sum_{p=1}^{2} \sum_{q=1}^{2} P(G_{j} | a_{k}, b_{l}, c_{m}, d_{n}, e_{p}, f_{q}) P(a_{k}) P(b_{l}) P(c_{m}) P(d_{n}) P(e_{p}) P(f_{q})
 
@@ -164,9 +160,9 @@ Finally, the software failure probability is given by the following equation, wh
 `I` is the total number of defect types considered
 by BAHAMAS, and :math:`UCA_x` represents the failure modes evaluated:
 
-.. _eq-bbn9:
-
 .. math::
+  :label: bbn-9
+
   P(UCA_x) = \sum_{i=1}^{I} P(UCA_x | Type_i) P(Type_i)
 
 An inherent assumption in this work is that software failure results from active defects.

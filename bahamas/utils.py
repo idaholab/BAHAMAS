@@ -29,7 +29,7 @@ def read_excel(*args, **kwargs):
   whitespace from string values (including the column index if it holds strings)
 
   Args:
-      *args, **kwargs: Arguments passed directly to pandas.read_excel
+      ``*args``, ``**kwargs``: Arguments passed directly to pandas.read_excel
 
   Returns:
       pandas.DataFrame: The parsed excel data with string values stripped

@@ -86,6 +86,37 @@ Run tests with:
 pytest
 ```
 
+### Build the documentation
+
+The Sphinx tooling used to build the `.rst` docs is bundled in the `docs`
+optional dependency group. Install it (plus pandoc, required by nbsphinx to
+render Jupyter notebooks).
+
+Using pip:
+
+```bash
+pip install --editable ".[docs]"
+conda install pandoc
+```
+
+Using [uv](https://docs.astral.sh/uv/):
+
+```bash
+uv sync --extra docs
+conda install pandoc
+```
+
+Then build the HTML:
+
+```bash
+cd docs
+make html
+cd _build/html
+python3 -m http.server
+```
+
+Then open <http://localhost:8000> in your browser.
+
 ## Usage
 
 ### Web App
