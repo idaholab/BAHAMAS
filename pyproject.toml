@@ -37,6 +37,16 @@ classifiers = [
     "Topic :: Digital I&C Engineering, Software Failure Probability Evaluation"
 ]
 
+[project.optional-dependencies]
+docs = [
+  "sphinx",
+  "sphinx_rtd_theme",
+  "nbsphinx",
+  "sphinx-copybutton",
+  "sphinx-autoapi",
+  "sphinxcontrib-bibtex"
+]
+
 [project.urls]
 "Homepage" = "https://github.com/idaholab/BAHAMAS"
 

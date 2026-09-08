@@ -20,6 +20,7 @@ BAHAMAS documentation
    :maxdepth: 2
    :caption: More documentation:
 
+   risk_assessment_and_safety_assurance
    hep
    removal
    odc

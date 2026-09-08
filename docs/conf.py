@@ -28,7 +28,6 @@ extensions = ['sphinx.ext.intersphinx',
 	'sphinx.ext.autodoc',
 	'sphinx.ext.doctest',
 	'sphinx.ext.todo',
-	"sphinx.ext.autodoc.typehints",
 	"sphinx.ext.mathjax",
   "sphinx.ext.autosummary",
 	"nbsphinx",  # <- For Jupyter Notebook support
@@ -45,6 +44,19 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 source_suffix = [".rst", ".md"]
 autoapi_dirs = ['../bahamas']
+# Default AutoAPI options minus "imported-members": several submodules share a
+# name with a function re-exported through bahamas/__init__.py (e.g.
+# sdlc_stage_hep_calculation), and documenting those re-exports at the package
+# level collides with the same-named module page ("duplicate object
+# description"). Each symbol is still fully documented on its own module page.
+autoapi_options = [
+    "members",
+    "undoc-members",
+    "private-members",
+    "show-inheritance",
+    "show-module-summary",
+    "special-members",
+]
 
 import sphinx_rtd_theme
 
